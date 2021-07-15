@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>devops on raeperd.github.io</title>
+    <link>https://raeperd.github.io/tags/devops/</link>
+    <description>Recent content in devops on raeperd.github.io</description>
+    <image>
+      <url>https://raeperd.github.io/papermod-cover.png</url>
+      <link>https://raeperd.github.io/papermod-cover.png</link>
+    </image>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Fri, 25 Oct 2019 00:00:00 +0000</lastBuildDate><atom:link href="https://raeperd.github.io/tags/devops/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>About Vagrant</title>
+      <link>https://raeperd.github.io/articles/about-vagrant/</link>
+      <pubDate>Fri, 25 Oct 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://raeperd.github.io/articles/about-vagrant/</guid>
+      <description>Motivation 최근에 CentOS8 뿐만 아니라 CentOS6 (기존 환경) 에서도 동작가능한 C++ 프로그램을 개발할 필요가 있었습니다. 기존 환경의 경우 설치스크립트를 이용해 초기화를 진행하는데 CentOS8 의 경우 아직 설치 스크립트가 없기 때문에 처음부터 설치 스크립트를 작성하면서 환경을 구성해야 합니다.
+개발과 빌드를 하면서 OS의 설치 스크립트를 같이 관리하는 것은 여러므로 귀찮은 일이라 처음에는 Docker를 적용하려 했습니다. 가능하다면 이 방법이 최선이겠지만, Virtual Machine 에 의존성을 가지고 있는 실행프로그램이기 때문에 대안을 찾아야만 했습니다.
+이 과정에서 Vagrant 를 알게 되었고 현재는 Vagrant 를 활용해 개발 환경을 구성했습니다.</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>cpp on raeperd.github.io</title>
+    <link>https://raeperd.github.io/tags/cpp/</link>
+    <description>Recent content in cpp on raeperd.github.io</description>
+    <image>
+      <url>https://raeperd.github.io/papermod-cover.png</url>
+      <link>https://raeperd.github.io/papermod-cover.png</link>
+    </image>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Fri, 07 Aug 2020 00:00:00 +0000</lastBuildDate><atom:link href="https://raeperd.github.io/tags/cpp/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Effective CMake</title>
+      <link>https://raeperd.github.io/notes/cpp/effective-cmake/</link>
+      <pubDate>Fri, 07 Aug 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://raeperd.github.io/notes/cpp/effective-cmake/</guid>
+      <description>Motivation 크로스 플랫폼을 지원하지 않는 언어로 크로스 플랫폼 어플리케이션을 개발하는 일은 설계 단계부터 라이브러리 의존성, 패키징, 내부 함수 하나하나의 구현까지 고려해야 할 사항들이 너무 많다. 이런 문제들을 잘 해결해보고자 하는 것이 CMake 인데, 풀고자 하는 문제의 복잡성 때문에 CMake 자체도 어렵고, 잘 사용하기가 어렵다.
+코드가 아닌 빌드 환경에서부터 여러 시행착오를 겪다가, CMake 를 잘 사용하는 방법에 대한 좋은 강의를 찾아서 듣고 정리해본다. 진작 알았으면 더 좋았을 것 같은데.. 새로운 기술을 사용하려면 역시 초반에 리서치를 잘 해두어야 한다.</description>
+    </item>
+    
+    <item>
+      <title>malloc vs new</title>
+      <link>https://raeperd.github.io/notes/cpp/malloc-vs-new/</link>
+      <pubDate>Wed, 25 Mar 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://raeperd.github.io/notes/cpp/malloc-vs-new/</guid>
+      <description>Motivation C에서의 동적할당을 생각해보자
+ malloc 이 용도를 생각하지는 않는다. 좋게 말하면 자유도가 높은 것이지만 다르게 생각해보면 안전장치가 없다는 것. malloc 은 옛날 패러다임에 맞춰진 함수다. 이전의 환경과 달리 현대의 컴퓨터들은 RAM이 커지고 OS가 더 똑똑해졌다. 메모리 =&amp;gt; 가상메모리 Ring과 같은 권한 부여 시스템 OS가 메모리를 통제함으로써 할당 실패 가능성이 줄어듬  반면, C++ 에서는 동적할당을 new 로 한다. 당연히 new 는 malloc 이후의 문법이기 때문에 이런저런 단점을 극복하려 애를 썼을 것이다.</description>
+    </item>
+    
+    <item>
+      <title>function container for hooking engine</title>
+      <link>https://raeperd.github.io/notes/cpp/function-container-for-hooking-engine/</link>
+      <pubDate>Mon, 13 Jan 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://raeperd.github.io/notes/cpp/function-container-for-hooking-engine/</guid>
+      <description>Motivation 임의의 모든 Windows API 함수를 후킹하는 방법을 찾아보다가 모든 함수를 담는 container 가 있으면 일일이 후킹하는 코드를 작성하는 것이 아니라 간단하게 구현할 수 있지 않을까 생각해 봤었다.
+처음에는 이런게 가능은 한가 싶었는데 찾아보니까 가능은 하더라 ..
+결과적으로는 이런 방법을 사용해서 구현하는 방법을 찾지는 못했는데 구현된 코드의 모양이 재미있기도 하고, 혹시 나중에 쓸 일이 있을까 싶어 이렇게 메모해 둠.
+혹시 이 방법으로 함수 후킹을 성공하신 분이 있으시다면 저에게도 꼭 알려주셨으면 합니다.</description>
+    </item>
+    
+    <item>
+      <title>#pragma once vs #ifndef ~ #endif</title>
+      <link>https://raeperd.github.io/notes/cpp/pragma-once-vs-ifndef/</link>
+      <pubDate>Sat, 06 Apr 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://raeperd.github.io/notes/cpp/pragma-once-vs-ifndef/</guid>
+      <description>Motivation 선행 처리기(preprocessor)는 원시 프로그램 내의 모든 선행 처리기 지시자를 선행 처리하여 컴파일러가 컴파일 할 수 있게 C 언어의 문장으로 바꾸어 주는 일을 합니다. 이중에서 #pragma once와 #ifndef ~ #endif 는 헤더파일의 중복 컴파일 방지를 위해 쓰이는 선행 처리기 지시자 입니다. 같은 역할을 하지만 미묘하게 차이가 있고 이 부분에 대해 궁금해 하다가 나름대로 정리를 하게 됬습니다.
+Contents #ifndef ~#endif first.h #ifndef __FIRST_H_ #define __FIRST_H__ class First { .... } #endif second.</description>
+    </item>
+    
+    <item>
+      <title>Copy constructor and temporal obejcts</title>
+      <link>https://raeperd.github.io/notes/cpp/copy-constructor-and-temporal-object/</link>
+      <pubDate>Mon, 25 Feb 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://raeperd.github.io/notes/cpp/copy-constructor-and-temporal-object/</guid>
+      <description>복사 생성자 생성자의 종류   기본 생성자
+  다중 정의된 생성자 (매개변수)
+2-1 변환 생성자 (매개변수가 1개) == [형 변환자.. ]
+  복사 생성자
++) r-value 참조
+  이동생성자 (Since C++11)
+  ~&amp;gt; 이름이 없는, 코드에서 드러나지 않는 임시객체 때문에 여러 문제가 생긴다. 조심!
+함수 호출과 복사 생성자 void TestFunc(CTest param) {...}  이 함수의 문제가 뭘까?
+해결방법
+  복사 생성자를 삭제한다.
+ CTest(const CTestData &amp;amp;rhs) = delete    매개변수의 형식을 참조자로 바꾼다.</description>
+    </item>
+    
+  </channel>
+</rss>

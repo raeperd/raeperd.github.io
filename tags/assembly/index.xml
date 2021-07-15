@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>assembly on raeperd.github.io</title>
+    <link>https://raeperd.github.io/tags/assembly/</link>
+    <description>Recent content in assembly on raeperd.github.io</description>
+    <image>
+      <url>https://raeperd.github.io/papermod-cover.png</url>
+      <link>https://raeperd.github.io/papermod-cover.png</link>
+    </image>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Fri, 25 Oct 2019 00:00:00 +0000</lastBuildDate><atom:link href="https://raeperd.github.io/tags/assembly/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>NearCall and FarCall</title>
+      <link>https://raeperd.github.io/notes/assembly/near-call-vs-far-call/</link>
+      <pubDate>Fri, 25 Oct 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://raeperd.github.io/notes/assembly/near-call-vs-far-call/</guid>
+      <description>Motivation 어셈블리 레벨에서 프로그램을 분석할 때, CALL 명령은 매우 중요한 역할을 한다. 실행 중인 프로그램의 실행 순서는 CALL 이나 JMP 와 같은 흐름을 제어하는 명령을 만나지 않는다면 기본적으로 순차적으로 진행된다. CALL 은 이런 프로그램의 진행 흐름을 변경하는 명령문으로 프로그램의 흐름을 따라가려면 당연하게도 CALL 명령어의 흐름을 따라갈 수 있어야한다.
+printf 함수를 어셈블리 레벨에서 볼 일이 있었는데, 그 과정에서 알게된 사실을 기록해둔다.
+ CONTENTS prtinf 함수의 본모습 printf 함수는 어셈블리 레벨에서 아래와 같은 코드로 구성되어 있다.</description>
+    </item>
+    
+    <item>
+      <title>Assembly Basic</title>
+      <link>https://raeperd.github.io/notes/assembly/assembly-basic/</link>
+      <pubDate>Sun, 25 Mar 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://raeperd.github.io/notes/assembly/assembly-basic/</guid>
+      <description>어셈블리 기초 Assembly Basic  어셈블리는 무엇인가? 어셈블리를 잘하면 좋은점? Architecture 별 어셈블러 소개 CPU 레지스터 시스템 콜  어셈블리는 무엇인가요?  프로그래밍 언어의 하나. 기계어에서 한 단계 위의 언어이며 기계어와 함께 단 둘 뿐인 로우레벨 언어에 속한다. 기계어 한 라인에 어셈블리 한라인에 매칭이 된다. 기계어는 CPU가 채택한 ISA에 따라 다 다르기 때문에 어셈블리어의 명령어 역시 통일된 규격이 없다. 또한 문법 아키텍처에 따라서도 다르고 어셈블러의 종류에 따라서도 문법/매크로 등이 제각각이다.  실습 환경 구성  Ubuntu 16.</description>
+    </item>
+    
+  </channel>
+</rss>

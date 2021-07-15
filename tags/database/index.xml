@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>database on raeperd.github.io</title>
+    <link>https://raeperd.github.io/tags/database/</link>
+    <description>Recent content in database on raeperd.github.io</description>
+    <image>
+      <url>https://raeperd.github.io/papermod-cover.png</url>
+      <link>https://raeperd.github.io/papermod-cover.png</link>
+    </image>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Sat, 10 Oct 2020 00:00:00 +0000</lastBuildDate><atom:link href="https://raeperd.github.io/tags/database/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>When to use `ON UPDATE` and `ON DELETE`</title>
+      <link>https://raeperd.github.io/notes/database/on-update-vs-on-delete/</link>
+      <pubDate>Sat, 10 Oct 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://raeperd.github.io/notes/database/on-update-vs-on-delete/</guid>
+      <description>Foreign key constraints: When to use ON UPDATE and ON DELETE
+Let’s look at the ON UPDATE clause:
+ ON UPDATE RESTRICT : the default : if you try to update a company_id in table COMPANY the engine will reject the operation if one USER at least links on this company. ON UPDATE NO ACTION : same as RESTRICT. ON UPDATE CASCADE : the best one usually : if you update a company_id in a row of table COMPANY the engine will update it accordingly on all USER rows referencing this COMPANY (but no triggers activated on USER table, warning).</description>
+    </item>
+    
+    <item>
+      <title>SQL Basic Part 1</title>
+      <link>https://raeperd.github.io/notes/database/sql-basic-1/</link>
+      <pubDate>Fri, 25 Sep 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://raeperd.github.io/notes/database/sql-basic-1/</guid>
+      <description>Motivation SQL 문법의 아주 기본적인 것부터 정리해두면 쓸 일이 많을 것 같아 정리를 시작하게 됨
+Contents SQL&amp;rsquo;s Persistence  Over 40 years old! Questioned repeatedly  90’s: Object-Oriented DBMS (OQL, etc.) 2000’s: XML (Xquery, Xpath, XSLT) 2010’s: NoSQL &amp;amp; MapReduce   SQL keeps re-emerging as the standard  Even Hadoop, Spark etc. mostly used via SQL May not be perfect, but it is useful    SQL Pros and Cons  Declarative!</description>
+    </item>
+    
+    <item>
+      <title>SQL Basic Part 2</title>
+      <link>https://raeperd.github.io/notes/database/sql-basic-2/</link>
+      <pubDate>Fri, 25 Sep 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://raeperd.github.io/notes/database/sql-basic-2/</guid>
+      <description>SQL II 1 4
+Motivation 또 게을러지기 시작해서 안하려고 한다. DB 관련 지식은 최근에 필요하다는게 많이 느껴져서 얼른얼른 알아가야한다. 이런데서 머뭇거리면 안된다
+Contents Conceptual SQL Evaluation  FROM WHERE SELECT GROUP BY HAVING DISTINCT (ORDER BY) (LIMIT)  Putting it all together SELECT S.dept, AVG(S.gpa), COUNT(*) FROM Students S WHERE S.gender = &amp;#39;F&amp;#39; GROUP BY S.dept HAVING COUNT(*) &amp;gt;= 2 ORDER BY S.dept; 이제까지는 하나의 테이블에서만 했는데 여러 테이블에 대한 쿼리를 할 수도 있다.</description>
+    </item>
+    
+  </channel>
+</rss>

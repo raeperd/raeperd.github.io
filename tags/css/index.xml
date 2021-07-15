@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>css on raeperd.github.io</title>
+    <link>https://raeperd.github.io/tags/css/</link>
+    <description>Recent content in css on raeperd.github.io</description>
+    <image>
+      <url>https://raeperd.github.io/papermod-cover.png</url>
+      <link>https://raeperd.github.io/papermod-cover.png</link>
+    </image>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Fri, 30 Oct 2020 00:00:00 +0000</lastBuildDate><atom:link href="https://raeperd.github.io/tags/css/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>CSS Basic</title>
+      <link>https://raeperd.github.io/notes/html/css-basic/</link>
+      <pubDate>Fri, 30 Oct 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://raeperd.github.io/notes/html/css-basic/</guid>
+      <description>HTML Basic 과 같은 맥락으로 블로그를 만들면서 CSS 에 대해 공부한 내용을 정리한다. 생활코딩 덕분에 간단하게 정리할 수 있었음 ! 다보고 나니 Javascript 까지 봐야 본격적으로 블로그를 만져볼 수 있겠다는 걸 알게되었다.
+Before CSS   font 태그를 이용해서 색을 변경할 수는 있다. 스타일에 대한 요구사항이 변경된다면, 변경이 어려울 것이다. 좀 더 근본적인 해결책이 필요하다.  After CSS   &amp;lt;style&amp;gt;&amp;lt;/style&amp;gt; 브라우저야! 이 내용은 css 이니까 css 문법에 맞게 해석해! 위의 HTML 코드를 CSS로 하면 이렇게 간단하게 처리할 수 있다.</description>
+    </item>
+    
+  </channel>
+</rss>

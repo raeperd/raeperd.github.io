@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>bug on raeperd.github.io</title>
+    <link>https://raeperd.github.io/tags/bug/</link>
+    <description>Recent content in bug on raeperd.github.io</description>
+    <image>
+      <url>https://raeperd.github.io/papermod-cover.png</url>
+      <link>https://raeperd.github.io/papermod-cover.png</link>
+    </image>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Sat, 10 Oct 2020 00:00:00 +0000</lastBuildDate><atom:link href="https://raeperd.github.io/tags/bug/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>When to use `ON UPDATE` and `ON DELETE`</title>
+      <link>https://raeperd.github.io/notes/database/on-update-vs-on-delete/</link>
+      <pubDate>Sat, 10 Oct 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://raeperd.github.io/notes/database/on-update-vs-on-delete/</guid>
+      <description>Foreign key constraints: When to use ON UPDATE and ON DELETE
+Let’s look at the ON UPDATE clause:
+ ON UPDATE RESTRICT : the default : if you try to update a company_id in table COMPANY the engine will reject the operation if one USER at least links on this company. ON UPDATE NO ACTION : same as RESTRICT. ON UPDATE CASCADE : the best one usually : if you update a company_id in a row of table COMPANY the engine will update it accordingly on all USER rows referencing this COMPANY (but no triggers activated on USER table, warning).</description>
+    </item>
+    
+  </channel>
+</rss>

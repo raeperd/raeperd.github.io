@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>algorithm on raeperd.github.io</title>
+    <link>https://raeperd.github.io/tags/algorithm/</link>
+    <description>Recent content in algorithm on raeperd.github.io</description>
+    <image>
+      <url>https://raeperd.github.io/papermod-cover.png</url>
+      <link>https://raeperd.github.io/papermod-cover.png</link>
+    </image>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Tue, 25 Jul 2017 00:00:00 +0000</lastBuildDate><atom:link href="https://raeperd.github.io/tags/algorithm/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Euclidean Algorhtim</title>
+      <link>https://raeperd.github.io/notes/algorithm/euclidean-algorithm/</link>
+      <pubDate>Tue, 25 Jul 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://raeperd.github.io/notes/algorithm/euclidean-algorithm/</guid>
+      <description>Base Algorithm int euclidean(int a, int b) { int r1 = a; int r2 = b; int q,r; while (r2 &amp;gt; 0) { q = r1/r2; r = r1%r2; r1 = r2; r2 = r; } return r1; } Algorithm (Recursive) int euclidean(int a, int b) { if (b==0) return a; else return euclidean(b,a%b); } Example 조금 더 직관적인 계산 방법 추가 예제)  손으로 해보면 금방 감옴!  Complexity of Euclidean Algorithm Extended Euclidean Algorithm 원리  목적은 위를 만족하는 s와 t를 찾는 것이다.</description>
+    </item>
+    
+  </channel>
+</rss>

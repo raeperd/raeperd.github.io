@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>kotlin on raeperd.github.io</title>
+    <link>https://raeperd.github.io/tags/kotlin/</link>
+    <description>Recent content in kotlin on raeperd.github.io</description>
+    <image>
+      <url>https://raeperd.github.io/papermod-cover.png</url>
+      <link>https://raeperd.github.io/papermod-cover.png</link>
+    </image>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Tue, 06 Apr 2021 19:58:54 +0900</lastBuildDate><atom:link href="https://raeperd.github.io/tags/kotlin/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Type in Kotlin</title>
+      <link>https://raeperd.github.io/articles/kotlin-for-java-developer/type/</link>
+      <pubDate>Tue, 06 Apr 2021 19:58:54 +0900</pubDate>
+      
+      <guid>https://raeperd.github.io/articles/kotlin-for-java-developer/type/</guid>
+      <description>Basic Type  kotlin doesn’t have primitive type Int or Int?  Int in bytecode fun foo(): Int = 1 public static final int foo() { return 1; } Int? in bytecode fun bar(): Int? = 1 public static final Integer foo() { return 1; } Primitive &amp;amp; wrapper types String  Kotlin String hides some confusing methods  Any  Any in Kotlin is a super type for all non-nullable types.</description>
+    </item>
+    
+    <item>
+      <title>Lambda with receiver</title>
+      <link>https://raeperd.github.io/articles/kotlin-for-java-developer/lambda-with-receiver/</link>
+      <pubDate>Sat, 20 Mar 2021 19:58:54 +0900</pubDate>
+      
+      <guid>https://raeperd.github.io/articles/kotlin-for-java-developer/lambda-with-receiver/</guid>
+      <description>Lambda with receiver  Extension Function &amp;amp; Lambda =&amp;gt; Lambda with receiver a.k.a. Extension lambda  with val sb = StringBuilder() sb.appendln(&amp;#34;something&amp;#34;) for (c in &amp;#39;a&amp;#39;..&amp;#39;z&amp;#39;) { sb.append(c) } sb.toString() val sb = StringBuilder() with (sb) { appendln(&amp;#34;something&amp;#34;) for (c in &amp;#39;a&amp;#39;..&amp;#39;z&amp;#39;) { append(c) } toString() }  it is library function not a language spec To implement function like this, we need lambda with receiver  val s: String = buildString { appendln(&amp;#34;something&amp;#34;) for (c in &amp;#39;a&amp;#39;.</description>
+    </item>
+    
+    <item>
+      <title>Inline function in Kotlin</title>
+      <link>https://raeperd.github.io/articles/kotlin-for-java-developer/inline-function/</link>
+      <pubDate>Thu, 18 Mar 2021 19:58:54 +0900</pubDate>
+      
+      <guid>https://raeperd.github.io/articles/kotlin-for-java-developer/inline-function/</guid>
+      <description>Library functions looking like built-in constructs run val foo = run { println(&amp;#34;do something...&amp;#34;) &amp;#34;foo&amp;#34; }  runs the block of code (lambda) and returns the last expression as the result  let fun getMail(): Email? val email = getEmail() if (email != null) sendMailTo(email) email?.let { e -&amp;gt; sendEmailTo(e) } getEmail()?.let { sendEmailTo(it) }  allows to check the arguments for being non-null, not only the receiver Its name comes from functional programming, where let is used to introduce a new variable.</description>
+    </item>
+    
+    <item>
+      <title>Sequence</title>
+      <link>https://raeperd.github.io/articles/kotlin-for-java-developer/sequences/</link>
+      <pubDate>Thu, 18 Mar 2021 19:58:54 +0900</pubDate>
+      
+      <guid>https://raeperd.github.io/articles/kotlin-for-java-developer/sequences/</guid>
+      <description>Collections vs Sequences Operation on collections  lambdas are inlined (no performance overhead) but: intermediate collections are created for chained calls Operations on collections are inlined. That works great for simple cases, but creates a significant performance overhead for chained calls, because intermediate collections are created Sequences solved this problem by storing operations to be performed, and evaluating them in a lazy manner. Operations on sequences mainly duplicate operations on collections.</description>
+    </item>
+    
+    <item>
+      <title>Kotlin Conventions</title>
+      <link>https://raeperd.github.io/articles/kotlin-for-java-developer/conventions/</link>
+      <pubDate>Tue, 16 Mar 2021 19:58:54 +0900</pubDate>
+      
+      <guid>https://raeperd.github.io/articles/kotlin-for-java-developer/conventions/</guid>
+      <description>operator overloading a + b a.plus(b) operator fun Point.plus(other: Point): Point { return Point(x + other.x, y + other.y) }    expression function name     a + b plus   a - b minus   a * b times   a / b div   a % b mod    Unary operations -a a.unaryMinus()    expression function name     +a unaryPlus   -a unaryMinus   !</description>
+    </item>
+    
+    <item>
+      <title>Property in Kotlin</title>
+      <link>https://raeperd.github.io/articles/kotlin-for-java-developer/properties/</link>
+      <pubDate>Mon, 15 Mar 2021 19:58:54 +0900</pubDate>
+      
+      <guid>https://raeperd.github.io/articles/kotlin-for-java-developer/properties/</guid>
+      <description>Properties  Unlike java its language feature in kotlin access property without getter and setter but internal implementation is same val -&amp;gt; gettter var -&amp;gt; getter setter  properties without field class Rectangle(val height: Int, val width: Int) { val isSquare: Boolean get() { return height == width } }   everytime getter is called, operation is calculated
+  access field in getter or setter
+  inside the class the calls are optimised</description>
+    </item>
+    
+    <item>
+      <title>Functional Programming in Kotlin</title>
+      <link>https://raeperd.github.io/articles/kotlin-for-java-developer/functional-programming/</link>
+      <pubDate>Fri, 12 Mar 2021 19:58:54 +0900</pubDate>
+      
+      <guid>https://raeperd.github.io/articles/kotlin-for-java-developer/functional-programming/</guid>
+      <description>Functional Programming Lambdas {x: Int, y: Int -&amp;gt; x + y } // always need curly braces  list.any({i : Int -&amp;gt; i &amp;gt; 0}) list.any() {i : Int -&amp;gt; i &amp;gt; 0} list.any {i : Int -&amp;gt; i &amp;gt; 0} list.any {i -&amp;gt; i &amp;gt; 0} list.any {it &amp;gt; 0} list.any { print(it) it &amp;gt; 0 }  You can move Lambda out with parentheses, if the Lambda is the last argument, if the parentheses are empty, you can omit them If the type of the argument can be inferred, if it&amp;rsquo;s clear from the context, it can be omitted.</description>
+    </item>
+    
+    <item>
+      <title>Nullability</title>
+      <link>https://raeperd.github.io/articles/kotlin-for-java-developer/nullability/</link>
+      <pubDate>Wed, 10 Mar 2021 19:58:54 +0900</pubDate>
+      
+      <guid>https://raeperd.github.io/articles/kotlin-for-java-developer/nullability/</guid>
+      <description>Nullable types  Answer for NullPointerException Modern approach to make NPE compile time error, not run-time error  val s1: String = &amp;#34;always String&amp;#34; val s2: String? = null s1.length // fine s2.length // compile error Dealing with Nullable types if (s != null) { s.length } s?.legnth Safe access  return null if value was null  Nullability operators val s: String? val length: Int = if (s != null) s.</description>
+    </item>
+    
+    <item>
+      <title>Extensions</title>
+      <link>https://raeperd.github.io/articles/kotlin-for-java-developer/extensions/</link>
+      <pubDate>Wed, 03 Mar 2021 19:58:54 +0900</pubDate>
+      
+      <guid>https://raeperd.github.io/articles/kotlin-for-java-developer/extensions/</guid>
+      <description>Extension Extension functions fun String.lastChar() = this.get(this.length - 1) fun String.lastChar() = get(length - 1) val c: Char = &amp;#34;abc.lastChar()  String as receiver this can be omitted import explicitly to use in anther file Under the hood extension function is static function  Calling Extension Functions from java code  As functions, extension function is static function in java code By importing static function, java code can use extension function  Examples from the standard library  Kotlin standard lib = java standard lib + extension in Kotlin No kotlin SDKs  small runtime jar file easy java interpolation    Exampels  joinToString getOrNull withIndex until  infix function 1.</description>
+    </item>
+    
+    <item>
+      <title>Basic</title>
+      <link>https://raeperd.github.io/articles/kotlin-for-java-developer/basics/</link>
+      <pubDate>Sat, 27 Feb 2021 19:58:54 +0900</pubDate>
+      
+      <guid>https://raeperd.github.io/articles/kotlin-for-java-developer/basics/</guid>
+      <description>Hello world package intro fun main(args: Array&amp;lt;String&amp;gt;) { val name = if (args.size &amp;gt; 0) args[0] else &amp;#34;Kotlin&amp;#34; prinln(&amp;#34;Hello, $name!&amp;#34;) }  Without class Without args if is an expression String templates  ”…$variable...&amp;quot; ”…${functioncall(variable)}...&amp;quot;   Kotlin String is Java String  fun main() { println(&amp;#34;First ${foo()}Secnd ${foo()}&amp;#34;) }  No magic, just call foo twice  Variables  val  value final var in Java read only reference not object   var  variable Mutable variable    Compiler infers type from context</description>
+    </item>
+    
+  </channel>
+</rss>

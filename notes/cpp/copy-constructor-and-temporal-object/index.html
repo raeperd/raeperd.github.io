@@ -1,0 +1,194 @@
+<!doctype html><html lang=korean dir=auto><head><meta charset=utf-8><meta http-equiv=x-ua-compatible content="IE=edge"><meta name=viewport content="width=device-width,initial-scale=1,shrink-to-fit=no"><meta name=robots content="index, follow"><title>Copy constructor and temporal obejcts | raeperd.github.io</title><meta name=keywords content="cpp"><meta name=description content="복사 생성자 생성자의 종류   기본 생성자
+  다중 정의된 생성자 (매개변수)
+2-1 변환 생성자 (매개변수가 1개) == [형 변환자.. ]
+  복사 생성자
++) r-value 참조
+  이동생성자 (Since C++11)
+  ~> 이름이 없는, 코드에서 드러나지 않는 임시객체 때문에 여러 문제가 생긴다. 조심!
+함수 호출과 복사 생성자 void TestFunc(CTest param) {...}  이 함수의 문제가 뭘까?
+해결방법
+  복사 생성자를 삭제한다.
+ CTest(const CTestData &rhs) = delete    매개변수의 형식을 참조자로 바꾼다."><meta name=author content="raeperd"><link rel=canonical href=https://raeperd.github.io/notes/cpp/copy-constructor-and-temporal-object/><link href=/assets/css/stylesheet.min.css rel="preload stylesheet" as=style><link rel=icon href=https://raeperd.github.io/favicon.ico><link rel=icon type=image/png sizes=16x16 href=https://raeperd.github.io/favicon-16x16.png><link rel=icon type=image/png sizes=32x32 href=https://raeperd.github.io/favicon-32x32.png><link rel=apple-touch-icon href=https://raeperd.github.io/apple-touch-icon.png><link rel=mask-icon href=https://raeperd.github.io/safari-pinned-tab.svg><meta name=theme-color content="#2e2e33"><meta name=msapplication-TileColor content="#2e2e33"><meta name=generator content="Hugo 0.85.0"><script type=application/javascript>var doNotTrack=!1;doNotTrack||(window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)},ga.l=+new Date,ga('create','UA-168674186-1','auto'),ga('send','pageview'))</script><script async src=https://www.google-analytics.com/analytics.js></script><meta property="og:title" content="Copy constructor and temporal obejcts"><meta property="og:description" content="복사 생성자 생성자의 종류   기본 생성자
+  다중 정의된 생성자 (매개변수)
+2-1 변환 생성자 (매개변수가 1개) == [형 변환자.. ]
+  복사 생성자
++) r-value 참조
+  이동생성자 (Since C++11)
+  ~> 이름이 없는, 코드에서 드러나지 않는 임시객체 때문에 여러 문제가 생긴다. 조심!
+함수 호출과 복사 생성자 void TestFunc(CTest param) {...}  이 함수의 문제가 뭘까?
+해결방법
+  복사 생성자를 삭제한다.
+ CTest(const CTestData &rhs) = delete    매개변수의 형식을 참조자로 바꾼다."><meta property="og:type" content="article"><meta property="og:url" content="https://raeperd.github.io/notes/cpp/copy-constructor-and-temporal-object/"><meta property="og:image" content="https://raeperd.github.io/papermod-cover.png"><meta property="article:section" content="notes"><meta property="article:published_time" content="2019-02-25T00:00:00+00:00"><meta property="article:modified_time" content="2019-02-25T00:00:00+00:00"><meta property="og:site_name" content="raeperd.github.io"><meta name=twitter:card content="summary_large_image"><meta name=twitter:image content="https://raeperd.github.io/papermod-cover.png"><meta name=twitter:title content="Copy constructor and temporal obejcts"><meta name=twitter:description content="복사 생성자 생성자의 종류   기본 생성자
+  다중 정의된 생성자 (매개변수)
+2-1 변환 생성자 (매개변수가 1개) == [형 변환자.. ]
+  복사 생성자
++) r-value 참조
+  이동생성자 (Since C++11)
+  ~> 이름이 없는, 코드에서 드러나지 않는 임시객체 때문에 여러 문제가 생긴다. 조심!
+함수 호출과 복사 생성자 void TestFunc(CTest param) {...}  이 함수의 문제가 뭘까?
+해결방법
+  복사 생성자를 삭제한다.
+ CTest(const CTestData &rhs) = delete    매개변수의 형식을 참조자로 바꾼다."><script type=application/ld+json>{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Notes","item":"https://raeperd.github.io/notes/"},{"@type":"ListItem","position":2,"name":"Copy constructor and temporal obejcts","item":"https://raeperd.github.io/notes/cpp/copy-constructor-and-temporal-object/"}]}</script><script type=application/ld+json>{"@context":"https://schema.org","@type":"BlogPosting","headline":"Copy constructor and temporal obejcts","name":"Copy constructor and temporal obejcts","description":"복사 생성자 생성자의 종류   기본 생성자\n  다중 정의된 생성자 (매개변수)\n2-1 변환 생성자 (매개변수가 1개) == [형 변환자.. ]\n  복사 생성자\n+) r-value 참조\n  이동생성자 (Since C++11)\n  ~\u0026gt; 이름이 없는, 코드에서 드러나지 않는 임시객체 때문에 여러 문제가 생긴다. 조심!\n함수 호출과 복사 생성자 void TestFunc(CTest param) {...}  이 함수의 문제가 뭘까?\n해결방법\n  복사 생성자를 삭제한다.\n CTest(const CTestData \u0026amp;rhs) = delete    매개변수의 형식을 참조자로 바꾼다.","keywords":["cpp"],"articleBody":"복사 생성자 생성자의 종류   기본 생성자\n  다중 정의된 생성자 (매개변수)\n2-1 변환 생성자 (매개변수가 1개) == [형 변환자.. ]\n  복사 생성자\n+) r-value 참조\n  이동생성자 (Since C++11)\n  ~ 이름이 없는, 코드에서 드러나지 않는 임시객체 때문에 여러 문제가 생긴다. 조심!\n함수 호출과 복사 생성자 void TestFunc(CTest param) {...}  이 함수의 문제가 뭘까?\n해결방법\n  복사 생성자를 삭제한다.\n CTest(const CTestData \u0026rhs) = delete    매개변수의 형식을 참조자로 바꾼다.\nvoid TestFunc(CTest \u0026param) {…}\n   매개변수는 참조형이므로 새로운 객체를 생성하지 않는다! non-member 함수는 상수화 불가능하므로 매개변수를 상수화 함으로써 상수형 메소드 처럼 사용할 수 있다.  Deep copy and Shallow copy #include  using namespace std; int main(void) { int* pa = new int(5); int* pb = nullptr; pb = pa; // shallow copy pb = new int(*pa); // deep copy return 0; }   Deep copy와 Shallow copy 에 대한 이해가 필요하다.  Deep copy : 원본을 여럿 Shallow copy : 원본을 가리키는 포인터를 여럿    복사 생성자 꼭 필요할까?  디폴트 복사 생성자가 하는 일은 Shallow copy다. Deep copy를 하려면 별도로 정의를 할 필요가 있다. 곧 클래스 내부에서 메모리를 동적 할당 및 해제하고, 이를 멤버 포인터 변수로 관리하고 있는 경우 복사 생성자는 따로 정의되어야만 한다. 반대로 멤버로 포인터를 가지고 있지 않다면 필요한 작업은 아니다.  대입 연산자  개발자가 정의한 객체도 대입 연산자가 먹힌다!  모든 멤버 변수의 값을 복사함   그런데 Shallow copy로 복사한다.  그래서 위에서처럼 포인터를 다룰 경우 다시 정의할 필요가 생긴다.    정의하는 방법\nCTest\u0026 operator=(const CTest\u0026 rhs) { *m_pnData = *rhs.m_pnData; return *this; }   return *this를 통해 a=b=c 와 같은 구문이 유효하다.  4.1.4 실습과제3 실습과제 3: 복사 생성자와 대입 연산자\nimplicit type casting  변환 생성자   매개변수가 하나인 생성자를 변환 생성자라고도 하는데 이 친구가 은근슬쩍 호출되서 프로그램의 효율을 낭비하는 케이스가 생긴다.\n  불필요한 임시 객체를 만들어냄으로써 프로그램의 효율을 갉아먹는 원인이 된다,\n#include  #include \nusing namespace std;\nclass CTest { public: CTest() { cout « “CTest()” « endl;} CTest(int x) { // 변환 생성자 cout « “CTest(int)” « endl; CMyData = x; } ~CTest() { cout « “~CTest()” « endl; }\n int GetData() const { return CMyData; } void SetData(int param) { CMyData = param;}  private: int CMyData = 10; };\nvoid TestFunc(CTest param) { cout « “TestFunc()” « endl; }\nint main(void) { TestFunc(5); return 0; }\n  main 함수의 TestFunc(5)는 에러를 낼 것 같지만 그렇지 않다.\n  CTest 클래스는 int 자료형에 대한 변환 생성자를 제공하므로 함수의 매개변수 형식이 CTest라면 이것이 int가 될 수도 있다.\n  컴파일러가 5를 CTest의 인스턴스로 형변환을 해 임시객체를 만들어내기 때문\n  결과\n CTest(int) TestFunc() ~CTest()\n  클래스 형식을 매개변수로 사용할때는.  반드시 참조 형식을 사용한다 묵시적 변환 생성자를 지원하는 클래스인지 확인해야 한다.    explicit explicit CTest(int param) { CMyData = param; }   이렇게 하면 사용자 코드에서 묵시적으로 변환이 일어나지 않게 한다.  허용되는 변환   CTest 에서 int 자료형에 대한 변환 생성자를 제공한다면 int 자료형이 CTest형식으로 변환 될 수 있다.\noperator int(void) { return CMyData;}\n  반대로, CTest 자료형이 int 형으로 변하게 할 수도 있다.\n  그럼 아래와 같은 코드가 가능하다\nint main(void) { CTest test; int x(test); cout (test)   형 변환 연산자에 explicit을 사용하면 statc_cast(test) 처럼 형식을 명시해야만 형 변환이 가능해진다. 변환 생성자가 묵시적으로 호출되는 것을 explicit을 이용해 사용자 코드에서 보이지 않는 객체가 생성되고 소멸하는 것을 막을 수 있다.  임시 객체와 이동 시멘틱   r-value가 임시객체일때 호출된다.  이름 없는 임시 객체   존재하는 인스턴스 이지만 ‘식별자’가 부여되지 않은 객체\n#include “pch.h” #include \nusing namespace std;\nclass CTestData { private: int m_nData = 0; string m_pszName;\npublic: CTestData(const int nParam, const char* pszName) : m_nData(nParam), m_pszName(pszName) { cout « __FUNCTION__ « “(int, char*)” « endl; }\n CTestData(const CTestData\u0026 rhs) : m_nData(rhs.m_nData) { cout m_nData = rhs.m_nData; return *this; } int GetData() { return this-m_nData; }  };\nCTestData TestFunc(int nParam) { CTestData a(nParam, “a”); return a; }\nint main(int argc, char* argv[]) { CTestData b(5, “b”); cout « “*****Before*****” « endl; b = TestFunc(10); cout « “*****After*****” « endl; cout « b.GetData() « endl; return 0; }\n  실행 결과  CTestData(int, char*) ***Before*** CTestData(int, char*) operator= ~CTestData ***After*** 10 ~CTestData\n  Before 와 After 사이에 인스턴스가 하나 생성되었다가 삭제됨 b = TestFunc(10) 의 코드가 생성되는 동안 이름없는 임시객체가 생성됬다가 소멸됨  이름 없는 임시객체의 원본은 임시 객체의 복사 생성이 끝난 후 소멸한다.   코드에서는 들어나지 않는 이름 없는 임시객체가 생성된 후 소멸한다!  r-value 참조  오버로드할 떄 호출시 모호성이 발생할 수 있다.  이동 시맨틱  복사 생성자와 대입 연산자에 r-value 참조를 조합해서 새로운 생성 및 대입의 경우를 만들어낸 것 어차피 사라질 객체를 깊은 복사를 하는 것이 아니라 얕은 복사를 수행해 성능을 높이는 것!  예제) AFTER\n#include  using namespace std; class CTestData { private: int m_nData = 0; string m_pszName; public: CTestData() { cout m_nData = rhs.m_nData; return *this; } int GetData() const { return this-m_nData; } void SetData(int nParam) { this-m_nData = nParam; } }; CTestData TestFunc(int nParam) { cout  실행 결과)  CTestData Before TestFunc begin! CTestData TestFunc done! operator= ~CTestData After CTestData(const CTestData\u0026) ~CTestData ~CTestData\n ","wordCount":"932","inLanguage":"korean","datePublished":"2019-02-25T00:00:00Z","dateModified":"2019-02-25T00:00:00Z","author":{"@type":"Person","name":"raeperd"},"mainEntityOfPage":{"@type":"WebPage","@id":"https://raeperd.github.io/notes/cpp/copy-constructor-and-temporal-object/"},"publisher":{"@type":"Organization","name":"raeperd.github.io","logo":{"@type":"ImageObject","url":"https://raeperd.github.io/favicon.ico"}}}</script></head><body id=top><script>localStorage.getItem("pref-theme")==="dark"?document.body.classList.add('dark'):localStorage.getItem("pref-theme")==="light"?document.body.classList.remove('dark'):window.matchMedia('(prefers-color-scheme: dark)').matches&&document.body.classList.add('dark')</script><noscript><style type=text/css>#theme-toggle,.top-link{display:none}</style><style>@media(prefers-color-scheme:dark){:root{--theme:#1d1e20;--entry:#2e2e33;--primary:rgba(255, 255, 255, 0.84);--secondary:rgba(255, 255, 255, 0.56);--tertiary:rgba(255, 255, 255, 0.16);--content:rgba(255, 255, 255, 0.74);--hljs-bg:#2e2e33;--code-bg:#37383e;--border:#333}.list{background:var(--theme)}.list:not(.dark)::-webkit-scrollbar-track{background:0 0}.list:not(.dark)::-webkit-scrollbar-thumb{border-color:var(--theme)}}</style></noscript><header class=header><nav class=nav><div class=logo><a href=https://raeperd.github.io/ accesskey=h title="raeperd.github.io (Alt + H)">raeperd.github.io</a>
+<span class=logo-switches><button id=theme-toggle accesskey=t title="(Alt + T)"><svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg><svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg></button></span></div><ul id=menu onscroll=menu_on_scroll()><li><a href=https://raeperd.github.io/articles title=Article><span>Article</span></a></li><li><a href=https://raeperd.github.io/notes title=Note><span>Note</span></a></li><li><a href=https://raeperd.github.io/search title="Search (Alt + /)" accesskey=/><span>Search</span></a></li><li><a href=https://raeperd.github.io/archives/ title=Archives><span>Archives</span></a></li></ul></nav></header><main class=main><article class=post-single><header class=post-header><h1 class=post-title>Copy constructor and temporal obejcts</h1><div class=post-meta>February 25, 2019&nbsp;·&nbsp;raeperd</div><br><ul class=post-tags><li><a href=https://raeperd.github.io/tags/cpp/>cpp</a></li></ul></header><div class=post-content><h1 id=복사-생성자>복사 생성자<a hidden class=anchor aria-hidden=true href=#복사-생성자>#</a></h1><h2 id=생성자의-종류>생성자의 종류<a hidden class=anchor aria-hidden=true href=#생성자의-종류>#</a></h2><ol><li><p>기본 생성자</p></li><li><p>다중 정의된 생성자 (매개변수)</p><p>2-1 변환 생성자 (매개변수가 1개) == [형 변환자.. ]</p></li><li><p>복사 생성자</p><p>+) r-value 참조</p></li><li><p>이동생성자 (Since C++11)</p></li></ol><p>~> 이름이 없는, 코드에서 드러나지 않는 임시객체 때문에 여러 문제가 생긴다. 조심!</p><h2 id=함수-호출과-복사-생성자>함수 호출과 복사 생성자<a hidden class=anchor aria-hidden=true href=#함수-호출과-복사-생성자>#</a></h2><pre><code>void TestFunc(CTest param) {...}
+</code></pre><p>이 함수의 문제가 뭘까?</p><p>해결방법</p><ol><li><p>복사 생성자를 삭제한다.</p><ul><li><code>CTest(const CTestData &rhs) = delete</code></li></ul></li><li><p>매개변수의 형식을 참조자로 바꾼다.</p><p>void TestFunc(CTest &param) {&mldr;}</p></li></ol><ul><li>매개변수는 참조형이므로 새로운 객체를 생성하지 않는다!</li><li>non-member 함수는 상수화 불가능하므로 매개변수를 상수화 함으로써 상수형 메소드 처럼 사용할 수 있다.</li></ul><h3 id=deep-copy-and-shallow-copy>Deep copy and Shallow copy<a hidden class=anchor aria-hidden=true href=#deep-copy-and-shallow-copy>#</a></h3><pre><code>#include &lt;iostream&gt;
+
+using namespace std;
+
+int main(void) {
+    int* pa = new int(5);
+    int* pb = nullptr;
+
+    pb = pa;            // shallow copy
+    pb = new int(*pa);  // deep copy
+    
+    return 0;
+}
+</code></pre><p><img loading=lazy src=Untitled-1930279b-d697-4bbf-9871-2928745f7ce6.png alt></p><ul><li>Deep copy와 Shallow copy 에 대한 이해가 필요하다.<ul><li>Deep copy : 원본을 여럿</li><li>Shallow copy : 원본을 가리키는 포인터를 여럿</li></ul></li></ul><h3 id=복사-생성자-꼭-필요할까>복사 생성자 꼭 필요할까?<a hidden class=anchor aria-hidden=true href=#복사-생성자-꼭-필요할까>#</a></h3><ul><li>디폴트 복사 생성자가 하는 일은 Shallow copy다. Deep copy를 하려면 별도로 정의를 할 필요가 있다.</li><li>곧 클래스 내부에서 메모리를 동적 할당 및 해제하고, 이를 멤버 포인터 변수로 관리하고 있는 경우 복사 생성자는 따로 정의되어야만 한다.</li><li>반대로 멤버로 포인터를 가지고 있지 않다면 필요한 작업은 아니다.</li></ul><h2 id=대입-연산자>대입 연산자<a hidden class=anchor aria-hidden=true href=#대입-연산자>#</a></h2><ul><li>개발자가 정의한 객체도 대입 연산자가 먹힌다!<ul><li>모든 멤버 변수의 값을 복사함</li></ul></li><li>그런데 Shallow copy로 복사한다.<ul><li>그래서 위에서처럼 포인터를 다룰 경우 다시 정의할 필요가 생긴다.</li></ul></li></ul><p><strong>정의하는 방법</strong></p><pre><code>CTest&amp; operator=(const CTest&amp; rhs) {
+	*m_pnData = *rhs.m_pnData;
+	return *this;
+}
+</code></pre><ul><li><code>return *this</code>를 통해 a=b=c 와 같은 구문이 유효하다.</li></ul><h2 id=414-실습과제3>4.1.4 실습과제3<a hidden class=anchor aria-hidden=true href=#414-실습과제3>#</a></h2><p><a href=./3-bccd7807-695b-4830-a504-534df3212248.md>실습과제 3: 복사 생성자와 대입 연산자</a></p><h1 id=implicit-type-casting>implicit type casting<a hidden class=anchor aria-hidden=true href=#implicit-type-casting>#</a></h1><hr><h2 id=변환-생성자>변환 생성자<a hidden class=anchor aria-hidden=true href=#변환-생성자>#</a></h2><ul><li><p>매개변수가 하나인 생성자를 변환 생성자라고도 하는데 이 친구가 은근슬쩍 호출되서 프로그램의 효율을 낭비하는 케이스가 생긴다.</p></li><li><p>불필요한 임시 객체를 만들어냄으로써 프로그램의 효율을 갉아먹는 원인이 된다,</p><p>#include <iostream>#include <vector></p><p>using namespace std;</p><p>class CTest {
+public:
+CTest() { cout &#171; &ldquo;CTest()&rdquo; &#171; endl;}
+CTest(int x) { // 변환 생성자
+cout &#171; &ldquo;CTest(int)&rdquo; &#171; endl;
+CMyData = x;
+}
+~CTest() { cout &#171; &ldquo;~CTest()&rdquo; &#171; endl; }</p><pre><code>  int GetData() const { return CMyData; }
+  void SetData(int param) { CMyData = param;}
+</code></pre><p>private:
+int CMyData = 10;
+};</p><p>void TestFunc(CTest param) {
+cout &#171; &ldquo;TestFunc()&rdquo; &#171; endl;
+}</p><p>int main(void) {
+TestFunc(5);
+return 0;
+}</p></li><li><p>main 함수의 <code>TestFunc(5)</code>는 에러를 낼 것 같지만 그렇지 않다.</p></li><li><p>CTest 클래스는 int 자료형에 대한 변환 생성자를 제공하므로 함수의 매개변수 형식이 CTest라면 이것이 int가 될 수도 있다.</p></li><li><p>컴파일러가 5를 CTest의 인스턴스로 형변환을 해 임시객체를 만들어내기 때문</p></li></ul><p><strong>결과</strong></p><blockquote><p>CTest(int)
+TestFunc()
+~CTest()</p></blockquote><ul><li>클래스 형식을 매개변수로 사용할때는.<ul><li>반드시 참조 형식을 사용한다</li><li>묵시적 변환 생성자를 지원하는 클래스인지 확인해야 한다.</li></ul></li></ul><h3 id=explicit><strong>explicit</strong><a hidden class=anchor aria-hidden=true href=#explicit>#</a></h3><pre><code>explicit CTest(int param) {
+	CMyData = param;
+}
+</code></pre><ul><li>이렇게 하면 사용자 코드에서 묵시적으로 변환이 일어나지 않게 한다.</li></ul><h2 id=허용되는-변환>허용되는 변환<a hidden class=anchor aria-hidden=true href=#허용되는-변환>#</a></h2><ul><li><p>CTest 에서 int 자료형에 대한 변환 생성자를 제공한다면 int 자료형이 CTest형식으로 변환 될 수 있다.</p><p>operator int(void) { return CMyData;}</p></li><li><p>반대로, CTest 자료형이 int 형으로 변하게 할 수도 있다.</p></li></ul><p>그럼 아래와 같은 코드가 가능하다</p><pre><code>int main(void) {
+    CTest test;
+    int x(test);
+
+        cout &lt;&lt; test &lt;&lt; endl;
+        cout &lt;&lt; (int)test &lt;&lt; endl
+    cout &lt;&lt; static_cast&lt;int&gt;(test) &lt;&lt; endl; 
+
+        return 0;
+}
+</code></pre><ul><li>형 변환 연산자에 <code>explicit</code>을 사용하면 <code>statc_cast&lt;int>(test)</code> 처럼 형식을 명시해야만 형 변환이 가능해진다.</li><li>변환 생성자가 묵시적으로 호출되는 것을 <code>explicit</code>을 이용해 사용자 코드에서 보이지 않는 객체가 생성되고 소멸하는 것을 막을 수 있다.</li></ul><h1 id=임시-객체와-이동-시멘틱>임시 객체와 이동 시멘틱<a hidden class=anchor aria-hidden=true href=#임시-객체와-이동-시멘틱>#</a></h1><hr><ul><li>r-value가 임시객체일때 호출된다.</li></ul><h2 id=이름-없는-임시-객체>이름 없는 임시 객체<a hidden class=anchor aria-hidden=true href=#이름-없는-임시-객체>#</a></h2><ul><li><p>존재하는 인스턴스 이지만 &lsquo;식별자&rsquo;가 부여되지 않은 객체</p><p>#include &ldquo;pch.h&rdquo;
+#include <iostream></p><p>using namespace std;</p><p>class CTestData {
+private:
+int m_nData = 0;
+string m_pszName;</p><p>public:
+CTestData(const int nParam, const char* pszName) : m_nData(nParam), m_pszName(pszName) {
+cout &#171; __FUNCTION__ &#171; &ldquo;(int, char*)&rdquo; &#171; endl;
+}</p><pre><code>  CTestData(const CTestData&amp; rhs) : m_nData(rhs.m_nData) {
+      cout &lt;&lt; __FUNCTION__ &lt;&lt; &quot;(const CTestData&amp;)&quot; &lt;&lt; endl;
+  }
+
+  ~CTestData() {
+      cout &lt;&lt; __FUNCTION__ &lt;&lt; endl;
+  }
+
+  CTestData&amp; operator=(const CTestData &amp;rhs) {
+      cout &lt;&lt; __FUNCTION__ &lt;&lt; endl;
+      this-&gt;m_nData = rhs.m_nData;
+      return *this;
+  }
+  int GetData() {
+      return this-&gt;m_nData;
+  }
+</code></pre><p>};</p><p>CTestData TestFunc(int nParam) {
+CTestData a(nParam, &ldquo;a&rdquo;);
+return a;
+}</p><p>int main(int argc, char* argv[]) {
+CTestData b(5, &ldquo;b&rdquo;);
+cout &#171; &ldquo;*****Before*****&rdquo; &#171; endl;
+b = TestFunc(10);
+cout &#171; &ldquo;*****After*****&rdquo; &#171; endl;
+cout &#171; b.GetData() &#171; endl;
+return 0;
+}</p></li></ul><h3 id=실행-결과>실행 결과<a hidden class=anchor aria-hidden=true href=#실행-결과>#</a></h3><blockquote><p>CTestData(int, char*)
+***Before***
+CTestData(int, char*)
+operator=
+~CTestData
+***After***
+10
+~CTestData</p></blockquote><ul><li>Before 와 After 사이에 인스턴스가 하나 생성되었다가 삭제됨</li><li><code>b = TestFunc(10)</code> 의 코드가 생성되는 동안 이름없는 임시객체가 생성됬다가 소멸됨<ul><li>이름 없는 임시객체의 원본은 임시 객체의 복사 생성이 끝난 후 소멸한다.</li></ul></li><li>코드에서는 들어나지 않는 이름 없는 임시객체가 생성된 후 소멸한다!</li></ul><h2 id=r-value-참조>r-value 참조<a hidden class=anchor aria-hidden=true href=#r-value-참조>#</a></h2><p><img loading=lazy src=-5fc74ca6-1a13-438b-abbd-9807e49caabauntitled alt></p><ul><li>오버로드할 떄 호출시 모호성이 발생할 수 있다.</li></ul><h2 id=이동-시맨틱>이동 시맨틱<a hidden class=anchor aria-hidden=true href=#이동-시맨틱>#</a></h2><ul><li>복사 생성자와 대입 연산자에 r-value 참조를 조합해서 새로운 생성 및 대입의 경우를 만들어낸 것</li><li>어차피 사라질 객체를 깊은 복사를 하는 것이 아니라 얕은 복사를 수행해 성능을 높이는 것!</li></ul><h3 id=예제>예제)<a hidden class=anchor aria-hidden=true href=#예제>#</a></h3><p>AFTER</p><pre><code>#include &lt;iostream&gt;
+
+using namespace std;
+
+class CTestData {
+private:
+	int m_nData = 0;
+	string m_pszName;
+
+public:
+    CTestData() {
+        cout &lt;&lt; __FUNCTION__ &lt;&lt; endl;
+    }
+	CTestData(const int nParam, const char* pszName) : m_nData(nParam), m_pszName(pszName) {
+        cout &lt;&lt; __FUNCTION__ &lt;&lt; &quot;(int, char*)&quot; &lt;&lt; endl;
+	}
+
+	CTestData(const CTestData&amp; rhs) : m_nData(rhs.m_nData) {
+        cout &lt;&lt; __FUNCTION__ &lt;&lt; &quot;(const CTestData&amp;)&quot; &lt;&lt; endl;
+	}
+    CTestData(const CTestData&amp;&amp; rhs) : m_nData(rhs.m_nData) {
+        cout &lt;&lt; __FUNCTION__ &lt;&lt; &quot;(const CTestData&amp;&amp; rhs)&quot; &lt;&lt; endl;
+    }
+
+	~CTestData() {
+        cout &lt;&lt; __FUNCTION__ &lt;&lt; endl;
+	}
+
+	CTestData&amp; operator=(const CTestData &amp;rhs) {
+        cout &lt;&lt; __FUNCTION__ &lt;&lt; endl;
+        this-&gt;m_nData = rhs.m_nData;
+        return *this;
+	}
+	int GetData() const {
+        return this-&gt;m_nData;
+	}
+    void SetData(int nParam) {
+        this-&gt;m_nData = nParam;
+    }
+};
+
+CTestData TestFunc(int nParam) {
+    cout &lt;&lt; __FUNCTION__ &lt;&lt; &quot; begin! &quot; &lt;&lt; endl;
+	CTestData a;
+    a.SetData(10);
+    cout &lt;&lt; __FUNCTION__ &lt;&lt; &quot; done! &quot; &lt;&lt; endl;
+	return a;
+}
+
+int main(int argc, char* argv[]) {
+    CTestData b;
+	cout &lt;&lt; &quot;*****Before*****&quot; &lt;&lt; endl;
+    b = TestFunc(20);
+    cout &lt;&lt; &quot;*****After*****&quot; &lt;&lt; endl;
+    CTestData c(b);
+    
+	return 0;
+}
+</code></pre><h3 id=실행-결과-1>실행 결과)<a hidden class=anchor aria-hidden=true href=#실행-결과-1>#</a></h3><blockquote><p>CTestData
+<em><strong>Before</strong></em>
+TestFunc begin!
+CTestData
+TestFunc done!
+operator=
+~CTestData
+<em><strong>After</strong></em>
+CTestData(const CTestData&)
+~CTestData
+~CTestData</p></blockquote></div><footer class=post-footer><div class=share-buttons><a target=_blank rel="noopener noreferrer" aria-label="share Copy constructor and temporal obejcts on twitter" href="https://twitter.com/intent/tweet/?text=Copy%20constructor%20and%20temporal%20obejcts&url=https%3a%2f%2fraeperd.github.io%2fnotes%2fcpp%2fcopy-constructor-and-temporal-object%2f&hashtags=cpp"><svg viewBox="0 0 512 512"><path d="M449.446.0C483.971.0 512 28.03 512 62.554v386.892C512 483.97 483.97 512 449.446 512H62.554c-34.524.0-62.554-28.03-62.554-62.554V62.554c0-34.524 28.029-62.554 62.554-62.554h386.892zM195.519 424.544c135.939.0 210.268-112.643 210.268-210.268.0-3.218.0-6.437-.153-9.502 14.406-10.421 26.973-23.448 36.935-38.314-13.18 5.824-27.433 9.809-42.452 11.648 15.326-9.196 26.973-23.602 32.49-40.92-14.252 8.429-30.038 14.56-46.896 17.931-13.487-14.406-32.644-23.295-53.946-23.295-40.767.0-73.87 33.104-73.87 73.87.0 5.824.613 11.494 1.992 16.858-61.456-3.065-115.862-32.49-152.337-77.241-6.284 10.881-9.962 23.601-9.962 37.088.0 25.594 13.027 48.276 32.95 61.456-12.107-.307-23.448-3.678-33.41-9.196v.92c0 35.862 25.441 65.594 59.311 72.49-6.13 1.686-12.72 2.606-19.464 2.606-4.751.0-9.348-.46-13.946-1.38 9.349 29.426 36.628 50.728 68.965 51.341-25.287 19.771-57.164 31.571-91.8 31.571-5.977.0-11.801-.306-17.625-1.073 32.337 21.15 71.264 33.41 112.95 33.41z"/></svg></a><a target=_blank rel="noopener noreferrer" aria-label="share Copy constructor and temporal obejcts on linkedin" href="https://www.linkedin.com/shareArticle?mini=true&url=https%3a%2f%2fraeperd.github.io%2fnotes%2fcpp%2fcopy-constructor-and-temporal-object%2f&title=Copy%20constructor%20and%20temporal%20obejcts&summary=Copy%20constructor%20and%20temporal%20obejcts&source=https%3a%2f%2fraeperd.github.io%2fnotes%2fcpp%2fcopy-constructor-and-temporal-object%2f"><svg viewBox="0 0 512 512"><path d="M449.446.0C483.971.0 512 28.03 512 62.554v386.892C512 483.97 483.97 512 449.446 512H62.554c-34.524.0-62.554-28.03-62.554-62.554V62.554c0-34.524 28.029-62.554 62.554-62.554h386.892zM160.461 423.278V197.561h-75.04v225.717h75.04zm270.539.0V293.839c0-69.333-37.018-101.586-86.381-101.586-39.804.0-57.634 21.891-67.617 37.266v-31.958h-75.021c.995 21.181.0 225.717.0 225.717h75.02V297.222c0-6.748.486-13.492 2.474-18.315 5.414-13.475 17.767-27.434 38.494-27.434 27.135.0 38.007 20.707 38.007 51.037v120.768H431zM123.448 88.722C97.774 88.722 81 105.601 81 127.724c0 21.658 16.264 39.002 41.455 39.002h.484c26.165.0 42.452-17.344 42.452-39.002-.485-22.092-16.241-38.954-41.943-39.002z"/></svg></a><a target=_blank rel="noopener noreferrer" aria-label="share Copy constructor and temporal obejcts on reddit" href="https://reddit.com/submit?url=https%3a%2f%2fraeperd.github.io%2fnotes%2fcpp%2fcopy-constructor-and-temporal-object%2f&title=Copy%20constructor%20and%20temporal%20obejcts"><svg viewBox="0 0 512 512"><path d="M449.446.0C483.971.0 512 28.03 512 62.554v386.892C512 483.97 483.97 512 449.446 512H62.554c-34.524.0-62.554-28.03-62.554-62.554V62.554c0-34.524 28.029-62.554 62.554-62.554h386.892zM446 265.638c0-22.964-18.616-41.58-41.58-41.58-11.211.0-21.361 4.457-28.841 11.666-28.424-20.508-67.586-33.757-111.204-35.278l18.941-89.121 61.884 13.157c.756 15.734 13.642 28.29 29.56 28.29 16.407.0 29.706-13.299 29.706-29.701.0-16.403-13.299-29.702-29.706-29.702-11.666.0-21.657 6.792-26.515 16.578l-69.105-14.69c-1.922-.418-3.939-.042-5.585 1.036-1.658 1.073-2.811 2.761-3.224 4.686l-21.152 99.438c-44.258 1.228-84.046 14.494-112.837 35.232-7.468-7.164-17.589-11.591-28.757-11.591-22.965.0-41.585 18.616-41.585 41.58.0 16.896 10.095 31.41 24.568 37.918-.639 4.135-.99 8.328-.99 12.576.0 63.977 74.469 115.836 166.33 115.836s166.334-51.859 166.334-115.836c0-4.218-.347-8.387-.977-12.493 14.564-6.47 24.735-21.034 24.735-38.001zM326.526 373.831c-20.27 20.241-59.115 21.816-70.534 21.816-11.428.0-50.277-1.575-70.522-21.82-3.007-3.008-3.007-7.882.0-10.889 3.003-2.999 7.882-3.003 10.885.0 12.777 12.781 40.11 17.317 59.637 17.317 19.522.0 46.86-4.536 59.657-17.321 3.016-2.999 7.886-2.995 10.885.008 3.008 3.011 3.003 7.882-.008 10.889zm-5.23-48.781c-16.373.0-29.701-13.324-29.701-29.698.0-16.381 13.328-29.714 29.701-29.714 16.378.0 29.706 13.333 29.706 29.714.0 16.374-13.328 29.698-29.706 29.698zM160.91 295.348c0-16.381 13.328-29.71 29.714-29.71 16.369.0 29.689 13.329 29.689 29.71.0 16.373-13.32 29.693-29.689 29.693-16.386.0-29.714-13.32-29.714-29.693z"/></svg></a><a target=_blank rel="noopener noreferrer" aria-label="share Copy constructor and temporal obejcts on facebook" href="https://facebook.com/sharer/sharer.php?u=https%3a%2f%2fraeperd.github.io%2fnotes%2fcpp%2fcopy-constructor-and-temporal-object%2f"><svg viewBox="0 0 512 512"><path d="M449.446.0C483.971.0 512 28.03 512 62.554v386.892C512 483.97 483.97 512 449.446 512H342.978V319.085h66.6l12.672-82.621h-79.272v-53.617c0-22.603 11.073-44.636 46.58-44.636H425.6v-70.34s-32.71-5.582-63.982-5.582c-65.288.0-107.96 39.569-107.96 111.204v62.971h-72.573v82.621h72.573V512h-191.104c-34.524.0-62.554-28.03-62.554-62.554V62.554c0-34.524 28.029-62.554 62.554-62.554h386.892z"/></svg></a><a target=_blank rel="noopener noreferrer" aria-label="share Copy constructor and temporal obejcts on whatsapp" href="https://api.whatsapp.com/send?text=Copy%20constructor%20and%20temporal%20obejcts%20-%20https%3a%2f%2fraeperd.github.io%2fnotes%2fcpp%2fcopy-constructor-and-temporal-object%2f"><svg viewBox="0 0 512 512"><path d="M449.446.0C483.971.0 512 28.03 512 62.554v386.892C512 483.97 483.97 512 449.446 512H62.554c-34.524.0-62.554-28.03-62.554-62.554V62.554c0-34.524 28.029-62.554 62.554-62.554h386.892zm-58.673 127.703c-33.842-33.881-78.847-52.548-126.798-52.568-98.799.0-179.21 80.405-179.249 179.234-.013 31.593 8.241 62.428 23.927 89.612l-25.429 92.884 95.021-24.925c26.181 14.28 55.659 21.807 85.658 21.816h.074c98.789.0 179.206-80.413 179.247-179.243.018-47.895-18.61-92.93-52.451-126.81zM263.976 403.485h-.06c-26.734-.01-52.954-7.193-75.828-20.767l-5.441-3.229-56.386 14.792 15.05-54.977-3.542-5.637c-14.913-23.72-22.791-51.136-22.779-79.287.033-82.142 66.867-148.971 149.046-148.971 39.793.014 77.199 15.531 105.329 43.692 28.128 28.16 43.609 65.592 43.594 105.4-.034 82.149-66.866 148.983-148.983 148.984zm81.721-111.581c-4.479-2.242-26.499-13.075-30.604-14.571-4.105-1.495-7.091-2.241-10.077 2.241-2.986 4.483-11.569 14.572-14.182 17.562-2.612 2.988-5.225 3.364-9.703 1.12-4.479-2.241-18.91-6.97-36.017-22.23C231.8 264.15 222.81 249.484 220.198 245s-.279-6.908 1.963-9.14c2.016-2.007 4.48-5.232 6.719-7.847 2.24-2.615 2.986-4.484 4.479-7.472 1.493-2.99.747-5.604-.374-7.846-1.119-2.241-10.077-24.288-13.809-33.256-3.635-8.733-7.327-7.55-10.077-7.688-2.609-.13-5.598-.158-8.583-.158-2.986.0-7.839 1.121-11.944 5.604-4.105 4.484-15.675 15.32-15.675 37.364.0 22.046 16.048 43.342 18.287 46.332 2.24 2.99 31.582 48.227 76.511 67.627 10.685 4.615 19.028 7.371 25.533 9.434 10.728 3.41 20.492 2.929 28.209 1.775 8.605-1.285 26.499-10.833 30.231-21.295 3.732-10.464 3.732-19.431 2.612-21.298-1.119-1.869-4.105-2.99-8.583-5.232z"/></svg></a><a target=_blank rel="noopener noreferrer" aria-label="share Copy constructor and temporal obejcts on telegram" href="https://telegram.me/share/url?text=Copy%20constructor%20and%20temporal%20obejcts&url=https%3a%2f%2fraeperd.github.io%2fnotes%2fcpp%2fcopy-constructor-and-temporal-object%2f"><svg viewBox="2 2 28 28"><path d="M26.49 29.86H5.5a3.37 3.37.0 01-2.47-1 3.35 3.35.0 01-1-2.47V5.48A3.36 3.36.0 013 3 3.37 3.37.0 015.5 2h21A3.38 3.38.0 0129 3a3.36 3.36.0 011 2.46V26.37a3.35 3.35.0 01-1 2.47 3.38 3.38.0 01-2.51 1.02zm-5.38-6.71a.79.79.0 00.85-.66L24.73 9.24a.55.55.0 00-.18-.46.62.62.0 00-.41-.17q-.08.0-16.53 6.11a.59.59.0 00-.41.59.57.57.0 00.43.52l4 1.24 1.61 4.83a.62.62.0 00.63.43.56.56.0 00.4-.17L16.54 20l4.09 3A.9.9.0 0021.11 23.15zM13.8 20.71l-1.21-4q8.72-5.55 8.78-5.55c.15.0.23.0.23.16a.18.18.0 010 .06s-2.51 2.3-7.52 6.8z"/></svg></a></div></footer><div id=disqus_thread></div><script>(function(){var a=document,b=a.createElement('script');b.src='https://raeperd-github-io.disqus.com/embed.js',b.setAttribute('data-timestamp',+new Date),(a.head||a.body).appendChild(b)})()</script><noscript>Please enable JavaScript to view the <a href=https://disqus.com/?ref_noscript>comments powered by Disqus.</a></noscript></article></main><footer class=footer><span>&copy; 2021 <a href=https://raeperd.github.io/>raeperd.github.io</a></span>
+<span>&#183;</span>
+<span>Powered by <a href=https://gohugo.io/ rel="noopener noreferrer" target=_blank>Hugo</a></span>
+<span>&#183;</span>
+<span>Theme <a href=https://git.io/hugopapermod rel=noopener target=_blank>PaperMod</a></span></footer><a href=#top aria-label="go to top" title="Go to Top (Alt + G)"><button class=top-link id=top-link type=button accesskey=g><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentcolor"><path d="M12 6H0l6-6z"/></svg></button></a>
+<script defer src=/assets/js/highlight.min.js onload=hljs.initHighlightingOnLoad()></script><script>window.onload=function(){localStorage.getItem("menu-scroll-position")&&(document.getElementById('menu').scrollLeft=localStorage.getItem("menu-scroll-position"))};function menu_on_scroll(){localStorage.setItem("menu-scroll-position",document.getElementById('menu').scrollLeft)}document.querySelectorAll('a[href^="#"]').forEach(a=>{a.addEventListener("click",function(b){b.preventDefault();var a=this.getAttribute("href").substr(1);window.matchMedia('(prefers-reduced-motion: reduce)').matches?document.querySelector(`[id='${decodeURIComponent(a)}']`).scrollIntoView():document.querySelector(`[id='${decodeURIComponent(a)}']`).scrollIntoView({behavior:"smooth"}),a==="top"?history.replaceState(null,null," "):history.pushState(null,null,`#${a}`)})})</script><script>var mybutton=document.getElementById("top-link");window.onscroll=function(){document.body.scrollTop>800||document.documentElement.scrollTop>800?(mybutton.style.visibility="visible",mybutton.style.opacity="1"):(mybutton.style.visibility="hidden",mybutton.style.opacity="0")}</script><script>document.getElementById("theme-toggle").addEventListener("click",()=>{document.body.className.includes("dark")?(document.body.classList.remove('dark'),localStorage.setItem("pref-theme",'light')):(document.body.classList.add('dark'),localStorage.setItem("pref-theme",'dark'))})</script></body></html>
