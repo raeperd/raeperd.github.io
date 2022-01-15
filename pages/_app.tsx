@@ -16,9 +16,9 @@ export default function MyApp({ Component, pageProps }: AppProps) {
     <Layout
       siteName={getSiteName()}
       menus={[{ name: 'About', href: '/about' }]}
-      socials={[{ siteName: 'github', userId: process.env.GITHUB },
-        { siteName: 'twitter', userId: process.env.TWITTER },
-        { siteName: 'instagram', userId: process.env.INSTAGRAM },
+      socials={[{ siteName: 'github', userId: process.env.GITHUB ? process.env.GITHUB : null },
+        { siteName: 'twitter', userId: process.env.TWITTER ? process.env.TWITTER : null },
+        { siteName: 'instagram', userId: process.env.INSTAGRAM ? process.env.INSTAGRAM : null },
       ]}
     >
       <Head>
@@ -133,7 +133,7 @@ function SocialNav({ socials }: { socials: SocialProps[] }) {
 
   return (
     <nav className="social">
-      {socials.filter((social) => social.userId !== 'undefined')
+      {socials.filter((social) => social.userId !== null)
         .map((social) => (
           <a href={`//${social.siteName}.com/${social.userId}`} key={social.siteName}>
             {siteNameToSvg[social.siteName]}
@@ -156,5 +156,5 @@ interface MenuProps {
 
 interface SocialProps {
   siteName: 'instagram' | 'github' | 'twitter',
-  userId?: string
+  userId: string | null
 }

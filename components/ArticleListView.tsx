@@ -15,8 +15,8 @@ export default function ArticleListView(
       {articles.map((article) => (
         <ArticlePreviewItem article={article} key={article.slug} />))}
       <nav className="main-nav">
-        {!isFirstPage && (<PrevButton basePath={basePath || '/'} currentPageNumber={pageNumber} />)}
-        {!isLastPage && (<NextButton basePath={basePath || '/'} currentPageNumber={pageNumber} />)}
+        {!isFirstPage && (<PrevButton basePath={basePath || ''} currentPageNumber={pageNumber} />)}
+        {!isLastPage && (<NextButton basePath={basePath || ''} currentPageNumber={pageNumber} />)}
       </nav>
     </>
   )

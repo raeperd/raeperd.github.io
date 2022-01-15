@@ -1,9 +1,11 @@
-const isProduction = process.env.NODE_ENV === 'production'
-const name = 'nextjs-paper'
-
 module.exports = {
-  assetPrefix: isProduction ? `/${name}/` : '',
-  basePath: isProduction ? `/${name}` : '',
+  env: {
+    SITE_NAME: 'raeperd.github.io',
+    GITHUB: 'raeperd',
+    INSTAGRAM: 'raeperd',
+    TWITTER: 'raeperd117',
+    AUTHOR: 'raeperd',
+  },
   images: {
     loader: 'akamai',
     path: '',
