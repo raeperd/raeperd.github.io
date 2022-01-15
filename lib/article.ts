@@ -20,17 +20,16 @@ export function getNumArticles(): number {
   return getAllArticleFiles().length
 }
 
-export function getAllArticleSlugs(): string[] {
-  return getAllArticleFiles()
-    .map((file) => file.replace(/\.md$/, ''))
+export function findFirstArticleByFileName(fileNameToFind: string): Article {
+  const slugFound = getAllArticleFiles().find((fileName) => fileName === fileNameToFind)
+  if (!slugFound) {
+    throw new Error(`Given ${fileNameToFind} is not exists`)
+  }
+  return readArticle(fileNameToFind)
 }
 
-export function findFirstArticleBySlug(slugToFind: string): Article {
-  const slugFound = getAllArticleSlugs().find((slug) => slug === slugToFind)
-  if (!slugFound) {
-    throw new Error(`Given ${slugToFind} is not exists`)
-  }
-  return readArticle(`${slugToFind}.md`)
+export function getAllArticleFiles(): string[] {
+  return readdirSync(ARTICLE_DIRECTORY)
 }
 
 export function getAboutPageArticle(): Article {
@@ -72,7 +71,7 @@ export interface Article extends ArticlePreview{
 }
 
 export interface ArticlePreview {
-  slug: string,
+  fileName: string,
   title: string,
   date: string,
   author: string
@@ -89,10 +88,6 @@ export interface PagedArticlePreview {
 const PAGE_DIRECTORY = join(process.cwd(), 'lib', 'content')
 const ARTICLE_DIRECTORY = join(PAGE_DIRECTORY, 'article')
 
-function getAllArticleFiles(): string[] {
-  return readdirSync(ARTICLE_DIRECTORY)
-}
-
 function readArticle(file: string): Article {
   return readFileAsArticle(ARTICLE_DIRECTORY, file)
 }
@@ -106,7 +101,7 @@ function readFileAsArticle(directory:string, file: string): Article {
   const fileContent = readFileSync(filePath, 'utf8')
   const { data, content } = matter(fileContent)
   return {
-    slug: file.replace(/\.md$/, ''),
+    fileName: file,
     title: data.title ? data.title : file,
     date: data.date
       ? data.date.toDateString()

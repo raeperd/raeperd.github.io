@@ -1,4 +1,4 @@
-import { findFirstArticleBySlug, getAllArticleSlugs, getArticlePreviews } from './article';
+import { findFirstArticleByFileName, getAllArticleFiles, getArticlePreviews } from './article';
 
 test('getArticlePreviews', () => {
   const pageSize = 1
@@ -9,11 +9,11 @@ test('getArticlePreviews', () => {
 })
 
 test('getAllArticleSlugs', () => {
-  const articleSlugs = getAllArticleSlugs()
+  const articleSlugs = getAllArticleFiles()
   expect(articleSlugs.length).toBeGreaterThanOrEqual(1)
 })
 
 test('findFirstArticleBySlug', () => {
-  const articleSlugs = getAllArticleSlugs()
-  articleSlugs.forEach((slug) => expect(findFirstArticleBySlug(slug).slug).toBe(slug))
+  const articleSlugs = getAllArticleFiles()
+  articleSlugs.forEach((slug) => expect(findFirstArticleByFileName(slug).fileName).toBe(slug))
 })
