@@ -1,7 +1,6 @@
-import { NotePreview } from '../lib/note';
+import { getArticlePreviews, NotePreview } from '../lib/note';
 import NoteListView from '../components/NoteListView';
 import { getPageSize, getSiteName } from '../lib/configuration';
-import { getArticlePreviews } from '../lib/article';
 
 export default function Index(
   { title, articles, pageNumber, isLastPage, isFirstPage }: IndexProps,

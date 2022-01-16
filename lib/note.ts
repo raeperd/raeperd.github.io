@@ -3,21 +3,13 @@ import { readdirSync, readFileSync, statSync } from 'fs';
 import matter from 'gray-matter';
 import { getDefaultAuthor } from './configuration';
 
-export function getNotePreviewsByDirectory(directory: string, pageNumber: number, pageSize: number)
-  : PagedNotePreview {
-  const notes = getNoteParsedPaths()
-    .filter((parsedPath) => parsedPath.dir.indexOf(directory) > -1)
-    .map((parsedPath) => readNote(parsedPath))
-    .sort((left, right) => new Date(right.date).getTime() - new Date(left.date).getTime())
-  return {
-    notes: notes.slice((pageNumber - 1) * pageSize, pageNumber * pageSize),
-    isFirstPage: pageNumber === 1,
-    isLastPage: pageNumber === Math.ceil(notes.length / pageSize),
-    pageNumber,
-    pageSize,
-  }
+export function getReferencePreviews(pageNumber: number, pageSize: number): PagedNotePreview {
+  return getNotePreviewsByDirectory('references', pageNumber, pageSize)
 }
 
+export function getArticlePreviews(pageNumber: number, pageSize: number): PagedNotePreview {
+  return getNotePreviewsByDirectory('articles', pageNumber, pageSize)
+}
 export function getNotePreviews(pageNumber: number, pageSize: number): PagedNotePreview {
   return getNotePreviewsByDirectory('/', pageNumber, pageSize)
 }
@@ -87,6 +79,21 @@ export interface PagedNotePreview {
   pageSize: number,
   isFirstPage: boolean,
   isLastPage: boolean
+}
+
+function getNotePreviewsByDirectory(directory: string, pageNumber: number, pageSize: number)
+  : PagedNotePreview {
+  const notes = getNoteParsedPaths()
+    .filter((parsedPath) => parsedPath.dir.indexOf(directory) > -1)
+    .map((parsedPath) => readNote(parsedPath))
+    .sort((left, right) => new Date(right.date).getTime() - new Date(left.date).getTime())
+  return {
+    notes: notes.slice((pageNumber - 1) * pageSize, pageNumber * pageSize),
+    isFirstPage: pageNumber === 1,
+    isLastPage: pageNumber === Math.ceil(notes.length / pageSize),
+    pageNumber,
+    pageSize,
+  }
 }
 
 function getNoteParsedPaths(): ParsedPath[] {

@@ -1,6 +1,5 @@
 import NoteListView from '../components/NoteListView';
-import { NotePreview } from '../lib/note';
-import { getArticlePreviews } from '../lib/article';
+import { getArticlePreviews, NotePreview } from '../lib/note';
 import { getPageSize, getSiteName } from '../lib/configuration';
 
 export default function ArticlesPage(
