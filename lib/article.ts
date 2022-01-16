@@ -1,11 +1,11 @@
-import { join } from 'path';
+import path, { join, ParsedPath } from 'path';
 import { readdirSync, readFileSync, statSync } from 'fs';
 import matter from 'gray-matter';
 import { getDefaultAuthor } from './configuration';
 
 export function getArticlePreviews(pageNumber: number, pageSize: number): PagedArticlePreview {
-  const articles = getArticleStaticPaths()
-    .map((file) => readArticle(file))
+  const articles = getArticleParsedPaths()
+    .map((parsedPath) => readArticle(parsedPath))
     .sort((left, right) => new Date(right.date).getTime() - new Date(left.date).getTime())
   return {
     articles: articles.slice((pageNumber - 1) * pageSize, pageNumber * pageSize),
@@ -17,16 +17,16 @@ export function getArticlePreviews(pageNumber: number, pageSize: number): PagedA
 }
 
 export function getNumArticles(): number {
-  return readdirRecursiveSync(ARTICLE_DIRECTORY).length
+  return getArticleParsedPaths().length
 }
 
-export function findFirstArticleByPath(pathToFind: string): Article {
-  const slugFound = readdirRecursiveSync(ARTICLE_DIRECTORY)
-    .find((filePath) => filePath.replace(`${ARTICLE_DIRECTORY}/`, '') === pathToFind)
-  if (!slugFound) {
-    throw new Error(`Given ${pathToFind} is not exists`)
+export function getArticleByStaticPath(staticPathToFind: string): Article {
+  const staticPathFound = getArticleStaticPaths()
+    .find((staticPath) => staticPath === staticPathToFind)
+  if (!staticPathFound) {
+    throw new Error(`Given ${staticPathToFind} is not exists`)
   }
-  return readArticle(pathToFind)
+  return readArticle(toArticleParsedPath(staticPathFound))
 }
 
 export function getArticleStaticPaths(): string[] {
@@ -39,8 +39,8 @@ export function getAboutPageArticle(): Article {
 }
 
 export function getAllTags(): string[] {
-  return readdirRecursiveSync(ARTICLE_DIRECTORY)
-    .map((filePath) => readArticle(filePath))
+  return getArticleParsedPaths()
+    .map((parsedPath) => readArticle(parsedPath))
     .flatMap((article) => article.tags)
 }
 
@@ -59,12 +59,6 @@ export function getArticlePreviewsByTag(tagToFind: string, pageNumber: number, p
 
 export function getNumArticlesByTag(tag: string): number {
   return getAllArticlesByTag(tag).length
-}
-
-function getAllArticlesByTag(tagToFind: string): ArticlePreview[] {
-  return readdirRecursiveSync(ARTICLE_DIRECTORY)
-    .map((filePath) => readArticle(filePath))
-    .filter((article) => article.tags.findIndex((tag) => tag === tagToFind) > -1)
 }
 
 export interface Article extends ArticlePreview{
@@ -87,24 +81,35 @@ export interface PagedArticlePreview {
   isLastPage: boolean
 }
 
-function readArticle(file: string): Article {
-  return readFileAsArticle(ARTICLE_DIRECTORY, file)
+function getArticleParsedPaths(): ParsedPath[] {
+  return getArticleStaticPaths()
+    .map((staticPath) => toArticleParsedPath(staticPath))
+}
+
+function toArticleParsedPath(staticPath: string): ParsedPath {
+  return path.parse(path.join(ARTICLE_DIRECTORY, staticPath))
+}
+
+function getAllArticlesByTag(tagToFind: string): ArticlePreview[] {
+  return getArticleParsedPaths()
+    .map((parsedPath) => readArticle(parsedPath))
+    .filter((article) => article.tags.findIndex((tag) => tag === tagToFind) > -1)
 }
 
 function readPage(file: string): Article {
-  return readFileAsArticle(PAGE_DIRECTORY, file)
+  return readArticle(path.parse(path.join(PAGE_DIRECTORY, file)))
 }
 
 const PAGE_DIRECTORY = join(process.cwd(), 'lib', 'content')
 const ARTICLE_DIRECTORY = join(PAGE_DIRECTORY, 'article')
 
-function readFileAsArticle(directory:string, file: string): Article {
-  const filePath = join(directory, file)
+function readArticle(articlePath: ParsedPath): Article {
+  const filePath = join(articlePath.dir, articlePath.base)
   const fileContent = readFileSync(filePath, 'utf8')
   const { data, content } = matter(fileContent)
   return {
-    staticPath: file,
-    title: data.title ? data.title : file,
+    staticPath: filePath.replace(`${ARTICLE_DIRECTORY}/`, ''),
+    title: data.title ? data.title : articlePath.name,
     date: data.date
       ? data.date.toDateString()
       : statSync(filePath).birthtime.toDateString(),

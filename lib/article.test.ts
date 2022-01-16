@@ -1,4 +1,4 @@
-import { findFirstArticleByPath, getArticlePreviews, getArticleStaticPaths } from './article';
+import { getArticleByStaticPath, getArticlePreviews, getArticleStaticPaths } from './article';
 
 test('getArticlePreviews', () => {
   const pageSize = 1
@@ -15,5 +15,7 @@ test('getArticleStaticPaths', () => {
 
 test('findFirstArticleByPath', () => {
   const articleStaticPath = getArticleStaticPaths()
-  articleStaticPath.forEach((slug) => expect(findFirstArticleByPath(slug).staticPath).toBe(slug))
+  articleStaticPath.forEach(
+    (path) => expect(getArticleByStaticPath(path).staticPath).toBe(path),
+  )
 })

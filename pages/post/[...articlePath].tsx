@@ -1,6 +1,6 @@
 import Head from 'next/head';
 import path, { join } from 'path';
-import { Article, findFirstArticleByPath, getArticleStaticPaths } from '../../lib/article';
+import { Article, getArticleByStaticPath, getArticleStaticPaths } from '../../lib/article';
 import ArticleView from '../../components/ArticleView';
 import { getDisqusShortname, getServerURL } from '../../lib/configuration';
 
@@ -27,7 +27,7 @@ type ArticlePageProps = {
 
 export async function getStaticProps({ params }: {params: {articlePath: string[]}})
   : Promise<{ props: ArticlePageProps }> {
-  const article = findFirstArticleByPath(join(...params.articlePath))
+  const article = getArticleByStaticPath(join(...params.articlePath))
   return {
     props: {
       article,
