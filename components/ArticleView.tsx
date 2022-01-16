@@ -5,11 +5,10 @@ import rehypeKatex from 'rehype-katex';
 import remarkMath from 'remark-math';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { vscDarkPlus } from 'react-syntax-highlighter/dist/cjs/styles/prism';
-import { DiscussionEmbed } from 'disqus-react';
 import Link from 'next/link';
 import { Article } from '../lib/article'
 
-export default function ArticleView({ article, disqusShortname, currentURL }: ArticleViewProps) {
+export default function ArticleView({ article }: ArticleViewProps) {
   return (
     <article className="post-single">
       <header className="post-title">
@@ -33,25 +32,12 @@ export default function ArticleView({ article, disqusShortname, currentURL }: Ar
           <Link key={tag} href={`/tags/${tag}`}>{tag}</Link>
         ))}
       </footer>
-      {disqusShortname && <div id="disqus_thread" className="post-comments" />}
-      {disqusShortname && (
-      <DiscussionEmbed
-        shortname={disqusShortname}
-        config={{
-          url: currentURL,
-          identifier: article.staticPath,
-          title: article.title,
-        }}
-      />
-      )}
     </article>
   )
 }
 
 export interface ArticleViewProps {
   article: Article,
-  disqusShortname: string | null
-  currentURL: string,
 }
 
 const SyntaxHighlight: object = {
