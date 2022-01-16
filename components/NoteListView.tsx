@@ -1,7 +1,6 @@
 import Head from 'next/head';
 import Link from 'next/link';
 import { NotePreview } from '../lib/note';
-import { toArticleHref } from '../pages/articles/[...articlePath]';
 
 export default function NoteListView(
   { title, mainTitle, notes, basePath, pageNumber, isFirstPage, isLastPage }
@@ -28,7 +27,7 @@ function NotePreviewItem({ article }: {article: NotePreview}) {
     <article className="post-entry">
       <h2>{article.title}</h2>
       <time>{article.date}</time>
-      <Link href={toArticleHref(article.staticPath)}>
+      <Link href={`/${article.staticPath}`}>
         {/* eslint-disable-next-line jsx-a11y/anchor-has-content */}
         <a />
       </Link>

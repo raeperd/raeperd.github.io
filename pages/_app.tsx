@@ -15,8 +15,13 @@ export default function MyApp({ Component, pageProps }: AppProps) {
   return (
     <Layout
       siteName={getSiteName()}
-      menus={[{ name: 'About', href: '/about' }]}
-      socials={[{ siteName: 'github', userId: process.env.GITHUB ? process.env.GITHUB : null },
+      menus={[
+        { name: 'About', href: '/about' },
+        { name: 'Articles', href: '/articles' },
+        { name: 'References', href: '/references' },
+      ]}
+      socials={[
+        { siteName: 'github', userId: process.env.GITHUB ? process.env.GITHUB : null },
         { siteName: 'twitter', userId: process.env.TWITTER ? process.env.TWITTER : null },
         { siteName: 'instagram', userId: process.env.INSTAGRAM ? process.env.INSTAGRAM : null },
       ]}
