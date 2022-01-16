@@ -1,14 +1,14 @@
 import { ArticlePreview, getArticlePreviews } from '../lib/article';
-import ArticleListView from '../components/ArticleListView';
+import NoteListView from '../components/NoteListView';
 import { getPageSize, getSiteName } from '../lib/configuration';
 
 export default function Index(
   { title, articles, pageNumber, isLastPage, isFirstPage }: IndexProps,
 ) {
   return (
-    <ArticleListView
+    <NoteListView
       title={title}
-      articles={articles}
+      notes={articles}
       pageNumber={pageNumber}
       isFirstPage={isFirstPage}
       isLastPage={isLastPage}

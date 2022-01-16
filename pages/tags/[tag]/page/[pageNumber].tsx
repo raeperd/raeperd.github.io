@@ -5,17 +5,17 @@ import {
   getNumArticlesByTag,
 } from '../../../../lib/article';
 import { getPageSize } from '../../../../lib/configuration';
-import ArticleListView from '../../../../components/ArticleListView';
+import NoteListView from '../../../../components/NoteListView';
 
 export default function TagPageListPage(
   { tag, articles, pageNumber, isFirstPage, isLastPage }: TagPageListProps,
 ) {
   return (
-    <ArticleListView
+    <NoteListView
       title={tag}
       mainTitle={tag}
       basePath={`/tags/${tag}`}
-      articles={articles}
+      notes={articles}
       pageNumber={pageNumber}
       isFirstPage={isFirstPage}
       isLastPage={isLastPage}

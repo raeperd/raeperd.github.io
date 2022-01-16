@@ -3,9 +3,9 @@ import Link from 'next/link';
 import { ArticlePreview } from '../lib/article';
 import { toArticleHref } from '../pages/articles/[...articlePath]';
 
-export default function ArticleListView(
-  { title, mainTitle, articles, basePath, pageNumber, isFirstPage, isLastPage }
-    : ArticleListViewProps,
+export default function NoteListView(
+  { title, mainTitle, notes, basePath, pageNumber, isFirstPage, isLastPage }
+    : NoteListViewProps,
 ) {
   return (
     <>
@@ -13,8 +13,8 @@ export default function ArticleListView(
         <title>{title}</title>
       </Head>
       {mainTitle && <h1 className="main-title">{mainTitle}</h1>}
-      {articles.map((article) => (
-        <ArticlePreviewItem article={article} key={article.staticPath} />))}
+      {notes.map((article) => (
+        <NotePreviewItem article={article} key={article.staticPath} />))}
       <nav className="main-nav">
         {!isFirstPage && (<PrevButton basePath={basePath || ''} currentPageNumber={pageNumber} />)}
         {!isLastPage && (<NextButton basePath={basePath || ''} currentPageNumber={pageNumber} />)}
@@ -23,7 +23,7 @@ export default function ArticleListView(
   )
 }
 
-function ArticlePreviewItem({ article }: {article: ArticlePreview}) {
+function NotePreviewItem({ article }: {article: ArticlePreview}) {
   return (
     <article className="post-entry">
       <h2>{article.title}</h2>
@@ -58,11 +58,11 @@ type PagingButtonProps = {
   currentPageNumber: number
 }
 
-type ArticleListViewProps = {
+type NoteListViewProps = {
   title: string,
   basePath?: string,
   mainTitle?: string,
-  articles: ArticlePreview[],
+  notes: ArticlePreview[],
   pageNumber: number,
   isFirstPage: boolean,
   isLastPage: boolean,
