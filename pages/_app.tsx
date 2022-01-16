@@ -17,7 +17,9 @@ export default function MyApp({ Component, pageProps }: AppProps) {
       siteName={getSiteName()}
       menus={[
         { name: 'About', href: '/about' },
-        { name: 'Articles', href: '/articles' }]}
+        { name: 'Articles', href: '/articles' },
+        { name: 'References', href: '/references' },
+      ]}
       socials={[
         { siteName: 'github', userId: process.env.GITHUB ? process.env.GITHUB : null },
         { siteName: 'twitter', userId: process.env.TWITTER ? process.env.TWITTER : null },
