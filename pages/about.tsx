@@ -1,9 +1,9 @@
 import { Article, getAboutPageArticle } from '../lib/article';
-import ArticleView from '../components/ArticleView';
+import NoteView from '../components/NoteView';
 
 export default function AboutPage({ article } : AboutPageProps) {
   return (
-    <ArticleView article={article} />
+    <NoteView note={article} />
   )
 }
 
