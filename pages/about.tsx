@@ -1,4 +1,4 @@
-import { Article, getAboutPageArticle } from '../lib/article';
+import { getAboutPageNote, Note } from '../lib/note';
 import NoteView from '../components/NoteView';
 
 export default function AboutPage({ article } : AboutPageProps) {
@@ -8,9 +8,9 @@ export default function AboutPage({ article } : AboutPageProps) {
 }
 
 type AboutPageProps = {
-  article: Article,
+  article: Note,
 }
 
 export async function getStaticProps(): Promise<{ props: AboutPageProps }> {
-  return { props: { article: getAboutPageArticle() } }
+  return { props: { article: getAboutPageNote() } }
 }

@@ -1,4 +1,4 @@
-import { ArticlePreview, getArticlePreviews, getNumArticles } from '../../lib/article';
+import { getNotePreviews, getNumNotes, NotePreview } from '../../lib/note';
 import NoteListView from '../../components/NoteListView';
 import { getPageSize, getSiteName } from '../../lib/configuration';
 
@@ -18,7 +18,7 @@ export default function ArticleListPage(
 
 type ArticleListPageProps = {
   title: string,
-  articles: ArticlePreview[],
+  articles: NotePreview[],
   pageNumber: number,
   isFirstPage: boolean,
   isLastPage: boolean
@@ -26,11 +26,11 @@ type ArticleListPageProps = {
 
 export async function getStaticProps({ params }: {params: {pageNumber: string}})
   : Promise<{ props: ArticleListPageProps }> {
-  const pagedArticles = getArticlePreviews(parseInt(params.pageNumber, 10), getPageSize())
+  const pagedArticles = getNotePreviews(parseInt(params.pageNumber, 10), getPageSize())
   return {
     props: {
       title: getSiteName(),
-      articles: pagedArticles.articles,
+      articles: pagedArticles.notes,
       pageNumber: pagedArticles.pageNumber,
       isFirstPage: pagedArticles.isFirstPage,
       isLastPage: pagedArticles.isLastPage,
@@ -39,7 +39,7 @@ export async function getStaticProps({ params }: {params: {pageNumber: string}})
 }
 
 export async function getStaticPaths() {
-  const numPage = Math.ceil(getNumArticles() / getPageSize())
+  const numPage = Math.ceil(getNumNotes() / getPageSize())
   return {
     paths: Array(numPage)
       .fill(0)

@@ -1,6 +1,6 @@
 import Head from 'next/head';
 import Link from 'next/link';
-import { ArticlePreview } from '../lib/article';
+import { NotePreview } from '../lib/note';
 import { toArticleHref } from '../pages/articles/[...articlePath]';
 
 export default function NoteListView(
@@ -23,7 +23,7 @@ export default function NoteListView(
   )
 }
 
-function NotePreviewItem({ article }: {article: ArticlePreview}) {
+function NotePreviewItem({ article }: {article: NotePreview}) {
   return (
     <article className="post-entry">
       <h2>{article.title}</h2>
@@ -62,7 +62,7 @@ type NoteListViewProps = {
   title: string,
   basePath?: string,
   mainTitle?: string,
-  notes: ArticlePreview[],
+  notes: NotePreview[],
   pageNumber: number,
   isFirstPage: boolean,
   isLastPage: boolean,

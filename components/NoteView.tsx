@@ -6,7 +6,7 @@ import remarkMath from 'remark-math';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { vscDarkPlus } from 'react-syntax-highlighter/dist/cjs/styles/prism';
 import Link from 'next/link';
-import { Article } from '../lib/article'
+import { Note } from '../lib/note'
 
 export default function NoteView({ note }: NoteViewProps) {
   return (
@@ -37,7 +37,7 @@ export default function NoteView({ note }: NoteViewProps) {
 }
 
 export interface NoteViewProps {
-  note: Article,
+  note: Note,
 }
 
 const SyntaxHighlight: object = {
