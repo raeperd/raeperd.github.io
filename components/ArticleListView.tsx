@@ -1,6 +1,7 @@
 import Head from 'next/head';
 import Link from 'next/link';
 import { ArticlePreview } from '../lib/article';
+import { toArticleHref } from '../pages/articles/[...articlePath]';
 
 export default function ArticleListView(
   { title, mainTitle, articles, basePath, pageNumber, isFirstPage, isLastPage }
@@ -27,7 +28,7 @@ function ArticlePreviewItem({ article }: {article: ArticlePreview}) {
     <article className="post-entry">
       <h2>{article.title}</h2>
       <time>{article.date}</time>
-      <Link href={`/post/${article.staticPath}`}>
+      <Link href={toArticleHref(article.staticPath)}>
         {/* eslint-disable-next-line jsx-a11y/anchor-has-content */}
         <a />
       </Link>

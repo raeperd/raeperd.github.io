@@ -3,6 +3,10 @@ import path, { join } from 'path';
 import { Article, getArticleByStaticPath, getArticleStaticPaths } from '../../lib/article';
 import ArticleView from '../../components/ArticleView';
 
+export function toArticleHref(articleStaticPath: string): string {
+  return `/articles/${articleStaticPath}`
+}
+
 export default function ArticlePage({ article }: ArticlePageProps) {
   return (
     <>
