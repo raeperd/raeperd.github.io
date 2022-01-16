@@ -39,7 +39,7 @@ export default function ArticleView({ article, disqusShortname, currentURL }: Ar
         shortname={disqusShortname}
         config={{
           url: currentURL,
-          identifier: article.slug,
+          identifier: article.staticPath,
           title: article.title,
         }}
       />
