@@ -19,7 +19,7 @@ Lorem est tota propiore conpellat pectoribus de pectora summo. <!--more-->Redit 
 Rursus nulli murmur; hastile inridet ut ab gravi sententia! Nomine potitus silentia flumen, sustinet placuit petis in dilapsa erat sunt. Atria tractus malis.
 
 1. Comas hunc haec pietate fetum procerum dixit
-2. Article torum vates letum Tiresia
+2. Note torum vates letum Tiresia
 3. Flumen querellas
 4. Arcanaque montibus omnes
 5. Quidem et

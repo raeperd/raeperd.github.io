@@ -1,16 +1,16 @@
-import { Article, getAboutPageArticle } from '../lib/article';
-import ArticleView from '../components/ArticleView';
+import { getAboutPageNote, Note } from '../lib/note';
+import NoteView from '../components/NoteView';
 
 export default function AboutPage({ article } : AboutPageProps) {
   return (
-    <ArticleView article={article} />
+    <NoteView note={article} />
   )
 }
 
 type AboutPageProps = {
-  article: Article,
+  article: Note,
 }
 
 export async function getStaticProps(): Promise<{ props: AboutPageProps }> {
-  return { props: { article: getAboutPageArticle() } }
+  return { props: { article: getAboutPageNote() } }
 }

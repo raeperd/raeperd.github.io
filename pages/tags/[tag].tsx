@@ -1,16 +1,16 @@
-import { ArticlePreview, getAllTags, getArticlePreviewsByTag } from '../../lib/article';
-import ArticleListView from '../../components/ArticleListView';
+import { getAllTags, getNotePreviewsByTag, NotePreview } from '../../lib/note';
+import NoteListView from '../../components/NoteListView';
 import { getPageSize } from '../../lib/configuration';
 
 export default function TagPage(
   { tag, articles, pageNumber, isFirstPage, isLastPage }: TagPageProps,
 ) {
   return (
-    <ArticleListView
+    <NoteListView
       title={tag}
       mainTitle={tag}
       basePath={`/tags/${tag}`}
-      articles={articles}
+      notes={articles}
       pageNumber={pageNumber}
       isFirstPage={isFirstPage}
       isLastPage={isLastPage}
@@ -20,7 +20,7 @@ export default function TagPage(
 
 type TagPageProps = {
   tag: string,
-  articles: ArticlePreview[]
+  articles: NotePreview[]
   pageNumber: number,
   isFirstPage: boolean,
   isLastPage: boolean
@@ -28,11 +28,11 @@ type TagPageProps = {
 
 export async function getStaticProps({ params }: {params: {tag: string}}):
   Promise<{props: TagPageProps}> {
-  const pagedArticles = getArticlePreviewsByTag(params.tag, 1, getPageSize())
+  const pagedArticles = getNotePreviewsByTag(params.tag, 1, getPageSize())
   return {
     props: {
       tag: params.tag,
-      articles: pagedArticles.articles,
+      articles: pagedArticles.notes,
       pageNumber: pagedArticles.pageNumber,
       isFirstPage: pagedArticles.isFirstPage,
       isLastPage: pagedArticles.isLastPage,

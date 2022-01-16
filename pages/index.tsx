@@ -1,14 +1,14 @@
-import { ArticlePreview, getArticlePreviews } from '../lib/article';
-import ArticleListView from '../components/ArticleListView';
+import { getNotePreviews, NotePreview } from '../lib/note';
+import NoteListView from '../components/NoteListView';
 import { getPageSize, getSiteName } from '../lib/configuration';
 
 export default function Index(
   { title, articles, pageNumber, isLastPage, isFirstPage }: IndexProps,
 ) {
   return (
-    <ArticleListView
+    <NoteListView
       title={title}
-      articles={articles}
+      notes={articles}
       pageNumber={pageNumber}
       isFirstPage={isFirstPage}
       isLastPage={isLastPage}
@@ -18,18 +18,18 @@ export default function Index(
 
 interface IndexProps {
   title: string,
-  articles: ArticlePreview[],
+  articles: NotePreview[],
   pageNumber: number,
   isFirstPage: boolean,
   isLastPage: boolean
 }
 
 export async function getStaticProps(): Promise<{props: IndexProps}> {
-  const pagedArticles = getArticlePreviews(1, getPageSize())
+  const pagedArticles = getNotePreviews(1, getPageSize())
   return {
     props: {
       title: getSiteName(),
-      articles: pagedArticles.articles,
+      articles: pagedArticles.notes,
       pageNumber: pagedArticles.pageNumber,
       isFirstPage: pagedArticles.isFirstPage,
       isLastPage: pagedArticles.isLastPage,

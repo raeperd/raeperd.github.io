@@ -6,17 +6,17 @@ import remarkMath from 'remark-math';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { vscDarkPlus } from 'react-syntax-highlighter/dist/cjs/styles/prism';
 import Link from 'next/link';
-import { Article } from '../lib/article'
+import { Note } from '../lib/note'
 
-export default function ArticleView({ article }: ArticleViewProps) {
+export default function NoteView({ note }: NoteViewProps) {
   return (
     <article className="post-single">
       <header className="post-title">
         <p>
-          <time>{article.date}</time>
-          <span>{article.author}</span>
+          <time>{note.date}</time>
+          <span>{note.author}</span>
         </p>
-        <h1>{article.title}</h1>
+        <h1>{note.title}</h1>
       </header>
       <section className="post-content">
         <ReactMarkdown
@@ -24,11 +24,11 @@ export default function ArticleView({ article }: ArticleViewProps) {
           rehypePlugins={[rehypeRaw, rehypeKatex]}
           remarkPlugins={[remarkGfm, remarkMath]}
         >
-          {article.content}
+          {note.content}
         </ReactMarkdown>
       </section>
       <footer className="post-tags">
-        {article.tags.map((tag) => (
+        {note.tags.map((tag) => (
           <Link key={tag} href={`/tags/${tag}`}>{tag}</Link>
         ))}
       </footer>
@@ -36,8 +36,8 @@ export default function ArticleView({ article }: ArticleViewProps) {
   )
 }
 
-export interface ArticleViewProps {
-  article: Article,
+export interface NoteViewProps {
+  note: Note,
 }
 
 const SyntaxHighlight: object = {
