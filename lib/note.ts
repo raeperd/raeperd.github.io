@@ -3,8 +3,10 @@ import { readdirSync, readFileSync, statSync } from 'fs';
 import matter from 'gray-matter';
 import { getDefaultAuthor } from './configuration';
 
-export function getNotePreviews(pageNumber: number, pageSize: number): PagedNotePreview {
+export function getNotePreviewsByDirectory(directory: string, pageNumber: number, pageSize: number)
+  : PagedNotePreview {
   const notes = getNoteParsedPaths()
+    .filter((parsedPath) => parsedPath.dir.indexOf(directory) > -1)
     .map((parsedPath) => readNote(parsedPath))
     .sort((left, right) => new Date(right.date).getTime() - new Date(left.date).getTime())
   return {
@@ -14,6 +16,10 @@ export function getNotePreviews(pageNumber: number, pageSize: number): PagedNote
     pageNumber,
     pageSize,
   }
+}
+
+export function getNotePreviews(pageNumber: number, pageSize: number): PagedNotePreview {
+  return getNotePreviewsByDirectory('/', pageNumber, pageSize)
 }
 
 export function getNumNotes(): number {
