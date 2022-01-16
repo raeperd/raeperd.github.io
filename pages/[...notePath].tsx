@@ -3,7 +3,7 @@ import path, { join } from 'path';
 import { getNoteByStaticPath, getNoteStaticPaths, Note } from '../lib/note';
 import NoteView from '../components/NoteView';
 
-export default function ArticlePage({ note }: NotePageProps) {
+export default function NotePage({ note }: NotePageProps) {
   return (
     <>
       <Head>

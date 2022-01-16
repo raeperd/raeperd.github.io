@@ -10,6 +10,7 @@ export function getReferencePreviews(pageNumber: number, pageSize: number): Page
 export function getArticlePreviews(pageNumber: number, pageSize: number): PagedNotePreview {
   return getNotePreviewsByDirectory('articles', pageNumber, pageSize)
 }
+
 export function getNotePreviews(pageNumber: number, pageSize: number): PagedNotePreview {
   return getNotePreviewsByDirectory('/', pageNumber, pageSize)
 }
