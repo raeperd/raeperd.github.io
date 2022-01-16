@@ -1,4 +1,4 @@
-import { findFirstArticleByFileName, getAllArticleFiles, getArticlePreviews } from './article';
+import { findFirstArticleByPath, getArticlePreviews, getArticleStaticPaths } from './article';
 
 test('getArticlePreviews', () => {
   const pageSize = 1
@@ -8,12 +8,12 @@ test('getArticlePreviews', () => {
   expect(articles.articles).toHaveLength(pageSize)
 })
 
-test('getAllArticleSlugs', () => {
-  const articleSlugs = getAllArticleFiles()
+test('getArticleStaticPaths', () => {
+  const articleSlugs = getArticleStaticPaths()
   expect(articleSlugs.length).toBeGreaterThanOrEqual(1)
 })
 
-test('findFirstArticleBySlug', () => {
-  const articleSlugs = getAllArticleFiles()
-  articleSlugs.forEach((slug) => expect(findFirstArticleByFileName(slug).fileName).toBe(slug))
+test('findFirstArticleByPath', () => {
+  const articleStaticPath = getArticleStaticPaths()
+  articleStaticPath.forEach((slug) => expect(findFirstArticleByPath(slug).staticPath).toBe(slug))
 })

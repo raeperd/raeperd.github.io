@@ -1,5 +1,6 @@
 import Head from 'next/head';
-import { Article, findFirstArticleByFileName, getAllArticleFiles } from '../../lib/article';
+import path, { join } from 'path';
+import { Article, findFirstArticleByPath, getArticleStaticPaths } from '../../lib/article';
 import ArticleView from '../../components/ArticleView';
 import { getDisqusShortname, getServerURL } from '../../lib/configuration';
 
@@ -12,7 +13,7 @@ export default function ArticlePage({ article, disqusShortname, serverURL }: Art
       <ArticleView
         article={article}
         disqusShortname={disqusShortname}
-        currentURL={`${serverURL}/post/${article.fileName}`}
+        currentURL={`${serverURL}/post/${article.staticPath}`}
       />
     </>
   )
@@ -24,9 +25,9 @@ type ArticlePageProps = {
   serverURL: string
 }
 
-export async function getStaticProps({ params }: {params: {fileName: string}})
+export async function getStaticProps({ params }: {params: {articlePath: string[]}})
   : Promise<{ props: ArticlePageProps }> {
-  const article = findFirstArticleByFileName(params.fileName)
+  const article = findFirstArticleByPath(join(...params.articlePath))
   return {
     props: {
       article,
@@ -38,7 +39,8 @@ export async function getStaticProps({ params }: {params: {fileName: string}})
 
 export async function getStaticPaths() {
   return {
-    paths: getAllArticleFiles().map((fileName) => ({ params: { fileName } })),
+    paths: getArticleStaticPaths().map((articlePath) => (
+      { params: { articlePath: articlePath.split(path.sep) } })),
     fallback: false,
   }
 }

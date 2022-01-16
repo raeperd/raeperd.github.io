@@ -4,7 +4,7 @@ import matter from 'gray-matter';
 import { getDefaultAuthor } from './configuration';
 
 export function getArticlePreviews(pageNumber: number, pageSize: number): PagedArticlePreview {
-  const articles = getAllArticleFiles()
+  const articles = getArticleStaticPaths()
     .map((file) => readArticle(file))
     .sort((left, right) => new Date(right.date).getTime() - new Date(left.date).getTime())
   return {
@@ -17,19 +17,21 @@ export function getArticlePreviews(pageNumber: number, pageSize: number): PagedA
 }
 
 export function getNumArticles(): number {
-  return getAllArticleFiles().length
+  return readdirRecursiveSync(ARTICLE_DIRECTORY).length
 }
 
-export function findFirstArticleByFileName(fileNameToFind: string): Article {
-  const slugFound = getAllArticleFiles().find((fileName) => fileName === fileNameToFind)
+export function findFirstArticleByPath(pathToFind: string): Article {
+  const slugFound = readdirRecursiveSync(ARTICLE_DIRECTORY)
+    .find((filePath) => filePath.replace(`${ARTICLE_DIRECTORY}/`, '') === pathToFind)
   if (!slugFound) {
-    throw new Error(`Given ${fileNameToFind} is not exists`)
+    throw new Error(`Given ${pathToFind} is not exists`)
   }
-  return readArticle(fileNameToFind)
+  return readArticle(pathToFind)
 }
 
-export function getAllArticleFiles(): string[] {
-  return readdirSync(ARTICLE_DIRECTORY)
+export function getArticleStaticPaths(): string[] {
+  return readdirRecursiveSync(ARTICLE_DIRECTORY)
+    .map((filePath) => filePath.replace(`${ARTICLE_DIRECTORY}/`, ''))
 }
 
 export function getAboutPageArticle(): Article {
@@ -37,8 +39,8 @@ export function getAboutPageArticle(): Article {
 }
 
 export function getAllTags(): string[] {
-  return getAllArticleFiles()
-    .map((file) => readArticle(file))
+  return readdirRecursiveSync(ARTICLE_DIRECTORY)
+    .map((filePath) => readArticle(filePath))
     .flatMap((article) => article.tags)
 }
 
@@ -60,8 +62,8 @@ export function getNumArticlesByTag(tag: string): number {
 }
 
 function getAllArticlesByTag(tagToFind: string): ArticlePreview[] {
-  return getAllArticleFiles()
-    .map((file) => readArticle(file))
+  return readdirRecursiveSync(ARTICLE_DIRECTORY)
+    .map((filePath) => readArticle(filePath))
     .filter((article) => article.tags.findIndex((tag) => tag === tagToFind) > -1)
 }
 
@@ -71,7 +73,7 @@ export interface Article extends ArticlePreview{
 }
 
 export interface ArticlePreview {
-  fileName: string,
+  staticPath: string,
   title: string,
   date: string,
   author: string
@@ -85,9 +87,6 @@ export interface PagedArticlePreview {
   isLastPage: boolean
 }
 
-const PAGE_DIRECTORY = join(process.cwd(), 'lib', 'content')
-const ARTICLE_DIRECTORY = join(PAGE_DIRECTORY, 'article')
-
 function readArticle(file: string): Article {
   return readFileAsArticle(ARTICLE_DIRECTORY, file)
 }
@@ -96,12 +95,15 @@ function readPage(file: string): Article {
   return readFileAsArticle(PAGE_DIRECTORY, file)
 }
 
+const PAGE_DIRECTORY = join(process.cwd(), 'lib', 'content')
+const ARTICLE_DIRECTORY = join(PAGE_DIRECTORY, 'article')
+
 function readFileAsArticle(directory:string, file: string): Article {
   const filePath = join(directory, file)
   const fileContent = readFileSync(filePath, 'utf8')
   const { data, content } = matter(fileContent)
   return {
-    fileName: file,
+    staticPath: file,
     title: data.title ? data.title : file,
     date: data.date
       ? data.date.toDateString()
@@ -110,4 +112,11 @@ function readFileAsArticle(directory:string, file: string): Article {
     author: data.author ? data.author : getDefaultAuthor(),
     content,
   }
+}
+
+function readdirRecursiveSync(directoryPath: string): string[] {
+  return readdirSync(directoryPath).flatMap((fileName) => {
+    const filePath = join(directoryPath, fileName)
+    return statSync(filePath).isDirectory() ? readdirRecursiveSync(filePath) : [filePath]
+  })
 }

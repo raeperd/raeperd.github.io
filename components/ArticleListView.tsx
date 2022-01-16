@@ -13,7 +13,7 @@ export default function ArticleListView(
       </Head>
       {mainTitle && <h1 className="main-title">{mainTitle}</h1>}
       {articles.map((article) => (
-        <ArticlePreviewItem article={article} key={article.fileName} />))}
+        <ArticlePreviewItem article={article} key={article.staticPath} />))}
       <nav className="main-nav">
         {!isFirstPage && (<PrevButton basePath={basePath || ''} currentPageNumber={pageNumber} />)}
         {!isLastPage && (<NextButton basePath={basePath || ''} currentPageNumber={pageNumber} />)}
@@ -27,7 +27,7 @@ function ArticlePreviewItem({ article }: {article: ArticlePreview}) {
     <article className="post-entry">
       <h2>{article.title}</h2>
       <time>{article.date}</time>
-      <Link href={`/post/${article.fileName}`}>
+      <Link href={`/post/${article.staticPath}`}>
         {/* eslint-disable-next-line jsx-a11y/anchor-has-content */}
         <a />
       </Link>
