@@ -30,12 +30,14 @@ export function getNoteByStaticPath(staticPathToFind: string): Note {
 }
 
 export function getNoteStaticPaths(): string[] {
-  return readdirRecursiveSync(ARTICLE_DIRECTORY)
-    .map((filePath) => filePath.replace(`${PAGE_DIRECTORY}/`, ''))
+  return readdirRecursiveSync(CONTENT_DIRECTORY)
+    .filter((filePath) => filePath.startsWith(join(CONTENT_DIRECTORY, 'articles'))
+      || filePath.startsWith(join(CONTENT_DIRECTORY, 'references')))
+    .map((filePath) => filePath.replace(`${CONTENT_DIRECTORY}/`, ''))
 }
 
 export function getAboutPageNote(): Note {
-  return readNote(path.parse(path.join(PAGE_DIRECTORY, 'about.md')))
+  return readNote(path.parse(path.join(CONTENT_DIRECTORY, 'about.md')))
 }
 
 export function getAllTags(): string[] {
@@ -87,7 +89,7 @@ function getNoteParsedPaths(): ParsedPath[] {
 }
 
 function toNoteParsedPath(staticPath: string): ParsedPath {
-  return path.parse(path.join(PAGE_DIRECTORY, staticPath))
+  return path.parse(path.join(CONTENT_DIRECTORY, staticPath))
 }
 
 function getAllNotesByTag(tagToFind: string): NotePreview[] {
@@ -96,15 +98,14 @@ function getAllNotesByTag(tagToFind: string): NotePreview[] {
     .filter((note) => note.tags.findIndex((tag) => tag === tagToFind) > -1)
 }
 
-const PAGE_DIRECTORY = join(process.cwd(), 'lib', 'content')
-const ARTICLE_DIRECTORY = join(PAGE_DIRECTORY, 'articles')
+const CONTENT_DIRECTORY = join(process.cwd(), 'lib', 'content')
 
 function readNote(notePath: ParsedPath): Note {
   const filePath = join(notePath.dir, notePath.base)
   const fileContent = readFileSync(filePath, 'utf8')
   const { data, content } = matter(fileContent)
   return {
-    staticPath: filePath.replace(`${PAGE_DIRECTORY}/`, ''),
+    staticPath: filePath.replace(`${CONTENT_DIRECTORY}/`, ''),
     title: data.title ? data.title : notePath.name,
     date: data.date
       ? data.date.toDateString()
