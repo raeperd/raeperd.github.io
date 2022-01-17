@@ -5,6 +5,7 @@ module.exports = {
     INSTAGRAM: 'raeperd',
     TWITTER: 'raeperd117',
     AUTHOR: 'raeperd',
+    PAGE_SIZE: 10,
   },
   images: {
     loader: 'akamai',
