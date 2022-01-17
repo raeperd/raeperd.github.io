@@ -1,5 +1,5 @@
 import path, { join, ParsedPath } from 'path';
-import { readdirSync, readFileSync, stat, statSync } from 'fs';
+import { readdirSync, readFileSync, statSync } from 'fs';
 import matter from 'gray-matter';
 import { getDefaultAuthor } from './configuration';
 
@@ -7,12 +7,12 @@ export function getNotePreviews(pageNumber: number, pageSize: number): PagedNote
   return getNotePreviewsByDirectory('', pageNumber, pageSize)
 }
 
-export function getReferencePreviews(pageNumber: number, pageSize: number): PagedNotePreview {
-  return getNotePreviewsByDirectory('references', pageNumber, pageSize)
-}
-
 export function getArticlePreviews(pageNumber: number, pageSize: number): PagedNotePreview {
   return getNotePreviewsByDirectory('articles', pageNumber, pageSize)
+}
+
+export function getReferencePreviews(pageNumber: number, pageSize: number): PagedNotePreview {
+  return getNotePreviewsByDirectory('references', pageNumber, pageSize)
 }
 
 export function getNumNotes(): number {
@@ -21,6 +21,10 @@ export function getNumNotes(): number {
 
 export function getNumArticles(): number {
   return getNoteParsedPaths('articles').length
+}
+
+export function getNumReferences(): number {
+  return getNoteParsedPaths('references').length
 }
 
 export function getNoteByStaticPath(staticPathToFind: string): Note {
