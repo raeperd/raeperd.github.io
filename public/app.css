@@ -380,7 +380,8 @@ header.post-tags {
 }
 
 .post-tags a + a {
-    margin-left: 0.5rem;
+    margin-left: 1rem;
+    margin-bottom: 1rem;
 }
 
 .post-nav {
