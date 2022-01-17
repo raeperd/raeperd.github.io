@@ -55,6 +55,10 @@ export function getAllArticleTags(): Tag[] {
   return getAllTagsByDirectory('articles')
 }
 
+export function getAllReferenceTags(): Tag[] {
+  return getAllTagsByDirectory('references')
+}
+
 export function getNotePreviewsByTag(tagToFind: string, pageNumber: number, pageSize: number)
   : PagedNotePreview {
   return getNotePreviewsByDirAndTag('', tagToFind, pageNumber, pageSize)
@@ -65,12 +69,21 @@ export function getArticlePreviewsByTag(tagToFind: string, pageNumber: number, p
   return getNotePreviewsByDirAndTag('articles', tagToFind, pageNumber, pageSize)
 }
 
+export function getReferencePreviewsByTag(tagToFind: string, pageNumber: number, pageSize: number)
+  : PagedNotePreview {
+  return getNotePreviewsByDirAndTag('references', tagToFind, pageNumber, pageSize)
+}
+
 export function getNumNotesByTag(tag: string): number {
   return getAllNotesByTag(tag).length
 }
 
 export function getNumArticlesByTag(tag: string): number {
   return getAllArticleByTag(tag).length
+}
+
+export function getNumReferencesByTag(tag: string): number {
+  return getAllReferenceByTag(tag).length
 }
 
 export interface Note extends NotePreview{
@@ -156,12 +169,16 @@ function toNoteParsedPath(staticPath: string): ParsedPath {
   return path.parse(path.join(CONTENT_DIRECTORY, staticPath))
 }
 
+function getAllNotesByTag(tagToFind: string): NotePreview[] {
+  return getAllNotesByDirAndTag('', tagToFind)
+}
+
 function getAllArticleByTag(tagToFind: string): NotePreview[] {
   return getAllNotesByDirAndTag('articles', tagToFind)
 }
 
-function getAllNotesByTag(tagToFind: string): NotePreview[] {
-  return getAllNotesByDirAndTag('', tagToFind)
+function getAllReferenceByTag(tagToFind: string): NotePreview[] {
+  return getAllNotesByDirAndTag('references', tagToFind)
 }
 
 function getAllNotesByDirAndTag(dir: ContentSubDirectory, tagToFind: string): NotePreview[] {
