@@ -36,7 +36,7 @@ function NotePreviewItem({ article }: {article: NotePreview}) {
 }
 
 function PrevButton({ basePath, currentPageNumber }: PagingButtonProps) {
-  const prevPageLink = currentPageNumber === 2 ? `${basePath}/` : `${basePath}/page/${currentPageNumber - 1}`
+  const prevPageLink = currentPageNumber === 2 ? `${basePath}/` : `${basePath}/pages/${currentPageNumber - 1}`
   return (
     <Link href={prevPageLink}>
       <a className="prev">&lt; Prev Page</a>
@@ -46,7 +46,7 @@ function PrevButton({ basePath, currentPageNumber }: PagingButtonProps) {
 
 function NextButton({ basePath, currentPageNumber }: PagingButtonProps) {
   return (
-    <Link href={`${basePath}/page/${currentPageNumber + 1}`}>
+    <Link href={`${basePath}/pages/${currentPageNumber + 1}`}>
       <a className="next">Next Page &gt;</a>
     </Link>
   )

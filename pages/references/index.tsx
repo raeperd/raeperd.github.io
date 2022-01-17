@@ -1,6 +1,6 @@
-import NoteListView from '../components/NoteListView';
-import { getReferencePreviews, NotePreview } from '../lib/note';
-import { getPageSize, getSiteName } from '../lib/configuration';
+import NoteListView from '../../components/NoteListView';
+import { getReferencePreviews, NotePreview } from '../../lib/note';
+import { getPageSize, getSiteName } from '../../lib/configuration';
 
 export default function ReferencesPage(
   { title, articles, pageNumber, isFirstPage, isLastPage }: ReferencesPageProps,

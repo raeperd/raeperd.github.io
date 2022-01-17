@@ -1,6 +1,6 @@
-import NoteListView from '../components/NoteListView';
-import { getArticlePreviews, NotePreview } from '../lib/note';
-import { getPageSize, getSiteName } from '../lib/configuration';
+import NoteListView from '../../components/NoteListView';
+import { getArticlePreviews, NotePreview } from '../../lib/note';
+import { getPageSize, getSiteName } from '../../lib/configuration';
 
 export default function ArticlesPage(
   { title, articles, pageNumber, isFirstPage, isLastPage }: ArticlePageProps,
@@ -9,6 +9,7 @@ export default function ArticlesPage(
     <NoteListView
       title={title}
       notes={articles}
+      basePath="/articles"
       pageNumber={pageNumber}
       isFirstPage={isFirstPage}
       isLastPage={isLastPage}
