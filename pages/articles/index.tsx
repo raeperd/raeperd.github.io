@@ -1,23 +1,28 @@
 import NoteListView from '../../components/NoteListView';
-import { getArticlePreviews, NotePreview } from '../../lib/note';
+import { getAllArticleTags, getArticlePreviews, NotePreview, Tag } from '../../lib/note';
 import { getPageSize, getSiteName } from '../../lib/configuration';
+import TagListHeader from '../../components/TagListHeader';
 
 export default function ArticlesPage(
-  { title, articles, pageNumber, isFirstPage, isLastPage }: ArticlePageProps,
+  { tags, title, articles, pageNumber, isFirstPage, isLastPage }: ArticlePageProps,
 ) {
   return (
-    <NoteListView
-      title={title}
-      notes={articles}
-      basePath="/articles"
-      pageNumber={pageNumber}
-      isFirstPage={isFirstPage}
-      isLastPage={isLastPage}
-    />
+    <>
+      <TagListHeader tags={tags} />
+      <NoteListView
+        title={title}
+        notes={articles}
+        basePath="/articles"
+        pageNumber={pageNumber}
+        isFirstPage={isFirstPage}
+        isLastPage={isLastPage}
+      />
+    </>
   )
 }
 
 type ArticlePageProps = {
+  tags: Tag[],
   title: string,
   articles: NotePreview[],
   pageNumber: number,
@@ -29,6 +34,7 @@ export async function getStaticProps(): Promise<{props: ArticlePageProps}> {
   const pagedArticles = getArticlePreviews(1, getPageSize())
   return {
     props: {
+      tags: getAllArticleTags(),
       title: getSiteName(),
       articles: pagedArticles.notes,
       pageNumber: pagedArticles.pageNumber,
