@@ -16,7 +16,6 @@ export default function MyApp({ Component, pageProps }: AppProps) {
     <Layout
       siteName={getSiteName()}
       menus={[
-        { name: 'About', href: '/about' },
         { name: 'Articles', href: '/articles' },
         { name: 'References', href: '/references' },
       ]}

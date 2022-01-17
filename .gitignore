@@ -35,7 +35,6 @@ yarn-error.log*
 
 # content
 lib/content/*
-!lib/content/about.md
 !lib/content/articles
 !lib/content/references
 
