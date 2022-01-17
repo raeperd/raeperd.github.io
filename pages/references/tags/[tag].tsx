@@ -9,7 +9,7 @@ import TagListHeader from '../../../components/TagListHeader';
 import NoteListView from '../../../components/NoteListView';
 
 export default function ReferenceTagPage(
-  { tags, title, articles, pageNumber, isFirstPage, isLastPage }: ReferenceTagPageProps,
+  { tags, title, articles, tag, pageNumber, isFirstPage, isLastPage }: ReferenceTagPageProps,
 ) {
   return (
     <>
@@ -17,6 +17,7 @@ export default function ReferenceTagPage(
       <NoteListView
         title={title}
         notes={articles}
+        basePath={`/references/tags/${tag}`}
         pageNumber={pageNumber}
         isFirstPage={isFirstPage}
         isLastPage={isLastPage}
@@ -29,6 +30,7 @@ export default function ReferenceTagPage(
 type ReferenceTagPageProps = {
   tags: Tag[],
   title: string,
+  tag: string,
   articles: NotePreview[],
   pageNumber: number,
   isFirstPage: boolean,
@@ -42,6 +44,7 @@ export async function getStaticProps({ params }: {params: {tag: string}})
     props: {
       tags: getAllReferenceTags(),
       title: getSiteName(),
+      tag: params.tag,
       articles: pagedArticles.notes,
       pageNumber: pagedArticles.pageNumber,
       isFirstPage: pagedArticles.isFirstPage,

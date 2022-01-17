@@ -82,6 +82,10 @@ export function getNumArticlesByTag(tag: string): number {
   return getAllArticleByTag(tag).length
 }
 
+export function getNumReferencesByTag(tag: string): number {
+  return getAllReferenceByTag(tag).length
+}
+
 export interface Note extends NotePreview{
   tags: string[],
   content: string
@@ -165,12 +169,16 @@ function toNoteParsedPath(staticPath: string): ParsedPath {
   return path.parse(path.join(CONTENT_DIRECTORY, staticPath))
 }
 
+function getAllNotesByTag(tagToFind: string): NotePreview[] {
+  return getAllNotesByDirAndTag('', tagToFind)
+}
+
 function getAllArticleByTag(tagToFind: string): NotePreview[] {
   return getAllNotesByDirAndTag('articles', tagToFind)
 }
 
-function getAllNotesByTag(tagToFind: string): NotePreview[] {
-  return getAllNotesByDirAndTag('', tagToFind)
+function getAllReferenceByTag(tagToFind: string): NotePreview[] {
+  return getAllNotesByDirAndTag('references', tagToFind)
 }
 
 function getAllNotesByDirAndTag(dir: ContentSubDirectory, tagToFind: string): NotePreview[] {
