@@ -1,4 +1,10 @@
-import { getAllTags, getNoteByStaticPath, getNotePreviews, getNoteStaticPaths } from './note';
+import {
+  getAllArticleTags,
+  getAllTags,
+  getNoteByStaticPath,
+  getNotePreviews,
+  getNoteStaticPaths,
+} from './note';
 
 test('getArticlePreviews', () => {
   const pageSize = 1
@@ -22,5 +28,10 @@ test('findFirstArticleByPath', () => {
 
 test('getAllTags', () => {
   const tags = getAllTags()
+  expect(tags.length).toBeGreaterThanOrEqual(1)
+})
+
+test('getAllArticleTags', () => {
+  const tags = getAllArticleTags()
   expect(tags.length).toBeGreaterThanOrEqual(1)
 })

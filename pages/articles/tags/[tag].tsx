@@ -1,10 +1,10 @@
-import NoteListView from '../../../components/NoteListView'
-import { getAllTags, getNotePreviews, getNumNotes, NotePreview, Tag } from '../../../lib/note';
+import { getAllArticleTags, getArticlePreviewsByTag, NotePreview, Tag } from '../../../lib/note';
 import { getPageSize, getSiteName } from '../../../lib/configuration';
 import TagListHeader from '../../../components/TagListHeader';
+import NoteListView from '../../../components/NoteListView';
 
-export default function PagedTagListPage(
-  { tags, title, articles, pageNumber, isFirstPage, isLastPage }: PagedTagListPageProps,
+export default function ArticleTagPage(
+  { tags, title, articles, tag, pageNumber, isFirstPage, isLastPage }: ArticleTagPageProps,
 ) {
   return (
     <>
@@ -12,7 +12,7 @@ export default function PagedTagListPage(
       <NoteListView
         title={title}
         notes={articles}
-        basePath="/tags"
+        basePath={`/articles/tags/${tag}`}
         pageNumber={pageNumber}
         isFirstPage={isFirstPage}
         isLastPage={isLastPage}
@@ -21,8 +21,9 @@ export default function PagedTagListPage(
   )
 }
 
-type PagedTagListPageProps = {
+type ArticleTagPageProps = {
   tags: Tag[],
+  tag: string,
   title: string,
   articles: NotePreview[],
   pageNumber: number,
@@ -30,12 +31,13 @@ type PagedTagListPageProps = {
   isLastPage: boolean
 }
 
-export async function getStaticProps({ params }: {params: {pageNumber: string}})
-  : Promise<{ props: PagedTagListPageProps }> {
-  const pagedArticles = getNotePreviews(parseInt(params.pageNumber, 10), getPageSize())
+export async function getStaticProps({ params }: {params: {tag: string}})
+  : Promise<{props: ArticleTagPageProps}> {
+  const pagedArticles = getArticlePreviewsByTag(params.tag, 1, getPageSize())
   return {
     props: {
-      tags: getAllTags(),
+      tags: getAllArticleTags(),
+      tag: params.tag,
       title: getSiteName(),
       articles: pagedArticles.notes,
       pageNumber: pagedArticles.pageNumber,
@@ -46,12 +48,8 @@ export async function getStaticProps({ params }: {params: {pageNumber: string}})
 }
 
 export async function getStaticPaths() {
-  const numPage = Math.ceil(getNumNotes() / getPageSize())
   return {
-    paths: Array(numPage)
-      .fill(0)
-      .map((_, index) => (index + 1))
-      .map((pageNumber) => ({ params: { pageNumber: pageNumber.toString() } })),
+    paths: getAllArticleTags().map((tag) => ({ params: { tag: tag.name } })),
     fallback: false,
   }
 }
