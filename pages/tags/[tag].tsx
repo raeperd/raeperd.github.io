@@ -1,24 +1,29 @@
-import { getAllTags, getNotePreviewsByTag, NotePreview } from '../../lib/note';
+import { getAllTags, getNotePreviewsByTag, NotePreview, Tag } from '../../lib/note';
 import NoteListView from '../../components/NoteListView';
 import { getPageSize } from '../../lib/configuration';
+import TagListHeader from '../../components/TagListHeader';
 
 export default function TagPage(
-  { tag, articles, pageNumber, isFirstPage, isLastPage }: TagPageProps,
+  { tags, tag, articles, pageNumber, isFirstPage, isLastPage }: TagPageProps,
 ) {
   return (
-    <NoteListView
-      title={tag}
-      mainTitle={tag}
-      basePath={`/tags/${tag}`}
-      notes={articles}
-      pageNumber={pageNumber}
-      isFirstPage={isFirstPage}
-      isLastPage={isLastPage}
-    />
+    <>
+      <TagListHeader tags={tags} />
+      <NoteListView
+        title={tag}
+        mainTitle={tag}
+        basePath={`/tags/${tag}`}
+        notes={articles}
+        pageNumber={pageNumber}
+        isFirstPage={isFirstPage}
+        isLastPage={isLastPage}
+      />
+    </>
   )
 }
 
 type TagPageProps = {
+  tags: Tag[]
   tag: string,
   articles: NotePreview[]
   pageNumber: number,
@@ -31,6 +36,7 @@ export async function getStaticProps({ params }: {params: {tag: string}}):
   const pagedArticles = getNotePreviewsByTag(params.tag, 1, getPageSize())
   return {
     props: {
+      tags: getAllTags(),
       tag: params.tag,
       articles: pagedArticles.notes,
       pageNumber: pagedArticles.pageNumber,
@@ -42,7 +48,7 @@ export async function getStaticProps({ params }: {params: {tag: string}}):
 
 export async function getStaticPaths() {
   return {
-    paths: getAllTags().map((tag) => ({ params: { tag } })),
+    paths: getAllTags().map((tag) => ({ params: { tag: tag.name } })),
     fallback: false,
   }
 }

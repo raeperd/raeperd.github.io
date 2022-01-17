@@ -47,10 +47,17 @@ export function getAboutPageNote(): Note {
   return readNote(path.parse(path.join(CONTENT_DIRECTORY, 'about.md')))
 }
 
-export function getAllTags(): string[] {
-  return getNoteParsedPaths('')
+export function getAllTags(): Tag[] {
+  const tagToCount = getNoteParsedPaths('')
     .map((parsedPath) => readNote(parsedPath))
     .flatMap((note) => note.tags)
+    .reduce((previousValue, currentValue) => {
+      previousValue.set(currentValue, (previousValue.get(currentValue) || 0) + 1)
+      return previousValue
+    }, new Map<string, number>())
+  return Array.from(tagToCount.keys())
+    .map((name) => ({ name, count: tagToCount.get(name) || 0 }))
+    .sort((left, right) => right.count - left.count)
 }
 
 export function getNotePreviewsByTag(tagToFind: string, pageNumber: number, pageSize: number)
@@ -88,6 +95,11 @@ export interface PagedNotePreview {
   pageSize: number,
   isFirstPage: boolean,
   isLastPage: boolean
+}
+
+export interface Tag {
+  name: string,
+  count: number
 }
 
 function getNotePreviewsByDirectory(dir: ContentSubDirectory, pageNumber: number, pageSize: number)

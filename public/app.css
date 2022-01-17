@@ -360,6 +360,11 @@ img {
     transform: translateX(-0.3rem);
 }
 
+header.post-tags {
+    margin-top: 0;
+    margin-bottom: 7rem;
+}
+
 .post-tags {
     margin-top: 7rem;
 }
@@ -375,7 +380,8 @@ img {
 }
 
 .post-tags a + a {
-    margin-left: 0.5rem;
+    margin-left: 1rem;
+    margin-bottom: 1rem;
 }
 
 .post-nav {

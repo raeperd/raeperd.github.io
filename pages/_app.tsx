@@ -18,6 +18,7 @@ export default function MyApp({ Component, pageProps }: AppProps) {
       menus={[
         { name: 'Articles', href: '/articles' },
         { name: 'References', href: '/references' },
+        { name: 'Tags', href: '/tags' },
       ]}
       socials={[
         { siteName: 'github', userId: process.env.GITHUB ? process.env.GITHUB : null },
