@@ -339,7 +339,7 @@ img {
 /* Post single
  -------------------------------------------------- */
 .post-title {
-    margin-bottom: calc(var(--y-gap) + 1rem);
+    margin-bottom: 5rem
 }
 
 .post-title p {

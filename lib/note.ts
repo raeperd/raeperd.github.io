@@ -99,7 +99,7 @@ export interface PagedNotePreview {
 
 export interface Tag {
   name: string,
-  count: number
+  count?: number
 }
 
 function getNotePreviewsByDirectory(dir: ContentSubDirectory, pageNumber: number, pageSize: number)

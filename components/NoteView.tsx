@@ -5,8 +5,8 @@ import rehypeKatex from 'rehype-katex';
 import remarkMath from 'remark-math';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { vscDarkPlus } from 'react-syntax-highlighter/dist/cjs/styles/prism';
-import Link from 'next/link';
 import { Note } from '../lib/note'
+import TagListHeader from './TagListHeader';
 
 export default function NoteView({ note }: NoteViewProps) {
   return (
@@ -18,6 +18,7 @@ export default function NoteView({ note }: NoteViewProps) {
         </p>
         <h1>{note.title}</h1>
       </header>
+      <TagListHeader tags={note.tags.map((tag) => ({ name: tag }))} />
       <section className="post-content">
         <ReactMarkdown
           components={SyntaxHighlight}
@@ -27,11 +28,6 @@ export default function NoteView({ note }: NoteViewProps) {
           {note.content}
         </ReactMarkdown>
       </section>
-      <footer className="post-tags">
-        {note.tags.map((tag) => (
-          <Link key={tag} href={`/tags/${tag}`}>{tag}</Link>
-        ))}
-      </footer>
     </article>
   )
 }
