@@ -14,7 +14,7 @@ export default function PagedArticlePage(
 ) {
   return (
     <>
-      <TagListHeader tags={tags} />
+      <TagListHeader tags={tags} basePath="/articles" />
       <NoteListView
         title={title}
         notes={articles}

@@ -8,7 +8,7 @@ export default function ArticlesPage(
 ) {
   return (
     <>
-      <TagListHeader tags={tags} />
+      <TagListHeader tags={tags} basePath="/articles" />
       <NoteListView
         title={title}
         notes={articles}
