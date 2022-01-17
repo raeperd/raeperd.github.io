@@ -110,6 +110,7 @@ function getNoteParsedPaths(dir: ContentSubDirectory): ParsedPath[] {
   return getNoteStaticPaths()
     .filter((staticPath) => staticPath.startsWith(dir))
     .map((staticPath) => toNoteParsedPath(staticPath))
+    .filter((parsedPath) => !parsedPath.base.startsWith('.'))
 }
 
 function toNoteParsedPath(staticPath: string): ParsedPath {

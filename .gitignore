@@ -34,9 +34,10 @@ yarn-error.log*
 .vercel
 
 # content
-lib/content/Private
-lib/content/.obsidian
-lib/content/Daily
+lib/content/*
+!lib/content/about.md
+!lib/content/articles
+!lib/content/references
 
 # idea
 .idea
