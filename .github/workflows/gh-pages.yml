@@ -4,26 +4,29 @@ on: push
 
 jobs:
   deploy:
-    runs-on: ubuntu-18.04
-    strategy:
-      matrix:
-        node-version: [14.x]
+    runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - uses: actions/setup-node@v1
+      - uses: actions/setup-node@v2
         with:
-          node-version: ${{ matrix.node-version }}
-      - run: npm i -g npm@latest
+          node-version: lts/gallium
+          cache: npm
       - uses: actions/cache@v2
         with:
-          path: |
-            ~/.npm
-            ~/.next/cache
+          path: ~/.next/cache
           key: ${{ runner.os }}-nextjs-${{ hashFiles('**/package-lock.json') }}-${{ hashFiles('**.[jt]s', '**.[jt]sx') }}
           restore-keys: |
-            ${{ runner.OS }}-node-
             ${{ runner.OS }}-
-      - run: npm install
+      - run: npm ci
+      - name: Download articles
+        uses: raeperd/google-drive-download-action@v1
+        with:
+          clientSecret: ${{ secrets.CLIENT_SECRET }}
+          clientId: ${{ secrets.CLIENT_ID }}
+          redirectUri: ${{ secrets.REDIRECT_URI }}
+          credential_json: ${{ secrets.CREDENTIAL_JSON }}
+          q: "'1Co8BSgaZDb9ZIGmrmkVH-XB_1-Waa3-O' in parents and (name = 'articles' or name = 'references')"
+          path: "./lib/content"
       - run: npm run test
       - name: build and export
         run: |

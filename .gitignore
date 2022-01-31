@@ -33,11 +33,6 @@ yarn-error.log*
 # vercel
 .vercel
 
-# content
-lib/content/*
-!lib/content/articles
-!lib/content/references
-
 # idea
 .idea
 
