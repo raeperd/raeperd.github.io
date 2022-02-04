@@ -9,9 +9,14 @@ export default function TagListHeader({ tags, basePath }: {tags: Tag[], basePath
           key={tag.name}
           href={`${basePath}/tags/${tag.name}`}
         >
-          {`${tag.name}${tag.count ? ` (${tag.count})` : ''}`}
+          {stringFromTag(tag)}
         </Link>
       ))}
     </header>
   )
+}
+
+function stringFromTag(tag: Tag): string {
+  const numTags = tag.count ? ` (${tag.count})` : ''
+  return `${tag.name}${numTags}`
 }
