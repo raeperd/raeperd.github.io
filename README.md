@@ -1,9 +1,9 @@
-<div align="center">
-<h1>NextJS-Paper <sup><sup><sub>5.1</sub></sup></sup></h1>
-
-A simple, clean, flexible NextJS templates inspired by [nanxiaobei/hugo-paper](https://github.com/nanxiaobei/hugo-paper#readme)  
-Check out demo in [github page](https://raeperd.github.io/nextjs-paper/)
-</div>
+# [raeperd.github.io](https://raeperd.github.io/)
+[![github pages](https://github.com/raeperd/nextjs-paper/actions/workflows/gh-pages.yml/badge.svg)](https://github.com/raeperd/nextjs-paper/actions/workflows/gh-pages.yml)
+[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=raeperd_raeperd.github.io&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=raeperd_raeperd.github.io)
+[![Maintainability Rating](https://sonarcloud.io/api/project_badges/measure?project=raeperd_raeperd.github.io&metric=sqale_rating)](https://sonarcloud.io/summary/new_code?id=raeperd_raeperd.github.io)
+[![Lines of Code](https://sonarcloud.io/api/project_badges/measure?project=raeperd_raeperd.github.io&metric=ncloc)](https://sonarcloud.io/summary/new_code?id=raeperd_raeperd.github.io)  
+A simple, clean, flexible NextJS blog using [raeperd/nextjs-paper](https://github.com/raeperd/nextjs-paper) 
 
 
 # Overview
@@ -12,10 +12,13 @@ Check out demo in [github page](https://raeperd.github.io/nextjs-paper/)
 ![demo-desktop-dark](./doc/demo-desktop-dark.png)
 ![demo-mobile](./doc/demo-mobile.png)
 
-
-
 # Feature
-- GFM supprots with tables using [remarkjs/remark-gfm](https://github.com/remarkjs/remark-gfm)
+- [#1](https://github.com/raeperd/raeperd.github.io/issues/1) Preserve markdown file links as url links (such as [Obsidian](https://obsidian.md/), [Typora](https://typora.io/))
+- [#7](https://github.com/raeperd/raeperd.github.io/issues/7) Paginate over tags 
+- [#11](https://github.com/raeperd/raeperd.github.io/issues/11) Download markdown notes using [raeperd/google-drive-download-action](https://github.com/raeperd/google-drive-download-action)
+
+## Feature by [raeperd/nextjs-paper](https://github.com/raeperd/nextjs-paper)
+- GFM supports with tables using [remarkjs/remark-gfm](https://github.com/remarkjs/remark-gfm)
 - Katex inline math using [remarkjs/remark-math](https://github.com/remarkjs/remark-math/tree/main/packages/remark-math) and [remarkjs/remark-katex](https://github.com/remarkjs/remark-math/tree/main/packages/rehype-katex) 
 - Syntax highlighting using [react-syntax-highlighter](https://github.com/react-syntax-highlighter/react-syntax-highlighter) 
 - Inner HTML using [rehypejs/rehype-raw](https://github.com/rehypejs/rehype-raw) 
@@ -46,35 +49,18 @@ npm run build && npm run export
 
 # Configurations
 
-## `.env` file
-
-```shell
-# [OPTIONAL] SITE_NAME value. default is 'Paper'
-SITE_NAME=Paper
-
-# [OPTIONAL] SNS ids are all optional. Not shown if empty
-INSTAGRAM=raeperd
-GITHUB=raeperd
-TWITTER=raeperd117
-
-# [OPTIONAL] Disqus configuration. When u want disqus, below two values must be provided
-DISQUS_SHORTNAME=nextjs-paper
-SERVER_URL=https://raeperd.github.io/nextjs-paper
-
-# [OPTIONAL] Default Author name. Not shown if empty
-AUTHOR=raeperd
-```
-
-## `next.config.js`
+## [next.config.js](./next.config.js) file
 
 ```javascript
-
-const isProduction = process.env.NODE_ENV === 'production'
-const name = 'nextjs-paper'
-
 module.exports = {
-  assetPrefix: isProduction ? `/${name}/` : '',
-  basePath: isProduction ? `/${name}` : '',
+  env: {
+    SITE_NAME: 'raeperd.github.io',
+    GITHUB: 'raeperd',
+    INSTAGRAM: 'raeperd',
+    TWITTER: 'raeperd117',
+    AUTHOR: 'raeperd',
+    PAGE_SIZE: 10,
+  },
   images: {
     loader: 'akamai',
     path: '',
@@ -91,12 +77,16 @@ module.exports = {
 }
 ```
 
-- If you want to deploy in github-page (like this repo does), `assetPrefix` and `basePath` must be configured as above 
-
 # Notes
 
 - 🙅🏻 Multilingual is not supported  
 - ⚙️ Build time may increase, as you want to have many markdown files 
+
+# License
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+
+# Contacts
+raeperd117@gmail.com
 
 # Thanks to
 
