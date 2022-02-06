@@ -1,14 +1,15 @@
-import { getAllArticleTags, getArticlePreviews, NotePreview, Tag } from '../lib/note';
+import { getArticlePreviews, NotePreview } from '../lib/note';
 import NoteListView from '../components/NoteListView';
 import { getPageSize, getSiteName } from '../lib/configuration';
-import TagListHeader from '../components/TagListHeader';
+import getProfile, { Profile } from '../lib/profile';
+import { SocialNav } from '../components/SocialNav';
 
 export default function Index(
-  { tags, title, articles, pageNumber, isLastPage, isFirstPage }: IndexProps,
+  { profile, title, articles, pageNumber, isLastPage, isFirstPage }: IndexProps,
 ) {
   return (
     <>
-      <TagListHeader tags={tags} basePath="/articles" />
+      <ProfileView profile={profile} />
       <NoteListView
         title={title}
         notes={articles}
@@ -20,8 +21,22 @@ export default function Index(
   )
 }
 
+function ProfileView({ profile }: {profile: Profile }) {
+  return (
+    <div className="profile-container">
+      {/* eslint-disable-next-line @next/next/no-img-element */}
+      <img alt="Profile" src={profile.image} />
+      <div className="bio-container">
+        <h1>{profile.name}</h1>
+        <p>{profile.bio}</p>
+        <SocialNav socials={profile.socials} />
+      </div>
+    </div>
+  )
+}
+
 interface IndexProps {
-  tags: Tag[],
+  profile: Profile,
   title: string,
   articles: NotePreview[],
   pageNumber: number,
@@ -33,7 +48,7 @@ export async function getStaticProps(): Promise<{props: IndexProps}> {
   const pagedArticles = getArticlePreviews(1, getPageSize())
   return {
     props: {
-      tags: getAllArticleTags(),
+      profile: await getProfile(),
       title: getSiteName(),
       articles: pagedArticles.notes,
       pageNumber: pagedArticles.pageNumber,
