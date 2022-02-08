@@ -18,8 +18,9 @@ export function getDefaultAuthor(): string {
 export function getSocialNavProps(): SocialProps[] {
   return [
     { siteName: 'github', userId: getGithubName() },
-    { siteName: 'twitter', userId: process.env.TWITTER ? process.env.TWITTER : null },
-    { siteName: 'instagram', userId: process.env.INSTAGRAM ? process.env.INSTAGRAM : null },
+    { siteName: 'linkedin', userId: process.env.LINKEDIN ? process.env.LINKEDIN : null },
+    { siteName: 'notion', userId: process.env.NOTION ? process.env.NOTION : null },
+    { siteName: 'cv', userId: process.env.CV ? process.env.CV : null },
   ]
 }
 

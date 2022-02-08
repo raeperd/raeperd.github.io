@@ -18,7 +18,8 @@ export default function MyApp({ Component, pageProps }: AppProps) {
         { name: 'References', href: '/references' },
         { name: 'Tags', href: '/tags' },
       ]}
-      socials={getSocialNavProps()}
+      socials={getSocialNavProps()
+        .filter(((social) => social.siteName === 'github' || social.siteName === 'linkedin'))}
     >
       <Head>
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />

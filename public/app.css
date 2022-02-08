@@ -237,7 +237,6 @@ img {
 }
 
 .social a {
-    width: 3rem;
     margin-right: 3rem;
     background: var(--url) center center no-repeat;
 }
