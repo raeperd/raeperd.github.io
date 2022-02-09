@@ -39,5 +39,5 @@ function buildSocialHref(social: SocialProps): string {
   if (social.siteName === 'notion' || social.siteName === 'cv') {
     return `//${social.userId}`
   }
-  return `//${social.siteName}/${social.userId}`
+  return `//${social.siteName}.com/${social.userId}`
 }
