@@ -6,13 +6,15 @@ import { ReactNode, useEffect } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { useDarkMode } from 'usehooks-ts';
+import Script from 'next/script';
 import { getSiteName, getSocialNavProps } from '../lib/configuration';
 import { SocialNav, SocialProps } from '../components/SocialNav';
 
 export default function MyApp({ Component, pageProps }: AppProps) {
+  const siteName = getSiteName()
   return (
     <Layout
-      siteName={getSiteName()}
+      siteName={siteName}
       menus={[
         { name: 'Articles', href: '/articles' },
         { name: 'References', href: '/references' },
@@ -22,9 +24,23 @@ export default function MyApp({ Component, pageProps }: AppProps) {
         .filter(((social) => social.siteName === 'github' || social.siteName === 'linkedin'))}
     >
       <Head>
+        <title>{siteName}</title>
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
       </Head>
       <Component {...pageProps} />
+      <Script
+        async
+        src="https://www.googletagmanager.com/gtag/js?id=GA_MEASUREMENT_ID"
+        strategy="afterInteractive"
+      />
+      <Script id="google-analytics" strategy="afterInteractive">
+        {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){window.dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-LGXK49RW6X');
+          `}
+      </Script>
     </Layout>
   )
 }
