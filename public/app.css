@@ -273,6 +273,8 @@ img {
 /* Main
  -------------------------------------------------- */
 .main {
+    display: flex;
+    flex-direction: column;
     max-width: var(--narrow);
     min-height: calc(100% - var(--header) - var(--footer));
     padding-top: var(--y-gap);
@@ -302,6 +304,32 @@ img {
 
 .main-nav .next {
     margin-left: auto;
+}
+
+
+/* Index entry
+ -------------------------------------------------- */
+.main .profile-container {
+    display: flex;
+    justify-content: center;
+    margin-bottom: var(--y-gap);
+}
+
+.main .profile-container > img {
+    display: block;
+    width: 23rem;
+    border-radius: 50%;
+    margin-right: 3.5rem
+}
+
+.main .profile-container .bio-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.main .profile-container .bio-container > h1 {
+    font-size: 4rem;
 }
 
 /* Post entry
