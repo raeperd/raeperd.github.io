@@ -2,6 +2,7 @@ import { getArticlePreviews, NotePreview } from '../lib/note';
 import NoteListView from '../components/NoteListView';
 import { getPageSize, getSiteName } from '../lib/configuration';
 import getProfile, { Profile } from '../lib/profile';
+import { SocialNav } from '../components/SocialNav';
 
 export default function Index(
   { profile, title, articles, pageNumber, isLastPage, isFirstPage }: IndexProps,
@@ -28,6 +29,7 @@ function ProfileView({ profile }: {profile: Profile }) {
       <div className="bio-container">
         <h1>{profile.name}</h1>
         <p>{profile.bio}</p>
+        <SocialNav socials={profile.socials} />
       </div>
     </div>
   )

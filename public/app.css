@@ -238,7 +238,7 @@ img {
 
 .social a {
     width: 3rem;
-    margin-left: 3rem;
+    margin-right: 3rem;
     background: var(--url) center center no-repeat;
 }
 
@@ -325,7 +325,7 @@ img {
 .main .profile-container .bio-container {
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: space-evenly;
 }
 
 .main .profile-container .bio-container > h1 {
