@@ -11,6 +11,7 @@ export default function ArticleTagPage(
       <TagListHeader tags={tags} basePath="/articles" />
       <NoteListView
         title={title}
+        mainTitle={tag}
         notes={articles}
         basePath={`/articles/tags/${tag}`}
         pageNumber={pageNumber}
