@@ -1,12 +1,13 @@
+import axios from 'axios';
 import { SocialProps } from '../components/SocialNav';
-import { getSocialNavProps } from './configuration';
+import { getGithubName, getSocialNavProps } from './configuration';
 
 export default async function getProfile(): Promise<Profile> {
+  const githubProfile = await getGithubProfile()
   return {
-    image: 'https://avatars.githubusercontent.com/u/41039751?v=4',
-    name: 'raeperd',
-    email: 'raeperd117@gmail.com',
-    bio: 'can win',
+    image: githubProfile.avatar_url,
+    name: githubProfile.name,
+    bio: githubProfile.bio,
     socials: getSocialNavProps(),
   }
 }
@@ -14,7 +15,17 @@ export default async function getProfile(): Promise<Profile> {
 export interface Profile {
   image: string
   name: string
-  email: string
   bio: string
   socials: SocialProps[]
+}
+
+function getGithubProfile(): Promise<GithubProfile> {
+  return axios.get<GithubProfile>(`https://api.github.com/users/${getGithubName()}`)
+    .then((response) => response.data)
+}
+
+interface GithubProfile {
+  avatar_url: string,
+  name: string,
+  bio: string
 }

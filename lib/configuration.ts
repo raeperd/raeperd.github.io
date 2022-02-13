@@ -17,8 +17,16 @@ export function getDefaultAuthor(): string {
 
 export function getSocialNavProps(): SocialProps[] {
   return [
-    { siteName: 'github', userId: process.env.GITHUB ? process.env.GITHUB : null },
+    { siteName: 'github', userId: getGithubName() },
     { siteName: 'twitter', userId: process.env.TWITTER ? process.env.TWITTER : null },
     { siteName: 'instagram', userId: process.env.INSTAGRAM ? process.env.INSTAGRAM : null },
   ]
+}
+
+export function getGithubName(): string {
+  const githubName = process.env.GITHUB
+  if (!githubName) {
+    throw Error('No github name found')
+  }
+  return githubName
 }
