@@ -6,10 +6,8 @@ import { ReactNode, useEffect } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { useDarkMode } from 'usehooks-ts';
-import { getSiteName } from '../lib/configuration';
-import Github from '../public/github.svg'
-import Twitter from '../public/twitter.svg'
-import Instagram from '../public/instagram.svg'
+import { getSiteName, getSocialNavProps } from '../lib/configuration';
+import { SocialNav, SocialProps } from '../components/SocialNav';
 
 export default function MyApp({ Component, pageProps }: AppProps) {
   return (
@@ -20,11 +18,7 @@ export default function MyApp({ Component, pageProps }: AppProps) {
         { name: 'References', href: '/references' },
         { name: 'Tags', href: '/tags' },
       ]}
-      socials={[
-        { siteName: 'github', userId: process.env.GITHUB ? process.env.GITHUB : null },
-        { siteName: 'twitter', userId: process.env.TWITTER ? process.env.TWITTER : null },
-        { siteName: 'instagram', userId: process.env.INSTAGRAM ? process.env.INSTAGRAM : null },
-      ]}
+      socials={getSocialNavProps()}
     >
       <Head>
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
@@ -129,25 +123,6 @@ function MenuNav({ menus }: { menus: MenuProps[] }) {
   )
 }
 
-function SocialNav({ socials }: { socials: SocialProps[] }) {
-  const siteNameToSvg = {
-    github: <Github />,
-    twitter: <Twitter />,
-    instagram: <Instagram />,
-  }
-
-  return (
-    <nav className="social">
-      {socials.filter((social) => social.userId !== null)
-        .map((social) => (
-          <a href={`//${social.siteName}.com/${social.userId}`} key={social.siteName}>
-            {siteNameToSvg[social.siteName]}
-          </a>
-        ))}
-    </nav>
-  )
-}
-
 interface HeaderProps {
   siteName: string,
   menus: MenuProps[],
@@ -157,9 +132,4 @@ interface HeaderProps {
 interface MenuProps {
   name: string,
   href: string
-}
-
-interface SocialProps {
-  siteName: 'instagram' | 'github' | 'twitter',
-  userId: string | null
 }
