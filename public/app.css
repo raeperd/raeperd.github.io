@@ -316,10 +316,9 @@ img {
 }
 
 .main .profile-container > img {
-    display: block;
-    width: 23rem;
+    width: 25rem;
     border-radius: 50%;
-    margin-right: 3.5rem
+    margin-right: 5rem
 }
 
 .main .profile-container .bio-container {
@@ -329,7 +328,11 @@ img {
 }
 
 .main .profile-container .bio-container > h1 {
-    font-size: 4rem;
+    font-size: 5rem;
+}
+
+.main .profile-container .bio-container > p {
+    font-size: 3rem;
 }
 
 /* Post entry
