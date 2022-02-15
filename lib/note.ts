@@ -135,7 +135,15 @@ export function getAllTagsByDirectory(dir: ContentSubDirectory): Tag[] {
     }, new Map<string, number>())
   return Array.from(tagToCount.keys())
     .map((name) => ({ name, count: tagToCount.get(name) || 0 }))
-    .sort((left, right) => right.count - left.count)
+    .sort((left, right) => {
+      if (left.count !== right.count) {
+        return right.count - left.count
+      }
+      if (left.name < right.name) {
+        return -1
+      }
+      return 1
+    })
 }
 
 type ContentSubDirectory = '' | 'articles' | 'references'
