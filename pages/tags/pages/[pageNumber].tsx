@@ -1,5 +1,11 @@
 import NoteListView from '../../../components/NoteListView'
-import { getAllTags, getNotePreviews, getNumNotes, NotePreview, Tag } from '../../../lib/note';
+import {
+  getAllTagsByDir,
+  getNotePreviewsByDir,
+  getNumNotesByDir,
+  NotePreview,
+  Tag,
+} from '../../../lib/note';
 import { getPageSize, getSiteName } from '../../../lib/configuration';
 import TagListHeader from '../../../components/TagListHeader';
 
@@ -32,10 +38,10 @@ type PagedTagListPageProps = {
 
 export async function getStaticProps({ params }: {params: {pageNumber: string}})
   : Promise<{ props: PagedTagListPageProps }> {
-  const pagedArticles = getNotePreviews(parseInt(params.pageNumber, 10), getPageSize())
+  const pagedArticles = getNotePreviewsByDir('', parseInt(params.pageNumber, 10), getPageSize())
   return {
     props: {
-      tags: getAllTags(),
+      tags: getAllTagsByDir(''),
       title: getSiteName(),
       articles: pagedArticles.notes,
       pageNumber: pagedArticles.pageNumber,
@@ -46,7 +52,7 @@ export async function getStaticProps({ params }: {params: {pageNumber: string}})
 }
 
 export async function getStaticPaths() {
-  const numPage = Math.ceil(getNumNotes() / getPageSize())
+  const numPage = Math.ceil(getNumNotesByDir('') / getPageSize())
   return {
     paths: Array(numPage)
       .fill(0)

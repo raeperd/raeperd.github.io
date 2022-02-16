@@ -1,7 +1,7 @@
 import {
-  getAllTags,
-  getNotePreviewsByTag,
-  getNumNotesByTag,
+  getAllTagsByDir,
+  getNotePreviewsByDirAndTag,
+  getNumNotesByDirAndTag,
   NotePreview,
   Tag,
 } from '../../../../lib/note';
@@ -39,14 +39,15 @@ type TagPageListProps = {
 
 export async function getStaticProps({ params }: {params: {tag: string, pageNumber: string}}):
   Promise<{props: TagPageListProps}> {
-  const pagedArticles = getNotePreviewsByTag(
+  const pagedArticles = getNotePreviewsByDirAndTag(
+    '',
     params.tag,
     parseInt(params.pageNumber, 10),
     getPageSize(),
   )
   return {
     props: {
-      tags: getAllTags(),
+      tags: getAllTagsByDir(''),
       tag: params.tag,
       articles: pagedArticles.notes,
       pageNumber: pagedArticles.pageNumber,
@@ -58,13 +59,13 @@ export async function getStaticProps({ params }: {params: {tag: string, pageNumb
 
 export async function getStaticPaths() {
   return {
-    paths: getAllTags().flatMap((tag) => pathsFromTag(tag.name)),
+    paths: getAllTagsByDir('').flatMap((tag) => pathsFromTag(tag.name)),
     fallback: false,
   }
 }
 
 function pathsFromTag(tag: string) {
-  const numPage = Math.ceil(getNumNotesByTag(tag) / getPageSize())
+  const numPage = Math.ceil(getNumNotesByDirAndTag('', tag) / getPageSize())
   return Array(numPage)
     .fill(0)
     .map((_, index) => (index + 1))

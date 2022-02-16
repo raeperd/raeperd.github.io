@@ -1,14 +1,13 @@
 import {
-  getAllArticleTags,
-  getAllTags,
+  getAllTagsByDir,
   getNoteByStaticPath,
-  getNotePreviews,
+  getNotePreviewsByDir,
   getNoteStaticPaths,
 } from './note';
 
 test('getArticlePreviews', () => {
   const pageSize = 1
-  const articles = getNotePreviews(1, pageSize)
+  const articles = getNotePreviewsByDir('', 1, pageSize)
 
   expect(articles.pageSize).toBe(pageSize)
   expect(articles.notes).toHaveLength(pageSize)
@@ -27,11 +26,11 @@ test('findFirstArticleByPath', () => {
 })
 
 test('getAllTags', () => {
-  const tags = getAllTags()
+  const tags = getAllTagsByDir('')
   expect(tags.length).toBeGreaterThanOrEqual(1)
 })
 
 test('getAllArticleTags', () => {
-  const tags = getAllArticleTags()
+  const tags = getAllTagsByDir('articles')
   expect(tags.length).toBeGreaterThanOrEqual(1)
 })

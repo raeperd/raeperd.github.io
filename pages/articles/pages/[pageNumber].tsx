@@ -1,5 +1,5 @@
 import NoteListView from '../../../components/NoteListView'
-import { getArticlePreviews, getNumArticles, NotePreview } from '../../../lib/note';
+import { getNotePreviewsByDir, getNumNotesByDir, NotePreview } from '../../../lib/note';
 import { getPageSize, getSiteName } from '../../../lib/configuration';
 
 export default function ArticleListPage(
@@ -27,7 +27,7 @@ type ArticleListPageProps = {
 
 export async function getStaticProps({ params }: {params: {pageNumber: string}})
   : Promise<{ props: ArticleListPageProps }> {
-  const pagedArticles = getArticlePreviews(parseInt(params.pageNumber, 10), getPageSize())
+  const pagedArticles = getNotePreviewsByDir('articles', parseInt(params.pageNumber, 10), getPageSize())
   return {
     props: {
       title: getSiteName(),
@@ -40,7 +40,7 @@ export async function getStaticProps({ params }: {params: {pageNumber: string}})
 }
 
 export async function getStaticPaths() {
-  const numPage = Math.ceil(getNumArticles() / getPageSize())
+  const numPage = Math.ceil(getNumNotesByDir('articles') / getPageSize())
   return {
     paths: Array(numPage)
       .fill(0)
