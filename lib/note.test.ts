@@ -31,6 +31,6 @@ test('getAllTags', () => {
 })
 
 test('getAllArticleTags', () => {
-  const tags = getAllTagsByDir('articlesw')
+  const tags = getAllTagsByDir('articles')
   expect(tags.length).toBeGreaterThanOrEqual(1)
 })

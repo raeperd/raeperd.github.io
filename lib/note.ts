@@ -58,10 +58,6 @@ export function getAllTagsByDir(dir: ContentDirectory): Tag[] {
     })
 }
 
-export function getAllReferenceTags(): Tag[] {
-  return getAllTagsByDir('references')
-}
-
 export function getNotePreviewsByTag(tagToFind: string, pageNumber: number, pageSize: number)
   : PagedNotePreview {
   return getNotePreviewsByDirAndTag('', tagToFind, pageNumber, pageSize)
