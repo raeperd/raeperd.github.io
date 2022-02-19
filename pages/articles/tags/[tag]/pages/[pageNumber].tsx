@@ -1,13 +1,14 @@
+import { GetStaticPaths } from 'next';
 import NoteListView from '../../../../../components/NoteListView'
 import {
   getAllTagsByDir,
   getNotePreviewsByDirAndTag,
-  getNumNotesByDirAndTag,
   NotePreview,
   Tag,
 } from '../../../../../lib/note';
 import { getPageSize, getSiteName } from '../../../../../lib/configuration';
 import TagListHeader from '../../../../../components/TagListHeader';
+import { getStaticTagPageNumberPathsByDir, TagPageNumberUrlQuery } from '../../../../../lib/page';
 
 export default function PagedArticlePage(
   { tags, title, articles, tag, pageNumber, isFirstPage, isLastPage }: PagedArticlePageProps,
@@ -59,17 +60,4 @@ export async function getStaticProps({ params }: {params: {tag: string, pageNumb
   }
 }
 
-export async function getStaticPaths() {
-  return {
-    paths: getAllTagsByDir('articles').flatMap((tag) => pathsFromTag(tag.name)),
-    fallback: false,
-  }
-}
-
-function pathsFromTag(tag: string) {
-  const numPage = Math.ceil(getNumNotesByDirAndTag('articles', tag) / getPageSize())
-  return Array(numPage)
-    .fill(0)
-    .map((_, index) => index + 1)
-    .map((pageNumber) => ({ params: { tag, pageNumber: pageNumber.toString() } }))
-}
+export const getStaticPaths: GetStaticPaths<TagPageNumberUrlQuery> = () => getStaticTagPageNumberPathsByDir('articles')

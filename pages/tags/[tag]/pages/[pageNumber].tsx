@@ -1,13 +1,14 @@
+import { GetStaticPaths } from 'next';
 import {
   getAllTagsByDir,
   getNotePreviewsByDirAndTag,
-  getNumNotesByDirAndTag,
   NotePreview,
   Tag,
 } from '../../../../lib/note';
 import { getPageSize } from '../../../../lib/configuration';
 import NoteListView from '../../../../components/NoteListView';
 import TagListHeader from '../../../../components/TagListHeader';
+import { getStaticTagPageNumberPathsByDir, TagPageNumberUrlQuery } from '../../../../lib/page';
 
 export default function TagPageListPage(
   { tags, tag, articles, pageNumber, isFirstPage, isLastPage }: TagPageListProps,
@@ -57,17 +58,4 @@ export async function getStaticProps({ params }: {params: {tag: string, pageNumb
   }
 }
 
-export async function getStaticPaths() {
-  return {
-    paths: getAllTagsByDir('').flatMap((tag) => pathsFromTag(tag.name)),
-    fallback: false,
-  }
-}
-
-function pathsFromTag(tag: string) {
-  const numPage = Math.ceil(getNumNotesByDirAndTag('', tag) / getPageSize())
-  return Array(numPage)
-    .fill(0)
-    .map((_, index) => (index + 1))
-    .map((pageNumber) => ({ params: { tag, pageNumber: pageNumber.toString() } }))
-}
+export const getStaticPaths: GetStaticPaths<TagPageNumberUrlQuery> = () => getStaticTagPageNumberPathsByDir('')
