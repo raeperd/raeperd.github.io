@@ -58,10 +58,6 @@ export function getAllTagsByDir(dir: ContentDirectory): Tag[] {
     })
 }
 
-export function getAllArticleTags(): Tag[] {
-  return getAllTagsByDir('articles')
-}
-
 export function getAllReferenceTags(): Tag[] {
   return getAllTagsByDir('references')
 }

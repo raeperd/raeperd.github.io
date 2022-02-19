@@ -1,6 +1,6 @@
 import NoteListView from '../../../../../components/NoteListView'
 import {
-  getAllArticleTags,
+  getAllTagsByDir,
   getArticlePreviewsByTag,
   getNumArticlesByTag,
   NotePreview,
@@ -47,7 +47,7 @@ export async function getStaticProps({ params }: {params: {tag: string, pageNumb
   )
   return {
     props: {
-      tags: getAllArticleTags(),
+      tags: getAllTagsByDir('articles'),
       tag: params.tag,
       title: getSiteName(),
       articles: pagedArticles.notes,
@@ -60,7 +60,7 @@ export async function getStaticProps({ params }: {params: {tag: string, pageNumb
 
 export async function getStaticPaths() {
   return {
-    paths: getAllArticleTags().flatMap((tag) => pathsFromTag(tag.name)),
+    paths: getAllTagsByDir('articles').flatMap((tag) => pathsFromTag(tag.name)),
     fallback: false,
   }
 }

@@ -1,5 +1,4 @@
 import {
-  getAllArticleTags,
   getAllTagsByDir,
   getNoteByStaticPath,
   getNotePreviewsByDir,
@@ -32,6 +31,6 @@ test('getAllTags', () => {
 })
 
 test('getAllArticleTags', () => {
-  const tags = getAllArticleTags()
+  const tags = getAllTagsByDir('articlesw')
   expect(tags.length).toBeGreaterThanOrEqual(1)
 })
