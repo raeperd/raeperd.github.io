@@ -1,5 +1,11 @@
 import NoteListView from '../../../components/NoteListView'
-import { getAllTags, getNotePreviews, getNumNotes, NotePreview, Tag } from '../../../lib/note';
+import {
+  getAllTags,
+  getNotePreviewsByDir,
+  getNumNotes,
+  NotePreview,
+  Tag,
+} from '../../../lib/note';
 import { getPageSize, getSiteName } from '../../../lib/configuration';
 import TagListHeader from '../../../components/TagListHeader';
 
@@ -32,7 +38,7 @@ type PagedTagListPageProps = {
 
 export async function getStaticProps({ params }: {params: {pageNumber: string}})
   : Promise<{ props: PagedTagListPageProps }> {
-  const pagedArticles = getNotePreviews(parseInt(params.pageNumber, 10), getPageSize())
+  const pagedArticles = getNotePreviewsByDir('', parseInt(params.pageNumber, 10), getPageSize())
   return {
     props: {
       tags: getAllTags(),

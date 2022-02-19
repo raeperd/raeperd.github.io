@@ -2,13 +2,13 @@ import {
   getAllArticleTags,
   getAllTags,
   getNoteByStaticPath,
-  getNotePreviews,
+  getNotePreviewsByDir,
   getNoteStaticPaths,
 } from './note';
 
 test('getArticlePreviews', () => {
   const pageSize = 1
-  const articles = getNotePreviews(1, pageSize)
+  const articles = getNotePreviewsByDir('', 1, pageSize)
 
   expect(articles.pageSize).toBe(pageSize)
   expect(articles.notes).toHaveLength(pageSize)
