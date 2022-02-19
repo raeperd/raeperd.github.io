@@ -75,11 +75,6 @@ export function getNotePreviewsByDirAndTag(
   }
 }
 
-export function getArticlePreviewsByTag(tagToFind: string, pageNumber: number, pageSize: number)
-  : PagedNotePreview {
-  return getNotePreviewsByDirAndTag('articles', tagToFind, pageNumber, pageSize)
-}
-
 export function getReferencePreviewsByTag(tagToFind: string, pageNumber: number, pageSize: number)
   : PagedNotePreview {
   return getNotePreviewsByDirAndTag('references', tagToFind, pageNumber, pageSize)
