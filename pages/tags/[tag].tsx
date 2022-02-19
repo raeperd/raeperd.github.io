@@ -1,4 +1,4 @@
-import { getAllTagsByDir, getNotePreviewsByTag, NotePreview, Tag } from '../../lib/note';
+import { getAllTagsByDir, getNotePreviewsByDirAndTag, NotePreview, Tag } from '../../lib/note';
 import NoteListView from '../../components/NoteListView';
 import { getPageSize } from '../../lib/configuration';
 import TagListHeader from '../../components/TagListHeader';
@@ -33,7 +33,7 @@ type TagPageProps = {
 
 export async function getStaticProps({ params }: {params: {tag: string}}):
   Promise<{props: TagPageProps}> {
-  const pagedArticles = getNotePreviewsByTag(params.tag, 1, getPageSize())
+  const pagedArticles = getNotePreviewsByDirAndTag('', params.tag, 1, getPageSize())
   return {
     props: {
       tags: getAllTagsByDir(''),

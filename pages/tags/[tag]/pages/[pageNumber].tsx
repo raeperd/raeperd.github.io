@@ -1,6 +1,6 @@
 import {
   getAllTagsByDir,
-  getNotePreviewsByTag,
+  getNotePreviewsByDirAndTag,
   getNumNotesByTag,
   NotePreview,
   Tag,
@@ -39,7 +39,8 @@ type TagPageListProps = {
 
 export async function getStaticProps({ params }: {params: {tag: string, pageNumber: string}}):
   Promise<{props: TagPageListProps}> {
-  const pagedArticles = getNotePreviewsByTag(
+  const pagedArticles = getNotePreviewsByDirAndTag(
+    '',
     params.tag,
     parseInt(params.pageNumber, 10),
     getPageSize(),

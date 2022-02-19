@@ -58,9 +58,21 @@ export function getAllTagsByDir(dir: ContentDirectory): Tag[] {
     })
 }
 
-export function getNotePreviewsByTag(tagToFind: string, pageNumber: number, pageSize: number)
-  : PagedNotePreview {
-  return getNotePreviewsByDirAndTag('', tagToFind, pageNumber, pageSize)
+export function getNotePreviewsByDirAndTag(
+  dir: ContentDirectory,
+  tagToFind: string,
+  pageNumber: number,
+  pageSize: number,
+): PagedNotePreview {
+  const notes = getAllNotesByDirAndTag(dir, tagToFind)
+    .sort((left, right) => new Date(right.date).getTime() - new Date(left.date).getTime())
+  return {
+    notes: notes.slice((pageNumber - 1) * pageSize, pageNumber * pageSize),
+    isFirstPage: pageNumber === 1,
+    isLastPage: pageNumber === Math.ceil(notes.length / pageSize),
+    pageNumber,
+    pageSize,
+  }
 }
 
 export function getArticlePreviewsByTag(tagToFind: string, pageNumber: number, pageSize: number)
@@ -117,24 +129,6 @@ function getNoteParsedPaths(dir: ContentDirectory): ParsedPath[] {
     .filter((staticPath) => staticPath.startsWith(dir))
     .map((staticPath) => toNoteParsedPath(staticPath))
     .filter((parsedPath) => !parsedPath.base.startsWith('.'))
-}
-
-function getNotePreviewsByDirAndTag(
-  dir: ContentDirectory,
-  tagToFind: string,
-  pageNumber: number,
-  pageSize: number,
-)
-  : PagedNotePreview {
-  const notes = getAllNotesByDirAndTag(dir, tagToFind)
-    .sort((left, right) => new Date(right.date).getTime() - new Date(left.date).getTime())
-  return {
-    notes: notes.slice((pageNumber - 1) * pageSize, pageNumber * pageSize),
-    isFirstPage: pageNumber === 1,
-    isLastPage: pageNumber === Math.ceil(notes.length / pageSize),
-    pageNumber,
-    pageSize,
-  }
 }
 
 function toNoteParsedPath(staticPath: string): ParsedPath {
