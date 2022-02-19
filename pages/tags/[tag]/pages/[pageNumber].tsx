@@ -1,5 +1,5 @@
 import {
-  getAllTags,
+  getAllTagsByDir,
   getNotePreviewsByTag,
   getNumNotesByTag,
   NotePreview,
@@ -46,7 +46,7 @@ export async function getStaticProps({ params }: {params: {tag: string, pageNumb
   )
   return {
     props: {
-      tags: getAllTags(),
+      tags: getAllTagsByDir(''),
       tag: params.tag,
       articles: pagedArticles.notes,
       pageNumber: pagedArticles.pageNumber,
@@ -58,7 +58,7 @@ export async function getStaticProps({ params }: {params: {tag: string, pageNumb
 
 export async function getStaticPaths() {
   return {
-    paths: getAllTags().flatMap((tag) => pathsFromTag(tag.name)),
+    paths: getAllTagsByDir('').flatMap((tag) => pathsFromTag(tag.name)),
     fallback: false,
   }
 }

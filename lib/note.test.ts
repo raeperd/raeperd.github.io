@@ -1,6 +1,6 @@
 import {
   getAllArticleTags,
-  getAllTags,
+  getAllTagsByDir,
   getNoteByStaticPath,
   getNotePreviewsByDir,
   getNoteStaticPaths,
@@ -27,7 +27,7 @@ test('findFirstArticleByPath', () => {
 })
 
 test('getAllTags', () => {
-  const tags = getAllTags()
+  const tags = getAllTagsByDir('')
   expect(tags.length).toBeGreaterThanOrEqual(1)
 })
 

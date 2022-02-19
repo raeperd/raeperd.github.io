@@ -1,6 +1,6 @@
 import NoteListView from '../../../components/NoteListView'
 import {
-  getAllTags,
+  getAllTagsByDir,
   getNotePreviewsByDir,
   getNumNotesByDir,
   NotePreview,
@@ -41,7 +41,7 @@ export async function getStaticProps({ params }: {params: {pageNumber: string}})
   const pagedArticles = getNotePreviewsByDir('', parseInt(params.pageNumber, 10), getPageSize())
   return {
     props: {
-      tags: getAllTags(),
+      tags: getAllTagsByDir(''),
       title: getSiteName(),
       articles: pagedArticles.notes,
       pageNumber: pagedArticles.pageNumber,

@@ -37,20 +37,33 @@ export function getNoteStaticPaths(): string[] {
     .map((filePath) => filePath.replace(`${CONTENT_DIRECTORY}/`, ''))
 }
 
-export function getAboutPageNote(): Note {
-  return readNote(path.parse(path.join(CONTENT_DIRECTORY, 'about.md')))
-}
-
-export function getAllTags(): Tag[] {
-  return getAllTagsByDirectory('')
+export function getAllTagsByDir(dir: ContentDirectory): Tag[] {
+  const tagToCount = getNoteParsedPaths(dir)
+    .map((parsedPath) => readNote(parsedPath))
+    .flatMap((note) => note.tags)
+    .reduce((previousValue, currentValue) => {
+      previousValue.set(currentValue, (previousValue.get(currentValue) || 0) + 1)
+      return previousValue
+    }, new Map<string, number>())
+  return Array.from(tagToCount.keys())
+    .map((name) => ({ name, count: tagToCount.get(name) || 0 }))
+    .sort((left, right) => {
+      if (left.count !== right.count) {
+        return right.count - left.count
+      }
+      if (left.name < right.name) {
+        return -1
+      }
+      return 1
+    })
 }
 
 export function getAllArticleTags(): Tag[] {
-  return getAllTagsByDirectory('articles')
+  return getAllTagsByDir('articles')
 }
 
 export function getAllReferenceTags(): Tag[] {
-  return getAllTagsByDirectory('references')
+  return getAllTagsByDir('references')
 }
 
 export function getNotePreviewsByTag(tagToFind: string, pageNumber: number, pageSize: number)
@@ -103,27 +116,6 @@ export interface PagedNotePreview {
 export interface Tag {
   name: string,
   count?: number
-}
-
-export function getAllTagsByDirectory(dir: ContentDirectory): Tag[] {
-  const tagToCount = getNoteParsedPaths(dir)
-    .map((parsedPath) => readNote(parsedPath))
-    .flatMap((note) => note.tags)
-    .reduce((previousValue, currentValue) => {
-      previousValue.set(currentValue, (previousValue.get(currentValue) || 0) + 1)
-      return previousValue
-    }, new Map<string, number>())
-  return Array.from(tagToCount.keys())
-    .map((name) => ({ name, count: tagToCount.get(name) || 0 }))
-    .sort((left, right) => {
-      if (left.count !== right.count) {
-        return right.count - left.count
-      }
-      if (left.name < right.name) {
-        return -1
-      }
-      return 1
-    })
 }
 
 type ContentDirectory = '' | 'articles' | 'references'
