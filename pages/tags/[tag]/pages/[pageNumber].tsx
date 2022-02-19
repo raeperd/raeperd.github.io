@@ -1,7 +1,7 @@
 import {
   getAllTagsByDir,
   getNotePreviewsByDirAndTag,
-  getNumNotesByTag,
+  getNumNotesByDirAndTag,
   NotePreview,
   Tag,
 } from '../../../../lib/note';
@@ -65,7 +65,7 @@ export async function getStaticPaths() {
 }
 
 function pathsFromTag(tag: string) {
-  const numPage = Math.ceil(getNumNotesByTag(tag) / getPageSize())
+  const numPage = Math.ceil(getNumNotesByDirAndTag('', tag) / getPageSize())
   return Array(numPage)
     .fill(0)
     .map((_, index) => (index + 1))

@@ -2,7 +2,7 @@ import NoteListView from '../../../../../components/NoteListView'
 import {
   getAllTagsByDir,
   getNotePreviewsByDirAndTag,
-  getNumArticlesByTag,
+  getNumNotesByDirAndTag,
   NotePreview,
   Tag,
 } from '../../../../../lib/note';
@@ -67,7 +67,7 @@ export async function getStaticPaths() {
 }
 
 function pathsFromTag(tag: string) {
-  const numPage = Math.ceil(getNumArticlesByTag(tag) / getPageSize())
+  const numPage = Math.ceil(getNumNotesByDirAndTag('articles', tag) / getPageSize())
   return Array(numPage)
     .fill(0)
     .map((_, index) => index + 1)
