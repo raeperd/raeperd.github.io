@@ -3,10 +3,6 @@ import { readdirSync, readFileSync, statSync } from 'fs';
 import matter from 'gray-matter';
 import { getDefaultAuthor } from './configuration';
 
-export function getReferencePreviews(pageNumber: number, pageSize: number): PagedNotePreview {
-  return getNotePreviewsByDir('references', pageNumber, pageSize)
-}
-
 export function getNotePreviewsByDir(dir: ContentDirectory, pageNumber: number, pageSize: number)
   : PagedNotePreview {
   const notes = getNoteParsedPaths(dir)

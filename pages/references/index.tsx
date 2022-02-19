@@ -1,5 +1,5 @@
 import NoteListView from '../../components/NoteListView';
-import { getAllReferenceTags, getReferencePreviews, NotePreview, Tag } from '../../lib/note';
+import { getAllReferenceTags, getNotePreviewsByDir, NotePreview, Tag } from '../../lib/note';
 import { getPageSize, getSiteName } from '../../lib/configuration';
 import TagListHeader from '../../components/TagListHeader';
 
@@ -30,7 +30,7 @@ type ReferencesPageProps = {
 }
 
 export async function getStaticProps(): Promise<{props: ReferencesPageProps}> {
-  const pagedArticles = getReferencePreviews(1, getPageSize())
+  const pagedArticles = getNotePreviewsByDir('references', 1, getPageSize())
   return {
     props: {
       tags: getAllReferenceTags(),
