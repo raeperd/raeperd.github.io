@@ -104,7 +104,7 @@ export interface Tag {
   count?: number
 }
 
-type ContentDirectory = '' | 'articles' | 'references'
+export type ContentDirectory = '' | 'articles' | 'references'
 
 function getNoteParsedPaths(dir: ContentDirectory): ParsedPath[] {
   return getNoteStaticPaths()

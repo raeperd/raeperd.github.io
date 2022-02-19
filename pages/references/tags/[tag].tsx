@@ -1,7 +1,9 @@
+import { GetStaticPaths } from 'next';
 import { getAllTagsByDir, getNotePreviewsByDirAndTag, NotePreview, Tag } from '../../../lib/note';
 import { getPageSize, getSiteName } from '../../../lib/configuration';
 import TagListHeader from '../../../components/TagListHeader';
 import NoteListView from '../../../components/NoteListView';
+import { getStaticTagPathsByDir, TagUrlQuery } from '../../../lib/page';
 
 export default function ReferenceTagPage(
   { tags, title, articles, tag, pageNumber, isFirstPage, isLastPage }: ReferenceTagPageProps,
@@ -49,9 +51,4 @@ export async function getStaticProps({ params }: {params: {tag: string}})
   }
 }
 
-export async function getStaticPaths() {
-  return {
-    paths: getAllTagsByDir('references').map((tag) => ({ params: { tag: tag.name } })),
-    fallback: false,
-  }
-}
+export const getStaticPaths: GetStaticPaths<TagUrlQuery> = () => getStaticTagPathsByDir('references')
