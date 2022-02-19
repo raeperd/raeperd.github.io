@@ -3,10 +3,6 @@ import { readdirSync, readFileSync, statSync } from 'fs';
 import matter from 'gray-matter';
 import { getDefaultAuthor } from './configuration';
 
-export function getArticlePreviews(pageNumber: number, pageSize: number): PagedNotePreview {
-  return getNotePreviewsByDir('articles', pageNumber, pageSize)
-}
-
 export function getReferencePreviews(pageNumber: number, pageSize: number): PagedNotePreview {
   return getNotePreviewsByDir('references', pageNumber, pageSize)
 }

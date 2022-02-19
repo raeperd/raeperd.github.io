@@ -1,4 +1,4 @@
-import { getArticlePreviews, NotePreview } from '../lib/note';
+import { getNotePreviewsByDir, NotePreview } from '../lib/note';
 import NoteListView from '../components/NoteListView';
 import { getPageSize, getSiteName } from '../lib/configuration';
 import getProfile, { Profile } from '../lib/profile';
@@ -45,7 +45,7 @@ interface IndexProps {
 }
 
 export async function getStaticProps(): Promise<{props: IndexProps}> {
-  const pagedArticles = getArticlePreviews(1, getPageSize())
+  const pagedArticles = getNotePreviewsByDir('articles', 1, getPageSize())
   return {
     props: {
       profile: await getProfile(),
