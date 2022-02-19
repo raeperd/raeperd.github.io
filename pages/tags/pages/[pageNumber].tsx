@@ -2,7 +2,7 @@ import NoteListView from '../../../components/NoteListView'
 import {
   getAllTags,
   getNotePreviewsByDir,
-  getNumNotes,
+  getNumNotesByDir,
   NotePreview,
   Tag,
 } from '../../../lib/note';
@@ -52,7 +52,7 @@ export async function getStaticProps({ params }: {params: {pageNumber: string}})
 }
 
 export async function getStaticPaths() {
-  const numPage = Math.ceil(getNumNotes() / getPageSize())
+  const numPage = Math.ceil(getNumNotesByDir('') / getPageSize())
   return {
     paths: Array(numPage)
       .fill(0)

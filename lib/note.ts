@@ -17,16 +17,8 @@ export function getNotePreviewsByDir(dir: ContentDirectory, pageNumber: number, 
   }
 }
 
-export function getNumNotes(): number {
-  return getNoteParsedPaths('').length
-}
-
-export function getNumArticles(): number {
-  return getNoteParsedPaths('articles').length
-}
-
-export function getNumReferences(): number {
-  return getNoteParsedPaths('references').length
+export function getNumNotesByDir(dir: ContentDirectory): number {
+  return getNoteParsedPaths(dir).length
 }
 
 export function getNoteByStaticPath(staticPathToFind: string): Note {

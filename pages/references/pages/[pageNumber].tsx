@@ -1,5 +1,5 @@
 import NoteListView from '../../../components/NoteListView'
-import { getNotePreviewsByDir, getNumReferences, NotePreview } from '../../../lib/note';
+import { getNotePreviewsByDir, getNumNotesByDir, NotePreview } from '../../../lib/note';
 import { getPageSize, getSiteName } from '../../../lib/configuration';
 
 export default function ReferenceListPage(
@@ -40,7 +40,7 @@ export async function getStaticProps({ params }: {params: {pageNumber: string}})
 }
 
 export async function getStaticPaths() {
-  const numPage = Math.ceil(getNumReferences() / getPageSize())
+  const numPage = Math.ceil(getNumNotesByDir('references') / getPageSize())
   return {
     paths: Array(numPage)
       .fill(0)
