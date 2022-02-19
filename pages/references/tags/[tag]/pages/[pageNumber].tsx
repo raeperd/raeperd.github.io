@@ -1,8 +1,8 @@
 import NoteListView from '../../../../../components/NoteListView'
 import {
   getAllTagsByDir,
+  getNotePreviewsByDirAndTag,
   getNumReferencesByTag,
-  getReferencePreviewsByTag,
   NotePreview,
   Tag,
 } from '../../../../../lib/note';
@@ -40,7 +40,8 @@ type PagedReferenceTagPageProps = {
 
 export async function getStaticProps({ params }: {params: {tag: string, pageNumber: string}})
   : Promise<{ props: PagedReferenceTagPageProps }> {
-  const pagedArticles = getReferencePreviewsByTag(
+  const pagedArticles = getNotePreviewsByDirAndTag(
+    'references',
     params.tag,
     parseInt(params.pageNumber, 10),
     getPageSize(),
