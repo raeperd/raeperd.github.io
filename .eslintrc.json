@@ -29,6 +29,7 @@
       }
     ],
     "semi": "off",
+    "no-unused-vars": ["error", { "varsIgnorePattern": "getStaticPaths" }],
     "object-curly-newline": ["error", { "multiline": true }],
     "jsx-a11y/anchor-is-valid": "off",
     "no-use-before-define": "off",

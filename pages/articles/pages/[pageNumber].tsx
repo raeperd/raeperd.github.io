@@ -1,6 +1,8 @@
+import { GetStaticPaths } from 'next';
 import NoteListView from '../../../components/NoteListView'
-import { getNotePreviewsByDir, getNumNotesByDir, NotePreview } from '../../../lib/note';
+import { getNotePreviewsByDir, NotePreview } from '../../../lib/note';
 import { getPageSize, getSiteName } from '../../../lib/configuration';
+import createGetStaticPaths from '../../../lib/createGetStaticPaths';
 
 export default function ArticleListPage(
   { title, articles, pageNumber, isFirstPage, isLastPage }: ArticleListPageProps,
@@ -39,13 +41,5 @@ export async function getStaticProps({ params }: {params: {pageNumber: string}})
   }
 }
 
-export async function getStaticPaths() {
-  const numPage = Math.ceil(getNumNotesByDir('articles') / getPageSize())
-  return {
-    paths: Array(numPage)
-      .fill(0)
-      .map((_, index) => (index + 1))
-      .map((pageNumber) => ({ params: { pageNumber: pageNumber.toString() } })),
-    fallback: false,
-  }
-}
+export const getStaticPaths: GetStaticPaths = createGetStaticPaths('articles', false, true)
+// () => getStaticPageNumberPathsByDir('articles')
