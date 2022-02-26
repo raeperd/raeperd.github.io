@@ -8,7 +8,7 @@ import {
 } from '../../../../../lib/note';
 import { getPageSize, getSiteName } from '../../../../../lib/configuration';
 import TagListHeader from '../../../../../components/TagListHeader';
-import { createGetStaticPaths } from '../../../../../lib/page';
+import createGetStaticPaths from '../../../../../lib/page';
 
 export default function PagedArticlePage(
   { tags, title, articles, tag, pageNumber, isFirstPage, isLastPage }: PagedArticlePageProps,

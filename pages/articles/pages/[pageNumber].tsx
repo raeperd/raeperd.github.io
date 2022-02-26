@@ -2,7 +2,7 @@ import { GetStaticPaths } from 'next';
 import NoteListView from '../../../components/NoteListView'
 import { getNotePreviewsByDir, NotePreview } from '../../../lib/note';
 import { getPageSize, getSiteName } from '../../../lib/configuration';
-import { createGetStaticPaths } from '../../../lib/page';
+import createGetStaticPaths from '../../../lib/page';
 
 export default function ArticleListPage(
   { title, articles, pageNumber, isFirstPage, isLastPage }: ArticleListPageProps,

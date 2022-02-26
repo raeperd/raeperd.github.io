@@ -1,4 +1,3 @@
-import { ParsedUrlQuery } from 'querystring';
 import { GetStaticPaths } from 'next';
 import {
   ContentDirectory,
@@ -8,7 +7,7 @@ import {
 } from './note';
 import { getPageSize } from './configuration';
 
-export function createGetStaticPaths(
+export default function createGetStaticPaths(
   dir: ContentDirectory,
   useTags: boolean,
   usePageNumbers: boolean,
@@ -52,17 +51,4 @@ function pathsFromDirAndTag(dir: ContentDirectory, tag: string) {
     .fill(0)
     .map((_, index) => (index + 1))
     .map((pageNumber) => ({ params: { tag, pageNumber: pageNumber.toString() } }))
-}
-
-export interface TagPageNumberUrlQuery extends ParsedUrlQuery {
-  pageNumber: string
-  tag: string
-}
-
-export interface PageNumberUrlQuery extends ParsedUrlQuery {
-  pageNumber: string
-}
-
-export interface TagUrlQuery extends ParsedUrlQuery {
-  tag: string
 }

@@ -3,7 +3,7 @@ import NoteListView from '../../../components/NoteListView'
 import { getAllTagsByDir, getNotePreviewsByDir, NotePreview, Tag } from '../../../lib/note';
 import { getPageSize, getSiteName } from '../../../lib/configuration';
 import TagListHeader from '../../../components/TagListHeader';
-import { createGetStaticPaths } from '../../../lib/page';
+import createGetStaticPaths from '../../../lib/page';
 
 export default function PagedTagListPage(
   { tags, title, articles, pageNumber, isFirstPage, isLastPage }: PagedTagListPageProps,

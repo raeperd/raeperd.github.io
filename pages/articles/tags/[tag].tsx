@@ -3,7 +3,7 @@ import { getAllTagsByDir, getNotePreviewsByDirAndTag, NotePreview, Tag } from '.
 import { getPageSize, getSiteName } from '../../../lib/configuration';
 import TagListHeader from '../../../components/TagListHeader';
 import NoteListView from '../../../components/NoteListView';
-import { createGetStaticPaths } from '../../../lib/page';
+import createGetStaticPaths from '../../../lib/page';
 
 export default function ArticleTagPage(
   { tags, title, articles, tag, pageNumber, isFirstPage, isLastPage }: ArticleTagPageProps,
