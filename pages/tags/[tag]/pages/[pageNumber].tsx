@@ -8,7 +8,7 @@ import {
 import { getPageSize } from '../../../../lib/configuration';
 import NoteListView from '../../../../components/NoteListView';
 import TagListHeader from '../../../../components/TagListHeader';
-import createGetStaticPaths from '../../../../lib/page';
+import createGetStaticPaths from '../../../../lib/createGetStaticPaths';
 
 export default function TagPageListPage(
   { tags, tag, articles, pageNumber, isFirstPage, isLastPage }: TagPageListProps,
