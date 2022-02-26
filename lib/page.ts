@@ -41,7 +41,7 @@ const getStaticPageNumberPathsByDir = async (dir: ContentDirectory) => {
   }
 }
 
-export const getStaticTagPageNumberPathsByDir = async (dir: ContentDirectory) => ({
+const getStaticTagPageNumberPathsByDir = async (dir: ContentDirectory) => ({
   paths: getAllTagsByDir(dir).flatMap((tag) => pathsFromDirAndTag(dir, tag.name)),
   fallback: false,
 })

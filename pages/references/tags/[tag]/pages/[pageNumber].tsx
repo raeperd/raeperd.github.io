@@ -8,7 +8,7 @@ import {
 } from '../../../../../lib/note';
 import { getPageSize, getSiteName } from '../../../../../lib/configuration';
 import TagListHeader from '../../../../../components/TagListHeader';
-import { getStaticTagPageNumberPathsByDir, TagPageNumberUrlQuery } from '../../../../../lib/page';
+import { createGetStaticPaths } from '../../../../../lib/page';
 
 export default function PagedReferenceTagPage(
   { tags, title, articles, tag, pageNumber, isFirstPage, isLastPage }: PagedReferenceTagPageProps,
@@ -60,4 +60,4 @@ export async function getStaticProps({ params }: {params: {tag: string, pageNumb
   }
 }
 
-export const getStaticPaths: GetStaticPaths<TagPageNumberUrlQuery> = () => getStaticTagPageNumberPathsByDir('references')
+export const getStaticPaths: GetStaticPaths = createGetStaticPaths('references', true, true)

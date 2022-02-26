@@ -8,7 +8,7 @@ import {
 import { getPageSize } from '../../../../lib/configuration';
 import NoteListView from '../../../../components/NoteListView';
 import TagListHeader from '../../../../components/TagListHeader';
-import { getStaticTagPageNumberPathsByDir, TagPageNumberUrlQuery } from '../../../../lib/page';
+import { createGetStaticPaths } from '../../../../lib/page';
 
 export default function TagPageListPage(
   { tags, tag, articles, pageNumber, isFirstPage, isLastPage }: TagPageListProps,
@@ -58,4 +58,4 @@ export async function getStaticProps({ params }: {params: {tag: string, pageNumb
   }
 }
 
-export const getStaticPaths: GetStaticPaths<TagPageNumberUrlQuery> = () => getStaticTagPageNumberPathsByDir('')
+export const getStaticPaths: GetStaticPaths = createGetStaticPaths('', true, true)
