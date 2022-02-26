@@ -1,4 +1,5 @@
 import { ParsedUrlQuery } from 'querystring';
+import { GetStaticPaths } from 'next';
 import {
   ContentDirectory,
   getAllTagsByDir,
@@ -7,7 +8,24 @@ import {
 } from './note';
 import { getPageSize } from './configuration';
 
-export const getStaticTagPathsByDir = async (dir: ContentDirectory) => ({
+export function createGetStaticPaths(
+  dir: ContentDirectory,
+  useTags: boolean,
+  usePageNumbers: boolean,
+): GetStaticPaths {
+  if (useTags && !usePageNumbers) {
+    return () => getStaticTagPathsByDir(dir)
+  }
+  if (!useTags && usePageNumbers) {
+    return () => getStaticPageNumberPathsByDir(dir)
+  }
+  if (useTags && usePageNumbers) {
+    return () => getStaticTagPageNumberPathsByDir(dir)
+  }
+  throw new Error('Invalid options for createGetStaticPaths')
+}
+
+const getStaticTagPathsByDir = async (dir: ContentDirectory) => ({
   paths: getAllTagsByDir(dir).map((tag) => ({ params: { tag: tag.name } })),
   fallback: false,
 })
