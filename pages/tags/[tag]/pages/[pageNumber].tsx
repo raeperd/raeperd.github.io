@@ -15,11 +15,11 @@ export default function TagPageListPage(
 ) {
   return (
     <>
-      <TagListHeader tags={tags} basePath="" />
+      <TagListHeader tags={tags} tagBasePath="" />
       <NoteListView
         title={tag}
-        mainTitle={tag}
-        basePath={`/tags/${tag}`}
+        header={tag}
+        noteBasePath={`/tags/${tag}`}
         notes={articles}
         pageNumber={pageNumber}
         isFirstPage={isFirstPage}

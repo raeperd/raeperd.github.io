@@ -8,11 +8,11 @@ export default function ArticlesPage(
 ) {
   return (
     <>
-      <TagListHeader tags={tags} basePath="/articles" />
+      <TagListHeader tags={tags} tagBasePath="/articles" />
       <NoteListView
         title={title}
         notes={articles}
-        basePath="/articles"
+        noteBasePath="/articles"
         pageNumber={pageNumber}
         isFirstPage={isFirstPage}
         isLastPage={isLastPage}

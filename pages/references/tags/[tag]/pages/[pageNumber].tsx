@@ -15,12 +15,12 @@ export default function PagedReferenceTagPage(
 ) {
   return (
     <>
-      <TagListHeader tags={tags} basePath="/references" />
+      <TagListHeader tags={tags} tagBasePath="/references" />
       <NoteListView
         title={title}
-        mainTitle={tag}
+        header={tag}
         notes={articles}
-        basePath={`/references/tags/${tag}`}
+        noteBasePath={`/references/tags/${tag}`}
         pageNumber={pageNumber}
         isFirstPage={isFirstPage}
         isLastPage={isLastPage}
