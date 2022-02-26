@@ -30,7 +30,7 @@ const getStaticTagPathsByDir = async (dir: ContentDirectory) => ({
   fallback: false,
 })
 
-export const getStaticPageNumberPathsByDir = async (dir: ContentDirectory) => {
+const getStaticPageNumberPathsByDir = async (dir: ContentDirectory) => {
   const numPage = Math.ceil(getNumNotesByDir(dir) / getPageSize())
   return {
     paths: Array(numPage)

@@ -2,7 +2,7 @@ import { GetStaticPaths } from 'next';
 import NoteListView from '../../../components/NoteListView'
 import { getNotePreviewsByDir, NotePreview } from '../../../lib/note';
 import { getPageSize, getSiteName } from '../../../lib/configuration';
-import { getStaticPageNumberPathsByDir, PageNumberUrlQuery } from '../../../lib/page';
+import { createGetStaticPaths } from '../../../lib/page';
 
 export default function ReferenceListPage(
   { title, articles, pageNumber, isFirstPage, isLastPage }: ReferenceListPageProps,
@@ -41,4 +41,5 @@ export async function getStaticProps({ params }: {params: {pageNumber: string}})
   }
 }
 
-export const getStaticPaths: GetStaticPaths<PageNumberUrlQuery> = () => getStaticPageNumberPathsByDir('references')
+export const getStaticPaths: GetStaticPaths = createGetStaticPaths('references', false, true)
+// () => getStaticPageNumberPathsByDir('references')
