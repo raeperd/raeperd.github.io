@@ -19,7 +19,7 @@ export default function NoteListView(
 }
 
 export interface NoteListViewProps {
-  header?: string,
+  header: null | string,
   notes: NotePreview[],
   noteBasePath?: string,
   pageNumber: number,

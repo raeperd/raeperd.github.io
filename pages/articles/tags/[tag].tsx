@@ -6,13 +6,13 @@ import NoteListView, { NoteListViewProps } from '../../../components/NoteListVie
 import createGetStaticPaths from '../../../lib/createGetStaticPaths';
 
 export default function ArticleTagPage(
-  { tags, notes, tag, pageNumber, isFirstPage, isLastPage }: ArticleTagPageProps,
+  { tags, header, notes, tag, pageNumber, isFirstPage, isLastPage }: ArticleTagPageProps,
 ) {
   return (
     <>
       <TagListHeader tags={tags} tagBasePath="/articles" />
       <NoteListView
-        header={tag}
+        header={header}
         notes={notes}
         noteBasePath={`/articles/tags/${tag}`}
         pageNumber={pageNumber}
@@ -35,6 +35,7 @@ export async function getStaticProps({ params }: {params: {tag: string}})
     props: {
       tags: getAllTagsByDir('articles'),
       tag: params.tag,
+      header: `Articles #${params.tag}`,
       notes: pagedArticles.notes,
       pageNumber: pagedArticles.pageNumber,
       isFirstPage: pagedArticles.isFirstPage,

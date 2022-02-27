@@ -4,12 +4,13 @@ import NoteListView, { NoteListViewProps } from '../../components/NoteListView';
 import TagListHeader from '../../components/TagListHeader';
 
 export default function TagsPage(
-  { tags, notes, pageNumber, isFirstPage, isLastPage }: TagsPageProps,
+  { tags, header, notes, pageNumber, isFirstPage, isLastPage }: TagsPageProps,
 ) {
   return (
     <>
       <TagListHeader tags={tags} tagBasePath="" />
       <NoteListView
+        header={header}
         notes={notes}
         noteBasePath="/tags"
         pageNumber={pageNumber}
@@ -29,6 +30,7 @@ export async function getStaticProps(): Promise<{props: TagsPageProps}> {
   return {
     props: {
       tags: getAllTagsByDir(''),
+      header: 'Tags',
       notes: pagedNotes.notes,
       pageNumber: pagedNotes.pageNumber,
       isFirstPage: pagedNotes.isFirstPage,

@@ -40,6 +40,7 @@ export async function getStaticProps({ params }: {params: {tag: string, pageNumb
     props: {
       tags: getAllTagsByDir('articles'),
       tag: params.tag,
+      header: params.tag,
       notes: pagedArticles.notes,
       pageNumber: pagedArticles.pageNumber,
       isFirstPage: pagedArticles.isFirstPage,

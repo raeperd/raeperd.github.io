@@ -5,10 +5,11 @@ import { getPageSize } from '../../../lib/configuration';
 import createGetStaticPaths from '../../../lib/createGetStaticPaths';
 
 export default function ReferenceListPage(
-  { notes, pageNumber, isFirstPage, isLastPage }: ReferenceListPageProps,
+  { header, notes, pageNumber, isFirstPage, isLastPage }: ReferenceListPageProps,
 ) {
   return (
     <NoteListView
+      header={header}
       notes={notes}
       noteBasePath="/references"
       pageNumber={pageNumber}
@@ -25,6 +26,7 @@ export async function getStaticProps({ params }: {params: {pageNumber: string}})
   const pagedArticles = getNotePreviewsByDir('references', parseInt(params.pageNumber, 10), getPageSize())
   return {
     props: {
+      header: 'References',
       notes: pagedArticles.notes,
       pageNumber: pagedArticles.pageNumber,
       isFirstPage: pagedArticles.isFirstPage,

@@ -4,12 +4,13 @@ import { getPageSize } from '../../lib/configuration';
 import TagListHeader from '../../components/TagListHeader';
 
 export default function ReferencesPage(
-  { tags, notes, pageNumber, isFirstPage, isLastPage }: ReferencesPageProps,
+  { tags, header, notes, pageNumber, isFirstPage, isLastPage }: ReferencesPageProps,
 ) {
   return (
     <>
       <TagListHeader tags={tags} tagBasePath="/references" />
       <NoteListView
+        header={header}
         notes={notes}
         pageNumber={pageNumber}
         isFirstPage={isFirstPage}
@@ -28,6 +29,7 @@ export async function getStaticProps(): Promise<{props: ReferencesPageProps}> {
   return {
     props: {
       tags: getAllTagsByDir('references'),
+      header: 'References',
       notes: pagedArticles.notes,
       pageNumber: pagedArticles.pageNumber,
       isFirstPage: pagedArticles.isFirstPage,
