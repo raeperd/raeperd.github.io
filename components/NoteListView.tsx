@@ -18,7 +18,7 @@ export default function NoteListView(
   )
 }
 
-type NoteListViewProps = {
+export interface NoteListViewProps {
   header?: string,
   notes: NotePreview[],
   noteBasePath?: string,

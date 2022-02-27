@@ -1,24 +1,19 @@
 import { GetStaticPaths } from 'next';
-import NoteListView from '../../../../../components/NoteListView'
-import {
-  getAllTagsByDir,
-  getNotePreviewsByDirAndTag,
-  NotePreview,
-  Tag,
-} from '../../../../../lib/note';
+import NoteListView, { NoteListViewProps } from '../../../../../components/NoteListView'
+import { getAllTagsByDir, getNotePreviewsByDirAndTag, Tag } from '../../../../../lib/note';
 import { getPageSize } from '../../../../../lib/configuration';
 import TagListHeader from '../../../../../components/TagListHeader';
 import createGetStaticPaths from '../../../../../lib/createGetStaticPaths';
 
 export default function PagedReferenceTagPage(
-  { tags, articles, tag, pageNumber, isFirstPage, isLastPage }: PagedReferenceTagPageProps,
+  { tags, notes, tag, pageNumber, isFirstPage, isLastPage }: PagedReferenceTagPageProps,
 ) {
   return (
     <>
       <TagListHeader tags={tags} tagBasePath="/references" />
       <NoteListView
         header={tag}
-        notes={articles}
+        notes={notes}
         noteBasePath={`/references/tags/${tag}`}
         pageNumber={pageNumber}
         isFirstPage={isFirstPage}
@@ -28,13 +23,9 @@ export default function PagedReferenceTagPage(
   )
 }
 
-type PagedReferenceTagPageProps = {
+interface PagedReferenceTagPageProps extends NoteListViewProps {
   tags: Tag[],
   tag: string,
-  articles: NotePreview[],
-  pageNumber: number,
-  isFirstPage: boolean,
-  isLastPage: boolean
 }
 
 export async function getStaticProps({ params }: {params: {tag: string, pageNumber: string}})
@@ -49,7 +40,7 @@ export async function getStaticProps({ params }: {params: {tag: string, pageNumb
     props: {
       tags: getAllTagsByDir('references'),
       tag: params.tag,
-      articles: pagedArticles.notes,
+      notes: pagedArticles.notes,
       pageNumber: pagedArticles.pageNumber,
       isFirstPage: pagedArticles.isFirstPage,
       isLastPage: pagedArticles.isLastPage,

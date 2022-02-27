@@ -1,6 +1,6 @@
-import { getAllTagsByDir, getNotePreviewsByDir, NotePreview, Tag } from '../../lib/note';
+import { getAllTagsByDir, getNotePreviewsByDir, Tag } from '../../lib/note';
 import { getPageSize } from '../../lib/configuration';
-import NoteListView from '../../components/NoteListView';
+import NoteListView, { NoteListViewProps } from '../../components/NoteListView';
 import TagListHeader from '../../components/TagListHeader';
 
 export default function TagsPage(
@@ -20,12 +20,8 @@ export default function TagsPage(
   )
 }
 
-interface TagsPageProps {
+interface TagsPageProps extends NoteListViewProps {
   tags: Tag[],
-  notes: NotePreview[],
-  pageNumber: number,
-  isFirstPage: boolean,
-  isLastPage: boolean
 }
 
 export async function getStaticProps(): Promise<{props: TagsPageProps}> {
