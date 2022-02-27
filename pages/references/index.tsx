@@ -1,16 +1,15 @@
 import NoteListView from '../../components/NoteListView';
 import { getAllTagsByDir, getNotePreviewsByDir, NotePreview, Tag } from '../../lib/note';
-import { getPageSize, getSiteName } from '../../lib/configuration';
+import { getPageSize } from '../../lib/configuration';
 import TagListHeader from '../../components/TagListHeader';
 
 export default function ReferencesPage(
-  { tags, title, articles, pageNumber, isFirstPage, isLastPage }: ReferencesPageProps,
+  { tags, articles, pageNumber, isFirstPage, isLastPage }: ReferencesPageProps,
 ) {
   return (
     <>
       <TagListHeader tags={tags} tagBasePath="/references" />
       <NoteListView
-        title={title}
         notes={articles}
         pageNumber={pageNumber}
         isFirstPage={isFirstPage}
@@ -22,7 +21,6 @@ export default function ReferencesPage(
 
 type ReferencesPageProps = {
   tags: Tag[],
-  title: string,
   articles: NotePreview[],
   pageNumber: number,
   isFirstPage: boolean,
@@ -34,7 +32,6 @@ export async function getStaticProps(): Promise<{props: ReferencesPageProps}> {
   return {
     props: {
       tags: getAllTagsByDir('references'),
-      title: getSiteName(),
       articles: pagedArticles.notes,
       pageNumber: pagedArticles.pageNumber,
       isFirstPage: pagedArticles.isFirstPage,

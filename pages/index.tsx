@@ -1,17 +1,16 @@
 import { getNotePreviewsByDir, NotePreview } from '../lib/note';
 import NoteListView from '../components/NoteListView';
-import { getPageSize, getSiteName } from '../lib/configuration';
+import { getPageSize } from '../lib/configuration';
 import getProfile, { Profile } from '../lib/profile';
 import { SocialNav } from '../components/SocialNav';
 
 export default function Index(
-  { profile, title, articles, pageNumber, isLastPage, isFirstPage }: IndexProps,
+  { profile, articles, pageNumber, isLastPage, isFirstPage }: IndexProps,
 ) {
   return (
     <>
       <ProfileView profile={profile} />
       <NoteListView
-        title={title}
         notes={articles}
         pageNumber={pageNumber}
         isFirstPage={isFirstPage}
@@ -37,7 +36,6 @@ function ProfileView({ profile }: {profile: Profile }) {
 
 interface IndexProps {
   profile: Profile,
-  title: string,
   articles: NotePreview[],
   pageNumber: number,
   isFirstPage: boolean,
@@ -49,7 +47,6 @@ export async function getStaticProps(): Promise<{props: IndexProps}> {
   return {
     props: {
       profile: await getProfile(),
-      title: getSiteName(),
       articles: pagedArticles.notes,
       pageNumber: pagedArticles.pageNumber,
       isFirstPage: pagedArticles.isFirstPage,

@@ -17,7 +17,6 @@ export default function TagPageListPage(
     <>
       <TagListHeader tags={tags} tagBasePath="" />
       <NoteListView
-        title={tag}
         header={tag}
         noteBasePath={`/tags/${tag}`}
         notes={articles}

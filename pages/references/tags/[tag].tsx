@@ -1,18 +1,17 @@
 import { GetStaticPaths } from 'next';
 import { getAllTagsByDir, getNotePreviewsByDirAndTag, NotePreview, Tag } from '../../../lib/note';
-import { getPageSize, getSiteName } from '../../../lib/configuration';
+import { getPageSize } from '../../../lib/configuration';
 import TagListHeader from '../../../components/TagListHeader';
 import NoteListView from '../../../components/NoteListView';
 import createGetStaticPaths from '../../../lib/createGetStaticPaths';
 
 export default function ReferenceTagPage(
-  { tags, title, articles, tag, pageNumber, isFirstPage, isLastPage }: ReferenceTagPageProps,
+  { tags, articles, tag, pageNumber, isFirstPage, isLastPage }: ReferenceTagPageProps,
 ) {
   return (
     <>
       <TagListHeader tags={tags} tagBasePath="/references" />
       <NoteListView
-        title={title}
         header={tag}
         notes={articles}
         noteBasePath={`/references/tags/${tag}`}
@@ -27,7 +26,6 @@ export default function ReferenceTagPage(
 
 type ReferenceTagPageProps = {
   tags: Tag[],
-  title: string,
   tag: string,
   articles: NotePreview[],
   pageNumber: number,
@@ -41,7 +39,6 @@ export async function getStaticProps({ params }: {params: {tag: string}})
   return {
     props: {
       tags: getAllTagsByDir('references'),
-      title: getSiteName(),
       tag: params.tag,
       articles: pagedArticles.notes,
       pageNumber: pagedArticles.pageNumber,

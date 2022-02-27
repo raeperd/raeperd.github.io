@@ -1,15 +1,14 @@
 import { GetStaticPaths } from 'next';
 import NoteListView from '../../../components/NoteListView'
 import { getNotePreviewsByDir, NotePreview } from '../../../lib/note';
-import { getPageSize, getSiteName } from '../../../lib/configuration';
+import { getPageSize } from '../../../lib/configuration';
 import createGetStaticPaths from '../../../lib/createGetStaticPaths';
 
 export default function ArticleListPage(
-  { title, articles, pageNumber, isFirstPage, isLastPage }: ArticleListPageProps,
+  { articles, pageNumber, isFirstPage, isLastPage }: ArticleListPageProps,
 ) {
   return (
     <NoteListView
-      title={title}
       notes={articles}
       noteBasePath="/articles"
       pageNumber={pageNumber}
@@ -20,7 +19,6 @@ export default function ArticleListPage(
 }
 
 type ArticleListPageProps = {
-  title: string,
   articles: NotePreview[],
   pageNumber: number,
   isFirstPage: boolean,
@@ -32,7 +30,6 @@ export async function getStaticProps({ params }: {params: {pageNumber: string}})
   const pagedArticles = getNotePreviewsByDir('articles', parseInt(params.pageNumber, 10), getPageSize())
   return {
     props: {
-      title: getSiteName(),
       articles: pagedArticles.notes,
       pageNumber: pagedArticles.pageNumber,
       isFirstPage: pagedArticles.isFirstPage,

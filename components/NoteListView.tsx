@@ -1,16 +1,12 @@
-import Head from 'next/head';
 import Link from 'next/link';
 import { NotePreview } from '../lib/note';
 
 export default function NoteListView(
-  { title, header, notes, noteBasePath, pageNumber, isFirstPage, isLastPage }
+  { header, notes, noteBasePath, pageNumber, isFirstPage, isLastPage }
     : NoteListViewProps,
 ) {
   return (
     <>
-      <Head>
-        <title>{title}</title>
-      </Head>
       {header && <h1 className="main-title">{header}</h1>}
       {notes.map((note) => (
         <NotePreviewItem note={note} key={note.staticPath} />))}
@@ -23,7 +19,6 @@ export default function NoteListView(
 }
 
 type NoteListViewProps = {
-  title: string,
   header?: string,
   notes: NotePreview[],
   noteBasePath?: string,
