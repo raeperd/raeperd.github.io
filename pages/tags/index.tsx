@@ -1,18 +1,18 @@
-import { getAllTagsByDir, getNotePreviewsByDir, NotePreview, Tag } from '../../lib/note';
-import { getPageSize, getSiteName } from '../../lib/configuration';
-import NoteListView from '../../components/NoteListView';
+import { getAllTagsByDir, getNotePreviewsByDir, Tag } from '../../lib/note';
+import { getPageSize } from '../../lib/configuration';
+import NoteListView, { NoteListViewProps } from '../../components/NoteListView';
 import TagListHeader from '../../components/TagListHeader';
 
 export default function TagsPage(
-  { tags, title, notes, pageNumber, isFirstPage, isLastPage }: TagsPageProps,
+  { tags, header, notes, pageNumber, isFirstPage, isLastPage }: TagsPageProps,
 ) {
   return (
     <>
-      <TagListHeader tags={tags} basePath="" />
+      <TagListHeader tags={tags} tagBasePath="" />
       <NoteListView
-        title={title}
+        header={header}
         notes={notes}
-        basePath="/tags"
+        basePath="/tags/"
         pageNumber={pageNumber}
         isFirstPage={isFirstPage}
         isLastPage={isLastPage}
@@ -21,13 +21,8 @@ export default function TagsPage(
   )
 }
 
-interface TagsPageProps {
+interface TagsPageProps extends NoteListViewProps {
   tags: Tag[],
-  title: string,
-  notes: NotePreview[],
-  pageNumber: number,
-  isFirstPage: boolean,
-  isLastPage: boolean
 }
 
 export async function getStaticProps(): Promise<{props: TagsPageProps}> {
@@ -35,7 +30,7 @@ export async function getStaticProps(): Promise<{props: TagsPageProps}> {
   return {
     props: {
       tags: getAllTagsByDir(''),
-      title: getSiteName(),
+      header: 'Tags',
       notes: pagedNotes.notes,
       pageNumber: pagedNotes.pageNumber,
       isFirstPage: pagedNotes.isFirstPage,

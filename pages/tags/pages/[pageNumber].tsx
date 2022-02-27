@@ -1,20 +1,20 @@
 import { GetStaticPaths } from 'next';
-import NoteListView from '../../../components/NoteListView'
-import { getAllTagsByDir, getNotePreviewsByDir, NotePreview, Tag } from '../../../lib/note';
-import { getPageSize, getSiteName } from '../../../lib/configuration';
+import NoteListView, { NoteListViewProps } from '../../../components/NoteListView'
+import { getAllTagsByDir, getNotePreviewsByDir, Tag } from '../../../lib/note';
+import { getPageSize } from '../../../lib/configuration';
 import TagListHeader from '../../../components/TagListHeader';
 import createGetStaticPaths from '../../../lib/createGetStaticPaths';
 
 export default function PagedTagListPage(
-  { tags, title, articles, pageNumber, isFirstPage, isLastPage }: PagedTagListPageProps,
+  { tags, header, notes, pageNumber, isFirstPage, isLastPage }: PagedTagListPageProps,
 ) {
   return (
     <>
-      <TagListHeader tags={tags} basePath="" />
+      <TagListHeader tags={tags} tagBasePath="" />
       <NoteListView
-        title={title}
-        notes={articles}
-        basePath="/tags"
+        header={header}
+        notes={notes}
+        basePath="/tags/"
         pageNumber={pageNumber}
         isFirstPage={isFirstPage}
         isLastPage={isLastPage}
@@ -23,13 +23,8 @@ export default function PagedTagListPage(
   )
 }
 
-type PagedTagListPageProps = {
+interface PagedTagListPageProps extends NoteListViewProps {
   tags: Tag[],
-  title: string,
-  articles: NotePreview[],
-  pageNumber: number,
-  isFirstPage: boolean,
-  isLastPage: boolean
 }
 
 export async function getStaticProps({ params }: {params: {pageNumber: string}})
@@ -38,8 +33,8 @@ export async function getStaticProps({ params }: {params: {pageNumber: string}})
   return {
     props: {
       tags: getAllTagsByDir(''),
-      title: getSiteName(),
-      articles: pagedArticles.notes,
+      header: null,
+      notes: pagedArticles.notes,
       pageNumber: pagedArticles.pageNumber,
       isFirstPage: pagedArticles.isFirstPage,
       isLastPage: pagedArticles.isLastPage,

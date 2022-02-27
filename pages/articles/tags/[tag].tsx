@@ -1,21 +1,20 @@
 import { GetStaticPaths } from 'next';
-import { getAllTagsByDir, getNotePreviewsByDirAndTag, NotePreview, Tag } from '../../../lib/note';
-import { getPageSize, getSiteName } from '../../../lib/configuration';
+import { getAllTagsByDir, getNotePreviewsByDirAndTag, Tag } from '../../../lib/note';
+import { getPageSize } from '../../../lib/configuration';
 import TagListHeader from '../../../components/TagListHeader';
-import NoteListView from '../../../components/NoteListView';
+import NoteListView, { NoteListViewProps } from '../../../components/NoteListView';
 import createGetStaticPaths from '../../../lib/createGetStaticPaths';
 
 export default function ArticleTagPage(
-  { tags, title, articles, tag, pageNumber, isFirstPage, isLastPage }: ArticleTagPageProps,
+  { tags, header, notes, tag, pageNumber, isFirstPage, isLastPage }: ArticleTagPageProps,
 ) {
   return (
     <>
-      <TagListHeader tags={tags} basePath="/articles" />
+      <TagListHeader tags={tags} tagBasePath="/articles" />
       <NoteListView
-        title={title}
-        mainTitle={tag}
-        notes={articles}
-        basePath={`/articles/tags/${tag}`}
+        header={header}
+        notes={notes}
+        basePath={`/articles/tags/${tag}/`}
         pageNumber={pageNumber}
         isFirstPage={isFirstPage}
         isLastPage={isLastPage}
@@ -24,14 +23,9 @@ export default function ArticleTagPage(
   )
 }
 
-type ArticleTagPageProps = {
+interface ArticleTagPageProps extends NoteListViewProps{
   tags: Tag[],
   tag: string,
-  title: string,
-  articles: NotePreview[],
-  pageNumber: number,
-  isFirstPage: boolean,
-  isLastPage: boolean
 }
 
 export async function getStaticProps({ params }: {params: {tag: string}})
@@ -41,8 +35,8 @@ export async function getStaticProps({ params }: {params: {tag: string}})
     props: {
       tags: getAllTagsByDir('articles'),
       tag: params.tag,
-      title: getSiteName(),
-      articles: pagedArticles.notes,
+      header: `Articles #${params.tag}`,
+      notes: pagedArticles.notes,
       pageNumber: pagedArticles.pageNumber,
       isFirstPage: pagedArticles.isFirstPage,
       isLastPage: pagedArticles.isLastPage,

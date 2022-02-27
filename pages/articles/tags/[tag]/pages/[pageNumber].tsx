@@ -1,26 +1,20 @@
 import { GetStaticPaths } from 'next';
-import NoteListView from '../../../../../components/NoteListView'
-import {
-  getAllTagsByDir,
-  getNotePreviewsByDirAndTag,
-  NotePreview,
-  Tag,
-} from '../../../../../lib/note';
-import { getPageSize, getSiteName } from '../../../../../lib/configuration';
+import NoteListView, { NoteListViewProps } from '../../../../../components/NoteListView'
+import { getAllTagsByDir, getNotePreviewsByDirAndTag, Tag } from '../../../../../lib/note';
+import { getPageSize } from '../../../../../lib/configuration';
 import TagListHeader from '../../../../../components/TagListHeader';
 import createGetStaticPaths from '../../../../../lib/createGetStaticPaths';
 
 export default function PagedArticlePage(
-  { tags, title, articles, tag, pageNumber, isFirstPage, isLastPage }: PagedArticlePageProps,
+  { tags, notes, tag, pageNumber, isFirstPage, isLastPage }: PagedArticlePageProps,
 ) {
   return (
     <>
-      <TagListHeader tags={tags} basePath="/articles" />
+      <TagListHeader tags={tags} tagBasePath="/articles" />
       <NoteListView
-        title={title}
-        mainTitle={tag}
-        notes={articles}
-        basePath={`/articles/tags/${tag}`}
+        header={tag}
+        notes={notes}
+        basePath={`/articles/tags/${tag}/`}
         pageNumber={pageNumber}
         isFirstPage={isFirstPage}
         isLastPage={isLastPage}
@@ -29,14 +23,9 @@ export default function PagedArticlePage(
   )
 }
 
-type PagedArticlePageProps = {
+interface PagedArticlePageProps extends NoteListViewProps{
   tags: Tag[],
   tag: string,
-  title: string,
-  articles: NotePreview[],
-  pageNumber: number,
-  isFirstPage: boolean,
-  isLastPage: boolean
 }
 
 export async function getStaticProps({ params }: {params: {tag: string, pageNumber: string}})
@@ -51,8 +40,8 @@ export async function getStaticProps({ params }: {params: {tag: string, pageNumb
     props: {
       tags: getAllTagsByDir('articles'),
       tag: params.tag,
-      title: getSiteName(),
-      articles: pagedArticles.notes,
+      header: params.tag,
+      notes: pagedArticles.notes,
       pageNumber: pagedArticles.pageNumber,
       isFirstPage: pagedArticles.isFirstPage,
       isLastPage: pagedArticles.isLastPage,

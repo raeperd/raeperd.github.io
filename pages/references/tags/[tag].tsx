@@ -1,21 +1,20 @@
 import { GetStaticPaths } from 'next';
-import { getAllTagsByDir, getNotePreviewsByDirAndTag, NotePreview, Tag } from '../../../lib/note';
-import { getPageSize, getSiteName } from '../../../lib/configuration';
+import { getAllTagsByDir, getNotePreviewsByDirAndTag, Tag } from '../../../lib/note';
+import { getPageSize } from '../../../lib/configuration';
 import TagListHeader from '../../../components/TagListHeader';
-import NoteListView from '../../../components/NoteListView';
+import NoteListView, { NoteListViewProps } from '../../../components/NoteListView';
 import createGetStaticPaths from '../../../lib/createGetStaticPaths';
 
 export default function ReferenceTagPage(
-  { tags, title, articles, tag, pageNumber, isFirstPage, isLastPage }: ReferenceTagPageProps,
+  { tags, header, notes, tag, pageNumber, isFirstPage, isLastPage }: ReferenceTagPageProps,
 ) {
   return (
     <>
-      <TagListHeader tags={tags} basePath="/references" />
+      <TagListHeader tags={tags} tagBasePath="/references" />
       <NoteListView
-        title={title}
-        mainTitle={tag}
-        notes={articles}
-        basePath={`/references/tags/${tag}`}
+        header={header}
+        notes={notes}
+        basePath={`/references/tags/${tag}/`}
         pageNumber={pageNumber}
         isFirstPage={isFirstPage}
         isLastPage={isLastPage}
@@ -25,14 +24,9 @@ export default function ReferenceTagPage(
   )
 }
 
-type ReferenceTagPageProps = {
+interface ReferenceTagPageProps extends NoteListViewProps {
   tags: Tag[],
-  title: string,
   tag: string,
-  articles: NotePreview[],
-  pageNumber: number,
-  isFirstPage: boolean,
-  isLastPage: boolean
 }
 
 export async function getStaticProps({ params }: {params: {tag: string}})
@@ -41,9 +35,9 @@ export async function getStaticProps({ params }: {params: {tag: string}})
   return {
     props: {
       tags: getAllTagsByDir('references'),
-      title: getSiteName(),
       tag: params.tag,
-      articles: pagedArticles.notes,
+      header: `References #${params.tag}`,
+      notes: pagedArticles.notes,
       pageNumber: pagedArticles.pageNumber,
       isFirstPage: pagedArticles.isFirstPage,
       isLastPage: pagedArticles.isLastPage,

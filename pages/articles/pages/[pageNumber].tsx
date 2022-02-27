@@ -1,17 +1,17 @@
 import { GetStaticPaths } from 'next';
-import NoteListView from '../../../components/NoteListView'
-import { getNotePreviewsByDir, NotePreview } from '../../../lib/note';
-import { getPageSize, getSiteName } from '../../../lib/configuration';
+import NoteListView, { NoteListViewProps } from '../../../components/NoteListView'
+import { getNotePreviewsByDir } from '../../../lib/note';
+import { getPageSize } from '../../../lib/configuration';
 import createGetStaticPaths from '../../../lib/createGetStaticPaths';
 
 export default function ArticleListPage(
-  { title, articles, pageNumber, isFirstPage, isLastPage }: ArticleListPageProps,
+  { header, notes, pageNumber, isFirstPage, isLastPage }: ArticleListPageProps,
 ) {
   return (
     <NoteListView
-      title={title}
-      notes={articles}
-      basePath="/articles"
+      header={header}
+      notes={notes}
+      basePath="/articles/"
       pageNumber={pageNumber}
       isFirstPage={isFirstPage}
       isLastPage={isLastPage}
@@ -19,21 +19,15 @@ export default function ArticleListPage(
   )
 }
 
-type ArticleListPageProps = {
-  title: string,
-  articles: NotePreview[],
-  pageNumber: number,
-  isFirstPage: boolean,
-  isLastPage: boolean
-}
+type ArticleListPageProps = NoteListViewProps
 
 export async function getStaticProps({ params }: {params: {pageNumber: string}})
   : Promise<{ props: ArticleListPageProps }> {
   const pagedArticles = getNotePreviewsByDir('articles', parseInt(params.pageNumber, 10), getPageSize())
   return {
     props: {
-      title: getSiteName(),
-      articles: pagedArticles.notes,
+      header: 'Articles',
+      notes: pagedArticles.notes,
       pageNumber: pagedArticles.pageNumber,
       isFirstPage: pagedArticles.isFirstPage,
       isLastPage: pagedArticles.isLastPage,
@@ -42,4 +36,3 @@ export async function getStaticProps({ params }: {params: {pageNumber: string}})
 }
 
 export const getStaticPaths: GetStaticPaths = createGetStaticPaths('articles', false, true)
-// () => getStaticPageNumberPathsByDir('articles')
