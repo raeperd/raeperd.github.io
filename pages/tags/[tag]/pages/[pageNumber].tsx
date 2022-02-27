@@ -13,7 +13,7 @@ export default function TagPageListPage(
       <TagListHeader tags={tags} tagBasePath="" />
       <NoteListView
         header={header}
-        noteBasePath={`/tags/${tag}`}
+        basePath={`/tags/${tag}/`}
         notes={notes}
         pageNumber={pageNumber}
         isFirstPage={isFirstPage}

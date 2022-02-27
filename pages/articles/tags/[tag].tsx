@@ -14,7 +14,7 @@ export default function ArticleTagPage(
       <NoteListView
         header={header}
         notes={notes}
-        noteBasePath={`/articles/tags/${tag}`}
+        basePath={`/articles/tags/${tag}/`}
         pageNumber={pageNumber}
         isFirstPage={isFirstPage}
         isLastPage={isLastPage}

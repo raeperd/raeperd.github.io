@@ -11,7 +11,7 @@ export default function ReferenceListPage(
     <NoteListView
       header={header}
       notes={notes}
-      noteBasePath="/references"
+      basePath="/references/"
       pageNumber={pageNumber}
       isFirstPage={isFirstPage}
       isLastPage={isLastPage}

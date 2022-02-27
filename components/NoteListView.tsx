@@ -2,7 +2,7 @@ import Link from 'next/link';
 import { NotePreview } from '../lib/note';
 
 export default function NoteListView(
-  { header, notes, noteBasePath, pageNumber, isFirstPage, isLastPage }
+  { header, notes, basePath, pageNumber, isFirstPage, isLastPage }
     : NoteListViewProps,
 ) {
   return (
@@ -11,8 +11,8 @@ export default function NoteListView(
       {notes.map((note) => (
         <NotePreviewItem note={note} key={note.staticPath} />))}
       <nav className="main-nav">
-        {!isFirstPage && (<PrevButton basePath={noteBasePath || ''} currentPageNumber={pageNumber} />)}
-        {!isLastPage && (<NextButton basePath={noteBasePath || ''} currentPageNumber={pageNumber} />)}
+        {!isFirstPage && (<PrevButton basePath={basePath || '/'} currentPageNumber={pageNumber} />)}
+        {!isLastPage && (<NextButton basePath={basePath || '/'} currentPageNumber={pageNumber} />)}
       </nav>
     </>
   )
@@ -21,7 +21,7 @@ export default function NoteListView(
 export interface NoteListViewProps {
   header: null | string,
   notes: NotePreview[],
-  noteBasePath?: string,
+  basePath?: string,
   pageNumber: number,
   isFirstPage: boolean,
   isLastPage: boolean,
@@ -41,7 +41,7 @@ function NotePreviewItem({ note }: {note: NotePreview}) {
 }
 
 function PrevButton({ basePath, currentPageNumber }: PagingButtonProps) {
-  const prevPageLink = currentPageNumber === 2 ? `${basePath}/` : `${basePath}/pages/${currentPageNumber - 1}`
+  const prevPageLink = currentPageNumber === 2 ? `${basePath}` : `${basePath}pages/${currentPageNumber - 1}`
   return (
     <Link href={prevPageLink}>
       <a className="prev">&lt; Prev Page</a>
@@ -51,7 +51,7 @@ function PrevButton({ basePath, currentPageNumber }: PagingButtonProps) {
 
 function NextButton({ basePath, currentPageNumber }: PagingButtonProps) {
   return (
-    <Link href={`${basePath}/pages/${currentPageNumber + 1}`}>
+    <Link href={`${basePath}pages/${currentPageNumber + 1}`}>
       <a className="next">Next Page &gt;</a>
     </Link>
   )

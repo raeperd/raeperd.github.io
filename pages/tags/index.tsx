@@ -12,7 +12,7 @@ export default function TagsPage(
       <NoteListView
         header={header}
         notes={notes}
-        noteBasePath="/tags"
+        basePath="/tags/"
         pageNumber={pageNumber}
         isFirstPage={isFirstPage}
         isLastPage={isLastPage}

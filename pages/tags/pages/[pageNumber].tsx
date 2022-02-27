@@ -14,7 +14,7 @@ export default function PagedTagListPage(
       <NoteListView
         header={header}
         notes={notes}
-        noteBasePath="/tags"
+        basePath="/tags/"
         pageNumber={pageNumber}
         isFirstPage={isFirstPage}
         isLastPage={isLastPage}
