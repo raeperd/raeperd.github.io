@@ -12,6 +12,7 @@
       "dom.iterable",
       "esnext"
     ],
+    "types": ["cypress"],
     "allowJs": true,
     "noEmit": true,
     "moduleResolution": "node",

@@ -31,9 +31,13 @@ jobs:
           q: "'1Co8BSgaZDb9ZIGmrmkVH-XB_1-Waa3-O' in parents and (name = 'articles' or name = 'references')"
           path: "./lib/content"
       - run: npm run test
-      - name: build and export
+      - uses: cypress-io/github-action@v2
+        with:
+          build: npm run build
+          start: npm run start
+      - name: export
         run: |
-          npm run build && npm run export
+          npm run export
           touch ./out/.nojekyll
       - uses: peaceiris/actions-gh-pages@v3
         if: github.ref == 'refs/heads/master'

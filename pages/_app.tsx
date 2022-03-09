@@ -67,7 +67,7 @@ function Header({ siteName, menus, socials }: HeaderProps) {
     <header className="header">
       <h1 className="logo">
         <Link href="/">
-          <a className="site-name">{siteName}</a>
+          <a className="site-name" data-cy="header-root-link">{siteName}</a>
         </Link>
         <DarkModeToggleButton />
       </h1>
@@ -84,7 +84,7 @@ function Footer({ siteName }: { siteName: string }) {
         &copy;
         {new Date().getFullYear()}
         &nbsp;
-        <Link href="/"><a>{siteName}</a></Link>
+        <Link href="/"><a data-cy="footer-root-link">{siteName}</a></Link>
       </p>
       <p>
         Powered by
@@ -133,7 +133,12 @@ function MenuNav({ menus }: { menus: MenuProps[] }) {
     <nav className="menu">
       {menus.map((menu) => (
         <Link href={menu.href} key={menu.name}>
-          <a className={router.pathname.startsWith(menu.href) ? 'active' : ''}>{menu.name}</a>
+          <a
+            className={router.pathname.startsWith(menu.href) ? 'active' : ''}
+            data-cy={menu.href}
+          >
+            {menu.name}
+          </a>
         </Link>
       ))}
     </nav>
