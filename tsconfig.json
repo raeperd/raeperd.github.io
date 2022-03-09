@@ -12,7 +12,9 @@
       "dom.iterable",
       "esnext"
     ],
-    "types": ["cypress"],
+    "types": [
+      "jest"
+    ],
     "allowJs": true,
     "noEmit": true,
     "moduleResolution": "node",
@@ -20,12 +22,12 @@
     "isolatedModules": true,
     "incremental": true
   },
-  "exclude": [
-    "blog-starter/node_modules"
-  ],
   "include": [
     "./next-env.d.ts",
     "**/*.ts",
     "**/*.tsx"
+  ],
+  "exclude": [
+    "node_modules"
   ]
 }
