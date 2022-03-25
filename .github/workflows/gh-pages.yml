@@ -21,6 +21,7 @@ jobs:
           restore-keys: |
             ${{ runner.OS }}-
       - run: npm ci
+      - run: mkdir ./lib/content
       - name: Download articles
         uses: raeperd/google-drive-download-action@v1
         with:
@@ -28,7 +29,7 @@ jobs:
           clientId: ${{ secrets.CLIENT_ID }}
           redirectUri: ${{ secrets.REDIRECT_URI }}
           credential_json: ${{ secrets.CREDENTIAL_JSON }}
-          q: "'1Co8BSgaZDb9ZIGmrmkVH-XB_1-Waa3-O' in parents and (name = 'articles' or name = 'references')"
+          q: "'1pVVyuei5f4sCg5WuCLzuXNj7CZsmDKyX' in parents and (name = 'articles' or name = 'references')"
           path: "./lib/content"
       - run: npm run test
       - uses: cypress-io/github-action@v2
