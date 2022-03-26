@@ -18,6 +18,7 @@ export default function MyApp({ Component, pageProps }: AppProps) {
       menus={[
         { name: 'Articles', href: '/articles' },
         { name: 'References', href: '/references' },
+        { name: 'Algorithms', href: '/algorithms' },
         { name: 'Tags', href: '/tags' },
       ]}
       socials={getSocialNavProps()

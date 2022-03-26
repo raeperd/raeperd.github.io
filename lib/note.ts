@@ -33,7 +33,8 @@ export function getNoteByStaticPath(staticPathToFind: string): Note {
 export function getNoteStaticPaths(): string[] {
   return readdirRecursiveSync(CONTENT_DIRECTORY)
     .filter((filePath) => filePath.startsWith(join(CONTENT_DIRECTORY, 'articles'))
-      || filePath.startsWith(join(CONTENT_DIRECTORY, 'references')))
+      || filePath.startsWith(join(CONTENT_DIRECTORY, 'references'))
+      || filePath.startsWith(join(CONTENT_DIRECTORY, 'algorithms')))
     .map((filePath) => filePath.replace(`${CONTENT_DIRECTORY}/`, ''))
 }
 
@@ -88,6 +89,7 @@ export interface NotePreview {
   staticPath: string,
   title: string,
   date: string,
+  idea?: string
   author: string
 }
 
@@ -104,7 +106,7 @@ export interface Tag {
   count?: number
 }
 
-export type ContentDirectory = '' | 'articles' | 'references'
+export type ContentDirectory = '' | 'articles' | 'references' | 'algorithms'
 
 function getNoteParsedPaths(dir: ContentDirectory): ParsedPath[] {
   return getNoteStaticPaths()
@@ -136,6 +138,7 @@ function readNote(notePath: ParsedPath): Note {
       ? data.date.toDateString()
       : statSync(filePath).birthtime.toDateString(),
     tags: data.tags ? data.tags : [],
+    idea: data.idea ? data.idea : '',
     author: data.author ? data.author : getDefaultAuthor(),
     content,
   }
