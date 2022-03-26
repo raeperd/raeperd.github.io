@@ -13,16 +13,16 @@ export default function AlgorithmsPage({ tags, algorithms }: AlgorithmsPageProps
 
 function AlgorithmTable({ algorithms }: {algorithms: Note[]}) {
   return (
-    <table>
+    <table className="algorithm-table">
       <tr>
-        <th>problem</th>
-        <th>idea</th>
-        <th>tags</th>
+        <th>Problem</th>
+        <th>Idea</th>
+        <th>Tags</th>
       </tr>
       {algorithms.map((algorithm) => (
-        <tr key={algorithm.staticPath}>
-          <td><Link href={algorithm.staticPath}>{algorithm.title}</Link></td>
-          <td>{algorithm.idea}</td>
+        <tr>
+          <td className="title"><Link href={algorithm.staticPath}>{algorithm.title}</Link></td>
+          <td><Link href={algorithm.staticPath}>{algorithm.idea}</Link></td>
           <td>{algorithm.tags}</td>
         </tr>
       ))}
