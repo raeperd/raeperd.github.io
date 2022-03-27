@@ -1,11 +1,13 @@
 import Link from 'next/link';
 import TagListHeader from '../../components/TagListHeader';
 import { getAllTagsByDir, getNotePreviewsByDir, Note, Tag } from '../../lib/note';
+import MainTitle from '../../components/MainTitle';
 
-export default function AlgorithmsPage({ tags, algorithms }: AlgorithmsPageProps) {
+export default function AlgorithmsPage({ tags, title, algorithms }: AlgorithmsPageProps) {
   return (
     <>
       <TagListHeader tags={tags} tagBasePath="/algorithms" />
+      <MainTitle title={title} />
       <AlgorithmTable algorithms={algorithms} />
     </>
   )
@@ -32,6 +34,7 @@ function AlgorithmTable({ algorithms }: {algorithms: Note[]}) {
 
 interface AlgorithmsPageProps {
   tags: Tag[]
+  title: string
   algorithms: Note[]
 }
 
@@ -40,6 +43,7 @@ export async function getStaticProps(): Promise<{props: AlgorithmsPageProps}> {
   return {
     props: {
       tags: getAllTagsByDir('algorithms'),
+      title: 'Algorithms',
       algorithms: pagedArticles.notes as Note[],
     },
   }

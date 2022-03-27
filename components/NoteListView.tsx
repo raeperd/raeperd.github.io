@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import { NotePreview } from '../lib/note';
+import MainTitle from './MainTitle';
 
 export default function NoteListView(
   { header, notes, basePath, pageNumber, isFirstPage, isLastPage }
@@ -7,7 +8,7 @@ export default function NoteListView(
 ) {
   return (
     <>
-      {header && <h1 className="main-title">{header}</h1>}
+      {header && <MainTitle title={header} />}
       {notes.map((note) => (
         <NotePreviewItem note={note} key={note.staticPath} />))}
       <nav className="main-nav">
