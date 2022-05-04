@@ -30,7 +30,7 @@ function AlgorithmTable({ algorithms }: {algorithms: Note[]}) {
   )
 }
 
-interface AlgorithmsPageProps {
+export interface AlgorithmsPageProps {
   tags: Tag[]
   title: string
   algorithms: Note[]
