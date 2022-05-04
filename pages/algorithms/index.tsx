@@ -19,13 +19,11 @@ function AlgorithmTable({ algorithms }: {algorithms: Note[]}) {
       <tr>
         <th>Problem</th>
         <th>Idea</th>
-        <th>Tags</th>
       </tr>
       {algorithms.map((algorithm) => (
         <tr>
           <td className="title"><Link href={algorithm.staticPath}>{algorithm.title}</Link></td>
           <td><Link href={algorithm.staticPath}>{algorithm.idea}</Link></td>
-          <td>{algorithm.tags}</td>
         </tr>
       ))}
     </table>
