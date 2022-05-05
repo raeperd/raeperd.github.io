@@ -1,12 +1,12 @@
 import Link from 'next/link';
-import TagListHeader from '../../components/TagListHeader';
-import { getAllTagsByDir, getNotePreviewsByDir, Note, Tag } from '../../lib/note';
-import MainTitle from '../../components/MainTitle';
+import TagListHeader from '../components/TagListHeader';
+import MainTitle from '../components/MainTitle';
+import { getAllTagsByDir, getNotePreviewsByDir, Note, Tag } from '../lib/note';
 
 export default function AlgorithmsPage({ tags, title, algorithms }: AlgorithmsPageProps) {
   return (
     <>
-      <TagListHeader tags={tags} tagBasePath="/algorithms" />
+      <TagListHeader tags={tags} basePath="/algorithms/" />
       <MainTitle title={title} />
       <AlgorithmTable algorithms={algorithms} />
     </>

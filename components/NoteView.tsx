@@ -18,7 +18,7 @@ export default function NoteView({ note }: NoteViewProps) {
         </p>
         <h1>{note.title}</h1>
       </header>
-      <TagListHeader tags={note.tags.map((tag) => ({ name: tag }))} tagBasePath="" />
+      <TagListHeader tags={note.tags.map((tag) => ({ name: tag }))} basePath="/" />
       <section className="post-content">
         <ReactMarkdown
           components={SyntaxHighlight}

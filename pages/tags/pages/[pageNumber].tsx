@@ -6,15 +6,15 @@ import TagListHeader from '../../../components/TagListHeader';
 import createGetStaticPaths from '../../../lib/createGetStaticPaths';
 
 export default function PagedTagListPage(
-  { tags, header, notes, pageNumber, isFirstPage, isLastPage }: PagedTagListPageProps,
+  { tags, header, notes, pagePath, pageNumber, isFirstPage, isLastPage }: PagedTagListPageProps,
 ) {
   return (
     <>
-      <TagListHeader tags={tags} tagBasePath="" />
+      <TagListHeader tags={tags} basePath="/" />
       <NoteListView
         header={header}
         notes={notes}
-        basePath="/tags/"
+        pagePath={pagePath}
         pageNumber={pageNumber}
         isFirstPage={isFirstPage}
         isLastPage={isLastPage}
@@ -35,6 +35,7 @@ export async function getStaticProps({ params }: {params: {pageNumber: string}})
       tags: getAllTagsByDir(''),
       header: null,
       notes: pagedArticles.notes,
+      pagePath: '/tags/',
       pageNumber: pagedArticles.pageNumber,
       isFirstPage: pagedArticles.isFirstPage,
       isLastPage: pagedArticles.isLastPage,

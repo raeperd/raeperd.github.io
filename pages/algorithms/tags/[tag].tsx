@@ -1,7 +1,7 @@
 import { GetStaticPaths } from 'next';
-import AlgorithmsPage, { AlgorithmsPageProps } from '../index';
 import { getAllTagsByDir, getNotePreviewsByDirAndTag, Note } from '../../../lib/note';
 import createGetStaticPaths from '../../../lib/createGetStaticPaths';
+import AlgorithmsPage, { AlgorithmsPageProps } from '../../algorithms';
 
 export default function AlgorithmTagPage(
   { tags, title, algorithms }: AlgorithmsPageProps,

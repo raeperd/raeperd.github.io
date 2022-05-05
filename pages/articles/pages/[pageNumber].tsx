@@ -5,13 +5,13 @@ import { getPageSize } from '../../../lib/configuration';
 import createGetStaticPaths from '../../../lib/createGetStaticPaths';
 
 export default function ArticleListPage(
-  { header, notes, pageNumber, isFirstPage, isLastPage }: ArticleListPageProps,
+  { header, notes, pagePath, pageNumber, isFirstPage, isLastPage }: ArticleListPageProps,
 ) {
   return (
     <NoteListView
       header={header}
       notes={notes}
-      basePath="/articles/"
+      pagePath={pagePath}
       pageNumber={pageNumber}
       isFirstPage={isFirstPage}
       isLastPage={isLastPage}
@@ -28,6 +28,7 @@ export async function getStaticProps({ params }: {params: {pageNumber: string}})
     props: {
       header: 'Articles',
       notes: pagedArticles.notes,
+      pagePath: '/articles/',
       pageNumber: pagedArticles.pageNumber,
       isFirstPage: pagedArticles.isFirstPage,
       isLastPage: pagedArticles.isLastPage,

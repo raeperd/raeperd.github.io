@@ -3,7 +3,7 @@ import { NotePreview } from '../lib/note';
 import MainTitle from './MainTitle';
 
 export default function NoteListView(
-  { header, notes, basePath, pageNumber, isFirstPage, isLastPage }
+  { header, notes, pagePath, pageNumber, isFirstPage, isLastPage }
     : NoteListViewProps,
 ) {
   return (
@@ -12,8 +12,8 @@ export default function NoteListView(
       {notes.map((note) => (
         <NotePreviewItem note={note} key={note.staticPath} />))}
       <nav className="main-nav">
-        {!isFirstPage && (<PrevButton basePath={basePath || '/'} currentPageNumber={pageNumber} />)}
-        {!isLastPage && (<NextButton basePath={basePath || '/'} currentPageNumber={pageNumber} />)}
+        {!isFirstPage && (<PrevButton basePath={pagePath || '/'} currentPageNumber={pageNumber} />)}
+        {!isLastPage && (<NextButton basePath={pagePath || '/'} currentPageNumber={pageNumber} />)}
       </nav>
     </>
   )
@@ -22,7 +22,7 @@ export default function NoteListView(
 export interface NoteListViewProps {
   header: null | string,
   notes: NotePreview[],
-  basePath?: string,
+  pagePath: string,
   pageNumber: number,
   isFirstPage: boolean,
   isLastPage: boolean,
