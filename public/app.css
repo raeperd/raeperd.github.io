@@ -11,8 +11,8 @@
 :root {
     --gap: 3.5rem;
     --y-gap: 8rem;
-    --wide: 140rem;
-    --narrow: 80rem;
+    --wide: 160;
+    --narrow: 100rem;
     --side: calc((var(--wide) - var(--narrow)) / 2);
     --header: 8rem;
     --footer: calc(8rem + var(--safe-bottom));
@@ -700,6 +700,31 @@ header.post-tags {
 .footer a:hover {
     color: var(--pro);
     border-bottom: 1px solid var(--pro);
+}
+
+/* Algorithms page
+ -------------------------------------------------- */
+main table.algorithm-table tr th, td {
+    border-bottom: 1px solid;
+    border-collapse: collapse;
+    padding: 1.5rem;
+}
+
+main table.algorithm-table tr th {
+    font-size: 2.2rem;
+}
+
+main table.algorithm-table tr td.title {
+    font-weight: bold;
+}
+
+main table.algorithm-table tr td a {
+    display: block;
+}
+
+main table.algorithm-table tr:hover * {
+    background-color: #f2f2f2;
+    color: black;
 }
 
 /* 404

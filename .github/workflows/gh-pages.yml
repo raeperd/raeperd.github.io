@@ -29,7 +29,7 @@ jobs:
           clientId: ${{ secrets.CLIENT_ID }}
           redirectUri: ${{ secrets.REDIRECT_URI }}
           credential_json: ${{ secrets.CREDENTIAL_JSON }}
-          q: "'1pVVyuei5f4sCg5WuCLzuXNj7CZsmDKyX' in parents and (name = 'articles' or name = 'references')"
+          q: "'1pVVyuei5f4sCg5WuCLzuXNj7CZsmDKyX' in parents and (name = 'articles' or name = 'references' or name = 'algorithms')"
           path: "./lib/content"
       - run: npm run test
       - uses: cypress-io/github-action@v2
