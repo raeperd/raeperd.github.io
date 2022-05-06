@@ -1,14 +1,16 @@
-import NoteListView, { NoteListViewProps } from '../components/NoteListView';
-import { getAllTagsByDir, getNotePreviewsByDir, Tag } from '../lib/note';
+import NoteListView from '../components/NoteListView';
+import { getAllTagsByDir, getNotePreviewsByDir } from '../lib/note';
 import { getPageSize } from '../lib/configuration';
 import TagListHeader from '../components/TagListHeader';
+import { TaggedNoteListViewProps } from '../components/TaggedNoteListView';
 
 export default function ArticlesPage(
-  { tags, header, notes, pagePath, pageNumber, isFirstPage, isLastPage }: ArticlePageProps,
+  { tags, tagPath, header, notes, pagePath, pageNumber, isFirstPage, isLastPage }
+    : TaggedNoteListViewProps,
 ) {
   return (
     <>
-      <TagListHeader tags={tags} basePath="/articles/" />
+      <TagListHeader tags={tags} basePath={tagPath} />
       <NoteListView
         header={header}
         notes={notes}
@@ -21,15 +23,12 @@ export default function ArticlesPage(
   )
 }
 
-interface ArticlePageProps extends NoteListViewProps{
-  tags: Tag[],
-}
-
-export async function getStaticProps(): Promise<{props: ArticlePageProps}> {
+export async function getStaticProps(): Promise<{props: TaggedNoteListViewProps}> {
   const pagedArticles = getNotePreviewsByDir('articles', 1, getPageSize())
   return {
     props: {
       tags: getAllTagsByDir('articles'),
+      tagPath: '/articles/',
       header: 'Articles',
       notes: pagedArticles.notes,
       pagePath: '/articles/',

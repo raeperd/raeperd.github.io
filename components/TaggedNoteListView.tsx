@@ -20,6 +20,6 @@ export default function TaggedNoteListView({
   )
 }
 
-interface TaggedNoteListViewProps extends Omit<TagListHeaderProps, 'basePath'>, NoteListViewProps {
+export interface TaggedNoteListViewProps extends Omit<TagListHeaderProps, 'basePath'>, NoteListViewProps {
   tagPath: string,
 }
