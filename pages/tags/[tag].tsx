@@ -1,42 +1,21 @@
 import { GetStaticPaths } from 'next';
-import { getAllTagsByDir, getNotePreviewsByDirAndTag, Tag } from '../../lib/note';
-import NoteListView, { NoteListViewProps } from '../../components/NoteListView';
+import { getAllTagsByDir, getNotePreviewsByDirAndTag } from '../../lib/note';
 import { getPageSize } from '../../lib/configuration';
-import TagListHeader from '../../components/TagListHeader';
 import createGetStaticPaths from '../../lib/createGetStaticPaths';
+import TaggedNoteListView, { TaggedNoteListViewProps } from '../../components/TaggedNoteListView';
 
-export default function TagPage(
-  { tags, tag, header, notes, pageNumber, isFirstPage, isLastPage }: TagPageProps,
-) {
-  return (
-    <>
-      <TagListHeader tags={tags} tagBasePath="" />
-      <NoteListView
-        header={header}
-        basePath={`/tags/${tag}/`}
-        notes={notes}
-        pageNumber={pageNumber}
-        isFirstPage={isFirstPage}
-        isLastPage={isLastPage}
-      />
-    </>
-  )
-}
-
-interface TagPageProps extends NoteListViewProps{
-  tags: Tag[]
-  tag: string,
-}
+export default TaggedNoteListView
 
 export async function getStaticProps({ params }: {params: {tag: string}}):
-  Promise<{props: TagPageProps}> {
+  Promise<{props: TaggedNoteListViewProps}> {
   const pagedArticles = getNotePreviewsByDirAndTag('', params.tag, 1, getPageSize())
   return {
     props: {
       tags: getAllTagsByDir(''),
-      tag: params.tag,
+      tagPath: '/',
       header: `#${params.tag}`,
       notes: pagedArticles.notes,
+      pagePath: `/tags/${params.tag}/`,
       pageNumber: pagedArticles.pageNumber,
       isFirstPage: pagedArticles.isFirstPage,
       isLastPage: pagedArticles.isLastPage,

@@ -5,7 +5,7 @@ import getProfile, { Profile } from '../lib/profile';
 import { SocialNav } from '../components/SocialNav';
 
 export default function Index(
-  { profile, header, notes, pageNumber, isLastPage, isFirstPage }: IndexProps,
+  { profile, header, notes, pagePath, pageNumber, isLastPage, isFirstPage }: IndexProps,
 ) {
   return (
     <>
@@ -13,6 +13,7 @@ export default function Index(
       <NoteListView
         header={header}
         notes={notes}
+        pagePath={pagePath}
         pageNumber={pageNumber}
         isFirstPage={isFirstPage}
         isLastPage={isLastPage}
@@ -46,6 +47,7 @@ export async function getStaticProps(): Promise<{props: IndexProps}> {
       profile: await getProfile(),
       header: null,
       notes: pagedArticles.notes,
+      pagePath: '/',
       pageNumber: pagedArticles.pageNumber,
       isFirstPage: pagedArticles.isFirstPage,
       isLastPage: pagedArticles.isLastPage,
