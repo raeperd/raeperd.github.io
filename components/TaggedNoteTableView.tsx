@@ -1,38 +1,57 @@
 import Link from 'next/link';
-import TagListHeader, { TagListHeaderProps } from './TagListHeader';
-import { NoteListViewProps } from './NoteListView';
+import TagListHeader from './TagListHeader';
 import MainTitle from './MainTitle';
-import { NotePreview } from '../lib/note';
+import { TaggedNoteListViewProps } from './TaggedNoteListView';
+import { NoteListViewProps } from './NoteListView';
+import PaginationButton from './PaginationButton';
 
 export default function TaggedNoteTableView(
-  { header, tagPath, tags, notes }: TaggedNoteTableViewProps,
+  {
+    tagPath, tags,
+    header, notes, pagePath, pageNumber, isFirstPage, isLastPage,
+  }: TaggedNoteTableViewProps,
 ) {
   return (
     <>
-      {header && <MainTitle title={header} />}
       <TagListHeader tags={tags} basePath={tagPath} />
-      <NoteTableView algorithms={notes} />
+      <NoteTableView
+        header={header}
+        notes={notes}
+        pagePath={pagePath}
+        pageNumber={pageNumber}
+        isFirstPage={isFirstPage}
+        isLastPage={isLastPage}
+      />
     </>
   )
 }
 
-export interface TaggedNoteTableViewProps extends Omit<TagListHeaderProps, 'basePath'>, Pick<NoteListViewProps, 'notes' | 'header'> {
-  tagPath: string,
-}
+export type TaggedNoteTableViewProps = TaggedNoteListViewProps
 
-export function NoteTableView({ algorithms }: { algorithms: NotePreview[] }) {
+function NoteTableView(
+  { header, notes, pagePath, pageNumber, isFirstPage, isLastPage }: NoteListViewProps,
+) {
   return (
-    <table className="algorithm-table">
-      <tr>
-        <th>Problem</th>
-        <th>Idea</th>
-      </tr>
-      {algorithms.map((algorithm) => (
+    <>
+      {header && <MainTitle title={header} />}
+      <table className="algorithm-table">
         <tr>
-          <td className="title"><Link href={algorithm.staticPath}>{algorithm.title}</Link></td>
-          <td><Link href={algorithm.staticPath}>{algorithm.idea}</Link></td>
+          <th>Problem</th>
+          <th>Idea</th>
         </tr>
-      ))}
-    </table>
+        {notes.map((note) => (
+          <tr key={note.staticPath}>
+            <td className="title"><Link href={note.staticPath}>{note.title}</Link></td>
+            <td><Link href={note.staticPath}>{note.idea}</Link></td>
+          </tr>
+        ))}
+      </table>
+      <PaginationButton
+        isFirstPage={isFirstPage}
+        isLastPage={isLastPage}
+        pagePath={pagePath}
+        pageNumber={pageNumber}
+      />
+    </>
   )
 }
