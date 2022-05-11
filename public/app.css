@@ -191,6 +191,10 @@ img {
     align-items: center;
 }
 
+.header a:hover {
+    text-decoration: underline;
+}
+
 .logo {
     display: flex;
     min-width: var(--side);
@@ -350,6 +354,11 @@ img {
     transform: scale(0.99);
 }
 
+.post-entry:hover, .post-entry:hover time {
+    background-color: #f2f2f2;
+    color: black;
+}
+
 .post-entry h2 {
     margin-bottom: 0.2rem;
     font-size: 3rem;
@@ -407,6 +416,10 @@ header.post-tags {
     background: rgba(var(--dark), 0.05);
     border-radius: 0.5rem;
     padding-inline: 2rem;
+}
+
+.post-tags a:hover {
+    background: rgba(var(--dark), 0.2);
 }
 
 .post-tags a + a {
