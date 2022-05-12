@@ -9,7 +9,7 @@ describe('Header', () => {
   })
 
   describe('internal links', () => {
-    ['/articles', '/references', '/tags'].forEach((url) => {
+    ['/articles', '/references', '/algorithms', '/tags'].forEach((url) => {
       it(`has valid links to ${url}`, () => {
         cy.get(`a[href="${url}"`).click()
         cy.url().should('contain', url)
