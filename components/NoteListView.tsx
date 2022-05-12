@@ -30,11 +30,9 @@ export interface NoteListViewProps extends PaginationButtonProps {
 function NotePreviewItem({ note }: {note: NotePreview}) {
   return (
     <article className="post-entry">
-      <h2>{note.title}</h2>
       <time>{note.date}</time>
-      <Link href={`/${note.staticPath}`}>
-        {/* eslint-disable-next-line jsx-a11y/anchor-has-content */}
-        <a />
+      <Link href={`/${note.staticPath}`} passHref>
+        <h2 data-cy="note-link">{note.title}</h2>
       </Link>
     </article>
   )
