@@ -1,4 +1,4 @@
-import { clickEachNoteLink } from '../../support/utils';
+import { clickEachNoteLink } from '../utils';
 
 beforeEach(() => {
   cy.visit('/tags')
