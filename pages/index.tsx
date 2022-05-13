@@ -26,10 +26,10 @@ function ProfileView({ profile }: {profile: Profile }) {
   return (
     <div className="profile-container">
       {/* eslint-disable-next-line @next/next/no-img-element */}
-      <img alt="Profile" src={profile.image} />
+      <img alt="Profile" src={profile.image} data-cy="profile-image" />
       <div className="bio-container">
-        <h1>{profile.name}</h1>
-        <p>{profile.bio}</p>
+        <h1 data-cy="profile-name">{profile.name}</h1>
+        <p data-cy="profile-bio">{profile.bio}</p>
         <SocialNav socials={profile.socials} />
       </div>
     </div>

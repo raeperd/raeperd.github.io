@@ -42,7 +42,9 @@ function NoteTableView(
         {notes.map((note) => (
           <tr key={note.staticPath}>
             <td className="title"><Link href={note.staticPath}>{note.title}</Link></td>
-            <td><Link href={note.staticPath}>{note.idea}</Link></td>
+            <td>
+              <Link href={note.staticPath}><a data-cy="note-link">{note.idea}</a></Link>
+            </td>
           </tr>
         ))}
       </table>
