@@ -12,6 +12,6 @@ function validateHref(element: JQuery<HTMLElement>) {
       if (!href) {
         throw new Error('No href found')
       }
-      cy.request(href).its('status').should('eq', 200)
+      cy.visit(href)
     })
 }
