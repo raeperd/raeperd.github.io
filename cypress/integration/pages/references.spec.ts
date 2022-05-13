@@ -1,4 +1,4 @@
-import { clickEachNoteLink } from '../utils';
+import { clickEachNoteLink } from '../utils.spec';
 
 beforeEach(() => {
   cy.visit('/references')
