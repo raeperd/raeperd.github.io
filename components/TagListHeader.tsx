@@ -6,7 +6,7 @@ export default function TagListHeader({ tags, basePath }: TagListHeaderProps) {
     <header className="post-tags">
       {tags.map((tag) => (
         <Link key={tag.name} href={`${basePath}tags/${tag.name}`}>
-          {stringFromTag(tag)}
+          <a data-cy="tag-link">{stringFromTag(tag)}</a>
         </Link>
       ))}
     </header>
