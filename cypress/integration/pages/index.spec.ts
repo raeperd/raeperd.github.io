@@ -1,3 +1,5 @@
+import { clickEachNoteLink } from '../../support/utils';
+
 beforeEach(() => {
   cy.visit('/')
 })
@@ -14,13 +16,7 @@ describe('ProfileView', () => {
 
 describe('NoteListView', () => {
   it('has valid article links', () => {
-    cy.get('[data-cy=note-link]').each((element) => {
-      cy.wrap(element).invoke('attr', 'href')
-        .then((href) => {
-          if (!href) { throw new Error('No href found') }
-          cy.request(href).its('status').should('eq', 200)
-        })
-    })
+    clickEachNoteLink()
   })
 })
 
