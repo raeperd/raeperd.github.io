@@ -1,33 +1,26 @@
 import { SocialProps } from '../components/SocialNav';
 
 export function getPageSize(): number {
-  return process.env.PAGE_SIZE
-    ? parseInt(process.env.PAGE_SIZE, 10) : 3
+  return 10
 }
 
 export function getSiteName(): string {
-  return process.env.SITE_NAME
-    ? process.env.SITE_NAME : 'Paper'
+  return 'raeperd.github.io'
 }
 
 export function getDefaultAuthor(): string {
-  return process.env.AUTHOR
-    ? process.env.AUTHOR : 'author'
+  return 'raeperd'
 }
 
 export function getSocialNavProps(): SocialProps[] {
   return [
     { siteName: 'github', userId: getGithubName() },
-    { siteName: 'linkedin', userId: process.env.LINKEDIN ? process.env.LINKEDIN : null },
-    { siteName: 'notion', userId: process.env.NOTION ? process.env.NOTION : null },
-    { siteName: 'cv', userId: process.env.CV ? process.env.CV : null },
+    { siteName: 'linkedin', userId: 'raeperd' },
+    { siteName: 'notion', userId: 'raeperd.notion.site/raeperd-5f287d810fa94048b45c917d2375e013' },
+    { siteName: 'cv', userId: 'github.com/raeperd/resume/raw/main/resume.pdf' },
   ]
 }
 
 export function getGithubName(): string {
-  const githubName = process.env.GITHUB
-  if (!githubName) {
-    throw Error('No github name found')
-  }
-  return githubName
+  return 'raeperd'
 }
