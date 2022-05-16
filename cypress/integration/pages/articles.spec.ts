@@ -13,3 +13,9 @@ describe('TaggedNoteListView', () => {
     clickEachTagLink()
   })
 })
+
+describe('pagination buttons disabled', () => {
+  it('has no pagination button', () => {
+    cy.get('[data-cy="page-nav"]').should('not.exist')
+  })
+})

@@ -3,8 +3,9 @@ import Link from 'next/link';
 export default function PaginationButton(
   { pagePath, isFirstPage, isLastPage, pageNumber, lastPageNumber }: PaginationButtonProps,
 ) {
-  return (
-    <nav className="pagination">
+  const needPagination = !(isFirstPage && isLastPage)
+  return needPagination ? (
+    <nav className="pagination" data-cy="page-nav">
       <PrevButton pagePath={pagePath || '/'} pageNumber={pageNumber} isActive={!isFirstPage} />
       {Array(lastPageNumber).fill(0).map((_, index) => (
         <PageNumberButton
@@ -15,7 +16,7 @@ export default function PaginationButton(
       ))}
       <NextButton pagePath={pagePath || '/'} pageNumber={pageNumber} isActive={!isLastPage} />
     </nav>
-  )
+  ) : null
 }
 
 export interface PaginationButtonProps extends Pick<NavButtonProps, 'pageNumber' | 'pagePath'> {
