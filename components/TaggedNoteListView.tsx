@@ -3,7 +3,7 @@ import TagListHeader, { TagListHeaderProps } from './TagListHeader';
 
 export default function TaggedNoteListView({
   tagPath, tags,
-  header, notes, pagePath, pageNumber, isFirstPage, isLastPage,
+  header, notes, pagePath, pageNumber, isFirstPage, isLastPage, lastPageNumber,
 }: TaggedNoteListViewProps) {
   return (
     <>
@@ -15,6 +15,7 @@ export default function TaggedNoteListView({
         pageNumber={pageNumber}
         isFirstPage={isFirstPage}
         isLastPage={isLastPage}
+        lastPageNumber={lastPageNumber}
       />
     </>
   )

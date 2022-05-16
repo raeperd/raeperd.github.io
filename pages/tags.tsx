@@ -16,6 +16,7 @@ export async function getStaticProps(): Promise<{props: TaggedNoteListViewProps}
       pageNumber: pagedNotes.pageNumber,
       isFirstPage: pagedNotes.isFirstPage,
       isLastPage: pagedNotes.isLastPage,
+      lastPageNumber: pagedNotes.lastPageNumber,
     },
   }
 }
