@@ -7,13 +7,15 @@ export default function PaginationButton(
   return needPagination ? (
     <nav className="pagination" data-cy="page-nav">
       <PrevButton pagePath={pagePath || '/'} pageNumber={pageNumber} isActive={!isFirstPage} />
-      {Array(lastPageNumber).fill(0).map((_, index) => (
-        <PageNumberButton
-          pagePath={pagePath || '/'}
-          pageNumber={index + 1}
-          isActive={index + 1 === pageNumber}
-        />
-      ))}
+      <nav className="page-numbers">
+        {Array(lastPageNumber).fill(0).map((_, index) => (
+          <PageNumberButton
+            pagePath={pagePath || '/'}
+            pageNumber={index + 1}
+            isActive={index + 1 === pageNumber}
+          />
+        ))}
+      </nav>
       <NextButton pagePath={pagePath || '/'} pageNumber={pageNumber} isActive={!isLastPage} />
     </nav>
   ) : null

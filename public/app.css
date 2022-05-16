@@ -326,12 +326,22 @@ nav.pagination a:last-child {
     margin-left: auto;
 }
 
+nav.pagination nav.page-numbers {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
 
+nav.pagination nav.page-numbers a {
+    margin: 0
+}
 /* Index entry
  -------------------------------------------------- */
 .main .profile-container {
     display: flex;
     justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
     margin-bottom: var(--y-gap);
 }
 
