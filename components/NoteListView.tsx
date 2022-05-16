@@ -4,7 +4,7 @@ import MainTitle from './MainTitle';
 import PaginationButton, { PaginationButtonProps } from './PaginationButton';
 
 export default function NoteListView(
-  { header, notes, pagePath, pageNumber, isFirstPage, isLastPage }
+  { header, notes, pagePath, pageNumber, isFirstPage, isLastPage, lastPageNumber }
     : NoteListViewProps,
 ) {
   return (
@@ -17,6 +17,7 @@ export default function NoteListView(
         isLastPage={isLastPage}
         pagePath={pagePath}
         pageNumber={pageNumber}
+        lastPageNumber={lastPageNumber}
       />
     </>
   )

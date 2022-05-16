@@ -19,6 +19,7 @@ export async function getStaticProps({ params }: {params: {tag: string}})
       pageNumber: pagedArticles.pageNumber,
       isFirstPage: pagedArticles.isFirstPage,
       isLastPage: pagedArticles.isLastPage,
+      lastPageNumber: pagedArticles.lastPageNumber,
     },
   }
 }

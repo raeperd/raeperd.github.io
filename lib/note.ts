@@ -8,10 +8,12 @@ export function getNotePreviewsByDir(dir: ContentDirectory, pageNumber: number, 
   const notes = getNoteParsedPaths(dir)
     .map((parsedPath) => readNote(parsedPath))
     .sort((left, right) => new Date(right.date).getTime() - new Date(left.date).getTime())
+  const lastPageNumber = Math.ceil(notes.length / pageSize)
   return {
     notes: notes.slice((pageNumber - 1) * pageSize, pageNumber * pageSize),
     isFirstPage: pageNumber === 1,
-    isLastPage: pageNumber === Math.ceil(notes.length / pageSize),
+    isLastPage: pageNumber === lastPageNumber,
+    lastPageNumber,
     pageNumber,
     pageSize,
   }
@@ -67,10 +69,12 @@ export function getNotePreviewsByDirAndTag(
 ): PagedNotePreview {
   const notes = getAllNotesByDirAndTag(dir, tagToFind)
     .sort((left, right) => new Date(right.date).getTime() - new Date(left.date).getTime())
+  const lastPageNumber = Math.ceil(notes.length / pageSize)
   return {
     notes: notes.slice((pageNumber - 1) * pageSize, pageNumber * pageSize),
     isFirstPage: pageNumber === 1,
-    isLastPage: pageNumber === Math.ceil(notes.length / pageSize),
+    isLastPage: pageNumber === lastPageNumber,
+    lastPageNumber,
     pageNumber,
     pageSize,
   }
@@ -98,7 +102,8 @@ export interface PagedNotePreview {
   pageNumber: number,
   pageSize: number,
   isFirstPage: boolean,
-  isLastPage: boolean
+  isLastPage: boolean,
+  lastPageNumber: number
 }
 
 export interface Tag {

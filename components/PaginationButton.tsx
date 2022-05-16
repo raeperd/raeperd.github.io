@@ -1,34 +1,50 @@
 import Link from 'next/link';
 
 export default function PaginationButton(
-  { pagePath, isFirstPage, isLastPage, pageNumber }: PaginationButtonProps,
+  { pagePath, isFirstPage, isLastPage, pageNumber, lastPageNumber }: PaginationButtonProps,
 ) {
   return (
-    <nav className="main-nav">
-      {!isFirstPage && (<PrevButton pagePath={pagePath || '/'} pageNumber={pageNumber} />)}
-      {!isLastPage && (<NextButton pagePath={pagePath || '/'} pageNumber={pageNumber} />)}
+    <nav className="pagination">
+      <PrevButton pagePath={pagePath || '/'} pageNumber={pageNumber} isActive={!isFirstPage} />
+      {Array(lastPageNumber).fill(0).map((_, index) => (
+        <PageNumberButton
+          pagePath={pagePath || '/'}
+          pageNumber={index + 1}
+          isActive={index + 1 === pageNumber}
+        />
+      ))}
+      <NextButton pagePath={pagePath || '/'} pageNumber={pageNumber} isActive={!isLastPage} />
     </nav>
   )
 }
 
-export interface PaginationButtonProps extends NavButtonProps {
+export interface PaginationButtonProps extends Pick<NavButtonProps, 'pageNumber' | 'pagePath'> {
   isFirstPage: boolean,
   isLastPage: boolean,
+  lastPageNumber: number
 }
 
-function PrevButton({ pagePath, pageNumber }: NavButtonProps) {
+function PrevButton({ pagePath, pageNumber, isActive }: NavButtonProps) {
   const prevPageLink = pageNumber === 2 ? `${pagePath}` : `${pagePath}pages/${pageNumber - 1}`
   return (
     <Link href={prevPageLink}>
-      <a className="prev">&lt; Prev Page</a>
+      <a className={isActive ? '' : 'disabled'}>&lt;</a>
     </Link>
   )
 }
 
-function NextButton({ pagePath, pageNumber }: NavButtonProps) {
+function PageNumberButton({ pagePath, pageNumber, isActive }: NavButtonProps) {
+  return (
+    <Link href={`${pagePath}pages/${pageNumber}`}>
+      <a className={isActive ? 'active' : ''}>{pageNumber}</a>
+    </Link>
+  )
+}
+
+function NextButton({ pagePath, pageNumber, isActive }: NavButtonProps) {
   return (
     <Link href={`${pagePath}pages/${pageNumber + 1}`}>
-      <a className="next">Next Page &gt;</a>
+      <a className={isActive ? '' : 'disabled'}>&gt;</a>
     </Link>
   )
 }
@@ -36,4 +52,5 @@ function NextButton({ pagePath, pageNumber }: NavButtonProps) {
 interface NavButtonProps {
   pagePath: string,
   pageNumber: number,
+  isActive: boolean
 }

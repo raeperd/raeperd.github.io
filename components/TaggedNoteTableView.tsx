@@ -8,7 +8,7 @@ import PaginationButton from './PaginationButton';
 export default function TaggedNoteTableView(
   {
     tagPath, tags,
-    header, notes, pagePath, pageNumber, isFirstPage, isLastPage,
+    header, notes, pagePath, pageNumber, isFirstPage, isLastPage, lastPageNumber,
   }: TaggedNoteTableViewProps,
 ) {
   return (
@@ -21,6 +21,7 @@ export default function TaggedNoteTableView(
         pageNumber={pageNumber}
         isFirstPage={isFirstPage}
         isLastPage={isLastPage}
+        lastPageNumber={lastPageNumber}
       />
     </>
   )
@@ -29,7 +30,10 @@ export default function TaggedNoteTableView(
 export type TaggedNoteTableViewProps = TaggedNoteListViewProps
 
 function NoteTableView(
-  { header, notes, pagePath, pageNumber, isFirstPage, isLastPage }: NoteListViewProps,
+  {
+    header,
+    notes, pagePath, pageNumber, isFirstPage, isLastPage, lastPageNumber,
+  }: NoteListViewProps,
 ) {
   return (
     <>
@@ -53,6 +57,7 @@ function NoteTableView(
         isLastPage={isLastPage}
         pagePath={pagePath}
         pageNumber={pageNumber}
+        lastPageNumber={lastPageNumber}
       />
     </>
   )

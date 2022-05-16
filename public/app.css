@@ -291,21 +291,38 @@ img {
     color: var(--lit);
 }
 
-.main-nav {
+nav.pagination {
     display: flex;
+    justify-content: center;
     margin-top: 5rem;
 }
 
-.main-nav a {
+nav.pagination a {
     font-size: 1.8rem;
     line-height: 5.5rem;
-    color: var(--white);
-    background: var(--black);
     border-radius: 0.5rem;
     padding-inline: 3rem;
 }
 
-.main-nav .next {
+nav.pagination a.active {
+    background-color: var(--black);
+    color: var(--white);
+}
+
+nav.pagination a:hover {
+    text-decoration: underline;
+}
+
+nav.pagination a.disabled {
+    color: grey;
+    pointer-events: none;
+}
+
+nav.pagination a:first-child {
+    margin-right: auto;
+}
+
+nav.pagination a:last-child {
     margin-left: auto;
 }
 
