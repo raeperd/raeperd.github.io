@@ -30,12 +30,12 @@ jobs:
           credential_json: ${{ secrets.CREDENTIAL_JSON }}
           q: "'1pVVyuei5f4sCg5WuCLzuXNj7CZsmDKyX' in parents and (name = 'articles' or name = 'references' or name = 'algorithms')"
           path: "./lib/content"
-      - run: npm run test
       - name: build and test
         uses: cypress-io/github-action@v2
         with:
           build: npm run build
           start: npm run start
+      - run: npm run test
       - uses: SonarSource/sonarcloud-github-action@master
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -50,6 +50,7 @@ jobs:
 
   deploy-github-page:
     runs-on: ubuntu-latest
+    needs: build
     steps:
       - uses: actions/download-artifact@v3
         with:
