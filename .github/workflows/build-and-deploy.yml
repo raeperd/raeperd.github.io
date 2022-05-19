@@ -54,11 +54,13 @@ jobs:
       - uses: actions/download-artifact@v3
         with:
           name: static-pages
+          path: ./static-pages
       - run: touch .nojekyll
       - uses: peaceiris/actions-gh-pages@v3
         with:
           publish_branch: main
           github_token: ${{ secrets.GITHUB_TOKEN  }}
+          publish_dir: ./static-pages
           force_orphan: true
 
   deploy-docker:
