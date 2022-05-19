@@ -59,6 +59,7 @@ jobs:
         with:
           publish_branch: main
           github_token: ${{ secrets.GITHUB_TOKEN  }}
+          publish_dir: ./out
           force_orphan: true
 
   deploy-docker:
