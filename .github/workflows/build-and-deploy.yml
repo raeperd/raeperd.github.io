@@ -54,12 +54,11 @@ jobs:
       - uses: actions/download-artifact@v3
         with:
           name: static-pages
-      - run: touch ./out/.nojekyll
+      - run: touch .nojekyll
       - uses: peaceiris/actions-gh-pages@v3
         with:
           publish_branch: main
           github_token: ${{ secrets.GITHUB_TOKEN  }}
-          publish_dir: ./out
           force_orphan: true
 
   deploy-docker:
@@ -70,9 +69,11 @@ jobs:
       packages: write
     steps:
       - uses: actions/checkout@v3
+      - run: mkdir out
       - uses: actions/download-artifact@v3
         with:
           name: static-pages
+          path: ./out
       - uses: docker/login-action@v2
         with:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
