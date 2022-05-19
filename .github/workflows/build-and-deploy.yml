@@ -1,12 +1,10 @@
-name: github pages
-
 on:
   push:
   schedule:
     - cron: '15 * * * *'
 
 jobs:
-  deploy:
+  build:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
@@ -22,7 +20,6 @@ jobs:
           key: ${{ runner.os }}-nextjs-${{ hashFiles('**/package-lock.json') }}-${{ hashFiles('**.[jt]s', '**.[jt]sx') }}
           restore-keys: |
             ${{ runner.OS }}-
-      - run: npm ci
       - run: mkdir ./lib/content
       - name: Download articles
         uses: raeperd/google-drive-download-action@v1
@@ -34,7 +31,8 @@ jobs:
           q: "'1pVVyuei5f4sCg5WuCLzuXNj7CZsmDKyX' in parents and (name = 'articles' or name = 'references' or name = 'algorithms')"
           path: "./lib/content"
       - run: npm run test
-      - uses: cypress-io/github-action@v2
+      - name: build and test
+        uses: cypress-io/github-action@v2
         with:
           build: npm run build
           start: npm run start
@@ -42,14 +40,24 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-      - name: export
-        run: |
-          npm run export
-          touch ./out/.nojekyll
+      - run: npm run export
+      - uses: actions/upload-artifact@v3
+        with:
+          name: static-pages
+          path: |
+            out/
+            nginx.conf
+
+  deploy-github-page:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/download-artifact@v3
+        with:
+          name: static-pages
+      - run: touch .nojekyll
       - uses: peaceiris/actions-gh-pages@v3
         if: github.ref == 'refs/heads/master'
         with:
           publish_branch: main
           github_token: ${{ secrets.GITHUB_TOKEN  }}
-          publish_dir: ./out
           force_orphan: true
