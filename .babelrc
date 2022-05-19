@@ -1,0 +1,6 @@
+{
+  "presets": ["next/babel"],
+  "plugins": [
+    ["istanbul", {"exclude": ["**/*.spec.ts", "**/*.test.ts", "**/*.test.tsx"]}]
+  ]
+}

@@ -30,6 +30,7 @@
     "usehooks-ts": "^2.2.0"
   },
   "devDependencies": {
+    "@cypress/code-coverage": "^3.9.12",
     "@svgr/webpack": "^6.2.0",
     "@testing-library/jest-dom": "^5.16.1",
     "@testing-library/react": "^12.1.2",
