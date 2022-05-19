@@ -62,7 +62,7 @@ jobs:
           force_orphan: true
 
   deploy-docker:
-    if: github.event_name == 'push'
+    if: github.event_name != 'schedule'
     needs: build
     runs-on: ubuntu-latest
     permissions:
@@ -91,6 +91,11 @@ jobs:
           images: |
             raeperd/blog
             ghcr.io/raeperd/blog
+          tags: |
+            type=ref,event=branch
+            type=ref,event=tag
+            type=ref,event=pr
+            type=sha
       - uses: docker/build-push-action@v2
         with:
           context: .
