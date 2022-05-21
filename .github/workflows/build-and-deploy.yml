@@ -64,7 +64,6 @@ jobs:
           force_orphan: true
 
   deploy-docker:
-    if: github.event_name != 'schedule'
     needs: build
     runs-on: ubuntu-latest
     permissions:
@@ -94,6 +93,7 @@ jobs:
             raeperd/blog
             ghcr.io/raeperd/blog
           tags: |
+            type=schedule,pattern={{date 'YYYYMMDD'}}
             type=ref,event=branch
             type=ref,event=tag
             type=ref,event=pr
