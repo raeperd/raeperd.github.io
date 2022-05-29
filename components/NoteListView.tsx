@@ -30,11 +30,11 @@ export interface NoteListViewProps extends PaginationButtonProps {
 
 function NotePreviewItem({ note }: {note: NotePreview}) {
   return (
-    <article className="post-entry">
-      <time>{note.date}</time>
-      <Link href={`/${note.staticPath}`} passHref>
-        <h2 data-cy="note-link">{note.title}</h2>
-      </Link>
-    </article>
+    <Link href={`/${note.staticPath}`} passHref>
+      <article className="post-entry" data-cy="note-link">
+        <time>{note.date}</time>
+        <h2>{note.title}</h2>
+      </article>
+    </Link>
   )
 }

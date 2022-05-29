@@ -13,6 +13,8 @@ export default function PaginationButton(
             pagePath={pagePath || '/'}
             pageNumber={index + 1}
             isActive={index + 1 === pageNumber}
+            /* eslint-disable-next-line react/no-array-index-key */
+            key={index}
           />
         ))}
       </nav>
