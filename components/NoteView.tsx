@@ -5,6 +5,8 @@ import rehypeKatex from 'rehype-katex';
 import remarkMath from 'remark-math';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { vscDarkPlus } from 'react-syntax-highlighter/dist/cjs/styles/prism';
+import rehypeSlug from 'rehype-slug';
+import rehypeAutolinkHeadings from 'rehype-autolink-headings';
 import { Note } from '../lib/note'
 import TagListHeader from './TagListHeader';
 
@@ -22,7 +24,8 @@ export default function NoteView({ note }: NoteViewProps) {
       <section className="post-content">
         <ReactMarkdown
           components={SyntaxHighlight}
-          rehypePlugins={[rehypeRaw, rehypeKatex]}
+          // @ts-expect-error rehypeSlug and rehypeAutoLinkHeadings are not supporting typescript
+          rehypePlugins={[rehypeRaw, rehypeKatex, rehypeSlug, [rehypeAutolinkHeadings, { behavior: 'append' }]]}
           remarkPlugins={[remarkGfm, remarkMath]}
         >
           {note.content}
