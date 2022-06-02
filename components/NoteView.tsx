@@ -8,6 +8,7 @@ import { vscDarkPlus } from 'react-syntax-highlighter/dist/cjs/styles/prism';
 import rehypeSlug from 'rehype-slug';
 import rehypeAutolinkHeadings from 'rehype-autolink-headings';
 import { CodeProps } from 'react-markdown/lib/ast-to-react';
+import { AnchorHTMLAttributes } from 'react';
 import { Note } from '../lib/note'
 import TagListHeader from './TagListHeader';
 
@@ -24,7 +25,10 @@ export default function NoteView({ note }: NoteViewProps) {
       <TagListHeader tags={note.tags.map((tag) => ({ name: tag }))} basePath="/" />
       <section className="post-content">
         <ReactMarkdown
-          components={{ code: SyntaxHighlightedCodeBlock }}
+          components={{
+            code: SyntaxHighlightedCodeBlock,
+            a: ForcedAbsoluteAnchor,
+          }}
           // @ts-expect-error rehypeSlug and rehypeAutoLinkHeadings are not supporting typescript
           rehypePlugins={[rehypeRaw, rehypeKatex, rehypeSlug, [rehypeAutolinkHeadings, { behavior: 'append' }]]}
           remarkPlugins={[remarkGfm, remarkMath]}
@@ -56,4 +60,10 @@ function SyntaxHighlightedCodeBlock({ inline, className, children, ...props }: C
       {children}
     </code>
   )
+}
+
+function ForcedAbsoluteAnchor({ href, children, ...props }
+  : AnchorHTMLAttributes<HTMLAnchorElement>) {
+  const isAbsoluteHref = href?.startsWith('http://') || href?.startsWith('https://') || href?.startsWith('/')
+  return <a href={isAbsoluteHref ? href : `/${href}`} {...props}>{children}</a>
 }
