@@ -698,6 +698,7 @@ header.post-tags {
     margin-inline: 0.5rem;
     font-family: Menlo, Monaco, 'Courier New', Courier, monospace;
     font-size: 0.8em;
+    color: red;
     line-height: 1.5;
     background: rgba(var(--dark), 0.06);
     border-radius: 0.3rem;
