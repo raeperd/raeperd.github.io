@@ -150,8 +150,10 @@ function readNote(notePath: ParsedPath): Note {
 }
 
 function readdirRecursiveSync(directoryPath: string): string[] {
-  return readdirSync(directoryPath).flatMap((fileName) => {
-    const filePath = join(directoryPath, fileName)
-    return statSync(filePath).isDirectory() ? readdirRecursiveSync(filePath) : [filePath]
-  })
+  return readdirSync(directoryPath)
+    .filter((filename) => !filename.startsWith(('.')))
+    .flatMap((fileName) => {
+      const filePath = join(directoryPath, fileName)
+      return statSync(filePath).isDirectory() ? readdirRecursiveSync(filePath) : [filePath]
+    })
 }
