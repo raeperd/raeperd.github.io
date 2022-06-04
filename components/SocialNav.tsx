@@ -16,7 +16,7 @@ export function SocialNav({ socials }: { socials: SocialProps[] }) {
   }
 
   return (
-    <nav className="social">
+    <nav className="social-nav">
       {socials.filter((social) => social.userId !== null)
         .map((social) => (
           <a href={buildSocialHref(social)} key={social.siteName}>
