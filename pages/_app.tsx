@@ -65,10 +65,10 @@ type LayoutProps = {
 
 function Header({ siteName, menus, socials }: HeaderProps) {
   return (
-    <header className="header">
+    <header className="root-header">
       <h1 className="logo">
         <Link href="/">
-          <a className="site-name" data-cy="header-root-link">{siteName}</a>
+          <a className="root-header-site-link" data-cy="header-root-link">{siteName}</a>
         </Link>
         <DarkModeToggleButton />
       </h1>
@@ -122,7 +122,7 @@ function DarkModeToggleButton() {
     <button
       aria-label="darkMode-toggle-button"
       type="button"
-      className="btn-dark"
+      className="darkmode-button"
       onClick={toggle}
     />
   )
@@ -131,7 +131,7 @@ function DarkModeToggleButton() {
 function MenuNav({ menus }: { menus: MenuProps[] }) {
   const router = useRouter()
   return (
-    <nav className="menu">
+    <nav className="root-header-nav">
       {menus.map((menu) => (
         <Link href={menu.href} key={menu.name}>
           <a
