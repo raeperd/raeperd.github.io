@@ -608,9 +608,14 @@ header.post-tags {
 }
 
 .post-content a {
+    --a-text-color: 95, 136, 209;
+    color: rgba(var(--a-text-color), 1);
     padding-bottom: 0.2rem;
     font-weight: 500;
-    border-bottom: 2px solid var(--pro);
+}
+
+.post-content a:hover {
+    color: rgba(var(--a-text-color), 0.75);
 }
 
 .post-content a code {
@@ -622,14 +627,6 @@ header.post-tags {
 .post-content del {
     text-decoration: none;
     background: linear-gradient(to right, var(--pro) 100%, transparent 0) 0 50% / 1px 1px repeat-x;
-}
-
-.post-content p,
-.post-content ul,
-.post-content ol,
-.post-content dl,
-.post-content details {
-    margin-bottom: 3rem;
 }
 
 .post-content ul,
