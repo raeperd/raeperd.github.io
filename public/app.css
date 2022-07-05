@@ -170,19 +170,19 @@ img {
 /* ---------------------------------------------------------------------------------------------------------------------
  $3 Header
 --------------------------------------------------------------------------------------------------------------------- */
-.root-header {
+#main-header {
     display: flex;
     max-width: var(--wide);
     height: var(--header);
 }
 
-.root-header a {
+#main-header a {
     display: flex;
     flex-shrink: 0;
     align-items: center;
 }
 
-.root-header a:hover {
+#main-header a:hover {
     text-decoration: underline;
 }
 
@@ -249,11 +249,11 @@ img {
         --header: 16rem;
     }
 
-    .root-header {
+    #main-header {
         position: relative;
     }
 
-    .root-header > * {
+    #main-header > * {
         height: calc(var(--header) / 2);
     }
 
