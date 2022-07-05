@@ -15,8 +15,8 @@
     --wide: 160;
     --narrow: 100rem;
     --side: calc((var(--wide) - var(--narrow)) / 2);
-    --header: 8rem;
-    --footer: calc(8rem + var(--safe-bottom));
+    --header-height: 8rem;
+    --footer-height: calc(8rem + var(--safe-bottom));
 
     --light: 255, 255, 255;
     --dark: 22, 22, 22;
@@ -174,7 +174,7 @@ img {
     display: flex;
     column-gap: calc(var(--gap) - 1.0rem);
     max-width: var(--wide);
-    height: var(--header);
+    height: var(--header-height);
 }
 
 #main-header a {
@@ -230,8 +230,8 @@ img {
 }
 
 @media (max-width: 700px) {
-    body {
-        --header: 16rem;
+    :root {
+        --header-height: 16rem;
     }
 
     #main-header {
@@ -239,7 +239,7 @@ img {
     }
 
     #main-header > * {
-        height: calc(var(--header) / 2);
+        height: calc(var(--header-height) / 2);
     }
 
     #main-menu-nav {
@@ -256,7 +256,7 @@ img {
     display: flex;
     flex-direction: column;
     max-width: var(--narrow);
-    min-height: calc(100% - var(--header) - var(--footer));
+    min-height: calc(100% - var(--header-height) - var(--footer-height));
     padding-top: var(--y-gap);
     padding-bottom: var(--y-gap);
 }
@@ -771,7 +771,7 @@ article iframe {
     align-items: center;
     justify-content: center;
     max-width: var(--narrow);
-    height: var(--footer);
+    height: var(--footer-height);
     padding-bottom: var(--safe-bottom);
     margin-top: auto;
     font-size: 1.6rem;
