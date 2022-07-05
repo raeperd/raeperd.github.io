@@ -129,7 +129,7 @@ function DarkModeToggleButton() {
 function MenuNav({ menus }: { menus: MenuProps[] }) {
   const router = useRouter()
   return (
-    <nav className="root-header-nav">
+    <nav id="main-menu-nav">
       {menus.map((menu) => (
         <Link href={menu.href} key={menu.name}>
           <a
