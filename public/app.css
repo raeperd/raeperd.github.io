@@ -501,8 +501,8 @@ header.post-tags {
 
 /* Article content
  -------------------------------------------------- */
-.post-content {
-    --text-normal: #000000;
+article {
+    --text-normal: var(--black);
     --blue: #2e80f2;
     --pink: #ff82b2;
     --green: #3eb4bf;
@@ -538,189 +538,194 @@ header.post-tags {
     --h6-weight: 400;
 
     font-size: var(--default-font-size);
+    font-weight: inherit;
 }
 
-.post-content h1,
-.post-content h2,
-.post-content h3,
-.post-content h4,
-.post-content h5,
-.post-content h6 {
+article h1,
+article h2,
+article h3,
+article h4,
+article h5,
+article h6 {
     margin-block: 1em;
 }
 
-.post-content h1, .post-content h1 > * {
+article h1 {
     font-size: var(--h1-font-size) !important;
     color: var(--h1-color);
     font-weight: var(--h1-weight) !important;
 }
 
-.post-content h2, .post-content h2 > * {
+article h1:not(:first-child) {
+    margin-top: 2em;
+}
+
+article h2 {
+    margin-top: 1.5em;
     font-size: var(--h2-font-size) !important;
     color: var(--h2-color);
     font-weight: var(--h2-weight) !important;
 }
 
-.post-content h3, .post-content h3 > * {
+article h3 {
     font-size: var(--h3-font-size) !important;
     color: var(--h3-color);
     font-weight: var(--h3-weight) !important;
 }
 
-.post-content h4, .post-content h4 > * {
+article h4 {
     font-size: var(--h4-font-color) !important;
     color: var(--h4-color);
     font-weight: var(--h4-weight) !important;
 }
 
-.post-content h5, .post-content h5 > * {
+article h5 {
     font-size: var(--h5-font-color) !important;
     color: var(--h5-color);
     font-weight: var(--h5-weight) !important;
 }
 
-.post-content h6, .post-content h6 > * {
+article h6 {
     font-size: var(--h6-font-color) !important;
     color: var(--h6-color);
     font-weight: var(--h6-weight) !important;
 }
 
-.post-content strong {
+article strong {
     color: var(--pink);
 }
 
-.post-content em {
+article em {
     font-style: italic;
     color: var(--em-color);
 }
 
-.post-content img {
+article img {
     margin-inline: auto;
 }
 
-.post-content a {
+article a {
     --a-text-color: 95, 136, 209;
     color: rgba(var(--a-text-color), 1);
     padding-bottom: 0.2rem;
-    font-weight: 500;
 }
 
-.post-content a:hover {
+article a:hover {
     color: rgba(var(--a-text-color), 0.75);
 }
 
-.post-content a code {
+article a code {
     margin-inline: 0;
     border-bottom-right-radius: 0;
     border-bottom-left-radius: 0;
 }
 
-.post-content del {
+article del {
     text-decoration: none;
     background: linear-gradient(to right, var(--pro) 100%, transparent 0) 0 50% / 1px 1px repeat-x;
 }
 
-.post-content ul,
-.post-content ol {
+article ul,
+article ol {
     padding-left: 2.5rem;
 }
 
-.post-content li {
+article li {
     margin-top: 0.6rem;
 }
 
-.post-content li p {
+article li p {
     margin-bottom: 0;
 }
 
-.post-content dl {
+article dl {
     display: flex;
     flex-wrap: wrap;
     margin: 0;
 }
 
-.post-content dt {
+article dt {
     width: 25%;
     font-weight: 500;
 }
 
-.post-content dd {
+article dd {
     width: 75%;
     padding-left: 1.3rem;
     margin-left: 0;
 }
 
-.post-content dt ~ dt,
-.post-content dd ~ dd {
+article dt ~ dt,
+article dd ~ dd {
     margin-top: 1.3rem;
 }
 
-.post-content table {
+article table {
     margin-bottom: 4rem;
 }
 
-.post-content table th,
-.post-content table:not(.highlighttable) td {
+article table th,
+article table:not(.highlighttable) td {
     min-width: 10rem;
     padding: 1.5rem 1rem;
     line-height: 1.5;
     border-bottom: 1px solid var(--fog);
 }
 
-.post-content table th {
+article table th {
     font-size: 1.6rem;
     text-align: left;
 }
 
-.post-content table:not(.highlighttable) td code:only-of-type {
+article table:not(.highlighttable) td code:only-of-type {
     margin-inline: 0;
 }
 
-.post-content .highlight,
-.post-content pre {
+article .highlight,
+article pre {
     margin: 0 calc(var(--gap) * -1) 4rem;
     overflow-x: auto;
     background: var(--hljs-bg) !important;
     border-radius: 0.5rem;
 }
 
-.post-content ul pre {
+article ul pre {
     margin-left: calc(var(--gap) * -2);
 }
 
-.post-content .highlight pre {
+article .highlight pre {
     margin-inline: 0;
     margin-bottom: 0;
 }
 
 /* table */
-.post-content .highlighttable {
+article .highlighttable {
     table-layout: fixed;
 }
 
-.post-content .highlighttable td:first-of-type {
+article .highlighttable td:first-of-type {
     width: 5rem;
 }
 
-.post-content .highlighttable td .linenodiv {
+article .highlighttable td .linenodiv {
     padding-right: 0 !important;
 }
 
-.post-content .highlighttable td .linenodiv pre,
-.post-content .highlighttable td .highlight {
+article .highlighttable td .linenodiv pre,
+article .highlighttable td .highlight {
     margin-bottom: 0;
 }
 
-.post-content .highlighttable td .highlight pre code::-webkit-scrollbar {
+article .highlighttable td .highlight pre code::-webkit-scrollbar {
     display: none;
 }
 
 /* inline */
-.post-content .highlight span {
+article .highlight span {
     background: transparent !important;
 }
 
-.post-content :where(h1, h2, h3, h4, h5, h6):hover span.icon.icon-link {
+article :where(h1, h2, h3, h4, h5, h6):hover span.icon.icon-link {
     display: inline;
     background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg>');
     background-repeat: no-repeat;
@@ -733,7 +738,7 @@ header.post-tags {
     cursor: pointer;
 }
 
-.post-content code {
+article code {
     padding: 0.5rem 1rem;
     margin-inline: 0.5rem;
     font-family: Menlo, Monaco, 'Courier New', Courier, monospace;
@@ -744,7 +749,7 @@ header.post-tags {
     border-radius: 0.3rem;
 }
 
-.post-content pre code {
+article pre code {
     display: block;
     padding: var(--gap);
     margin-inline: 0;
@@ -753,20 +758,20 @@ header.post-tags {
     border-radius: 0;
 }
 
-.post-content blockquote {
+article blockquote {
     padding: 0 0 0 calc(var(--gap) - 0.4rem);
     margin: 0 0 0 calc(var(--gap) * -1);
     border-left: 0.4rem solid var(--pro);
 }
 
-.post-content hr {
+article hr {
     height: 1px;
     background: var(--fog);
     border: 0;
     margin-block: 12rem;
 }
 
-.post-content iframe {
+article iframe {
     width: 100%;
     background: var(--black);
 }
