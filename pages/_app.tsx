@@ -67,7 +67,7 @@ function Header({ siteName, menus, socials }: HeaderProps) {
   return (
     <header id="main-header">
       <Link href="/">
-        <a className="root-header-site-link" data-cy="header-root-link">{siteName}</a>
+        <a data-cy="header-root-link">{siteName}</a>
       </Link>
       <DarkModeToggleButton />
       <MenuNav menus={menus} />

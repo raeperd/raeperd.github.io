@@ -187,8 +187,8 @@ img {
     text-decoration: underline;
 }
 
-.root-header-site-link {
-    max-width: calc(100% - 2rem - 3rem);
+#main-header > a:first-child {
+    max-width: calc(100% - 10rem);
     padding-bottom: 0.3rem;
     overflow: auto;
     font-size: 3.4rem;
