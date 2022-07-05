@@ -196,14 +196,14 @@ img {
     white-space: nowrap;
 }
 
-.darkmode-button {
+#dark-mode-button {
     min-width: 3rem;
     cursor: pointer;
     background: url(./theme.png) left / auto 3rem no-repeat;
     transition: background-position 0.4s steps(5);
 }
 
-.dark .darkmode-button {
+.dark #dark-mode-button {
     background-position: right;
 }
 

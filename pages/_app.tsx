@@ -120,7 +120,7 @@ function DarkModeToggleButton() {
     <button
       aria-label="darkMode-toggle-button"
       type="button"
-      className="darkmode-button"
+      id="dark-mode-button"
       onClick={toggle}
     />
   )
