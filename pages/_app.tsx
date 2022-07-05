@@ -66,12 +66,10 @@ type LayoutProps = {
 function Header({ siteName, menus, socials }: HeaderProps) {
   return (
     <header id="main-header">
-      <h1 className="logo">
-        <Link href="/">
-          <a className="root-header-site-link" data-cy="header-root-link">{siteName}</a>
-        </Link>
-        <DarkModeToggleButton />
-      </h1>
+      <Link href="/">
+        <a className="root-header-site-link" data-cy="header-root-link">{siteName}</a>
+      </Link>
+      <DarkModeToggleButton />
       <MenuNav menus={menus} />
       <SocialNav socials={socials} />
     </header>

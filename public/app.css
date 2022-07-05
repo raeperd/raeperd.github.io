@@ -172,6 +172,7 @@ img {
 --------------------------------------------------------------------------------------------------------------------- */
 #main-header {
     display: flex;
+    column-gap: 3rem;
     max-width: var(--wide);
     height: var(--header);
 }
@@ -186,12 +187,6 @@ img {
     text-decoration: underline;
 }
 
-.logo {
-    display: flex;
-    min-width: var(--side);
-    padding-right: var(--gap);
-}
-
 .root-header-site-link {
     max-width: calc(100% - 2rem - 3rem);
     padding-bottom: 0.3rem;
@@ -202,8 +197,7 @@ img {
 }
 
 .darkmode-button {
-    width: 3rem;
-    margin-left: 2rem;
+    min-width: 3rem;
     cursor: pointer;
     background: url(./theme.png) left / auto 3rem no-repeat;
     transition: background-position 0.4s steps(5);
@@ -241,10 +235,6 @@ img {
 }
 
 @media (max-width: 700px) {
-    .logo {
-        min-width: auto;
-    }
-
     body {
         --header: 16rem;
     }
