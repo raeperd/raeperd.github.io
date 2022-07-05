@@ -766,7 +766,7 @@ article iframe {
 /* ---------------------------------------------------------------------------------------------------------------------
  $7 Footer
 --------------------------------------------------------------------------------------------------------------------- */
-.footer {
+#main-footer {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -779,12 +779,12 @@ article iframe {
     border-top: 1px solid var(--fog);
 }
 
-.footer p + p::before {
+#main-footer p + p::before {
     content: '·';
     margin-inline: 0.6rem;
 }
 
-.footer a:hover {
+#main-footer a:hover {
     color: var(--pro);
     border-bottom: 1px solid var(--pro);
 }

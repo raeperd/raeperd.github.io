@@ -78,7 +78,7 @@ function Header({ siteName, menus, socials }: HeaderProps) {
 
 function Footer({ siteName }: { siteName: string }) {
   return (
-    <footer className="footer">
+    <footer id="main-footer">
       <p>
         &copy;
         {new Date().getFullYear()}
