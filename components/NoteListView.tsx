@@ -10,8 +10,7 @@ export default function NoteListView(
   return (
     <>
       {header && <MainTitle title={header} />}
-      {notes.map((note) => (
-        <NotePreviewItem note={note} key={note.staticPath} />))}
+      <NoteListNav notes={notes} />
       <PaginationButton
         isFirstPage={isFirstPage}
         isLastPage={isLastPage}
@@ -28,13 +27,17 @@ export interface NoteListViewProps extends PaginationButtonProps {
   notes: NotePreview[],
 }
 
-function NotePreviewItem({ note }: {note: NotePreview}) {
+function NoteListNav({ notes }: {notes: NotePreview[] }) {
   return (
-    <Link href={`/${note.staticPath}`} passHref>
-      <a className="post-entry" data-cy="note-link">
-        <time>{note.date}</time>
-        <h2>{note.title}</h2>
-      </a>
-    </Link>
+    <nav id="note-list-nav">
+      {notes.map((note) => (
+        <Link href={`/${note.staticPath}`} passHref>
+          <a data-cy="note-link">
+            <time>{note.date}</time>
+            <h2>{note.title}</h2>
+          </a>
+        </Link>
+      ))}
+    </nav>
   )
 }
