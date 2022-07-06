@@ -9,47 +9,7 @@
 /* ---------------------------------------------------------------------------------------------------------------------
  $1 Theme
 --------------------------------------------------------------------------------------------------------------------- */
-:root {
-    --gap: 3.5rem;
-    --y-gap: 8rem;
-    --wide: 160;
-    --narrow: 100rem;
-    --side: calc((var(--wide) - var(--narrow)) / 2);
-    --header-height: 8rem;
-    --footer-height: calc(8rem + var(--safe-bottom));
-
-    --light: 255, 255, 255;
-    --dark: 22, 22, 22;
-    --hljs-bg: #111;
-
-    --safe-bottom: 0;
-}
-
-@supports (bottom: env(safe-area-inset-bottom)) {
-    :root {
-        --safe-bottom: env(safe-area-inset-bottom);
-    }
-}
-
-.dark {
-    --light: 22, 22, 22;
-    --dark: 255, 255, 255;
-    --hljs-bg: #282828;
-}
-
-*,
-*::before,
-*::after {
-    box-sizing: border-box;
-}
-
-html,
-body {
-    height: 100%;
-}
-
 html {
-    -webkit-tap-highlight-color: transparent;
     font-size: 8px;
 }
 
@@ -59,7 +19,25 @@ html {
     }
 }
 
+html,
 body {
+    height: 100%;
+}
+
+body {
+    --gap: 3.5rem;
+    --y-gap: 8rem;
+    --wide: 160;
+    --narrow: 100rem;
+    --side: calc((var(--wide) - var(--narrow)) / 2);
+
+    --header-height: 8rem;
+    --footer-height: calc(8rem + var(--safe-bottom));
+
+    --light: 255, 255, 255;
+    --dark: 22, 22, 22;
+    --hljs-bg: #111;
+
     --white: rgba(var(--light), 1);
     --black: rgba(var(--dark), 1);
 
@@ -81,6 +59,24 @@ body {
     word-break: break-word;
     background: var(--white);
     transition: background 0.4s ease-out;
+}
+
+@supports (bottom: env(safe-area-inset-bottom)) {
+    body {
+        --safe-bottom: env(safe-area-inset-bottom);
+    }
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+.dark {
+    --light: 22, 22, 22;
+    --dark: 255, 255, 255;
+    --hljs-bg: #282828;
 }
 
 #__next {
@@ -170,24 +166,24 @@ img {
 /* ---------------------------------------------------------------------------------------------------------------------
  $3 Header
 --------------------------------------------------------------------------------------------------------------------- */
-#main-header {
+#layout-header {
     display: flex;
     column-gap: calc(var(--gap) - 1.0rem);
     max-width: var(--wide);
     height: var(--header-height);
 }
 
-#main-header a {
+#layout-header a {
     display: flex;
     flex-shrink: 0;
     align-items: center;
 }
 
-#main-header a:hover {
+#layout-header a:hover {
     text-decoration: underline;
 }
 
-#main-header > a:first-child {
+#layout-header > a:first-child {
     max-width: calc(100% - 10rem);
     overflow: auto;
     font-size: 3.4rem;
@@ -230,15 +226,15 @@ img {
 }
 
 @media (max-width: 700px) {
-    :root {
+    body {
         --header-height: 16rem;
     }
 
-    #main-header {
+    #layout-header {
         position: relative;
     }
 
-    #main-header > * {
+    #layout-header > * {
         height: calc(var(--header-height) / 2);
     }
 
@@ -252,7 +248,7 @@ img {
 /* ---------------------------------------------------------------------------------------------------------------------
  $4 Footer
 --------------------------------------------------------------------------------------------------------------------- */
-#main-footer {
+#layout-footer {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -265,12 +261,12 @@ img {
     border-top: 1px solid var(--fog);
 }
 
-#main-footer p + p::before {
+#layout-footer p + p::before {
     content: '·';
     margin-inline: 0.6rem;
 }
 
-#main-footer a:hover {
+#layout-footer a:hover {
     color: var(--pro);
     border-bottom: 1px solid var(--pro);
 }
@@ -278,7 +274,7 @@ img {
 /* ---------------------------------------------------------------------------------------------------------------------
  $5 Main
 --------------------------------------------------------------------------------------------------------------------- */
-.main {
+main {
     display: flex;
     flex-direction: column;
     max-width: var(--narrow);
@@ -287,83 +283,79 @@ img {
     padding-bottom: var(--y-gap);
 }
 
-.main-title {
-    margin-bottom: calc(var(--y-gap) + 1rem);
-    font-size: 3rem;
+#main-title {
+    margin-bottom: var(--y-gap);
+    font-size: 3.2rem;
     font-weight: 400;
     color: var(--lit);
 }
 
-nav.pagination {
+#pagination-buttons {
     display: flex;
     justify-content: center;
     margin-top: 5rem;
 }
 
-nav.pagination a {
+#pagination-buttons a {
     font-size: 1.8rem;
     line-height: 5.5rem;
-    border-radius: 0.5rem;
-    padding-inline: 3rem;
+    border-radius: 45%;
+    padding-inline: 2.5rem;
 }
 
-nav.pagination a.active {
+#pagination-buttons a.active {
     background-color: var(--black);
     color: var(--white);
 }
 
-nav.pagination a:hover {
-    text-decoration: underline;
-}
-
-nav.pagination a.disabled {
+#pagination-buttons a.disabled {
     color: grey;
     pointer-events: none;
 }
 
-nav.pagination a:first-child {
+#pagination-buttons a:hover {
+    text-decoration: underline;
+}
+
+#pagination-buttons > a:first-child {
     margin-right: auto;
 }
 
-nav.pagination a:last-child {
+#pagination-buttons > a:last-child {
     margin-left: auto;
 }
 
-nav.pagination nav.page-numbers {
+#page-number-buttons {
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
 }
 
-nav.pagination nav.page-numbers a {
-    margin: 0
-}
-
-.main .profile-container {
+#profile-container {
     display: flex;
     justify-content: center;
     align-items: center;
     flex-wrap: wrap;
+    column-gap: 5rem;
     margin-bottom: var(--y-gap);
 }
 
-.main .profile-container > img {
+#profile-container img {
     width: 25rem;
     border-radius: 50%;
-    margin-right: 5rem
 }
 
-.main .profile-container .bio-container {
+#bio-container {
     display: flex;
     flex-direction: column;
-    justify-content: space-evenly;
+    row-gap: 1rem;
 }
 
-.main .profile-container .bio-container > h1 {
+#bio-container h1 {
     font-size: 5rem;
 }
 
-.main .profile-container .bio-container > p {
+#bio-container p {
     font-size: 3rem;
 }
 

@@ -12,7 +12,7 @@ export default function Index(
 ) {
   return (
     <>
-      <ProfileView profile={profile} />
+      <ProfileContainer profile={profile} />
       <NoteListView
         header={header}
         notes={notes}
@@ -26,12 +26,12 @@ export default function Index(
   )
 }
 
-function ProfileView({ profile }: {profile: Profile }) {
+function ProfileContainer({ profile }: {profile: Profile }) {
   return (
-    <div className="profile-container">
+    <div id="profile-container">
       {/* eslint-disable-next-line @next/next/no-img-element */}
       <img alt="Profile" src={profile.image} data-cy="profile-image" />
-      <div className="bio-container">
+      <div id="bio-container">
         <h1 data-cy="profile-name">{profile.name}</h1>
         <p data-cy="profile-bio">{profile.bio}</p>
         <SocialNav socials={profile.socials} />

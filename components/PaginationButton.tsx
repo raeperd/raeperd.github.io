@@ -5,9 +5,9 @@ export default function PaginationButton(
 ) {
   const needPagination = !(isFirstPage && isLastPage)
   return needPagination ? (
-    <nav className="pagination" data-cy="page-nav">
+    <nav id="pagination-buttons" data-cy="page-nav">
       <PrevButton pagePath={pagePath || '/'} pageNumber={pageNumber} isActive={!isFirstPage} />
-      <nav className="page-numbers">
+      <nav id="page-number-buttons">
         {Array(lastPageNumber).fill(0).map((_, index) => (
           <PageNumberButton
             pagePath={pagePath || '/'}

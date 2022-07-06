@@ -50,7 +50,7 @@ function Layout({ siteName, menus, socials, children }: LayoutProps) {
   return (
     <>
       <Header siteName={siteName} menus={menus} socials={socials} />
-      <main className="main">{children}</main>
+      <main>{children}</main>
       <Footer siteName={siteName} />
     </>
   )
@@ -65,7 +65,7 @@ type LayoutProps = {
 
 function Header({ siteName, menus, socials }: HeaderProps) {
   return (
-    <header id="main-header">
+    <header id="layout-header">
       <Link href="/">
         <a data-cy="header-root-link">{siteName}</a>
       </Link>
@@ -78,7 +78,7 @@ function Header({ siteName, menus, socials }: HeaderProps) {
 
 function Footer({ siteName }: { siteName: string }) {
   return (
-    <footer id="main-footer">
+    <footer id="layout-footer">
       <p>
         &copy;
         {new Date().getFullYear()}
