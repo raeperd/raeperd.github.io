@@ -283,9 +283,9 @@ main {
     padding-bottom: var(--y-gap);
 }
 
-.main-title {
-    margin-bottom: calc(var(--y-gap) + 1rem);
-    font-size: 3rem;
+#main-title {
+    margin-bottom: var(--y-gap);
+    font-size: 3.2rem;
     font-weight: 400;
     color: var(--lit);
 }
@@ -299,8 +299,8 @@ nav.pagination {
 nav.pagination a {
     font-size: 1.8rem;
     line-height: 5.5rem;
-    border-radius: 0.5rem;
-    padding-inline: 3rem;
+    border-radius: 45%;
+    padding-inline: 2.5rem;
 }
 
 nav.pagination a.active {
