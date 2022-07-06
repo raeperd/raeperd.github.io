@@ -166,24 +166,24 @@ img {
 /* ---------------------------------------------------------------------------------------------------------------------
  $3 Header
 --------------------------------------------------------------------------------------------------------------------- */
-#main-header {
+#layout-header {
     display: flex;
     column-gap: calc(var(--gap) - 1.0rem);
     max-width: var(--wide);
     height: var(--header-height);
 }
 
-#main-header a {
+#layout-header a {
     display: flex;
     flex-shrink: 0;
     align-items: center;
 }
 
-#main-header a:hover {
+#layout-header a:hover {
     text-decoration: underline;
 }
 
-#main-header > a:first-child {
+#layout-header > a:first-child {
     max-width: calc(100% - 10rem);
     overflow: auto;
     font-size: 3.4rem;
@@ -230,11 +230,11 @@ img {
         --header-height: 16rem;
     }
 
-    #main-header {
+    #layout-header {
         position: relative;
     }
 
-    #main-header > * {
+    #layout-header > * {
         height: calc(var(--header-height) / 2);
     }
 
@@ -248,7 +248,7 @@ img {
 /* ---------------------------------------------------------------------------------------------------------------------
  $4 Footer
 --------------------------------------------------------------------------------------------------------------------- */
-#main-footer {
+#layout-footer {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -261,12 +261,12 @@ img {
     border-top: 1px solid var(--fog);
 }
 
-#main-footer p + p::before {
+#layout-footer p + p::before {
     content: '·';
     margin-inline: 0.6rem;
 }
 
-#main-footer a:hover {
+#layout-footer a:hover {
     color: var(--pro);
     border-bottom: 1px solid var(--pro);
 }
