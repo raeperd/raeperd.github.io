@@ -331,31 +331,31 @@ main {
     flex-wrap: wrap;
 }
 
-main .profile-container {
+#profile-container {
     display: flex;
     justify-content: center;
     align-items: center;
     flex-wrap: wrap;
+    column-gap: 5rem;
     margin-bottom: var(--y-gap);
 }
 
-main .profile-container > img {
+#profile-container img {
     width: 25rem;
     border-radius: 50%;
-    margin-right: 5rem
 }
 
-main .profile-container .bio-container {
+#bio-container {
     display: flex;
     flex-direction: column;
-    justify-content: space-evenly;
+    row-gap: 1rem;
 }
 
-main .profile-container .bio-container > h1 {
+#bio-container h1 {
     font-size: 5rem;
 }
 
-main .profile-container .bio-container > p {
+#bio-container p {
     font-size: 3rem;
 }
 
