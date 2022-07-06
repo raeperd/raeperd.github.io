@@ -5,9 +5,9 @@ export default function PaginationButton(
 ) {
   const needPagination = !(isFirstPage && isLastPage)
   return needPagination ? (
-    <nav className="pagination" data-cy="page-nav">
+    <nav id="pagination-buttons" data-cy="page-nav">
       <PrevButton pagePath={pagePath || '/'} pageNumber={pageNumber} isActive={!isFirstPage} />
-      <nav className="page-numbers">
+      <nav id="page-number-buttons">
         {Array(lastPageNumber).fill(0).map((_, index) => (
           <PageNumberButton
             pagePath={pagePath || '/'}
@@ -33,7 +33,7 @@ function PrevButton({ pagePath, pageNumber, isActive }: NavButtonProps) {
   const prevPageLink = pageNumber === 2 ? `${pagePath}` : `${pagePath}pages/${pageNumber - 1}`
   return (
     <Link href={prevPageLink}>
-      <a className={isActive ? '' : 'disabled'} data-cy="page-prev-button">&lt;</a>
+      <a id="prev-page-button" className={isActive ? '' : 'disabled'} data-cy="page-prev-button">&lt;</a>
     </Link>
   )
 }
@@ -49,7 +49,7 @@ function PageNumberButton({ pagePath, pageNumber, isActive }: NavButtonProps) {
 function NextButton({ pagePath, pageNumber, isActive }: NavButtonProps) {
   return (
     <Link href={`${pagePath}pages/${pageNumber + 1}`}>
-      <a className={isActive ? '' : 'disabled'} data-cy="page-next-button">&gt;</a>
+      <a id="next-page-button" className={isActive ? '' : 'disabled'} data-cy="page-next-button">&gt;</a>
     </Link>
   )
 }

@@ -290,49 +290,45 @@ main {
     color: var(--lit);
 }
 
-nav.pagination {
+#pagination-buttons {
     display: flex;
     justify-content: center;
     margin-top: 5rem;
 }
 
-nav.pagination a {
+#pagination-buttons a {
     font-size: 1.8rem;
     line-height: 5.5rem;
     border-radius: 45%;
     padding-inline: 2.5rem;
 }
 
-nav.pagination a.active {
+#pagination-buttons a.active {
     background-color: var(--black);
     color: var(--white);
 }
 
-nav.pagination a:hover {
-    text-decoration: underline;
-}
-
-nav.pagination a.disabled {
+#pagination-buttons a.disabled {
     color: grey;
     pointer-events: none;
 }
 
-nav.pagination a:first-child {
+#pagination-buttons a:hover {
+    text-decoration: underline;
+}
+
+#prev-page-button {
     margin-right: auto;
 }
 
-nav.pagination a:last-child {
+#next-page-button {
     margin-left: auto;
 }
 
-nav.pagination nav.page-numbers {
+#page-number-buttons {
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
-}
-
-nav.pagination nav.page-numbers a {
-    margin: 0
 }
 
 main .profile-container {
