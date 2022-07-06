@@ -26,10 +26,8 @@ body {
 
 body {
     --gap: 3.5rem;
-    --y-gap: 8rem;
-    --wide: 160;
-    --narrow: 100rem;
-    --side: calc((var(--wide) - var(--narrow)) / 2);
+    --wide-width: 160rem;
+    --narrow-width: 100rem;
 
     --header-height: 8rem;
     --footer-height: calc(8rem + var(--safe-bottom));
@@ -169,7 +167,7 @@ img {
 #layout-header {
     display: flex;
     column-gap: calc(var(--gap) - 1.0rem);
-    max-width: var(--wide);
+    max-width: var(--wide-width);
     height: var(--header-height);
 }
 
@@ -252,7 +250,7 @@ img {
     display: flex;
     align-items: center;
     justify-content: center;
-    max-width: var(--narrow);
+    max-width: var(--narrow-width);
     height: var(--footer-height);
     padding-bottom: var(--safe-bottom);
     margin-top: auto;
@@ -275,9 +273,11 @@ img {
  $5 Main
 --------------------------------------------------------------------------------------------------------------------- */
 main {
+    --y-gap: 8rem;
+
     display: flex;
     flex-direction: column;
-    max-width: var(--narrow);
+    max-width: var(--narrow-width);
     min-height: calc(100% - var(--header-height) - var(--footer-height));
     padding-top: var(--y-gap);
     padding-bottom: var(--y-gap);
