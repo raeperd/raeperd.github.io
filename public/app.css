@@ -9,47 +9,7 @@
 /* ---------------------------------------------------------------------------------------------------------------------
  $1 Theme
 --------------------------------------------------------------------------------------------------------------------- */
-:root {
-    --gap: 3.5rem;
-    --y-gap: 8rem;
-    --wide: 160;
-    --narrow: 100rem;
-    --side: calc((var(--wide) - var(--narrow)) / 2);
-    --header-height: 8rem;
-    --footer-height: calc(8rem + var(--safe-bottom));
-
-    --light: 255, 255, 255;
-    --dark: 22, 22, 22;
-    --hljs-bg: #111;
-
-    --safe-bottom: 0;
-}
-
-@supports (bottom: env(safe-area-inset-bottom)) {
-    :root {
-        --safe-bottom: env(safe-area-inset-bottom);
-    }
-}
-
-.dark {
-    --light: 22, 22, 22;
-    --dark: 255, 255, 255;
-    --hljs-bg: #282828;
-}
-
-*,
-*::before,
-*::after {
-    box-sizing: border-box;
-}
-
-html,
-body {
-    height: 100%;
-}
-
 html {
-    -webkit-tap-highlight-color: transparent;
     font-size: 8px;
 }
 
@@ -59,7 +19,25 @@ html {
     }
 }
 
+html,
 body {
+    height: 100%;
+}
+
+body {
+    --gap: 3.5rem;
+    --y-gap: 8rem;
+    --wide: 160;
+    --narrow: 100rem;
+    --side: calc((var(--wide) - var(--narrow)) / 2);
+
+    --header-height: 8rem;
+    --footer-height: calc(8rem + var(--safe-bottom));
+
+    --light: 255, 255, 255;
+    --dark: 22, 22, 22;
+    --hljs-bg: #111;
+
     --white: rgba(var(--light), 1);
     --black: rgba(var(--dark), 1);
 
@@ -81,6 +59,24 @@ body {
     word-break: break-word;
     background: var(--white);
     transition: background 0.4s ease-out;
+}
+
+@supports (bottom: env(safe-area-inset-bottom)) {
+    body {
+        --safe-bottom: env(safe-area-inset-bottom);
+    }
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+.dark {
+    --light: 22, 22, 22;
+    --dark: 255, 255, 255;
+    --hljs-bg: #282828;
 }
 
 #__next {
@@ -230,7 +226,7 @@ img {
 }
 
 @media (max-width: 700px) {
-    :root {
+    body {
         --header-height: 16rem;
     }
 
