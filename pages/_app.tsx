@@ -50,7 +50,7 @@ function Layout({ siteName, menus, socials, children }: LayoutProps) {
   return (
     <>
       <Header siteName={siteName} menus={menus} socials={socials} />
-      <main className="main">{children}</main>
+      <main>{children}</main>
       <Footer siteName={siteName} />
     </>
   )

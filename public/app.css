@@ -274,7 +274,7 @@ img {
 /* ---------------------------------------------------------------------------------------------------------------------
  $5 Main
 --------------------------------------------------------------------------------------------------------------------- */
-.main {
+main {
     display: flex;
     flex-direction: column;
     max-width: var(--narrow);
@@ -335,7 +335,7 @@ nav.pagination nav.page-numbers a {
     margin: 0
 }
 
-.main .profile-container {
+main .profile-container {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -343,23 +343,23 @@ nav.pagination nav.page-numbers a {
     margin-bottom: var(--y-gap);
 }
 
-.main .profile-container > img {
+main .profile-container > img {
     width: 25rem;
     border-radius: 50%;
     margin-right: 5rem
 }
 
-.main .profile-container .bio-container {
+main .profile-container .bio-container {
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
 }
 
-.main .profile-container .bio-container > h1 {
+main .profile-container .bio-container > h1 {
     font-size: 5rem;
 }
 
-.main .profile-container .bio-container > p {
+main .profile-container .bio-container > p {
     font-size: 3rem;
 }
 
