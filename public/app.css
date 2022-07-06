@@ -362,39 +362,27 @@ main {
 /* ---------------------------------------------------------------------------------------------------------------------
  $6 Post Entry
 --------------------------------------------------------------------------------------------------------------------- */
-.post-entry {
-    position: relative;
-    padding-block: 2rem;
-    transition: transform 0.1s;
+#note-list-nav {
+    display: flex;
+    flex-direction: column;
 }
 
-.post-entry:first-of-type {
-    margin-top: -2rem;
+#note-list-nav a {
+    padding-block-end: 3rem;
 }
 
-.post-entry:active {
-    transform: scale(0.99);
+#note-list-nav a:hover {
+    background-color: var(--fog);
+    color: var(--dark);
 }
 
-.post-entry:hover, .post-entry:hover time {
-    background-color: #f2f2f2;
-    color: black;
-}
-
-.post-entry h2 {
-    margin-bottom: 0.2rem;
+#note-list-nav h2 {
     font-size: 3rem;
 }
 
-.post-entry time {
-    flex-shrink: 0;
+#note-list-nav time {
     font-size: 1.7rem;
     color: var(--air);
-}
-
-.post-entry a {
-    position: absolute;
-    inset: 0;
 }
 
 /* ---------------------------------------------------------------------------------------------------------------------
