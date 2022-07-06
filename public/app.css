@@ -773,27 +773,23 @@ article iframe {
 /* ---------------------------------------------------------------------------------------------------------------------
  $8 Algorithms Page
 --------------------------------------------------------------------------------------------------------------------- */
-main table.algorithm-table tr th, td {
+#note-table-nav {
+    margin-bottom: var(--y-gap);
+}
+
+#note-table-nav tr th, td {
     border-bottom: 1px solid;
     border-collapse: collapse;
     padding: 1.5rem;
 }
 
-main table.algorithm-table tr th {
-    font-size: 2.2rem;
+#note-table-nav tr:not(:first-child):hover {
+    background-color: var(--fog);
+    color: var(--dark);
 }
 
-main table.algorithm-table tr td.title {
+#note-table-nav td.title {
     font-weight: bold;
-}
-
-main table.algorithm-table tr td a {
-    display: block;
-}
-
-main table.algorithm-table tr:hover * {
-    background-color: #f2f2f2;
-    color: black;
 }
 
 /* ---------------------------------------------------------------------------------------------------------------------
