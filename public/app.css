@@ -317,11 +317,11 @@ main {
     text-decoration: underline;
 }
 
-#prev-page-button {
+#pagination-buttons > a:first-child {
     margin-right: auto;
 }
 
-#next-page-button {
+#pagination-buttons > a:last-child {
     margin-left: auto;
 }
 

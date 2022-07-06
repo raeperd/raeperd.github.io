@@ -33,7 +33,7 @@ function PrevButton({ pagePath, pageNumber, isActive }: NavButtonProps) {
   const prevPageLink = pageNumber === 2 ? `${pagePath}` : `${pagePath}pages/${pageNumber - 1}`
   return (
     <Link href={prevPageLink}>
-      <a id="prev-page-button" className={isActive ? '' : 'disabled'} data-cy="page-prev-button">&lt;</a>
+      <a className={isActive ? '' : 'disabled'} data-cy="page-prev-button">&lt;</a>
     </Link>
   )
 }
@@ -49,7 +49,7 @@ function PageNumberButton({ pagePath, pageNumber, isActive }: NavButtonProps) {
 function NextButton({ pagePath, pageNumber, isActive }: NavButtonProps) {
   return (
     <Link href={`${pagePath}pages/${pageNumber + 1}`}>
-      <a id="next-page-button" className={isActive ? '' : 'disabled'} data-cy="page-next-button">&gt;</a>
+      <a className={isActive ? '' : 'disabled'} data-cy="page-next-button">&gt;</a>
     </Link>
   )
 }
