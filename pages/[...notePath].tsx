@@ -1,7 +1,7 @@
 import Head from 'next/head';
 import path, { join } from 'path';
 import { getNoteByStaticPath, getNoteStaticPaths, Note } from '../lib/note';
-import NoteView from '../components/NoteView';
+import Article from '../components/Article';
 
 export default function NotePage({ note }: NotePageProps) {
   return (
@@ -9,7 +9,7 @@ export default function NotePage({ note }: NotePageProps) {
       <Head>
         <title>{note.title}</title>
       </Head>
-      <NoteView note={note} />
+      <Article note={note} />
     </>
   )
 }
