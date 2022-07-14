@@ -12,9 +12,9 @@ import { AnchorHTMLAttributes } from 'react';
 import { Note } from '../lib/note'
 import TagListHeader from './TagListHeader';
 
-export default function NoteView({ note }: NoteViewProps) {
+export default function Article({ note }: NoteViewProps) {
   return (
-    <article className="post-single">
+    <article>
       <header className="post-title">
         <p>
           <time>{note.date}</time>

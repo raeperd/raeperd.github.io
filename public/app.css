@@ -26,17 +26,14 @@ body {
 
 body {
     --gap: 3.5rem;
-    --y-gap: 8rem;
-    --wide: 160;
-    --narrow: 100rem;
-    --side: calc((var(--wide) - var(--narrow)) / 2);
+    --wide-width: 160rem;
+    --narrow-width: 100rem;
 
     --header-height: 8rem;
     --footer-height: calc(8rem + var(--safe-bottom));
 
     --light: 255, 255, 255;
     --dark: 22, 22, 22;
-    --hljs-bg: #111;
 
     --white: rgba(var(--light), 1);
     --black: rgba(var(--dark), 1);
@@ -58,7 +55,7 @@ body {
     color: var(--pro);
     word-break: break-word;
     background: var(--white);
-    transition: background 0.4s ease-out;
+    transition: background 0.2s ease-out;
 }
 
 @supports (bottom: env(safe-area-inset-bottom)) {
@@ -76,7 +73,6 @@ body {
 .dark {
     --light: 22, 22, 22;
     --dark: 255, 255, 255;
-    --hljs-bg: #282828;
 }
 
 #__next {
@@ -169,7 +165,7 @@ img {
 #layout-header {
     display: flex;
     column-gap: calc(var(--gap) - 1.0rem);
-    max-width: var(--wide);
+    max-width: var(--wide-width);
     height: var(--header-height);
 }
 
@@ -252,7 +248,7 @@ img {
     display: flex;
     align-items: center;
     justify-content: center;
-    max-width: var(--narrow);
+    max-width: var(--narrow-width);
     height: var(--footer-height);
     padding-bottom: var(--safe-bottom);
     margin-top: auto;
@@ -275,9 +271,11 @@ img {
  $5 Main
 --------------------------------------------------------------------------------------------------------------------- */
 main {
+    --y-gap: 8rem;
+
     display: flex;
     flex-direction: column;
-    max-width: var(--narrow);
+    max-width: var(--narrow-width);
     min-height: calc(100% - var(--header-height) - var(--footer-height));
     padding-top: var(--y-gap);
     padding-bottom: var(--y-gap);
@@ -607,12 +605,6 @@ article a:hover {
     color: rgba(var(--a-text-color), 0.75);
 }
 
-article a code {
-    margin-inline: 0;
-    border-bottom-right-radius: 0;
-    border-bottom-left-radius: 0;
-}
-
 article del {
     text-decoration: none;
     background: linear-gradient(to right, var(--pro) 100%, transparent 0) 0 50% / 1px 1px repeat-x;
@@ -658,7 +650,7 @@ article table {
 }
 
 article table th,
-article table:not(.highlighttable) td {
+article table td {
     min-width: 10rem;
     padding: 1.5rem 1rem;
     line-height: 1.5;
@@ -670,15 +662,9 @@ article table th {
     text-align: left;
 }
 
-article table:not(.highlighttable) td code:only-of-type {
-    margin-inline: 0;
-}
-
-article .highlight,
 article pre {
     margin: 0 calc(var(--gap) * -1) 4rem;
     overflow-x: auto;
-    background: var(--hljs-bg) !important;
     border-radius: 0.5rem;
 }
 
@@ -686,31 +672,16 @@ article ul pre {
     margin-left: calc(var(--gap) * -2);
 }
 
-article .highlight pre {
-    margin-inline: 0;
-    margin-bottom: 0;
-}
-
 /* table */
-article .highlighttable {
-    table-layout: fixed;
-}
 
-article .highlighttable td:first-of-type {
-    width: 5rem;
-}
-
-article .highlighttable td .linenodiv {
+article td pre,
+article td {
+    margin-bottom: 0;
     padding-right: 0 !important;
 }
 
-article .highlighttable td .linenodiv pre,
-article .highlighttable td .highlight {
-    margin-bottom: 0;
-}
-
-article .highlighttable td .highlight pre code::-webkit-scrollbar {
-    display: none;
+article td:first-of-type {
+    width: 5rem;
 }
 
 /* inline */
@@ -732,23 +703,14 @@ article :where(h1, h2, h3, h4, h5, h6):hover span.icon.icon-link {
 }
 
 article code {
-    padding: 0.5rem 1rem;
-    margin-inline: 0.5rem;
     font-family: Menlo, Monaco, 'Courier New', Courier, monospace;
     font-size: 0.8em;
     color: var(--code-color);
-    line-height: 1.5;
     background: rgba(var(--dark), 0.06);
-    border-radius: 0.3rem;
 }
 
 article pre code {
-    display: block;
-    padding: var(--gap);
-    margin-inline: 0;
-    color: rgba(255, 255, 255, 0.8);
     background: transparent;
-    border-radius: 0;
 }
 
 article blockquote {
