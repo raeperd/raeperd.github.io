@@ -24,7 +24,7 @@ export default function Article({ note }: NoteViewProps) {
         </p>
         <h1 itemProp="headline">{note.title}</h1>
       </header>
-      <TagNav tags={note.tags.map((tag) => ({ name: tag }))} basePath="/" />
+      <TagNav tags={note.tags.map((tag) => ({ name: tag }))} basePath="/" isKeywords />
       <section className="post-content" itemProp="articleBody">
         <ReactMarkdown
           components={{
