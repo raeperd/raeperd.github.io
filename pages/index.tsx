@@ -28,11 +28,11 @@ export default function Index(
 
 function ProfileContainer({ profile }: {profile: Profile }) {
   return (
-    <div id="profile-container">
+    <div id="profile-container" itemScope itemType="https://schema.org/Person">
       {/* eslint-disable-next-line @next/next/no-img-element */}
-      <img alt="Profile" src={profile.image} data-cy="profile-image" />
+      <img src={profile.image} alt="Profile" itemProp="image" data-cy="profile-image" />
       <div id="bio-container">
-        <h1 data-cy="profile-name">{profile.name}</h1>
+        <h1 data-cy="profile-name" itemProp="name">{profile.name}</h1>
         <p data-cy="profile-bio">{profile.bio}</p>
         <SocialNav socials={profile.socials} />
       </div>

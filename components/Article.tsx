@@ -14,16 +14,18 @@ import TagNav from './TagNav';
 
 export default function Article({ note }: NoteViewProps) {
   return (
-    <article>
+    <article itemScope itemType="https://schema.org/BlogPosting">
       <header className="post-title">
         <p>
-          <time>{note.date}</time>
-          <span>{note.author}</span>
+          <time itemProp="datePublished" dateTime={note.date}>{note.date}</time>
+          <span itemProp="author" itemScope itemType="https://schema.org/Person">
+            <span itemProp="name">{note.author}</span>
+          </span>
         </p>
-        <h1>{note.title}</h1>
+        <h1 itemProp="headline">{note.title}</h1>
       </header>
-      <TagNav tags={note.tags.map((tag) => ({ name: tag }))} basePath="/" />
-      <section className="post-content">
+      <TagNav tags={note.tags.map((tag) => ({ name: tag }))} basePath="/" isKeywords />
+      <section className="post-content" itemProp="articleBody">
         <ReactMarkdown
           components={{
             code: SyntaxHighlightedCodeBlock,
