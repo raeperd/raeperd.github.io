@@ -10,7 +10,7 @@ import rehypeAutolinkHeadings from 'rehype-autolink-headings';
 import { CodeProps } from 'react-markdown/lib/ast-to-react';
 import { AnchorHTMLAttributes } from 'react';
 import { Note } from '../lib/note'
-import TagListHeader from './TagListHeader';
+import TagNav from './TagNav';
 
 export default function Article({ note }: NoteViewProps) {
   return (
@@ -22,7 +22,7 @@ export default function Article({ note }: NoteViewProps) {
         </p>
         <h1>{note.title}</h1>
       </header>
-      <TagListHeader tags={note.tags.map((tag) => ({ name: tag }))} basePath="/" />
+      <TagNav tags={note.tags.map((tag) => ({ name: tag }))} basePath="/" />
       <section className="post-content">
         <ReactMarkdown
           components={{

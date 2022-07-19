@@ -1,5 +1,5 @@
 import NoteListView, { NoteListViewProps } from './NoteListView';
-import TagListHeader, { TagListHeaderProps } from './TagListHeader';
+import TagNav, { TagNavProps } from './TagNav';
 
 export default function TaggedNoteListView({
   tagPath, tags,
@@ -7,7 +7,7 @@ export default function TaggedNoteListView({
 }: TaggedNoteListViewProps) {
   return (
     <>
-      <TagListHeader tags={tags} basePath={tagPath} />
+      <TagNav tags={tags} basePath={tagPath} />
       <NoteListView
         header={header}
         notes={notes}
@@ -21,6 +21,6 @@ export default function TaggedNoteListView({
   )
 }
 
-export interface TaggedNoteListViewProps extends Omit<TagListHeaderProps, 'basePath'>, NoteListViewProps {
+export interface TaggedNoteListViewProps extends Omit<TagNavProps, 'basePath'>, NoteListViewProps {
   tagPath: string,
 }

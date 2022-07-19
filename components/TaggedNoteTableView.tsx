@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import TagListHeader from './TagListHeader';
+import TagNav from './TagNav';
 import MainTitle from './MainTitle';
 import { TaggedNoteListViewProps } from './TaggedNoteListView';
 import PaginationButton from './PaginationButton';
@@ -13,7 +13,7 @@ export default function TaggedNoteTableView(
 ) {
   return (
     <>
-      <TagListHeader tags={tags} basePath={tagPath} />
+      <TagNav tags={tags} basePath={tagPath} />
       {header && <MainTitle title={header} />}
       <NoteTableNav notes={notes} />
       <PaginationButton

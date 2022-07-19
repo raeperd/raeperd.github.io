@@ -1,19 +1,19 @@
 import Link from 'next/link';
 import { Tag } from '../lib/note';
 
-export default function TagListHeader({ tags, basePath }: TagListHeaderProps) {
+export default function TagNav({ tags, basePath }: TagNavProps) {
   return (
-    <header className="post-tags">
+    <nav id="tag-nav">
       {tags.map((tag) => (
         <Link key={tag.name} href={`${basePath}tags/${tag.name}`}>
-          <a data-cy="tag-link">{stringFromTag(tag)}</a>
+          <a className="tag-link" data-cy="tag-link">{stringFromTag(tag)}</a>
         </Link>
       ))}
-    </header>
+    </nav>
   )
 }
 
-export interface TagListHeaderProps {
+export interface TagNavProps {
   tags: Tag[],
   basePath: string
 }

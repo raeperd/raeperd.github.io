@@ -43,6 +43,9 @@ body {
     --air: rgba(var(--dark), 0.48);
     --fog: rgba(var(--dark), 0.12);
 
+    --tag-background-color: hsl(157, 37%, 81%);
+    --tag-text-color: hsl(156, 57%, 26%);
+
     display: flex;
     flex-direction: column;
     padding-right: var(--gap);
@@ -58,6 +61,14 @@ body {
     transition: background 0.2s ease-out;
 }
 
+body.dark {
+    --light: 22, 22, 22;
+    --dark: 255, 255, 255;
+
+    --tag-background-color: hsl(156, 57%, 26%);
+    --tag-text-color: var(--text-normal);
+}
+
 @supports (bottom: env(safe-area-inset-bottom)) {
     body {
         --safe-bottom: env(safe-area-inset-bottom);
@@ -68,11 +79,6 @@ body {
 *::before,
 *::after {
     box-sizing: border-box;
-}
-
-.dark {
-    --light: 22, 22, 22;
-    --dark: 255, 255, 255;
 }
 
 #__next {
@@ -408,32 +414,25 @@ main {
     transform: translateX(-0.3rem);
 }
 
-header.post-tags {
-    margin-top: 0;
+#tag-nav {
     margin-bottom: 7rem;
 }
 
-.post-tags {
-    margin-top: 7rem;
-}
-
-.post-tags a {
+.tag-link {
     display: inline-block;
-    font-weight: 500;
     line-height: 5rem;
-    color: var(--lit);
-    background: rgba(var(--dark), 0.05);
-    border-radius: 0.5rem;
     padding-inline: 2rem;
+    border-radius: 3rem;
+    margin-left: 1.5rem;
+    margin-bottom: 1.5rem;
+
+    color: var(--tag-text-color);
+    background: var(--tag-background-color);
 }
 
-.post-tags a:hover {
+.tag-link:hover {
+    color: rgba(var(--lit), 0.2);
     background: rgba(var(--dark), 0.2);
-}
-
-.post-tags a + a {
-    margin-left: 1rem;
-    margin-bottom: 1rem;
 }
 
 .post-nav {
