@@ -18,7 +18,9 @@ export default function Article({ note }: NoteViewProps) {
       <header className="post-title">
         <p>
           <time itemProp="datePublished" dateTime={note.date}>{note.date}</time>
-          <span>{note.author}</span>
+          <span itemProp="author" itemScope itemType="https://schema.org/Person">
+            <span itemProp="name">{note.author}</span>
+          </span>
         </p>
         <h1 itemProp="headline">{note.title}</h1>
       </header>
