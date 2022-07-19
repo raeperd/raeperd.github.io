@@ -392,25 +392,27 @@ main {
 /* ---------------------------------------------------------------------------------------------------------------------
  $7 Article
 --------------------------------------------------------------------------------------------------------------------- */
-.post-title {
-    margin-bottom: 5rem
+#article-header {
+    display: flex;
+    flex-direction: column;
 }
 
-.post-title p {
-    display: flex;
-    margin-bottom: 1.5rem;
-    font-size: 1.6rem;
+.article-meta {
+    display: inline-block;
+    font-size: 2rem;
     color: var(--air);
     transform: translateY(0.4rem);
 }
 
-.post-title p span::before {
+.article-meta + .article-meta:before {
     content: '·';
     margin-inline: 0.8rem;
 }
 
-.post-title h1 {
-    font-size: 5rem;
+#article-title {
+    margin-top: 1.5rem;
+    margin-bottom: 5rem;
+    font-size: var(--h1-font-size);
     transform: translateX(-0.3rem);
 }
 
@@ -423,7 +425,7 @@ main {
     line-height: 5rem;
     padding-inline: 2rem;
     border-radius: 3rem;
-    margin-left: 1.5rem;
+    margin-right: 1.5rem;
     margin-bottom: 1.5rem;
 
     color: var(--tag-text-color);
@@ -465,30 +467,6 @@ main {
     justify-content: flex-end;
     padding-left: 1rem;
     margin-left: auto;
-}
-
-.post-comments {
-    margin-top: var(--y-gap);
-}
-
-@media (max-width: 1199px) {
-    .post-title {
-        display: block;
-    }
-
-    .post-title aside {
-        flex-direction: row;
-        width: auto;
-        padding-right: 0;
-        margin-bottom: 0.5rem;
-        margin-left: 0;
-        transform: none;
-    }
-
-    .post-title aside span::before {
-        content: '·';
-        margin-inline: 0.5rem;
-    }
 }
 
 article {

@@ -15,29 +15,27 @@ import TagNav from './TagNav';
 export default function Article({ note }: NoteViewProps) {
   return (
     <article itemScope itemType="https://schema.org/BlogPosting">
-      <header className="post-title">
-        <p>
-          <time itemProp="datePublished" dateTime={note.date}>{note.date}</time>
-          <span itemProp="author" itemScope itemType="https://schema.org/Person">
-            <span itemProp="name">{note.author}</span>
-          </span>
-        </p>
-        <h1 itemProp="headline">{note.title}</h1>
+      <header id="article-header">
+        <div>
+          <time className="article-meta" itemProp="datePublished" dateTime={note.date}>{note.date}</time>
+          <span className="article-meta" itemProp="author">{note.author}</span>
+        </div>
+        <h1 id="article-title" itemProp="headline">{note.title}</h1>
+        <TagNav tags={note.tags.map((tag) => ({ name: tag }))} basePath="/" isKeywords />
       </header>
-      <TagNav tags={note.tags.map((tag) => ({ name: tag }))} basePath="/" isKeywords />
-      <section className="post-content" itemProp="articleBody">
-        <ReactMarkdown
-          components={{
-            code: SyntaxHighlightedCodeBlock,
-            a: ForcedAbsoluteAnchor,
-          }}
-          // @ts-expect-error rehypeSlug and rehypeAutoLinkHeadings are not supporting typescript
-          rehypePlugins={[rehypeRaw, rehypeKatex, rehypeSlug, [rehypeAutolinkHeadings, { behavior: 'append' }]]}
-          remarkPlugins={[remarkGfm, remarkMath]}
-        >
-          {note.content}
-        </ReactMarkdown>
-      </section>
+      <ReactMarkdown
+        components={{
+          code: SyntaxHighlightedCodeBlock,
+          a: ForcedAbsoluteAnchor,
+        }}
+        // @ts-expect-error rehypeSlug and rehypeAutoLinkHeadings are not supporting typescript
+        rehypePlugins={[rehypeRaw, rehypeKatex, rehypeSlug, [rehypeAutolinkHeadings, { behavior: 'append' }]]}
+        remarkPlugins={[remarkGfm, remarkMath]}
+        id="article-body"
+        itemProp="articleBody"
+      >
+        {note.content}
+      </ReactMarkdown>
     </article>
   )
 }
