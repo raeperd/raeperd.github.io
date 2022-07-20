@@ -4,11 +4,12 @@ import rehypeRaw from 'rehype-raw';
 import rehypeKatex from 'rehype-katex';
 import remarkMath from 'remark-math';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
-import { vscDarkPlus } from 'react-syntax-highlighter/dist/cjs/styles/prism';
+import { prism, vscDarkPlus } from 'react-syntax-highlighter/dist/cjs/styles/prism';
 import rehypeSlug from 'rehype-slug';
 import rehypeAutolinkHeadings from 'rehype-autolink-headings';
 import { CodeProps } from 'react-markdown/lib/ast-to-react';
 import { AnchorHTMLAttributes } from 'react';
+import { useDarkMode } from 'usehooks-ts';
 import { Note } from '../lib/note'
 import TagNav from './TagNav';
 
@@ -45,11 +46,13 @@ export interface NoteViewProps {
 }
 
 function SyntaxHighlightedCodeBlock({ inline, className, children, ...props }: CodeProps) {
+  const { isDarkMode } = useDarkMode()
   const match = /language-(\w+)/.exec(className || '')
+  const style = isDarkMode ? vscDarkPlus : prism;
   return !inline && match ? (
     <SyntaxHighlighter
-      style={vscDarkPlus}
       language={match[1]}
+      style={style}
       PreTag="div"
       {...props}
     >

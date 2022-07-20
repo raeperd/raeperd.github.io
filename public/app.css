@@ -607,9 +607,11 @@ article table th {
 }
 
 article pre {
-    margin: 0 calc(var(--gap) * -1) 4rem;
-    overflow-x: auto;
-    border-radius: 0.5rem;
+    font-size: calc(var(--default-font-size) - 0.5rem);
+}
+
+article pre code {
+    background: transparent;
 }
 
 article ul pre {
@@ -651,10 +653,6 @@ article code {
     font-size: calc(0.9 * var(--default-font-size));
     color: var(--code-color);
     background: var(--fog);
-}
-
-article pre code {
-    background: transparent;
 }
 
 article blockquote {
