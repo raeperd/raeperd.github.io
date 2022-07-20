@@ -456,6 +456,9 @@ article {
     --em-color: var(--pink);
     --code-color: hsl(345, 69%, 46%);
 
+    --a-color: hsl(218, 55%, 60%);
+    --a-hover-color: hsla(218, 55%, 60%, 0.7);
+
     --default-font-size: 2.5rem;
     --h1-font-size: calc(var(--default-font-size) + 1.7rem);
     --h2-font-size: calc(var(--default-font-size) + 1rem);
@@ -539,13 +542,11 @@ article img {
 }
 
 article a {
-    --a-text-color: 95, 136, 209;
-    color: rgba(var(--a-text-color), 1);
-    padding-bottom: 0.2rem;
+    color: var(--a-color);
 }
 
 article a:hover {
-    color: rgba(var(--a-text-color), 0.75);
+    color: var(--a-hover-color);
 }
 
 article del {
@@ -601,7 +602,6 @@ article table td {
 }
 
 article table th {
-    font-size: 1.6rem;
     text-align: left;
 }
 
