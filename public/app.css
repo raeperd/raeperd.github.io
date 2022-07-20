@@ -38,7 +38,6 @@ body {
     --white: rgba(var(--light), 1);
     --black: rgba(var(--dark), 1);
 
-    --pro: rgba(var(--dark), 1);
     --lit: rgba(var(--dark), 0.64);
     --air: rgba(var(--dark), 0.48);
     --fog: rgba(var(--dark), 0.12);
@@ -55,7 +54,7 @@ body {
     'Open Sans', 'Helvetica Neue', sans-serif;
     font-size: 2.5rem;
     line-height: 1.8;
-    color: var(--pro);
+    color: var(--black);
     word-break: break-word;
     background: var(--white);
     transition: background 0.2s ease-out;
@@ -64,6 +63,9 @@ body {
 body.dark {
     --light: 22, 22, 22;
     --dark: 255, 255, 255;
+
+    --backgroud-color: hsl(0, 0%, 100%);
+    --font-color: hsl(0, 0%, 0%);
 
     --tag-background-color: hsl(156, 57%, 26%);
     --tag-text-color: var(--text-normal);
@@ -269,8 +271,8 @@ img {
 }
 
 #layout-footer a:hover {
-    color: var(--pro);
-    border-bottom: 1px solid var(--pro);
+    color: var(--black);
+    border-bottom: 1px solid var(--black);
 }
 
 /* ---------------------------------------------------------------------------------------------------------------------
@@ -377,7 +379,7 @@ main {
 
 #note-list-nav a:hover {
     background-color: var(--fog);
-    color: var(--dark);
+    color: var(--black);
 }
 
 #note-list-nav h2 {
@@ -433,8 +435,8 @@ main {
 }
 
 .tag-link:hover {
-    color: rgba(var(--lit), 0.2);
-    background: rgba(var(--dark), 0.2);
+    color: var(--lit);
+    background: var(--fog);
 }
 
 article {
@@ -458,10 +460,10 @@ article {
     --em-color: var(--pink);
     --code-color: #c7254e;
 
-    --default-font-size: 1.0em;
-    --h1-font-size: calc(var(--default-font-size) + 0.7em);
-    --h2-font-size: calc(var(--default-font-size) + 0.4em);
-    --h3-font-size: calc(var(--default-font-size) + 0.1em);
+    --default-font-size: 2.5rem;
+    --h1-font-size: calc(var(--default-font-size) + 1.7rem);
+    --h2-font-size: calc(var(--default-font-size) + 1rem);
+    --h3-font-size: calc(var(--default-font-size) + 0.4rem);
     --h4-font-color: var(--h3-font-size);
     --h5-font-color: var(--h3-font-size);
     --h6-font-color: var(--h3-font-size);
@@ -483,7 +485,7 @@ article h3,
 article h4,
 article h5,
 article h6 {
-    margin-block: 1em;
+    margin-block: var(--default-font-size);
 }
 
 article h1 {
@@ -493,11 +495,11 @@ article h1 {
 }
 
 article h1:not(:first-child) {
-    margin-top: 2em;
+    margin-top: calc(3 * var(--default-font-size));
 }
 
 article h2 {
-    margin-top: 1.5em;
+    margin-top: calc(2 * var(--default-font-size));
     font-size: var(--h2-font-size) !important;
     color: var(--h2-color);
     font-weight: var(--h2-weight) !important;
@@ -552,7 +554,7 @@ article a:hover {
 
 article del {
     text-decoration: none;
-    background: linear-gradient(to right, var(--pro) 100%, transparent 0) 0 50% / 1px 1px repeat-x;
+    background: linear-gradient(to right, var(--black) 100%, transparent 0) 0 50% / 1px 1px repeat-x;
 }
 
 article ul,
@@ -640,18 +642,18 @@ article :where(h1, h2, h3, h4, h5, h6):hover span.icon.icon-link {
     background-repeat: no-repeat;
     background-position: center center;
     background-size: 0.8em;
-    height: 0.8em;
-    width: 0.8em;
-    padding-left: 1em;
-    padding-right: 0.5em;
+    height: 2rem;
+    width: 2rem;
+    padding-left: 2.5rem;
+    padding-right: 1.3rem;
     cursor: pointer;
 }
 
 article code {
     font-family: Menlo, Monaco, 'Courier New', Courier, monospace;
-    font-size: 0.8em;
+    font-size: calc(0.9 * var(--default-font-size));
     color: var(--code-color);
-    background: rgba(var(--dark), 0.06);
+    background: var(--fog);
 }
 
 article pre code {
@@ -661,7 +663,7 @@ article pre code {
 article blockquote {
     padding: 0 0 0 calc(var(--gap) - 0.4rem);
     margin: 0 0 0 calc(var(--gap) * -1);
-    border-left: 0.4rem solid var(--pro);
+    border-left: 0.4rem solid var(--black);
 }
 
 article hr {
@@ -692,7 +694,7 @@ article iframe {
 
 #note-table-nav tr:not(:first-child):hover {
     background-color: var(--fog);
-    color: var(--dark);
+    color: var(--black);
 }
 
 #note-table-nav td.title {
