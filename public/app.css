@@ -65,7 +65,7 @@ body.dark {
     --dark: 255, 255, 255;
 
     --tag-background-color: hsl(156, 57%, 26%);
-    --tag-text-color: var(--text-normal);
+    --tag-text-color: var(--font-color);
 }
 
 @supports (bottom: env(safe-area-inset-bottom)) {
@@ -437,7 +437,6 @@ main {
 }
 
 article {
-    --text-normal: var(--font-color);
     --blue: #2e80f2;
     --pink: #ff82b2;
     --green: #3eb4bf;
@@ -446,7 +445,7 @@ article {
     --red: #e83e3e;
     --purple: #9e86c8;
 
-    --h1-color: var(--text-normal);
+    --h1-color: var(--font-color);
     --h2-color: var(--blue);
     --h3-color: var(--blue);
     --h4-color: var(--yellow);
