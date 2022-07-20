@@ -35,8 +35,8 @@ body {
     --light: 255, 255, 255;
     --dark: 22, 22, 22;
 
-    --white: rgba(var(--light), 1);
-    --black: rgba(var(--dark), 1);
+    --background-color: rgba(var(--light), 1);
+    --font-color: rgba(var(--dark), 1);
 
     --lit: rgba(var(--dark), 0.64);
     --air: rgba(var(--dark), 0.48);
@@ -54,18 +54,15 @@ body {
     'Open Sans', 'Helvetica Neue', sans-serif;
     font-size: 2.5rem;
     line-height: 1.8;
-    color: var(--black);
+    color: var(--font-color);
     word-break: break-word;
-    background: var(--white);
+    background: var(--background-color);
     transition: background 0.2s ease-out;
 }
 
 body.dark {
     --light: 22, 22, 22;
     --dark: 255, 255, 255;
-
-    --backgroud-color: hsl(0, 0%, 100%);
-    --font-color: hsl(0, 0%, 0%);
 
     --tag-background-color: hsl(156, 57%, 26%);
     --tag-text-color: var(--text-normal);
@@ -159,7 +156,7 @@ textarea {
 
 input:-webkit-autofill,
 textarea:-webkit-autofill {
-    box-shadow: 0 0 0 6rem var(--white) inset;
+    box-shadow: 0 0 0 6rem var(--background-color) inset;
 }
 
 img {
@@ -271,8 +268,8 @@ img {
 }
 
 #layout-footer a:hover {
-    color: var(--black);
-    border-bottom: 1px solid var(--black);
+    color: var(--font-color);
+    border-bottom: 1px solid var(--font-color);
 }
 
 /* ---------------------------------------------------------------------------------------------------------------------
@@ -310,8 +307,8 @@ main {
 }
 
 #pagination-buttons a.active {
-    background-color: var(--black);
-    color: var(--white);
+    background-color: var(--font-color);
+    color: var(--background-color);
 }
 
 #pagination-buttons a.disabled {
@@ -379,7 +376,7 @@ main {
 
 #note-list-nav a:hover {
     background-color: var(--fog);
-    color: var(--black);
+    color: var(--font-color);
 }
 
 #note-list-nav h2 {
@@ -440,7 +437,7 @@ main {
 }
 
 article {
-    --text-normal: var(--black);
+    --text-normal: var(--font-color);
     --blue: #2e80f2;
     --pink: #ff82b2;
     --green: #3eb4bf;
@@ -554,7 +551,7 @@ article a:hover {
 
 article del {
     text-decoration: none;
-    background: linear-gradient(to right, var(--black) 100%, transparent 0) 0 50% / 1px 1px repeat-x;
+    background: linear-gradient(to right, var(--font-color) 100%, transparent 0) 0 50% / 1px 1px repeat-x;
 }
 
 article ul,
@@ -663,7 +660,7 @@ article pre code {
 article blockquote {
     padding: 0 0 0 calc(var(--gap) - 0.4rem);
     margin: 0 0 0 calc(var(--gap) * -1);
-    border-left: 0.4rem solid var(--black);
+    border-left: 0.4rem solid var(--font-color);
 }
 
 article hr {
@@ -675,7 +672,7 @@ article hr {
 
 article iframe {
     width: 100%;
-    background: var(--black);
+    background: var(--font-color);
 }
 
 
@@ -694,7 +691,7 @@ article iframe {
 
 #note-table-nav tr:not(:first-child):hover {
     background-color: var(--fog);
-    color: var(--black);
+    color: var(--font-color);
 }
 
 #note-table-nav td.title {
