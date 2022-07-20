@@ -31,7 +31,7 @@ function NoteListNav({ notes }: {notes: NotePreview[] }) {
   return (
     <nav id="note-list-nav">
       {notes.map((note) => (
-        <Link href={`/${note.staticPath}`} passHref>
+        <Link href={`/${note.staticPath}`} passHref key={note.staticPath}>
           <a data-cy="note-link">
             <time>{note.date}</time>
             <h2>{note.title}</h2>
