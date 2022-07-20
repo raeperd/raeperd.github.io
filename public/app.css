@@ -437,38 +437,6 @@ main {
     background: rgba(var(--dark), 0.2);
 }
 
-.post-nav {
-    display: flex;
-    justify-content: space-between;
-    margin-top: var(--y-gap);
-    background: rgba(var(--dark), 0.05);
-    border-radius: 0.5rem;
-}
-
-.post-nav a {
-    display: flex;
-    align-items: center;
-    width: 50%;
-    padding: var(--gap);
-    font-size: 2.4rem;
-    font-weight: 700;
-    line-height: 1.2;
-}
-
-.post-nav a span + span {
-    margin-left: 1rem;
-}
-
-.post-nav .prev {
-    padding-right: 1rem;
-}
-
-.post-nav .next {
-    justify-content: flex-end;
-    padding-left: 1rem;
-    margin-left: auto;
-}
-
 article {
     --text-normal: var(--black);
     --blue: #2e80f2;
