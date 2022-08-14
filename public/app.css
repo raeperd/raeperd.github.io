@@ -673,31 +673,8 @@ article iframe {
     background: var(--font-color);
 }
 
-
 /* ---------------------------------------------------------------------------------------------------------------------
- $8 Algorithms Page
---------------------------------------------------------------------------------------------------------------------- */
-#note-table-nav {
-    margin-bottom: var(--y-gap);
-}
-
-#note-table-nav tr th, td {
-    border-bottom: 1px solid;
-    border-collapse: collapse;
-    padding: 1.5rem;
-}
-
-#note-table-nav tr:not(:first-child):hover {
-    background-color: var(--fog);
-    color: var(--font-color);
-}
-
-#note-table-nav td.title {
-    font-weight: bold;
-}
-
-/* ---------------------------------------------------------------------------------------------------------------------
- $9 404
+ $8 404
 --------------------------------------------------------------------------------------------------------------------- */
 .title-404 {
     display: flex;
