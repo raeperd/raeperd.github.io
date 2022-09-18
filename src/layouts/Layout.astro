@@ -1,13 +1,13 @@
 ---
-export interface Props {
-  title: string;
-}
+import githubSvg from "../github.svg";
+import linkedinSvg from "../linkedin.svg";
 
 const { title } = Astro.props;
+
 const menus = [
-  { name: "Articles", href: "/articles" },
-  { name: "References", href: "/references" },
-  { name: "Tags", href: "/tags" },
+  { name: "articles", href: "/articles" },
+  { name: "references", href: "/references" },
+  { name: "tags", href: "/tags" },
 ];
 ---
 
@@ -20,47 +20,31 @@ const menus = [
     <meta name="generator" content={Astro.generator} />
     <title>{title}</title>
   </head>
-  <header>
-    <a href="/">raeperd.github.io</a>
-    <nav></nav>
-  </header>
-
-  <slot />
-  <style>
-    :root {
-      --font-size-base: clamp(1rem, 0.34vw + 0.91rem, 1.19rem);
-      --font-size-lg: clamp(1.2rem, 0.7vw + 1.2rem, 1.5rem);
-      --font-size-xl: clamp(2.44rem, 2.38vw + 1.85rem, 3.75rem);
-
-      --color-text: hsl(12, 5%, 4%);
-      --color-bg: hsl(10, 21%, 95%);
-      --color-border: hsl(17, 24%, 90%);
-    }
-
-    html {
-      font-family: system-ui, sans-serif;
-      font-size: var(--font-size-base);
-      color: var(--color-text);
-      background-color: var(--color-bg);
-    }
-
-    body {
-      margin: 0;
-    }
-  </style>
-
-  <style is:global>
-    h1 {
-      font-size: var(--font-size-xl);
-    }
-
-    h2 {
-      font-size: var(--font-size-lg);
-    }
-
-    code {
-      font-family: Menlo, Monaco, Lucida Console, Liberation Mono,
-        DejaVu Sans Mono, Bitstream Vera Sans Mono, Courier New, monospace;
-    }
-  </style>
+  <body class="bg-slate-900 text-slate-200">
+    <header class="flex justify-between items-center h-16 text-xl">
+      <nav class="flex">
+        <a href="/" class="font-bold text-2xl mx-3 hover:underline">
+          raeperd.github.io
+        </a>
+        <nav class="flex items-center">
+          {
+            menus.map((menu) => (
+              <a href={menu.href} class="hover:underline mx-3">
+                {menu.name}
+              </a>
+            ))
+          }
+        </nav>
+      </nav>
+      <nav class="flex justify-around">
+        <a href="//github.com/raeperd/" class="invert mx-3">
+          <img src={githubSvg} />
+        </a>
+        <a href="//www.linkedin.com/in/raeperd/" class="invert mx-3">
+          <img src={linkedinSvg} />
+        </a>
+      </nav>
+    </header>
+    <slot />
+  </body>
 </html>
