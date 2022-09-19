@@ -9,6 +9,11 @@ const menus = [
   { name: "references", href: "/references" },
   { name: "tags", href: "/tags" },
 ];
+
+const socials = [
+  { href: "//github.com/raeperd/", src: githubSvg },
+  { href: "//linkedin.com/in/raeperd/", src: linkedinSvg },
+];
 ---
 
 <!DOCTYPE html>
@@ -21,9 +26,9 @@ const menus = [
     <title>{title}</title>
   </head>
   <body class="flex flex-col h-full bg-slate-900 text-slate-200">
-    <header class="flex justify-between items-center h-16 text-xl">
-      <nav class="flex min-w-min">
-        <a href="/" class="font-bold text-2xl mx-3 hover:underline">
+    <header class="flex justify-between text-xl my-5 md:mx-5">
+      <nav class="flex">
+        <a href="/" class="font-bold text-xl md:text-2xl hover:underline mx-3">
           raeperd.github.io
         </a>
         <nav class="flex items-center">
@@ -36,13 +41,14 @@ const menus = [
           }
         </nav>
       </nav>
-      <nav class="flex justify-around">
-        <a href="//github.com/raeperd/" class="invert mx-3">
-          <img src={githubSvg} />
-        </a>
-        <a href="//www.linkedin.com/in/raeperd/" class="invert mx-3">
-          <img src={linkedinSvg} />
-        </a>
+      <nav class="hidden md:flex justify-center">
+        {
+          socials.map((social) => (
+            <a href={social.href} target="_blank" class="invert mx-2">
+              <img src={social.src} />
+            </a>
+          ))
+        }
       </nav>
     </header>
     <main>
