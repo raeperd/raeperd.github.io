@@ -12,7 +12,7 @@ const menus = [
 ---
 
 <!DOCTYPE html>
-<html lang="en">
+<html class="h-full" lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width" />
@@ -20,9 +20,9 @@ const menus = [
     <meta name="generator" content={Astro.generator} />
     <title>{title}</title>
   </head>
-  <body class="bg-slate-900 text-slate-200">
+  <body class="flex flex-col h-full bg-slate-900 text-slate-200">
     <header class="flex justify-between items-center h-16 text-xl">
-      <nav class="flex">
+      <nav class="flex min-w-min">
         <a href="/" class="font-bold text-2xl mx-3 hover:underline">
           raeperd.github.io
         </a>
@@ -45,6 +45,21 @@ const menus = [
         </a>
       </nav>
     </header>
-    <slot />
+    <main>
+      <slot />
+    </main>
+    <footer class="flex justify-center items-center mt-auto mb-3 text-sm">
+      <p class="mx-1">
+        &copy;
+        {new Date().getFullYear()}
+        <a href="/" class="hover:underline">raeperd.github.io</a>
+      </p>
+      <p>
+        Powered by
+        <a href="https://astro.build/" target="_blank" class="hover:underline">
+          Astro</a
+        >
+      </p>
+    </footer>
   </body>
 </html>
