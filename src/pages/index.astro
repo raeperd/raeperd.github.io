@@ -1,8 +1,14 @@
 ---
+import PostCardContainer from "../components/PostCardContainer.astro";
 import getGithubProfile from "../functions/getGithubProfile";
 import Layout from "../layouts/Layout.astro";
 
 const profile = await getGithubProfile();
+const posts = (await Astro.glob("./articles/*.md")).sort(
+  (left, right) =>
+    new Date(right.frontmatter.date).getTime() -
+    new Date(left.frontmatter.date).getTime()
+);
 ---
 
 <Layout title="raeperd.github.io">
@@ -17,4 +23,5 @@ const profile = await getGithubProfile();
       <p>{profile.bio}</p>
     </div>
   </div>
+  <PostCardContainer posts={posts} />
 </Layout>
