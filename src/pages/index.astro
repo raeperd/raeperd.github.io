@@ -1,11 +1,8 @@
 ---
+import getGithubProfile from "../functions/getGithubProfile";
 import Layout from "../layouts/Layout.astro";
 
-const githubProfile = await fetch("https://api.github.com/users/raeperd").then(
-  (response) => response.json()
-);
-const profileImage = githubProfile.avatar_url;
-const bio = githubProfile.bio;
+const profile = await getGithubProfile();
 ---
 
 <Layout title="raeperd.github.io">
@@ -14,10 +11,10 @@ const bio = githubProfile.bio;
     itemtype="https://schema.org/Person"
     class="flex justify-center align-middle flex-wrap gap-x-6 gap-y-6 m-8"
   >
-    <img src={profileImage} itemprop="image" class="rounded-full w-52" />
+    <img src={profile.image} itemprop="image" class="rounded-full w-52" />
     <div class="flex flex-col justify-center align-middle gap-y-3">
-      <h1 itemprop="name" class="font-bold text-4xl">raeperd</h1>
-      <p>{bio}</p>
+      <h1 itemprop="name" class="font-bold text-4xl">{profile.name}</h1>
+      <p>{profile.bio}</p>
     </div>
   </div>
 </Layout>
