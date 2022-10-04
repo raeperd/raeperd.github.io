@@ -19,7 +19,11 @@ const { frontmatter } = Astro.props;
         <div itemprop="author">raeperd</div>
       </div>
       <h1 class="leading-normal">{frontmatter.title}</h1>
-      <TagButtonContainer tags={frontmatter.tags} />
+      <TagButtonContainer
+        tags={frontmatter.tags.map((tagName: any) => ({
+          name: tagName,
+        }))}
+      />
     </header>
     <slot />
   </article>

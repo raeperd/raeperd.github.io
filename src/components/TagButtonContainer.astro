@@ -1,17 +1,23 @@
 ---
 export interface Props {
-  tags: string[];
+  tags: Tag[];
+}
+
+export interface Tag {
+  readonly name: string;
+  count?: number;
 }
 
 const { tags } = Astro.props;
 ---
 
-<nav class="flex my-4">
+<nav class="flex flex-wrap my-4">
   {
-    tags.map((tag) => (
-      <a class="rounded-lg text-white bg-green-800 p-1.5 mr-4 hover:bg-green-900 hover:text-white">
-        {tag}
-      </a>
-    ))
+    tags &&
+      tags.map((tag) => (
+        <a class="text-lg rounded-full text-white bg-green-800 p-2.5 mr-4 mb-4 hover:bg-green-900 hover:text-white">
+          {tag.count ? `${tag.name} (${tag.count})` : tag.name}
+        </a>
+      ))
   }
 </nav>
