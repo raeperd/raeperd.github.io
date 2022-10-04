@@ -1,14 +1,11 @@
 ---
+import byFrontMatterDate from "src/functions/byFrontMatterDate";
 import PostCardContainer from "../components/PostCardContainer.astro";
 import getGithubProfile from "../functions/getGithubProfile";
 import Layout from "../layouts/Layout.astro";
 
 const profile = await getGithubProfile();
-const posts = (await Astro.glob("./articles/*.md")).sort(
-  (left, right) =>
-    new Date(right.frontmatter.date).getTime() -
-    new Date(left.frontmatter.date).getTime()
-);
+const posts = (await Astro.glob("./articles/**/*.md")).sort(byFrontMatterDate);
 ---
 
 <Layout title="raeperd.github.io">
