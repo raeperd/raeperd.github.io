@@ -20,7 +20,7 @@ jobs:
       - name: Install, build, and upload your site
         uses: withastro/action@v0
       - uses: sarisia/actions-status-discord@v1
-        if: github.ref != 'refs/heads/main'
+        if: github.ref != 'refs/heads/main' && always()
         with:
           webhook: ${{ secrets.DISCORD_WEBHOOK }}
         # with:
