@@ -1,11 +1,24 @@
----
-title: 'Markdown Style Guide'
-description: 'Here is a sample of some basic Markdown syntax that can be used when writing Markdown content in Astro.'
-pubDate: 'Jul 01 2022'
-heroImage: '/placeholder-hero.jpg'
----
++++
+author = "lee.so"
+title = "Markdown Syntax Guide"
+date = "2019-03-11"
+description = "Sample article showcasing basic Markdown syntax and formatting for HTML elements."
+tags = [
+    "markdown",
+    "css",
+    "html",
+]
+categories = [
+    "themes",
+    "syntax",
+]
+series = ["Themes Guide"]
+aliases = ["migrate-from-jekyl"]
++++
 
-Here is a sample of some basic Markdown syntax that can be used when writing Markdown content in Astro.
+This article offers a sample of basic Markdown syntax that can be used in Hugo content files, also it shows whether basic HTML elements are decorated with CSS in a Hugo theme.
+
+<!--more-->
 
 ## Headings
 
@@ -29,17 +42,13 @@ Xerum, quo qui aut unt expliquam qui dolut labo. Aque venitatiusda cum, voluptio
 
 Itatur? Quiatae cullecum rem ent aut odis in re eossequodi nonsequ idebis ne sapicia is sinveli squiatum, core et que aut hariosam ex eat.
 
-## Images
-
-![This is a placeholder image description](/placeholder-social.jpg)
-
 ## Blockquotes
 
 The blockquote element represents content that is quoted from another source, optionally with a citation which must be within a `footer` or `cite` element, and optionally with in-line changes such as annotations and abbreviations.
 
 #### Blockquote without attribution
 
-> Tiam, ad mint andaepu dandae nostion secatur sequo quae.  
+> Tiam, ad mint andaepu dandae nostion secatur sequo quae.
 > **Note** that you can use _Markdown syntax_ within a blockquote.
 
 #### Blockquote with attribution
@@ -51,11 +60,22 @@ The blockquote element represents content that is quoted from another source, op
 
 ## Tables
 
+Tables aren't part of the core Markdown spec, but Hugo supports supports them out-of-the-box.
+
+| Name  | Age |
+| ----- | --- |
+| Bob   | 27  |
+| Alice | 23  |
+
+#### Inline Markdown within tables
+
 | Italics   | Bold     | Code   |
 | --------- | -------- | ------ |
 | _italics_ | **bold** | `code` |
 
 ## Code Blocks
+
+#### Code block with backticks
 
 ```html
 <!DOCTYPE html>
@@ -69,6 +89,35 @@ The blockquote element represents content that is quoted from another source, op
   </body>
 </html>
 ```
+
+#### Code block indented with four spaces
+
+    <!doctype html>
+    <html lang="en">
+    <head>
+      <meta charset="utf-8">
+      <title>Example HTML5 Document</title>
+    </head>
+    <body>
+      <p>Test</p>
+    </body>
+    </html>
+
+#### Code block with Hugo's internal highlight shortcode
+
+{{< highlight html >}}
+
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Example HTML5 Document</title>
+</head>
+<body>
+  <p>Test</p>
+</body>
+</html>
+{{< /highlight >}}
 
 ## List Types
 
