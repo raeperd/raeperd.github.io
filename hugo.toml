@@ -4,7 +4,7 @@ title = 'raeperd.github.io'
 theme = 'paper'
 
 [params]
-  color = 'dark'
+  color = 'gray'
   github = 'raeperd'
   linkedin = 'raeperd'
   rss = true
