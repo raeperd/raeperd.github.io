@@ -4,108 +4,111 @@
 
 :root {
   --ctp-latte-rosewater-rgb: 220, 138, 120;
-  --ctp-frappe-rosewater-rgb: 242, 213, 207;
-  --ctp-macchiato-rosewater-rgb: 244, 219, 214;
-  --ctp-mocha-rosewater-rgb: 245, 224, 220;
   --ctp-latte-flamingo-rgb: 221, 120, 120;
-  --ctp-frappe-flamingo-rgb: 238, 190, 190;
-  --ctp-macchiato-flamingo-rgb: 240, 198, 198;
-  --ctp-mocha-flamingo-rgb: 242, 205, 205;
   --ctp-latte-pink-rgb: 234, 118, 203;
-  --ctp-frappe-pink-rgb: 244, 184, 228;
-  --ctp-macchiato-pink-rgb: 245, 189, 230;
-  --ctp-mocha-pink-rgb: 245, 194, 231;
   --ctp-latte-mauve-rgb: 136, 57, 239;
-  --ctp-frappe-mauve-rgb: 202, 158, 230;
-  --ctp-macchiato-mauve-rgb: 198, 160, 246;
-  --ctp-mocha-mauve-rgb: 203, 166, 247;
   --ctp-latte-red-rgb: 210, 15, 57;
-  --ctp-frappe-red-rgb: 231, 130, 132;
-  --ctp-macchiato-red-rgb: 237, 135, 150;
-  --ctp-mocha-red-rgb: 243, 139, 168;
   --ctp-latte-maroon-rgb: 230, 69, 83;
-  --ctp-frappe-maroon-rgb: 234, 153, 156;
-  --ctp-macchiato-maroon-rgb: 238, 153, 160;
-  --ctp-mocha-maroon-rgb: 235, 160, 172;
   --ctp-latte-peach-rgb: 254, 100, 11;
-  --ctp-frappe-peach-rgb: 239, 159, 118;
-  --ctp-macchiato-peach-rgb: 245, 169, 127;
-  --ctp-mocha-peach-rgb: 250, 179, 135;
   --ctp-latte-yellow-rgb: 223, 142, 29;
-  --ctp-frappe-yellow-rgb: 229, 200, 144;
-  --ctp-macchiato-yellow-rgb: 238, 212, 159;
-  --ctp-mocha-yellow-rgb: 249, 226, 175;
   --ctp-latte-green-rgb: 64, 160, 43;
-  --ctp-frappe-green-rgb: 166, 209, 137;
-  --ctp-macchiato-green-rgb: 166, 218, 149;
-  --ctp-mocha-green-rgb: 166, 227, 161;
   --ctp-latte-teal-rgb: 23, 146, 153;
-  --ctp-frappe-teal-rgb: 129, 200, 190;
-  --ctp-macchiato-teal-rgb: 139, 213, 202;
-  --ctp-mocha-teal-rgb: 148, 226, 213;
   --ctp-latte-sky-rgb: 4, 165, 229;
-  --ctp-frappe-sky-rgb: 153, 209, 219;
-  --ctp-macchiato-sky-rgb: 145, 215, 227;
-  --ctp-mocha-sky-rgb: 137, 220, 235;
   --ctp-latte-sapphire-rgb: 32, 159, 181;
-  --ctp-frappe-sapphire-rgb: 133, 193, 220;
-  --ctp-macchiato-sapphire-rgb: 125, 196, 228;
-  --ctp-mocha-sapphire-rgb: 116, 199, 236;
   --ctp-latte-blue-rgb: 30, 102, 245;
-  --ctp-frappe-blue-rgb: 140, 170, 238;
-  --ctp-macchiato-blue-rgb: 138, 173, 244;
-  --ctp-mocha-blue-rgb: 137, 180, 250;
   --ctp-latte-lavender-rgb: 114, 135, 253;
-  --ctp-frappe-lavender-rgb: 186, 187, 241;
-  --ctp-macchiato-lavender-rgb: 183, 189, 248;
-  --ctp-mocha-lavender-rgb: 180, 190, 254;
   --ctp-latte-text-rgb: 76, 79, 105;
-  --ctp-frappe-text-rgb: 198, 208, 245;
-  --ctp-macchiato-text-rgb: 202, 211, 245;
-  --ctp-mocha-text-rgb: 205, 214, 244;
   --ctp-latte-subtext1-rgb: 92, 95, 119;
-  --ctp-frappe-subtext1-rgb: 181, 191, 226;
-  --ctp-macchiato-subtext1-rgb: 184, 192, 224;
-  --ctp-mocha-subtext1-rgb: 186, 194, 222;
   --ctp-latte-subtext0-rgb: 108, 111, 133;
-  --ctp-frappe-subtext0-rgb: 165, 173, 206;
-  --ctp-macchiato-subtext0-rgb: 165, 173, 203;
-  --ctp-mocha-subtext0-rgb: 166, 173, 200;
   --ctp-latte-overlay2-rgb: 124, 127, 147;
-  --ctp-frappe-overlay2-rgb: 148, 156, 187;
-  --ctp-macchiato-overlay2-rgb: 147, 154, 183;
-  --ctp-mocha-overlay2-rgb: 147, 153, 178;
   --ctp-latte-overlay1-rgb: 140, 143, 161;
-  --ctp-frappe-overlay1-rgb: 131, 139, 167;
-  --ctp-macchiato-overlay1-rgb: 128, 135, 162;
-  --ctp-mocha-overlay1-rgb: 127, 132, 156;
   --ctp-latte-overlay0-rgb: 156, 160, 176;
-  --ctp-frappe-overlay0-rgb: 115, 121, 148;
-  --ctp-macchiato-overlay0-rgb: 110, 115, 141;
-  --ctp-mocha-overlay0-rgb: 108, 112, 134;
   --ctp-latte-surface2-rgb: 172, 176, 190;
-  --ctp-frappe-surface2-rgb: 98, 104, 128;
-  --ctp-macchiato-surface2-rgb: 91, 96, 120;
-  --ctp-mocha-surface2-rgb: 88, 91, 112;
   --ctp-latte-surface1-rgb: 188, 192, 204;
-  --ctp-frappe-surface1-rgb: 81, 87, 109;
-  --ctp-macchiato-surface1-rgb: 73, 77, 100;
-  --ctp-mocha-surface1-rgb: 69, 71, 90;
   --ctp-latte-surface0-rgb: 204, 208, 218;
-  --ctp-frappe-surface0-rgb: 65, 69, 89;
-  --ctp-macchiato-surface0-rgb: 54, 58, 79;
-  --ctp-mocha-surface0-rgb: 49, 50, 68;
   --ctp-latte-base-rgb: 239, 241, 245;
-  --ctp-frappe-base-rgb: 48, 52, 70;
-  --ctp-macchiato-base-rgb: 36, 39, 58;
-  --ctp-mocha-base-rgb: 30, 30, 46;
   --ctp-latte-mantle-rgb: 230, 233, 239;
-  --ctp-frappe-mantle-rgb: 41, 44, 60;
-  --ctp-macchiato-mantle-rgb: 30, 32, 48;
-  --ctp-mocha-mantle-rgb: 24, 24, 37;
   --ctp-latte-crust-rgb: 220, 224, 232;
+
+  --ctp-frappe-rosewater-rgb: 242, 213, 207;
+  --ctp-frappe-flamingo-rgb: 238, 190, 190;
+  --ctp-frappe-pink-rgb: 244, 184, 228;
+  --ctp-frappe-mauve-rgb: 202, 158, 230;
+  --ctp-frappe-red-rgb: 231, 130, 132;
+  --ctp-frappe-maroon-rgb: 234, 153, 156;
+  --ctp-frappe-peach-rgb: 239, 159, 118;
+  --ctp-frappe-yellow-rgb: 229, 200, 144;
+  --ctp-frappe-green-rgb: 166, 209, 137;
+  --ctp-frappe-teal-rgb: 129, 200, 190;
+  --ctp-frappe-sky-rgb: 153, 209, 219;
+  --ctp-frappe-sapphire-rgb: 133, 193, 220;
+  --ctp-frappe-blue-rgb: 140, 170, 238;
+  --ctp-frappe-lavender-rgb: 186, 187, 241;
+  --ctp-frappe-text-rgb: 198, 208, 245;
+  --ctp-frappe-subtext1-rgb: 181, 191, 226;
+  --ctp-frappe-subtext0-rgb: 165, 173, 206;
+  --ctp-frappe-overlay2-rgb: 148, 156, 187;
+  --ctp-frappe-overlay1-rgb: 131, 139, 167;
+  --ctp-frappe-overlay0-rgb: 115, 121, 148;
+  --ctp-frappe-surface2-rgb: 98, 104, 128;
+  --ctp-frappe-surface1-rgb: 81, 87, 109;
+  --ctp-frappe-surface0-rgb: 65, 69, 89;
+  --ctp-frappe-base-rgb: 48, 52, 70;
+  --ctp-frappe-mantle-rgb: 41, 44, 60;
   --ctp-frappe-crust-rgb: 35, 38, 52;
+
+  --ctp-macchiato-rosewater-rgb: 244, 219, 214;
+  --ctp-macchiato-flamingo-rgb: 240, 198, 198;
+  --ctp-macchiato-pink-rgb: 245, 189, 230;
+  --ctp-macchiato-mauve-rgb: 198, 160, 246;
+  --ctp-macchiato-red-rgb: 237, 135, 150;
+  --ctp-macchiato-maroon-rgb: 238, 153, 160;
+  --ctp-macchiato-peach-rgb: 245, 169, 127;
+  --ctp-macchiato-yellow-rgb: 238, 212, 159;
+  --ctp-macchiato-green-rgb: 166, 218, 149;
+  --ctp-macchiato-teal-rgb: 139, 213, 202;
+  --ctp-macchiato-sky-rgb: 145, 215, 227;
+  --ctp-macchiato-sapphire-rgb: 125, 196, 228;
+  --ctp-macchiato-blue-rgb: 138, 173, 244;
+  --ctp-macchiato-lavender-rgb: 183, 189, 248;
+  --ctp-macchiato-text-rgb: 202, 211, 245;
+  --ctp-macchiato-subtext1-rgb: 184, 192, 224;
+  --ctp-macchiato-subtext0-rgb: 165, 173, 203;
+  --ctp-macchiato-overlay2-rgb: 147, 154, 183;
+  --ctp-macchiato-overlay1-rgb: 128, 135, 162;
+  --ctp-macchiato-overlay0-rgb: 110, 115, 141;
+  --ctp-macchiato-surface2-rgb: 91, 96, 120;
+  --ctp-macchiato-surface1-rgb: 73, 77, 100;
+  --ctp-macchiato-surface0-rgb: 54, 58, 79;
+  --ctp-macchiato-base-rgb: 36, 39, 58;
+  --ctp-macchiato-mantle-rgb: 30, 32, 48;
   --ctp-macchiato-crust-rgb: 24, 25, 38;
+
+  --ctp-mocha-rosewater-rgb: 245, 224, 220;
+  --ctp-mocha-flamingo-rgb: 242, 205, 205;
+  --ctp-mocha-pink-rgb: 245, 194, 231;
+  --ctp-mocha-mauve-rgb: 203, 166, 247;
+  --ctp-mocha-red-rgb: 243, 139, 168;
+  --ctp-mocha-maroon-rgb: 235, 160, 172;
+  --ctp-mocha-peach-rgb: 250, 179, 135;
+  --ctp-mocha-yellow-rgb: 249, 226, 175;
+  --ctp-mocha-green-rgb: 166, 227, 161;
+  --ctp-mocha-teal-rgb: 148, 226, 213;
+  --ctp-mocha-sky-rgb: 137, 220, 235;
+  --ctp-mocha-sapphire-rgb: 116, 199, 236;
+  --ctp-mocha-blue-rgb: 137, 180, 250;
+  --ctp-mocha-lavender-rgb: 180, 190, 254;
+  --ctp-mocha-text-rgb: 205, 214, 244;
+  --ctp-mocha-subtext1-rgb: 186, 194, 222;
+  --ctp-mocha-subtext0-rgb: 166, 173, 200;
+  --ctp-mocha-overlay2-rgb: 147, 153, 178;
+  --ctp-mocha-overlay1-rgb: 127, 132, 156;
+  --ctp-mocha-overlay0-rgb: 108, 112, 134;
+  --ctp-mocha-surface2-rgb: 88, 91, 112;
+  --ctp-mocha-surface1-rgb: 69, 71, 90;
+  --ctp-mocha-surface0-rgb: 49, 50, 68;
+  --ctp-mocha-base-rgb: 30, 30, 46;
+  --ctp-mocha-mantle-rgb: 24, 24, 37;
   --ctp-mocha-crust-rgb: 17, 17, 27;
 }
 
@@ -118,6 +121,33 @@
     --color-card: var(--ctp-latte-surface0-rgb);
     --color-card-muted: var(--ctp-latte-surface1-rgb);
     --color-border: var(--ctp-latte-blue-rgb);
+
+    --color-rosewater: var(--ctp-latte-rosewater-rgb);
+    --color-flamingo: var(--ctp-latte-flamingo-rgb);
+    --color-pink: var(--ctp-latte-pink-rgb);
+    --color-mauve: var(--ctp-latte-mauve-rgb);
+    --color-red: var(--ctp-latte-red-rgb);
+    --color-maroon: var(--ctp-latte-maroon-rgb);
+    --color-peach: var(--ctp-latte-peach-rgb);
+    --color-yellow: var(--ctp-latte-yellow-rgb);
+    --color-green: var(--ctp-latte-green-rgb);
+    --color-teal: var(--ctp-latte-teal-rgb);
+    --color-sky: var(--ctp-latte-sky-rgb);
+    --color-sapphire: var(--ctp-latte-sapphire-rgb);
+    --color-blue: var(--ctp-latte-blue-rgb);
+    --color-lavender: var(--ctp-latte-lavender-rgb);
+    --color-text: var(--ctp-latte-text-rgb);
+    --color-subtext1: var(--ctp-latte-subtext1-rgb);
+    --color-subtext0: var(--ctp-latte-subtext0-rgb);
+    --color-overlay2: var(--ctp-latte-overlay2-rgb);
+    --color-overlay1: var(--ctp-latte-overlay1-rgb);
+    --color-overlay0: var(--ctp-latte-overlay0-rgb);
+    --color-surface2: var(--ctp-latte-surface2-rgb);
+    --color-surface1: var(--ctp-latte-surface1-rgb);
+    --color-surface0: var(--ctp-latte-surface0-rgb);
+    --color-base: var(--ctp-latte-base-rgb);
+    --color-mantle: var(--ctp-latte-mantle-rgb);
+    --color-crust: var(--ctp-latte-crust-rgb);
   }
   html[data-theme="dark"] {
     --color-fill: var(--ctp-mocha-base-rgb);
@@ -126,6 +156,33 @@
     --color-card: var(--ctp-mocha-surface0-rgb);
     --color-card-muted: var(--ctp-mocha-surface1-rgb);
     --color-border: var(--ctp-mocha-blue-rgb);
+
+    --color-rosewater: var(--ctp-mocha-rosewater-rgb);
+    --color-flamingo: var(--ctp-mocha-flamingo-rgb);
+    --color-pink: var(--ctp-mocha-pink-rgb);
+    --color-mauve: var(--ctp-mocha-mauve-rgb);
+    --color-red: var(--ctp-mocha-red-rgb);
+    --color-maroon: var(--ctp-mocha-maroon-rgb);
+    --color-peach: var(--ctp-mocha-peach-rgb);
+    --color-yellow: var(--ctp-mocha-yellow-rgb);
+    --color-green: var(--ctp-mocha-green-rgb);
+    --color-teal: var(--ctp-mocha-teal-rgb);
+    --color-sky: var(--ctp-mocha-sky-rgb);
+    --color-sapphire: var(--ctp-mocha-sapphire-rgb);
+    --color-blue: var(--ctp-mocha-blue-rgb);
+    --color-lavender: var(--ctp-mocha-lavender-rgb);
+    --color-text: var(--ctp-mocha-text-rgb);
+    --color-subtext1: var(--ctp-mocha-subtext1-rgb);
+    --color-subtext0: var(--ctp-mocha-subtext0-rgb);
+    --color-overlay2: var(--ctp-mocha-overlay2-rgb);
+    --color-overlay1: var(--ctp-mocha-overlay1-rgb);
+    --color-overlay0: var(--ctp-mocha-overlay0-rgb);
+    --color-surface2: var(--ctp-mocha-surface2-rgb);
+    --color-surface1: var(--ctp-mocha-surface1-rgb);
+    --color-surface0: var(--ctp-mocha-surface0-rgb);
+    --color-base: var(--ctp-mocha-base-rgb);
+    --color-mantle: var(--ctp-mocha-mantle-rgb);
+    --color-crust: var(--ctp-mocha-crust-rgb);
   }
   #sun-svg,
   html[data-theme="dark"] #moon-svg {
@@ -158,15 +215,15 @@
   .prose {
     @apply prose-headings:!mb-3 prose-headings:!text-skin-base 
     prose-h3:italic prose-p:!text-skin-base 
-    prose-a:!text-skin-base prose-a:!decoration-dashed prose-a:underline-offset-8
+    prose-a:!text-skin-lavender prose-a:!decoration-dashed prose-a:underline-offset-8
     hover:prose-a:text-skin-accent prose-blockquote:!border-l-skin-accent
     prose-blockquote:border-opacity-50 prose-blockquote:opacity-80
     prose-figcaption:!text-skin-base prose-figcaption:opacity-70
-    prose-strong:!text-skin-base
+    prose-strong:!text-skin-teal
 
     
     prose-code:rounded prose-code:bg-skin-card 
-    prose-code:bg-opacity-75 prose-code:p-1 prose-code:!text-skin-base 
+    prose-code:bg-opacity-75 prose-code:p-1 prose-code:!text-skin-red 
     prose-code:before:!content-[''] prose-code:after:!content-['']
     prose-pre:!text-skin-base prose-ol:!text-skin-base 
     prose-ul:overflow-x-clip prose-ul:!text-skin-base prose-li:marker:!text-skin-accent
@@ -177,7 +234,7 @@
     prose-img:border-skin-line prose-hr:!border-skin-line;
   }
   .prose a {
-    @apply hover:!text-skin-accent;
+    @apply visited:!text-skin-mauve hover:!text-skin-accent;
   }
   .prose thead th:first-child,
   tbody td:first-child,
