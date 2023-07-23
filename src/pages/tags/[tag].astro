@@ -1,14 +1,14 @@
 ---
-import { CollectionEntry, getCollection } from "astro:content";
+import Card from "@components/Card";
+import Footer from "@components/Footer.astro";
+import Header from "@components/Header.astro";
+import { SITE } from "@config";
 import Layout from "@layouts/Layout.astro";
 import Main from "@layouts/Main.astro";
-import Header from "@components/Header.astro";
-import Footer from "@components/Footer.astro";
-import Card from "@components/Card";
-import getUniqueTags from "@utils/getUniqueTags";
 import getPostsByTag from "@utils/getPostsByTag";
+import getUniqueTags from "@utils/getUniqueTags";
 import slugify from "@utils/slugify";
-import { SITE } from "@config";
+import { CollectionEntry, getCollection } from "astro:content";
 
 export interface Props {
   post: CollectionEntry<"blog">;
@@ -44,7 +44,7 @@ const tagPosts = getPostsByTag(posts, tag);
     <ul>
       {
         tagPosts.map(({ data }) => (
-          <Card href={`/posts/${slugify(data)}`} frontmatter={data} />
+          <Card href={`/articles/${slugify(data)}`} frontmatter={data} />
         ))
       }
     </ul>
