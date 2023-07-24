@@ -19,10 +19,6 @@ jobs:
         uses: actions/checkout@v3
       - name: Install, build, and upload your site
         uses: withastro/action@v0
-      - uses: sarisia/actions-status-discord@v1
-        if: github.ref != 'refs/heads/main' && always()
-        with:
-          webhook: ${{ secrets.DISCORD_WEBHOOK }}
         # with:
             # path: . # The root location of your Astro project inside the repository. (optional)
             # node-version: 16 # The specific version of Node that should be used to build your site. Defaults to 16. (optional)
@@ -39,7 +35,13 @@ jobs:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v1
+  
+  notify: 
+    needs: [build, deploy]
+    if: always()
+    runs-on: ubuntu-latest
+    steps:
       - uses: sarisia/actions-status-discord@v1
-        if: always()
         with:
           webhook: ${{ secrets.DISCORD_WEBHOOK }}
+  
