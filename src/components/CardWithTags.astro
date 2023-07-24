@@ -1,0 +1,37 @@
+---
+import type { BlogFrontmatter } from "@content/_schemas";
+import { slugifyStr } from "@utils/slugify";
+import Datetime from "./Datetime";
+import Tag from "./Tag.astro";
+
+export interface Props {
+  href?: string;
+  frontmatter: BlogFrontmatter;
+  secHeading?: boolean;
+}
+
+const {href, frontmatter, secHeading} = Astro.props;
+const { title, date, tags, description } = frontmatter 
+---
+
+<li class="my-6">
+    <a
+    href={href}
+    class="inline-block text-lg font-medium text-skin-accent decoration-dashed underline-offset-4 focus-visible:no-underline focus-visible:underline-offset-0"
+    >
+    {secHeading ? (
+        <h2 class="text-lg font-medium decoration-dashed hover:underline">
+        {title}
+        </h2>
+    ) : (
+        <h3 class="text-lg font-medium decoration-dashed hover:underline">
+        {title}
+        </h3>
+    )}
+    </a>
+    <Datetime datetime={date} />
+    <ul>
+      {tags.map(tag => <Tag name={slugifyStr(tag)} />)}
+    </ul>
+    <p>{description}</p>
+</li>
