@@ -1,11 +1,12 @@
-import { defineConfig } from "astro/config";
-import tailwind from "@astrojs/tailwind";
+import partytown from "@astrojs/partytown";
 import react from "@astrojs/react";
-import remarkToc from "remark-toc";
-import remarkCollapse from "remark-collapse";
 import sitemap from "@astrojs/sitemap";
+import tailwind from "@astrojs/tailwind";
+import { defineConfig } from "astro/config";
+import remarkCollapse from "remark-collapse";
+import remarkToc from "remark-toc";
+import shikiTheme from "./shiki/shiki-macchiato-theme.json";
 import { SITE } from "./src/config";
-import shikiTheme from "./shiki/shiki-macchiato-theme.json"
 
 // https://astro.build/config
 export default defineConfig({
@@ -18,6 +19,11 @@ export default defineConfig({
     }),
     react(),
     sitemap(),
+    partytown({
+      config: {
+        forward: ["dataLayer.push"],
+      },
+    }),
   ],
   markdown: {
     remarkPlugins: [
