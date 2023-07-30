@@ -2,10 +2,10 @@
 title: Gracefully handling Spring Boot exception with Factory Pattern
 date: 2022-07-05
 tags: [kotlin, spring, design-pattern]
-description: "좋은 API를 만들기 위해서는 일관되고 쉬운 예외 응답 포맷이 필요하다. SpringBoot에는 예외를 처리할 수 있는 여러가지 방법들이 있다. 여러 프로젝트들을 구현하면서 내 생각에 최선의 예외처리 방은 Factory Pattern을 이용해 하나의 `@ExceptionHandler` 에서 예외를 처리하는 것이다."
+description: "SpringBoot에는 예외를 처리할 수 있는 여러가지 방법들이 있다. 여러 프로젝트들을 구현하면서 내 생각에 최선의 예외처리 방법은 Factory Pattern을 이용해 하나의 `@ExceptionHandler` 에서 예외를 처리하는 것이다."
 ---
 
-좋은 API를 만들기 위해서는 일관되고 쉬운 예외 응답 포맷이 필요하다. SpringBoot에는 예외를 처리할 수 있는 여러가지 방법들이 있다. 여러 프로젝트들을 구현하면서 내 생각에 최선의 예외처리 방은 Factory Pattern을 이용해 하나의 `@ExceptionHandler`에서 예외를 처리하는 것이다.
+좋은 API를 만들기 위해서는 일관되고 쉬운 예외 응답 포맷이 필요하다. SpringBoot에는 예외를 처리할 수 있는 여러가지 방법들이 있다. 여러 프로젝트들을 구현하면서 내 생각에 최선의 예외처리 방법은 Factory Pattern을 이용해 하나의 `@ExceptionHandler`에서 예외를 처리하는 것이다.
 
 ## TL;DR
 

@@ -2,7 +2,7 @@
 title: How To Clean Up Database Tables After Each Integration Test
 date: 2022-06-20
 tags: [spring, jpa, test, kotlin]
-description: "@Transactional 을 테스트 코드에 추가하면 테스트가 하나의 persistence context 에 속하도록 정의할 수 있다. 그래서 테스트 코드에서 데이터베이스를 초기화하는 코드를 추가로 작성하지 않고도 각 테스트가 Deterministic 하고 독립적임을 보장할 수 있을 것이라고 착각했는데, 발견하기 어려운 버그를 최근에 확인했다."
+description: "@Transactional 을 테스트 코드에 추가하면 테스트가 하나의 persistence context 에 속하도록 정의할 수 있다. 테스트가 Deterministic 하고 독립적임을 보장할 수 있을 것이라고 착각했는데, 발견하기 어려운 버그를 최근에 확인했다."
 ---
 
 Spring Boot와 Spring Data JPA를 사용하는 환경에서 Deterministic test를 작성하기 위해 `@Transactinoal` 어노테이션을 작성하곤 했었다. `@Transactional` 을 테스트 코드에 추가하면 테스트가 하나의 persistence context 에 속하도록 정의할 수 있다. 그래서 테스트 코드에서 데이터베이스를 초기화하는 코드를 추가로 작성하지 않고도 각 테스트가 Deterministic 하고 독립적임을 보장할 수 있을 것이라고 착각했는데, 발견하기 어려운 버그를 최근에 확인했다.
