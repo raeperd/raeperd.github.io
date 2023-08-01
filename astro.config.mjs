@@ -37,7 +37,7 @@ export default defineConfig({
     ],
     shikiConfig: {
       theme: shikiTheme,
-      wrap: true,
+      wrap: false,
     },
     extendDefaultPlugins: true,
   },
