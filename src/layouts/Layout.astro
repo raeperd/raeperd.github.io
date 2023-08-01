@@ -1,6 +1,7 @@
 ---
 import { SITE } from "@config";
 import "@styles/base.css";
+import { ViewTransitions } from 'astro:transitions';
 
 export interface Props {
   title?: string;
@@ -77,6 +78,9 @@ const socialImageURL = new URL(
     </script>
 
     <script is:inline src="/toggle-theme.js"></script>
+
+    <ViewTransitions/>
+    
   </head>
   <body>
     <slot />

@@ -46,4 +46,7 @@ export default defineConfig({
       exclude: ["@resvg/resvg-js"],
     },
   },
+  experimental: {
+    viewTransitions: true
+  }
 });
