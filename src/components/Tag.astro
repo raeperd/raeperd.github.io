@@ -13,6 +13,7 @@ const { name, size = "sm" } = Astro.props;
   }`}
 >
   <a
+    rel="prefetch-intent"
     href={`/tags/${name.toLowerCase()}`}
     class={`${size === "sm" ? "text-sm" : "text-lg"} pr-2 group relative underline decoration-dashed hover:-top-0.5 text-skin-green hover:text-skin-sapphire focus-visible:p-1`}
   >

@@ -8,6 +8,8 @@ import remarkToc from "remark-toc";
 import shikiTheme from "./shiki/shiki-macchiato-theme.json";
 import { SITE } from "./src/config";
 
+import prefetch from "@astrojs/prefetch";
+
 // https://astro.build/config
 export default defineConfig({
   site: SITE.website,
@@ -23,6 +25,9 @@ export default defineConfig({
       config: {
         forward: ["dataLayer.push"],
       },
+    }),
+    prefetch({
+      throttle: 3,
     }),
   ],
   markdown: {
@@ -47,6 +52,6 @@ export default defineConfig({
     },
   },
   experimental: {
-    viewTransitions: true
-  }
+    viewTransitions: true,
+  },
 });
