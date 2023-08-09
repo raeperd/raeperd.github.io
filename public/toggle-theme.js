@@ -43,6 +43,8 @@ window.onload = () => {
   });
 };
 
+document.addEventListener("astro:beforeload", window.onload);
+
 // sync with system changes
 window
   .matchMedia("(prefers-color-scheme: dark)")
