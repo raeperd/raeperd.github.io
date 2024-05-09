@@ -1,3 +1,70 @@
 @use "./base.scss";
 
 // put your custom CSS here!
+:root {
+  --h1-color: #222222;
+  --article-h3-color: #2f80f2;
+  --article-h4-color: #e4b567;
+  --article-h5-color: #e83f3e;
+  --article-h6-color: #555e68;
+  --article-code-color: #555e68;
+  --article-strong-color: #ff82b2;
+  --article-blockquote-border-color: #5992e7;
+  --article-blockquote-color: #3db4bf;
+}
+
+:root[saved-theme="dark"] {
+  --h1-color: #dadada;
+  --article-h3-color: #2f80f2;
+  --article-h4-color: #e4b567;
+  --article-h5-color: #e83f3e;
+  --article-h6-color: #bdc6cf;
+  --article-code-color: #bdc6cf;
+  --article-strong-color: #ff82b2;
+  --article-blockquote-border-color: #4d8ce6;
+  --article-blockquote-color: #3db4bf;
+}
+
+#quartz-body > div.left.sidebar > h1 > a {
+  color: var(--h1-color);
+}
+
+#quartz-body > div.center > div > div > h1 {
+  color: var(--h1-color);
+}
+
+article > h1,h2 {
+  color: var(--h1-color);
+}
+
+article > h3 {
+  color: var(--article-h3-color);
+}
+
+article > h4 {
+  color: var(--article-h4-color);
+}
+
+article > h5 {
+  color: var(--article-h5-color);
+}
+
+article > h6 {
+  color: var(--article-h6-color);
+}
+
+article > code {
+  color: var(--article-code-color);
+}
+
+.page article p>strong, strong {
+  color: var(--article-strong-color);
+}
+
+blockquote {
+  border-left: 3px solid var(--article-blockquote-border-color);
+}
+
+blockquote > p {
+  color: var(--article-blockquote-color);
+}
