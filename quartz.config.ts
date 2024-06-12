@@ -12,7 +12,9 @@ const config: QuartzConfig = {
     enableSPA: true,
     enablePopovers: true,
     analytics: {
-      provider: "plausible",
+      provider: "posthog",
+      apiKey: "phc_HtGkBKrRSfhA581s4F0350EPb2Tc7jbRpmVTDdBJ2pa",
+      host: "https://us.i.posthog.com",
     },
     locale: "en-US",
     baseUrl: "raeperd.github.io",
