@@ -3,6 +3,8 @@ date: 2024-06-12
 tags:
   - programming
 ---
+Referenced [Original Article from Joel on Software](https://www.joelonsoftware.com/2003/10/08/the-absolute-minimum-every-software-developer-absolutely-positively-must-know-about-unicode-and-character-sets-no-excuses/)
+
 # Summary
 - **There Ain’t No Such Thing As Plain Text.** If you have a string, in memory, in a file, or in an email message, you have to know what encoding it is in or you cannot interpret it or display it to users correctly.
 - **Encoding** is the process of putting a sequence of characters (letters, numbers, punctuation, and certain symbols) into a specialized format for efficient transmission or storage. Decoding is the opposite process

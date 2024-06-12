@@ -4,7 +4,7 @@ tags:
   - mongo
   - snippet
 ---
-- Trying to update docs matches query using Mongodb compass
+- I tried to update docs matches query using Mongodb compass
 - Even with `$set` (And UI showing updated docs...), Mongodb compass's aggregation tab is not updating actual documents in collection ([ref](https://www.mongodb.com/community/forums/t/mongodb-compass-are-aggregation-queries-set-executed-or-only-previewed/163821/6)) 
 
 ```shell
@@ -27,8 +27,8 @@ db.collection.aggregate(
 - This aggregation does not affect actual docs even though UI shows you updated fields
 
 # Solution
-- [Installed mongosh](https://www.mongodb.com/try/download/shell) and copied rpm file to production server using [scp](How%20to%20copy%20a%20file%20from%20a%20remote%20server%20to%20a%20local%20machine.md)
-- run `db.collection.updateMany({query}, {$set op})`
+- [Installed mongosh](https://www.mongodb.com/try/download/shell) and copied rpm file to production server using [scp](How%20to%20copy%20a%20file%20from%20a%20remote%20server%20to%20a%20local%20machine.md), and then install using command `rpm -i {filename}.rpm`
+- run `db.collection.updateMany({query}, {$set operation})` inside mongosh
 
 ```sh
 mongosh "mongodb+srv://username:password@mongo-address.com/db"
@@ -36,7 +36,7 @@ mongosh "mongodb+srv://username:password@mongo-address.com/db"
 
 ```sh
 db.site.updateMany(
-  { URL: { $regex: "http.*instagram.com/*" } },
+  { URL: { $regex: "https://raeperd.github.io/*" } },
   { $set: { StatusCode: 200} }
 )
 ```
