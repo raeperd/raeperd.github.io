@@ -22,9 +22,9 @@ Some posts include AI insights from ChatGPT for comprehensive coverage of each i
 <!-- SerializedQuery: TABLE WITHOUT ID join(list("[[",file.name,"]]"), "") as issue, dateformat(file.day,"yyyy-MM-dd") AS date FROM "4_public/issues" FLATTEN "[[" + file.path + "|" + truncate(file.name, 20) + "]]" as Link SORT file.day DESC LIMIT 5 -->
 | issue                                                          | date       |
 | -------------------------------------------------------------- | ---------- |
+| [[Timezone error on k8s cronjob]]                              | 2024-07-01 |
 | [[Mongodb conditional update using compass and mongosh]]       | 2024-06-10 |
 | [[where to store logs in linux application]]                   | 2024-01-15 |
 | [[How to copy a file from a remote server to a local machine]] | 2024-01-11 |
 | [[nohup disk full]]                                            | 2024-01-08 |
-| [[Private registries error on Watchtower]]                     | 2024-01-07 |
 <!-- SerializedQuery END -->

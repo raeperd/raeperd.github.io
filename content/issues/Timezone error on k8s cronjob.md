@@ -16,11 +16,11 @@ Found issue on timezone error. Cron expression on CronJob yaml file and pod can 
 FROM golang:1.22-alpine3.19 as builder
 WORKDIR /src
 COPY . /src
-RUN go build -C cmd/app -o . 
+RUN go build -C cmd/app -o app
 
 FROM golang:1.22-alpine3.19
 RUN apk add --no-cache tzdata
-COPY --from=builder /src/cmd/site-connector/site-connector /bin/app
+COPY --from=builder /src/cmd/app /bin/app
 CMD ["/bin/app"]
 ```
 
@@ -54,6 +54,11 @@ spec:
               - -c
               - 'app --partition=$(($(date +%u) - 1))'
           restartPolicy: OnFailure
+```
+
+## docker run example
+```sh
+$ docker run -e TZ=Asia/Seoul connector:v1
 ```
 
 ## Reference
