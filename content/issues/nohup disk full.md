@@ -1,15 +1,16 @@
 ---
+date: 2024-01-08
 tags:
   - bug
   - linux
-date: 2024-01-08
-url: https://kakaoenterprise.agit.in/g/300015037/wall/394643891?ir=false&l=agit_user_mentioned_v3&sid=394643891&tid=300061811&ts=1704693447
 ---
-- [nohup](nohup.md)을 그냥 실행하면 디스크 full이 될 수도 있다
-- [logrotate](logrotate.md)를 사용하면 사이즈 문제와 log rotation 문제를 한번에 해결할 수 있다
+## Issue
+- Running [nohup](nohup.md) can cause disk full 
+- [logrotate](logrotate.md) can handle both disk issue and log rotation issue 
 
-## How to limit size of nohup.out in linux
+## Solution 
 
+### How to limit size of nohup.out in linux
 To limit the size of `nohup.out` in Linux, you can use either the `logrotate` utility or a custom script.
 
 1. **Using logrotate:**

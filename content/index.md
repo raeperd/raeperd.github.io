@@ -6,7 +6,7 @@ aliases:
 date: 2024-06-11
 ---
 ## About Me
-A 3rd-year software engineer specializing in Daum Site search services, [specifically working on the Daum Site search service.](https://search.daum.net/search?nil_suggest=btn&w=tot&DA=SBC&q=%EC%B9%B4%EC%B9%B4%EC%98%A4%EC%97%94%ED%84%B0%ED%94%84%EB%9D%BC%EC%9D%B4%EC%A6%88) With extensive experience in various technologies and engineering challenges, I'm recently interested in philosophy of #go and Cloud Native technologies. And enjoys organizing and sharing new knowledge through Personal Knowledge Management (PKM) systems like this blog.
+A 3rd-year software engineer specializing in Daum Site search services, [specifically working on the Daum Site search service.](https://search.daum.net/search?nil_suggest=btn&w=tot&DA=SBC&q=%EC%B9%B4%EC%B9%B4%EC%98%A4%EC%97%94%ED%84%B0%ED%94%84%EB%9D%BC%EC%9D%B4%EC%A6%88) With extensive experience in various technologies and engineering challenges, I'm recently interested in philosophy of Golang and Cloud Native technologies. And enjoys organizing and sharing new knowledge through Personal Knowledge Management (PKM) systems like this blog.
 
 As a Korean and a non-native English speaker, I appreciate your understanding if my English seems a bit awkward at times.
 
@@ -20,11 +20,12 @@ Some posts include AI insights from ChatGPT for comprehensive coverage of each i
 ## Recent Issues
 <!-- QueryToSerialize: TABLE WITHOUT ID join(list("[[",file.name,"]]"), "") as issue, dateformat(file.day,"yyyy-MM-dd") AS date FROM "4_public/issues" FLATTEN "[[" + file.path + "|" + truncate(file.name, 20) + "]]" as Link SORT file.day DESC LIMIT 5 -->
 <!-- SerializedQuery: TABLE WITHOUT ID join(list("[[",file.name,"]]"), "") as issue, dateformat(file.day,"yyyy-MM-dd") AS date FROM "4_public/issues" FLATTEN "[[" + file.path + "|" + truncate(file.name, 20) + "]]" as Link SORT file.day DESC LIMIT 5 -->
+
 | issue                                                          | date       |
 | -------------------------------------------------------------- | ---------- |
 | [[Timezone error on k8s cronjob]]                              | 2024-07-01 |
 | [[Mongodb conditional update using compass and mongosh]]       | 2024-06-10 |
-| [[where to store logs in linux application]]                   | 2024-01-15 |
+| [[Where to store logs in linux application]]                   | 2024-01-15 |
 | [[How to copy a file from a remote server to a local machine]] | 2024-01-11 |
-| [[nohup disk full]]                                            | 2024-01-08 |
+| [[Nohup disk full]]                                            | 2024-01-08 |
 <!-- SerializedQuery END -->

@@ -5,7 +5,7 @@ tags:
   - ssh
   - vscode
 ---
-## Cause
+## Isssue
 - sshd configuration for port forwarding
 
 ## Solution
@@ -19,5 +19,5 @@ $ sudo vim /etc/ssh/sshd_config
 $ sudo systemctl restart sshd
 ```
 
-## Reference
+## Referenced
 1. [Stuck on "Opening Remote..." · Issue #195 · microsoft/vscode-remote-release · GitHub](https://github.com/microsoft/vscode-remote-release/issues/195)

@@ -1,12 +1,14 @@
 ---
-tags:
-  - bug
-  - docker
 date: 2024-01-07
-url: https://containrrr.dev/watchtower/private-registries/
+tags:
+  - docker
 ---
-watchtower fails to pull private repo by default
+## Issue
+[Watchtower](https://containrrr.dev/watchtower/) fails to pull private repo by default
 
-## How to fix
+## Solution
 - mount credential
 	- `~/.docker/config.json:/config.json`
+
+## Reference
+- [Private registries - Watchtower](https://containrrr.dev/watchtower/private-registries/)

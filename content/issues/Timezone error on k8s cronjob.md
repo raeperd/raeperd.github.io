@@ -5,13 +5,14 @@ tags:
   - docker
   - bug
 ---
+## Issue
 Found issue on timezone error. Cron expression on CronJob yaml file and pod can have different timezone.
 
-## Fix
+## Solution
 1. Add tzdata on alphine linux docker image 
 2. Add environment variable `TZ` in cronjob's yaml file 
 
-## dockerfile example
+### dockerfile example
 ```dockerfile 
 FROM golang:1.22-alpine3.19 as builder
 WORKDIR /src
@@ -24,7 +25,7 @@ COPY --from=builder /src/cmd/app /bin/app
 CMD ["/bin/app"]
 ```
 
-## cronjob yaml example
+### cronjob yaml example
 ```yaml
 apiVersion: batch/v1
 kind: CronJob
@@ -56,10 +57,10 @@ spec:
           restartPolicy: OnFailure
 ```
 
-## docker run example
+### docker run example
 ```sh
 $ docker run -e TZ=Asia/Seoul connector:v1
 ```
 
-## Reference
-[dockerfile - How to set timezone inside alpine base docker image? - Stack Overflow](https://stackoverflow.com/questions/68996420/how-to-set-timezone-inside-alpine-base-docker-image)
+## Referenced
+- [dockerfile - How to set timezone inside alpine base docker image? - Stack Overflow](https://stackoverflow.com/questions/68996420/how-to-set-timezone-inside-alpine-base-docker-image)
