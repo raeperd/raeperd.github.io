@@ -41,22 +41,41 @@ const work = await Promise.all(
           <p class="animate">
             I am a software engineer with 3 years of experience specializing in search services at the Daum. Skilled at solving complex technical problems by devising simple solutions. Have ability to enhancing both new and legacy projects through rigorous unit testing, CI/CD practices, thorough code reviews, and more.
           </p>
+          <p class="animate">
+            If you want to get in touch with me about something or just to say hi,
+            reach out on social media or send me an email.
+          </p>
         </article>
+          <ul class="animate flex flex-wrap gap-2 mt-4">
+            {SOCIALS.map(SOCIAL => (
+              <li class="flex gap-x-2 text-nowrap">
+                <Link href={SOCIAL.HREF} external aria-label={`${SITE.NAME} on ${SOCIAL.NAME}`}>
+                  {SOCIAL.NAME}
+                </Link>
+                {"/"}
+              </li>
+            ))}
+            <li class="line-clamp-1">
+              <Link href={`mailto:${SITE.EMAIL}`} aria-label={`Email ${SITE.NAME}`}>
+                {SITE.EMAIL}
+              </Link>
+            </li>
+          </ul>
       </section>
 
       <section class="animate space-y-6">
         <div class="flex flex-wrap gap-y-2 items-center justify-between">
           <h5 class="font-semibold text-black dark:text-white">
-            Latest posts
+            Recent projects
           </h5>
-          <Link href="/blog">
-            See all posts
+          <Link href="/projects">
+            See all projects
           </Link>
         </div>
         <ul class="flex flex-col gap-4">
-          {blog.map(post => (
+          {projects.map(project => (
             <li>
-              <ArrowCard entry={post} />
+              <ArrowCard entry={project} />
             </li>
           ))}
         </ul>
@@ -94,42 +113,21 @@ const work = await Promise.all(
       <section class="animate space-y-6">
         <div class="flex flex-wrap gap-y-2 items-center justify-between">
           <h5 class="font-semibold text-black dark:text-white">
-            Recent projects
+            Latest posts
           </h5>
-          <Link href="/projects">
-            See all projects
+          <Link href="/blog">
+            See all posts
           </Link>
         </div>
         <ul class="flex flex-col gap-4">
-          {projects.map(project => (
+          {blog.map(post => (
             <li>
-              <ArrowCard entry={project} />
+              <ArrowCard entry={post} />
             </li>
           ))}
         </ul>
       </section>
 
-      <section class="animate space-y-4">
-        <h5 class="font-semibold text-black dark:text-white">
-          Let's Connect
-        </h5>
-        <article>
-          <p>
-            If you want to get in touch with me about something or just to say hi,
-            reach out on social media. 
-          </p>
-        </article>
-        <ul class="flex flex-wrap gap-2">
-          {SOCIALS.map(SOCIAL => (
-            <li class="flex gap-x-2 text-nowrap">
-              <Link href={SOCIAL.HREF} external aria-label={`${SITE.NAME} on ${SOCIAL.NAME}`}>
-                {SOCIAL.NAME}
-              </Link>
-              {"/"}
-            </li>
-          ))}
-        </ul>
-      </section>
     </div>
   </Container>
 </PageLayout>
