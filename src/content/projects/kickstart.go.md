@@ -1,7 +1,7 @@
 ---
 title: kickstart.go
 description: Minimalistic http server template in go
-date: Sep 18 2024
+date: Oct 18 2024
 demoURL: https://raeperd.dev/go2024
 repoURL: https://github.com/raeperd/kickstart.go
 ---
