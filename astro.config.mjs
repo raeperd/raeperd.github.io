@@ -6,4 +6,5 @@ import tailwind from "@astrojs/tailwind";
 export default defineConfig({
   site: "https://raeperd.github.io",
   integrations: [mdx(), sitemap(), tailwind()],
+  prefetch: true,
 });
