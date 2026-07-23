@@ -35,5 +35,13 @@
   },
   "overrides": {
     "flatted": "3.4.2"
+  },
+  "pnpm": {
+    "onlyBuiltDependencies": [
+      "esbuild"
+    ],
+    "overrides": {
+      "flatted": "3.4.2"
+    }
   }
 }
