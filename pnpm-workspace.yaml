@@ -1,0 +1,8 @@
+packages:
+  - "."
+
+overrides:
+  flatted: 3.4.2
+
+allowBuilds:
+  esbuild: true
