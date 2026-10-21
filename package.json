@@ -2,6 +2,7 @@
   "name": "astro-nano",
   "type": "module",
   "version": "1.0.0",
+  "packageManager": "pnpm@12.14.0",
   "engines": {
     "node": ">=22.12.0"
   },
