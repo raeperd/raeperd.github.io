@@ -16,8 +16,8 @@
     "lint:fix": "eslint . --fix"
   },
   "dependencies": {
-    "@astrojs/check": "^0.9.9",
-    "@astrojs/mdx": "^7.0.3",
+    "@astrojs/check": "^0.9.11",
+    "@astrojs/mdx": "^7.0.8",
     "@astrojs/rss": "^4.0.19",
     "@astrojs/sitemap": "^3.7.3",
     "@fontsource/inter": "^5.0.17",
@@ -26,25 +26,45 @@
     "@tailwindcss/vite": "^4.3.3",
     "@typescript-eslint/eslint-plugin": "^7.3.1",
     "@typescript-eslint/parser": "^7.3.1",
-    "astro": "7.1.0",
+    "astro": "7.4.1",
     "clsx": "^2.1.0",
     "eslint": "^8.57.0",
     "eslint-plugin-astro": "^0.32.0",
     "eslint-plugin-jsx-a11y": "^6.8.0",
-    "sharp": "^0.35.3",
+    "sharp": "^0.35.5",
     "tailwind-merge": "^2.2.2",
     "tailwindcss": "^4.3.3",
     "typescript": "^5.4.2"
   },
   "overrides": {
-    "flatted": "3.4.2"
+    "flatted": "3.4.2",
+    "brace-expansion@1": "1.1.21",
+    "brace-expansion@2": "2.1.7",
+    "fast-uri": "3.1.8",
+    "js-yaml": "4.3.2",
+    "nanoid": "3.3.18",
+    "postcss": "8.5.23",
+    "postcss-selector-parser": "7.1.6",
+    "smol-toml": "1.9.0",
+    "source-map-js": "1.2.2",
+    "vite": "8.3.5"
   },
   "pnpm": {
     "onlyBuiltDependencies": [
       "esbuild"
     ],
     "overrides": {
-      "flatted": "3.4.2"
+      "flatted": "3.4.2",
+      "brace-expansion@1": "1.1.21",
+      "brace-expansion@2": "2.1.7",
+      "fast-uri": "3.1.8",
+      "js-yaml": "4.3.2",
+      "nanoid": "3.3.18",
+      "postcss": "8.5.23",
+      "postcss-selector-parser": "7.1.6",
+      "smol-toml": "1.9.0",
+      "source-map-js": "1.2.2",
+      "vite": "8.3.5"
     }
   }
 }
